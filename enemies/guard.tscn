@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://d222d7fbr2ub"]
+
+[ext_resource type="Script" path="res://enemies/guard.gd" id="1_v4hv3"]
+[ext_resource type="Texture2D" uid="uid://c4g61l5i2jxio" path="res://assets/enemies/guard.png" id="1_wmb4r"]
+[ext_resource type="Texture2D" uid="uid://di2vy0qjnak7s" path="res://assets/enemies/guard_2.png" id="2_dvddm"]
+[ext_resource type="Texture2D" uid="uid://bp0ivy8058se1" path="res://assets/enemies/riot_shield.png" id="2_uagjb"]
+[ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="3_t7lim"]
+[ext_resource type="PackedScene" uid="uid://bf8isb5x7u54f" path="res://components/death_component.tscn" id="4_2lbxc"]
+
+[sub_resource type="Animation" id="Animation_p2ndp"]
+resource_name = "die"
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_50po1"]
+_data = {
+"die": SubResource("Animation_p2ndp")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vqpmv"]
+radius = 55.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4jfw"]
+size = Vector2(52, 135)
+
+[node name="Guard" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 15
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_v4hv3")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("death_component") instance=ExtResource("3_t7lim")]
+max_hp = 11
+death_component = NodePath("../DeathComponent")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("death_animation_player", "death_animation") instance=ExtResource("4_2lbxc")]
+death_animation_player = NodePath("../AnimationPlayer")
+death_animation = NodePath("../deathSprite")
+
+[node name="deathSprite" type="Sprite2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 176.66
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_50po1")
+}
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="NavTimer" type="Timer" parent="Timers"]
+process_callback = 0
+wait_time = 0.1
+autostart = true
+
+[node name="StunTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vqpmv")
+
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="guard_1" type="Sprite2D" parent="sprites"]
+position = Vector2(-6, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_wmb4r")
+
+[node name="guard_2" type="Sprite2D" parent="sprites"]
+visible = false
+position = Vector2(-3, -1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_dvddm")
+
+[node name="Shield" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
+position = Vector2(72, 1.5)
+rotation = -0.101229
+shape = SubResource("RectangleShape2D_d4jfw")
+debug_color = Color(0, 0.631373, 0.482353, 0.419608)
+
+[node name="ShieldSprite" type="Sprite2D" parent="Shield"]
+position = Vector2(68, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_uagjb")
+
+[connection signal="timeout" from="Timers/NavTimer" to="." method="_on_nav_timer_timeout"]
+[connection signal="timeout" from="Timers/StunTimer" to="." method="_on_stun_timer_timeout"]
+[connection signal="area_entered" from="Shield" to="." method="_on_shield_detect_area_entered"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsa7espht4fgv"]
+
+[ext_resource type="Texture2D" uid="uid://dy27yytkqhsj" path="res://assets/air/tu-22a.png" id="1_8dwye"]
+[ext_resource type="Script" path="res://enemies/tu_22.gd" id="1_nungk"]
+[ext_resource type="PackedScene" uid="uid://oj2tpd5e7bml" path="res://components/despawn_component.tscn" id="3_ap0y8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_li371"]
+radius = 839.06
+
+[node name="tu-22" type="CharacterBody2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_nungk")
+
+[node name="DespawnComponent" parent="." instance=ExtResource("3_ap0y8")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_8dwye")
+flip_h = true
+
+[node name="can_bombTimer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[node name="PlayerNearArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNearArea"]
+shape = SubResource("CircleShape2D_li371")
+
+[connection signal="timeout" from="can_bombTimer" to="." method="_on_bomb_timer_timeout"]
+[connection signal="body_entered" from="PlayerNearArea" to="." method="_on_player_near_area_body_entered"]

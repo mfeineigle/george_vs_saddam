@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bcrpg4ucredvh"]
+
+[ext_resource type="Script" path="res://unused/inventory/inventory_item.gd" id="1_kufif"]
+[ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="1_lbjfc"]
+[ext_resource type="Texture2D" uid="uid://v40khrhhlsbp" path="res://assets/weapons/ar-15.png" id="2_sdbv4"]
+
+[resource]
+script = ExtResource("1_kufif")
+name = "ar15"
+texture = ExtResource("2_sdbv4")
+scene = ExtResource("1_lbjfc")

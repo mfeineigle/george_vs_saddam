@@ -1,0 +1,126 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfxbwx21lv6nt"]
+
+[ext_resource type="Script" path="res://projectiles/rocket_bullet.gd" id="1_4xetg"]
+[ext_resource type="Texture2D" uid="uid://dbvfxrrp7e20w" path="res://assets/projectiles/RPG.png" id="1_tuelo"]
+[ext_resource type="Texture2D" uid="uid://y8u6b03mc1pd" path="res://assets/projectiles/RPG_explosion.png" id="3_x11b1"]
+[ext_resource type="AudioStream" uid="uid://73b5l3kw2vkb" path="res://assets/audio/weapons/explosion_rocket_bullet.wav" id="4_qhoap"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h6xne"]
+radius = 7.0
+height = 62.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yupmj"]
+radius = 150.003
+
+[sub_resource type="Animation" id="Animation_7c6iw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8ttl5"]
+resource_name = "explode"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RocketBullet:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_it6wm"]
+_data = {
+"RESET": SubResource("Animation_7c6iw"),
+"explode": SubResource("Animation_8ttl5")
+}
+
+[node name="RocketBullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_4xetg")
+splash_damage = 3
+speed = 30
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_h6xne")
+
+[node name="RocketBullet" type="Sprite2D" parent="."]
+position = Vector2(-40, 0)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_tuelo")
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+wait_time = 0.35
+one_shot = true
+autostart = true
+
+[node name="ExplodeArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 11
+
+[node name="ExplodeCollision" type="CollisionShape2D" parent="ExplodeArea"]
+shape = SubResource("CircleShape2D_yupmj")
+debug_color = Color(0.745098, 0.372549, 0.709804, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_it6wm")
+}
+
+[node name="Explosion" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(7.00001, 0)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_x11b1")
+hframes = 5
+vframes = 2
+
+[node name="AudioStreamExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qhoap")
+volume_db = -10.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]
+[connection signal="body_entered" from="ExplodeArea" to="." method="_on_explode_area_body_entered"]
+[connection signal="body_exited" from="ExplodeArea" to="." method="_on_explode_area_body_exited"]

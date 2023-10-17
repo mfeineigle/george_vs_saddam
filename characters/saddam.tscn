@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvegaq0esyjct"]
+
+[ext_resource type="Script" path="res://characters/saddam.gd" id="1_fuche"]
+[ext_resource type="Texture2D" uid="uid://b7mu856u6ipft" path="res://assets/characters/saddam_face.png" id="2_bc8ea"]
+[ext_resource type="Texture2D" uid="uid://ddfx1ijog6pgj" path="res://assets/characters/saddam_bug_eyes.png" id="3_ssem5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_falw8"]
+size = Vector2(95, 128)
+
+[sub_resource type="Animation" id="Animation_l7i41"]
+resource_name = "bug_eyes"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SaddamBugEyes:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t2y3v"]
+_data = {
+"bug_eyes": SubResource("Animation_l7i41")
+}
+
+[node name="Saddam" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 11
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_fuche")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(16, 12, 371, 346, 439, 261, 493, 150, 516, 13, 492, -134, 420, -277, 370, -358)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_falw8")
+
+[node name="Rays" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="Rays"]
+target_position = Vector2(366, 369)
+collision_mask = 9
+
+[node name="RayCast2D2" type="RayCast2D" parent="Rays"]
+target_position = Vector2(382, 343)
+collision_mask = 9
+
+[node name="RayCast2D3" type="RayCast2D" parent="Rays"]
+target_position = Vector2(402, 295)
+collision_mask = 9
+
+[node name="RayCast2D4" type="RayCast2D" parent="Rays"]
+target_position = Vector2(421, 241)
+collision_mask = 9
+
+[node name="RayCast2D5" type="RayCast2D" parent="Rays"]
+target_position = Vector2(434, 179)
+collision_mask = 9
+
+[node name="RayCast2D6" type="RayCast2D" parent="Rays"]
+target_position = Vector2(446, 119)
+collision_mask = 9
+
+[node name="RayCast2D7" type="RayCast2D" parent="Rays"]
+target_position = Vector2(453, 58)
+collision_mask = 9
+
+[node name="RayCast2D8" type="RayCast2D" parent="Rays"]
+target_position = Vector2(456, 13)
+collision_mask = 9
+
+[node name="RayCast2D9" type="RayCast2D" parent="Rays"]
+target_position = Vector2(460, -22)
+collision_mask = 9
+
+[node name="RayCast2D10" type="RayCast2D" parent="Rays"]
+target_position = Vector2(445, -81)
+collision_mask = 9
+
+[node name="RayCast2D11" type="RayCast2D" parent="Rays"]
+target_position = Vector2(424, -138)
+collision_mask = 9
+
+[node name="RayCast2D12" type="RayCast2D" parent="Rays"]
+target_position = Vector2(406, -202)
+collision_mask = 9
+
+[node name="RayCast2D13" type="RayCast2D" parent="Rays"]
+target_position = Vector2(370, -263)
+collision_mask = 9
+
+[node name="RayCast2D14" type="RayCast2D" parent="Rays"]
+target_position = Vector2(327, -332)
+collision_mask = 9
+
+[node name="SaddamSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("2_bc8ea")
+
+[node name="SaddamBugEyes" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("3_ssem5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t2y3v")
+}

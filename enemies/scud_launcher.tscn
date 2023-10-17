@@ -1,0 +1,173 @@
+[gd_scene load_steps=14 format=3 uid="uid://bfjwx2vpr6rb1"]
+
+[ext_resource type="Script" path="res://enemies/scud_launcher.gd" id="1_434nm"]
+[ext_resource type="Texture2D" uid="uid://8b3tpsdfebva" path="res://assets/enemies/scudMissileLauncherBase.png" id="2_rjg4k"]
+[ext_resource type="Texture2D" uid="uid://cyy1wh1vid43a" path="res://assets/projectiles/scudMissile.png" id="3_sfyo5"]
+[ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="4_g10yl"]
+[ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="5_1vgsh"]
+[ext_resource type="PackedScene" uid="uid://bf8isb5x7u54f" path="res://components/death_component.tscn" id="6_ehhr6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a37pr"]
+radius = 34.0
+height = 252.0
+
+[sub_resource type="Animation" id="Animation_coali"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_s5nyt"]
+resource_name = "die"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 80]
+}
+
+[sub_resource type="Animation" id="Animation_cvuph"]
+resource_name = "fire_scud"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("missile:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 0.0]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ubaon"]
+_data = {
+"RESET": SubResource("Animation_coali"),
+"die": SubResource("Animation_s5nyt"),
+"fire_scud": SubResource("Animation_cvuph")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4vl73"]
+emission_shape = 1
+emission_sphere_radius = 20.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(100, 0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 50.0
+linear_accel_max = 50.0
+scale_min = 4.0
+scale_max = 6.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_22avm"]
+emission_shape = 1
+emission_sphere_radius = 20.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(-100, 0, 0)
+initial_velocity_min = -40.0
+initial_velocity_max = -40.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 50.0
+linear_accel_max = 50.0
+scale_min = 4.0
+scale_max = 6.0
+
+[node name="scud_launcher" type="StaticBody2D" groups=["scudLaunchers"]]
+collision_layer = 2
+script = ExtResource("1_434nm")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("death_component") instance=ExtResource("4_g10yl")]
+max_hp = 3
+death_component = NodePath("../DeathComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_a37pr")
+
+[node name="base" type="Sprite2D" parent="."]
+position = Vector2(0, -105)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_rjg4k")
+
+[node name="missile" type="Sprite2D" parent="."]
+position = Vector2(63, -20)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("3_sfyo5")
+centered = false
+offset = Vector2(0, -1500)
+
+[node name="Fire" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-81, -48)
+scale = Vector2(2, 2)
+texture = ExtResource("5_1vgsh")
+hframes = 9
+vframes = 9
+
+[node name="CanFireTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ubaon")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ExhaustExplosion" type="GPUParticles2D" parent="."]
+position = Vector2(87, -24)
+emitting = false
+amount = 111
+process_material = SubResource("ParticleProcessMaterial_4vl73")
+lifetime = 0.5
+one_shot = true
+
+[node name="ExhaustExplosion2" type="GPUParticles2D" parent="."]
+position = Vector2(87, -24)
+emitting = false
+amount = 111
+process_material = SubResource("ParticleProcessMaterial_22avm")
+lifetime = 0.5
+one_shot = true
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("death_animation_player", "death_animation") instance=ExtResource("6_ehhr6")]
+death_animation_player = NodePath("../AnimationPlayer")
+death_animation = NodePath("../Fire")
+
+[connection signal="timeout" from="CanFireTimer" to="." method="_on_fire_timer_timeout"]

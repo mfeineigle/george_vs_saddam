@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bpwxop3l0gyp0"]
+
+[ext_resource type="Script" path="res://unused/inventory/inventory_item.gd" id="1_gccsm"]
+[ext_resource type="PackedScene" uid="uid://byvu6338wp13j" path="res://weapons/rocket_launcher.tscn" id="1_gh2wm"]
+[ext_resource type="Texture2D" uid="uid://cvkajy17emwcj" path="res://assets/weapons/rocket_launcher.png" id="2_syjyu"]
+
+[resource]
+script = ExtResource("1_gccsm")
+name = "rocket_launcher"
+texture = ExtResource("2_syjyu")
+scene = ExtResource("1_gh2wm")

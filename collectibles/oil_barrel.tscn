@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://clkuxg2lsv8uy"]
+
+[ext_resource type="Script" path="res://collectibles/oil_barrel.gd" id="1_pp6nk"]
+[ext_resource type="Texture2D" uid="uid://bty21k6lwr55v" path="res://assets/collectibles/oil_barrel.png" id="2_kt3eg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oy6qg"]
+size = Vector2(76, 125)
+
+[node name="oil_barrel" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_pp6nk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_oy6qg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_kt3eg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1m7rk3gpry6q"]
+
+[ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_oae5b"]
+[ext_resource type="Material" uid="uid://fhg3qqai4nlg" path="res://ui/pause_menu.tres" id="2_voxd2"]
+[ext_resource type="Theme" uid="uid://bv467htpxf00q" path="res://ui/ui.tres" id="3_0b648"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+custom_minimum_size = Vector2(246, 141)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+script = ExtResource("1_oae5b")
+
+[node name="Blur" type="ColorRect" parent="."]
+material = ExtResource("2_voxd2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.5
+offset_top = -70.0
+offset_right = 122.5
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme = ExtResource("3_0b648")
+theme_override_font_sizes/font_size = 55
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../ResumeButton")
+theme = ExtResource("3_0b648")
+theme_override_font_sizes/font_size = 55
+text = "Quit"
+
+[connection signal="pressed" from="Buttons/VBoxContainer/ResumeButton" to="." method="_on_paused"]
+[connection signal="pressed" from="Buttons/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6mibw2qqnqtk"]
+
+[ext_resource type="Texture2D" uid="uid://fvcioiv3ovrc" path="res://assets/enemies/ural-4320.png" id="1_qghw4"]
+[ext_resource type="Script" path="res://enemies/ural_4320.gd" id="1_x165f"]
+[ext_resource type="PackedScene" uid="uid://oj2tpd5e7bml" path="res://components/despawn_component.tscn" id="3_w1bvo"]
+[ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="4_ho4x6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x86op"]
+radius = 65.0
+height = 258.0
+
+[node name="ural_4320" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 15
+motion_mode = 1
+script = ExtResource("1_x165f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_x86op")
+
+[node name="ural_4320" type="Sprite2D" parent="."]
+position = Vector2(5, -2)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_qghw4")
+flip_h = true
+
+[node name="DespawnComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_w1bvo")]
+health_component = NodePath("../HealthComponent")
+
+[node name="SpawnGuardTimer" type="Timer" parent="."]
+wait_time = 0.6
+autostart = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_ho4x6")]
+max_hp = 10
+
+[connection signal="timeout" from="SpawnGuardTimer" to="." method="_on_spawn_guard_timer_timeout"]

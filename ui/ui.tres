@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bv467htpxf00q"]
+
+[ext_resource type="FontFile" uid="uid://bkvbcnf7xgq3e" path="res://assets/fonts/MultiroundPro.otf" id="1_ut2s7"]
+
+[resource]
+default_base_scale = 2.0
+default_font = ExtResource("1_ut2s7")
+default_font_size = 35

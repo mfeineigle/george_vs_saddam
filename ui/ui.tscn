@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://b4u06cbdgi456"]
+
+[ext_resource type="Script" path="res://ui/ui.gd" id="1_umpmm"]
+[ext_resource type="PackedScene" uid="uid://c1m7rk3gpry6q" path="res://ui/pause_menu.tscn" id="1_ycn5h"]
+[ext_resource type="Material" uid="uid://fhg3qqai4nlg" path="res://ui/pause_menu.tres" id="2_7hlm0"]
+[ext_resource type="Texture2D" uid="uid://c3kmi0e0aramp" path="res://assets/ui/Oil_Logo.png" id="4_edvq7"]
+[ext_resource type="Theme" uid="uid://bv467htpxf00q" path="res://ui/ui.tres" id="5_1i6yg"]
+[ext_resource type="Texture2D" uid="uid://cyc2oibjped0k" path="res://assets/ui/USD.png" id="6_v4sqb"]
+[ext_resource type="Texture2D" uid="uid://bv2mpfoifrjd2" path="res://assets/progress_bars/air_drop_progress_bar/bg.png" id="7_pl46g"]
+[ext_resource type="Texture2D" uid="uid://52kld1eljww6" path="res://assets/progress_bars/air_drop_progress_bar/over.png" id="8_sggom"]
+[ext_resource type="Texture2D" uid="uid://dl4he0svxadq3" path="res://assets/progress_bars/air_drop_progress_bar/progress.png" id="9_k4uhi"]
+[ext_resource type="PackedScene" uid="uid://bid0uwbkdj5su" path="res://ui/weapon_hud.tscn" id="10_uvgr5"]
+[ext_resource type="PackedScene" uid="uid://cc33ahmqajp34" path="res://ui/inventory_gui.tscn" id="11_qup7j"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_umpmm")
+
+[node name="Stats" type="VBoxContainer" parent="."]
+offset_right = 140.0
+offset_bottom = 94.0
+
+[node name="OilStats" type="HBoxContainer" parent="Stats"]
+layout_mode = 2
+
+[node name="OilLogo" type="TextureRect" parent="Stats/OilStats"]
+layout_mode = 2
+texture = ExtResource("4_edvq7")
+expand_mode = 3
+
+[node name="OilLabel" type="Label" parent="Stats/OilStats"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_1i6yg")
+text = "Oil: "
+
+[node name="HPStats" type="HBoxContainer" parent="Stats"]
+layout_mode = 2
+
+[node name="HPLogo" type="TextureRect" parent="Stats/HPStats"]
+layout_mode = 2
+texture = ExtResource("6_v4sqb")
+expand_mode = 3
+
+[node name="HPLabel" type="Label" parent="Stats/HPStats"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_1i6yg")
+text = "HP: "
+
+[node name="AirDropGauge" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="AirDropGauge"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -350.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = 80.0
+grow_horizontal = 0
+
+[node name="AirDropBar" type="TextureProgressBar" parent="AirDropGauge/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("7_pl46g")
+texture_over = ExtResource("8_sggom")
+texture_progress = ExtResource("9_k4uhi")
+
+[node name="WeaponHUD" parent="." instance=ExtResource("10_uvgr5")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_ycn5h")]
+visible = false
+material = ExtResource("2_7hlm0")
+
+[node name="InventoryGui" parent="PauseMenu" instance=ExtResource("11_qup7j")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -226.5
+offset_top = -184.0
+offset_right = 226.5
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0

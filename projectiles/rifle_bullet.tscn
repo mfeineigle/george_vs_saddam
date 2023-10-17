@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlol1224j6q1y"]
+
+[ext_resource type="Script" path="res://projectiles/rifle_bullet.gd" id="1_o2hg8"]
+[ext_resource type="Texture2D" uid="uid://7cisnr6yli3f" path="res://assets/projectiles/308_bullet.png" id="2_mberb"]
+[ext_resource type="PackedScene" uid="uid://oj2tpd5e7bml" path="res://components/despawn_component.tscn" id="3_aivq2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v7vo6"]
+radius = 6.0
+height = 54.0
+
+[node name="RifleBullet" type="Area2D" groups=["bullets"]]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_o2hg8")
+speed = 30
+damage = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_mberb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v7vo6")
+
+[node name="DespawnComponent" parent="." instance=ExtResource("3_aivq2")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

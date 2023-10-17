@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7i0qbpunp5ei"]
+
+[ext_resource type="Script" path="res://enemies/radar_tower.gd" id="1_aeohx"]
+[ext_resource type="Texture2D" uid="uid://gknk73i5o1fq" path="res://assets/enemies/radar_tower_bottom.png" id="1_y8c87"]
+[ext_resource type="Texture2D" uid="uid://cuuy2ushiqpf8" path="res://assets/enemies/radar_top.png" id="2_gx1dp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ul131"]
+radius = 35.0
+height = 136.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qk7is"]
+radius = 787.522
+
+[node name="RadarTower" type="StaticBody2D"]
+scale = Vector2(0.75, 0.75)
+collision_layer = 8
+script = ExtResource("1_aeohx")
+
+[node name="Bottom" type="Sprite2D" parent="."]
+position = Vector2(1, -242.667)
+texture = ExtResource("1_y8c87")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ul131")
+
+[node name="Top" type="Sprite2D" parent="."]
+position = Vector2(1, -528)
+texture = ExtResource("2_gx1dp")
+
+[node name="RayCast2D" type="RayCast2D" parent="Top"]
+rotation = 0.349066
+target_position = Vector2(0, 800)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Top"]
+rotation = 0.261799
+target_position = Vector2(0, 800)
+
+[node name="RayCast2D3" type="RayCast2D" parent="Top"]
+rotation = 0.174533
+target_position = Vector2(0, 800)
+
+[node name="RayCast2D4" type="RayCast2D" parent="Top"]
+rotation = 0.0872665
+target_position = Vector2(0, 800)
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(5.33333, -506.667)
+shape = SubResource("CircleShape2D_qk7is")
+debug_color = Color(0.596078, 0.407843, 0.427451, 0.223529)
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

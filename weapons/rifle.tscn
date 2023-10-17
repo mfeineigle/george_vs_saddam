@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxh7ov567x8g7"]
+
+[ext_resource type="Script" path="res://weapons/rifle.gd" id="1_i215y"]
+[ext_resource type="Texture2D" uid="uid://v40khrhhlsbp" path="res://assets/weapons/ar-15.png" id="2_cu7ky"]
+[ext_resource type="PackedScene" uid="uid://dlol1224j6q1y" path="res://projectiles/rifle_bullet.tscn" id="3_aqmw7"]
+[ext_resource type="AudioStream" uid="uid://cmjuos5fu3rtg" path="res://assets/audio/weapons/shoot_riflet_ar15.wav" id="4_72pay"]
+
+[node name="Rifle" type="Area2D"]
+script = ExtResource("1_i215y")
+texture = ExtResource("2_cu7ky")
+bullet_scene = ExtResource("3_aqmw7")
+shoot_delay = 0.2
+
+[node name="CanShootTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 5)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_cu7ky")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-54, -4, -17, -4, -17, -16, 0, -16, 1, -5, 56, -6, 57, 2, -3, 2, 1, 24, -10, 27, -54, 14)
+
+[node name="AudioStreamShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_72pay")
+volume_db = -20.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="CanShootTimer" to="." method="_on_can_shoot_timer_timeout"]

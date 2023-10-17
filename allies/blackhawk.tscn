@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://qpsyv77bxuxy"]
+
+[ext_resource type="Texture2D" uid="uid://b6smtnec40psk" path="res://assets/air/blackhawk_helicopter_no_rotor.png" id="1_7xud4"]
+[ext_resource type="Script" path="res://allies/blackhawk.gd" id="1_qlw65"]
+[ext_resource type="PackedScene" uid="uid://oj2tpd5e7bml" path="res://components/despawn_component.tscn" id="3_6x3nk"]
+[ext_resource type="Texture2D" uid="uid://di03xl2lwl3ty" path="res://assets/air/blackhawk_helicopter_rotor.png" id="4_nx560"]
+
+[sub_resource type="Animation" id="Animation_spf4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotor_right:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rotor_right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(126.154, -76.9231)]
+}
+
+[sub_resource type="Animation" id="Animation_pfm26"]
+resource_name = "spin_rotor_right"
+length = 3.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rotor_right:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, 0.349066, 0.523599, 0.698132, 0.872665, 1.0472, 1.22173, 1.39626, 1.5708, 1.74533, 1.91986, 2.0944, 2.26893, 2.44346, 2.61799, 2.79253, 2.96706, 3.14159, 3.31613, 3.49066, 3.66519, 3.83972, 4.01426, 4.18879, 4.36332, 4.53786, 4.71239, 4.88692, 5.06145, 5.23599, 5.41052, 5.58505, 5.75959, 5.93412, 6.10865, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rotor_right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.1, 1.3, 1.5, 1.7, 1.8, 1.9, 2, 2.2, 2.3, 2.5, 2.8, 3.5, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(126.154, -76.9231), Vector2(141.538, -78.4615), Vector2(136.923, -86.1538), Vector2(144.615, -83.0769), Vector2(152.308, -90.7692), Vector2(161.539, -84.6154), Vector2(172.308, -80), Vector2(172.308, -80), Vector2(180, -69.2308), Vector2(183.077, -53.8462), Vector2(190.769, -53.8462), Vector2(189.231, -46.1538), Vector2(173.846, -38.4615), Vector2(164.615, -41.5385), Vector2(143.077, -38.4615), Vector2(129.231, -44.6154), Vector2(138.462, -41.5385), Vector2(126.154, -55.3846), Vector2(120, -70.7692), Vector2(130.769, -76.9231), Vector2(130.769, -76.9231)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dxdne"]
+_data = {
+"RESET": SubResource("Animation_spf4q"),
+"spin_rotor_right": SubResource("Animation_pfm26")
+}
+
+[node name="Blackhawk" type="CharacterBody2D"]
+scale = Vector2(0.65, 0.65)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_qlw65")
+
+[node name="body" type="Sprite2D" parent="."]
+texture = ExtResource("1_7xud4")
+
+[node name="DespawnComponent" parent="." instance=ExtResource("3_6x3nk")]
+
+[node name="rotor_right" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(126.154, -76.9231)
+texture = ExtResource("4_nx560")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "spin_rotor_right"
+libraries = {
+"": SubResource("AnimationLibrary_dxdne")
+}
