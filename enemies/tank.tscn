@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvtqhhqpi1d6j"]
+
+[ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_gqbit"]
+[ext_resource type="Texture2D" uid="uid://dxheusm3d2wnk" path="res://assets/enemies/T72_tank.png" id="2_38unk"]
+[ext_resource type="Script" path="res://enemies/tank.gd" id="2_py8y4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p1w8d"]
+radius = 50.0
+height = 330.0
+
+[node name="Tank" groups=["armored"] instance=ExtResource("1_gqbit")]
+script = ExtResource("2_py8y4")
+speed = 100
+
+[node name="VehicleSprite" parent="." index="0"]
+position = Vector2(41, -20)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_38unk")
+
+[node name="HealthComponent" parent="." index="1"]
+max_hp = 20
+
+[node name="CollisionShape2D" parent="." index="5"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_p1w8d")

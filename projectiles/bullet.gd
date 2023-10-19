@@ -25,6 +25,8 @@ func _process(_delta) -> void:
 func _on_body_entered(body) -> void:
 	if not body.name == "George":
 		if body.has_method("hit"):
+			if body.is_in_group("armored"):
+				damage -= 1
 			body.hit(damage)
 		queue_free()
 
