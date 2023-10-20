@@ -15,7 +15,7 @@ script = ExtResource("1_o2hg8")
 speed = 30
 damage = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="RifleBullet" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_mberb")
 

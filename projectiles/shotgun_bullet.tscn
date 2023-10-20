@@ -13,7 +13,7 @@ script = ExtResource("1_3twmf")
 speed = 30
 damage = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ShotgunBullet" type="Sprite2D" parent="."]
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("1_tsrdy")
 
