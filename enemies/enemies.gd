@@ -4,7 +4,7 @@ var guard_scene: PackedScene = preload("res://enemies/guard.tscn")
 var troop_scene: PackedScene = preload("res://enemies/troop.tscn")
 var tu_22_scene: PackedScene = preload("res://enemies/tu_22.tscn")
 var can_tu_22: bool = true
-var ural_scene: PackedScene = preload("res://enemies/ural_4320.tscn")
+var jeep_scene: PackedScene = preload("res://enemies/jeep.tscn")
 
 
 func _ready() -> void:
@@ -12,7 +12,8 @@ func _ready() -> void:
 	GameEvents.spawn_guard.connect(_spawn_guard)
 	GameEvents.spawn_troop.connect(_spawn_troop)
 	GameEvents.spawn_tu_22.connect(_spawn_tu_22)
-	GameEvents.spawn_ural.connect(_spawn_ural)
+	
+	GameEvents.spawn_jeep.connect(_spawn_jeep)
 
 
 func _spawn_guard(pos, offset) -> void:
@@ -38,7 +39,7 @@ func _on_tu_22_timer_timeout() -> void:
 	can_tu_22 = true
 
 
-func _spawn_ural() -> void:
+func _spawn_jeep() -> void:
 	pass
 
 #func _get_spawn_point():

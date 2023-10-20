@@ -22,8 +22,4 @@ signal tu_22_bomb_dropped(position, direction)
 signal spawn_guard(position, offset)
 signal spawn_troop(position, offset)
 signal spawn_tu_22
-signal spawn_ural
-
-
-
-
+signal spawn_jeep

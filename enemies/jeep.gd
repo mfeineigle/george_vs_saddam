@@ -1,26 +1,24 @@
-extends CharacterBody2D
+extends GroundVehicle
 
 @onready var offset = $CollisionShape2D.shape.height * -direction.normalized().x
 
 @export var max_spawned_guards: int = 3
 
-var direction: Vector2 = Vector2.LEFT
-var speed: int = 500
+
 var spawned_guards: int = 0
 
 
 func _ready() -> void:
+	direction = Vector2.RIGHT
 	if direction == Vector2.LEFT:
-		$ural_4320.flip_h = true
-		$ural_4320.rotation_degrees = 5
+		vehicle_sprite.rotation_degrees = 5
 	else:
-		$ural_4320.flip_h = false
-		$ural_4320.rotation_degrees = -3
+		vehicle_sprite.rotation_degrees = -3
 
 
 func _process(_delta):
 	velocity = direction * speed
-	Utils.flip_h_sprite_direction($ural_4320, direction)
+	Utils.flip_h_sprite_direction(vehicle_sprite, direction)
 	move_and_slide()
 
 

@@ -12,12 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="9_vmct5"]
 [ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="10_etub1"]
 [ext_resource type="PackedScene" uid="uid://bbm3sb6nu3lft" path="res://weapons/shotgun.tscn" id="10_mrx6y"]
-[ext_resource type="PackedScene" uid="uid://c6mibw2qqnqtk" path="res://enemies/ural_4320.tscn" id="11_f8d35"]
 [ext_resource type="PackedScene" uid="uid://byvu6338wp13j" path="res://weapons/rocket_launcher.tscn" id="11_q3v2x"]
 [ext_resource type="Texture2D" uid="uid://d33v5whjcl4ew" path="res://assets/obstacles/crate_sheet.png" id="12_wldx6"]
 [ext_resource type="PackedScene" uid="uid://c7i0qbpunp5ei" path="res://enemies/radar_tower.tscn" id="15_658ud"]
 [ext_resource type="Script" path="res://projectiles/projectiles.gd" id="15_vpq4a"]
 [ext_resource type="Script" path="res://enemies/enemies.gd" id="16_fwwg6"]
+[ext_resource type="PackedScene" uid="uid://dht6800xvv48j" path="res://enemies/jeep.tscn" id="16_gd63a"]
 [ext_resource type="PackedScene" uid="uid://cvtqhhqpi1d6j" path="res://enemies/tank.tscn" id="20_1vbt6"]
 [ext_resource type="Script" path="res://allies/allies.gd" id="21_5mrx4"]
 
@@ -235,8 +235,8 @@ position = Vector2(-512, -164)
 
 [node name="Ground_Vehicles" type="Node2D" parent="Enemies"]
 
-[node name="ural_4320" parent="Enemies/Ground_Vehicles" instance=ExtResource("11_f8d35")]
-position = Vector2(-202, 773)
+[node name="jeep" parent="Enemies/Ground_Vehicles" instance=ExtResource("16_gd63a")]
+position = Vector2(-658, 800)
 
 [node name="Saddam" parent="Enemies" instance=ExtResource("7_48f75")]
 
