@@ -2,10 +2,8 @@ extends GroundVehicle
 
 @onready var offset = $CollisionShape2D.shape.height * -direction.normalized().x
 
-@export var max_spawned_guards: int = 3
-
-
-var spawned_guards: int = 0
+@export var max_spawned_soldiers: int
+var spawned_soldiers: int = 0
 
 
 func _ready() -> void:
@@ -22,7 +20,9 @@ func _process(_delta):
 	move_and_slide()
 
 
-func _on_spawn_guard_timer_timeout():
-	if spawned_guards < max_spawned_guards:
-		spawned_guards += 1
-		GameEvents.spawn_guard.emit(position, offset)
+func _on_spawn_soldier_timer_timeout():
+	if spawned_soldiers < max_spawned_soldiers:
+		spawned_soldiers += 1
+		GameEvents.spawn_troop.emit(position, offset)
+	else:
+		$SpawnSoldierTimer.stop()

@@ -1,66 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c11noc7w6pfmr"]
+[gd_scene load_steps=3 format=3 uid="uid://rundkiqaar1q"]
 
+[ext_resource type="PackedScene" uid="uid://lj8agpd1vbr7" path="res://enemies/soldier.tscn" id="1_ibods"]
 [ext_resource type="Script" path="res://enemies/troop.gd" id="1_q87hb"]
-[ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="2_p1cmm"]
-[ext_resource type="PackedScene" uid="uid://bf8isb5x7u54f" path="res://components/death_component.tscn" id="3_2fn7f"]
-[ext_resource type="Texture2D" uid="uid://c4g61l5i2jxio" path="res://assets/enemies/guard.png" id="4_xs3s7"]
-[ext_resource type="Texture2D" uid="uid://di2vy0qjnak7s" path="res://assets/enemies/guard_2.png" id="5_ridt6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wph1b"]
-radius = 56.0
-
-[sub_resource type="Animation" id="Animation_p2ndp"]
-resource_name = "die"
-length = 0.001
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_50po1"]
-_data = {
-"die": SubResource("Animation_p2ndp")
-}
-
-[node name="Troop" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 15
-motion_mode = 1
-wall_min_slide_angle = 0.0
+[node name="Troop" instance=ExtResource("1_ibods")]
 script = ExtResource("1_q87hb")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("death_component") instance=ExtResource("2_p1cmm")]
-max_hp = 11
-death_component = NodePath("../DeathComponent")
-
-[node name="DeathComponent" parent="." node_paths=PackedStringArray("death_animation_player", "death_animation") instance=ExtResource("3_2fn7f")]
-death_animation_player = NodePath("../AnimationPlayer")
-death_animation = NodePath("../deathSprite")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_wph1b")
-
-[node name="sprites" type="Node2D" parent="."]
-
-[node name="troop_1" type="Sprite2D" parent="sprites"]
-visible = false
-position = Vector2(-6, 0)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("4_xs3s7")
-
-[node name="troop_2" type="Sprite2D" parent="sprites"]
-position = Vector2(-3, -1)
-scale = Vector2(1.1, 1.1)
-texture = ExtResource("5_ridt6")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
-[node name="NavTimer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 0.1
-autostart = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_50po1")
-}
-
-[node name="deathSprite" type="Sprite2D" parent="."]
-
-[connection signal="timeout" from="NavTimer" to="." method="_on_nav_timer_timeout"]
+[node name="NavigationAgent2D" parent="." index="3"]
+debug_enabled = false

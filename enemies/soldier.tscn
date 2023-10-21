@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://lj8agpd1vbr7"]
+
+[ext_resource type="Script" path="res://enemies/soldier.gd" id="1_171gw"]
+[ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="1_bxc12"]
+[ext_resource type="PackedScene" uid="uid://bf8isb5x7u54f" path="res://components/death_component.tscn" id="2_ukwew"]
+[ext_resource type="Texture2D" uid="uid://c4g61l5i2jxio" path="res://assets/enemies/soldier.png" id="3_54ac2"]
+[ext_resource type="Texture2D" uid="uid://di2vy0qjnak7s" path="res://assets/enemies/soldier_2.png" id="4_wkl7f"]
+
+[sub_resource type="Animation" id="Animation_p2ndp"]
+resource_name = "die"
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_50po1"]
+_data = {
+"die": SubResource("Animation_p2ndp")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yieux"]
+radius = 57.0088
+
+[node name="Soldier" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 15
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_171gw")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("death_component") instance=ExtResource("1_bxc12")]
+max_hp = 5
+death_component = NodePath("../DeathComponent")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("death_animation_player", "death_animation") instance=ExtResource("2_ukwew")]
+death_animation_player = NodePath("../AnimationPlayer")
+death_animation = NodePath("../deathSprite")
+
+[node name="deathSprite" type="Sprite2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_50po1")
+}
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="NavTimer" type="Timer" parent="Timers"]
+process_callback = 0
+wait_time = 0.1
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yieux")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(4, -1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_54ac2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(7, -2)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("4_wkl7f")
+
+[connection signal="timeout" from="Timers/NavTimer" to="." method="_on_nav_timer_timeout"]
