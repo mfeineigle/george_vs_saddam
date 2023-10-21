@@ -7,6 +7,6 @@ and comic book styled "cut scenes" between the levels.
 
 Testing a picture:
 
-![Saddam Face](../media/saddam_face.png?raw=true)
+![Saddam Face](../media/media/saddam_face.png?raw=true)
 
 Testing a commit message with vim.
