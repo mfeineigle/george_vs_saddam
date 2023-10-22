@@ -12,6 +12,7 @@ func _process(_delta):
 
 func _on_paused() -> void:
 	if not paused:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		self.show()
 		get_tree().paused = true
 		quit_button.grab_focus()

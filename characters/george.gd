@@ -55,6 +55,8 @@ func _process(_delta):
 
 func aim() -> void:
 	shoot_dir = Input.get_vector("fleft", "fright", "fup", "fdown")
+	if not shoot_dir:
+		shoot_dir = (get_global_mouse_position() - position).normalized()
 	if shoot_dir:
 		last_shoot_dir = shoot_dir
 	$Guns.rotation = last_shoot_dir.angle()

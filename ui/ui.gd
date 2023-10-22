@@ -6,6 +6,7 @@ func _ready() -> void:
 	GameEvents.cycled_weapon.connect(_on_cycled_weapon)
 	GameEvents.stats_changed.connect(on_stats_changed)
 	GameEvents.stats_changed.emit()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	
 	
 func on_stats_changed() -> void:
