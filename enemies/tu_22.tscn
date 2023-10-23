@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsa7espht4fgv"]
 
-[ext_resource type="Texture2D" uid="uid://dy27yytkqhsj" path="res://assets/air/tu-22a.png" id="1_8dwye"]
+[ext_resource type="Texture2D" uid="uid://dy27yytkqhsj" path="res://assets/enemies/tu-22a.png" id="1_8dwye"]
 [ext_resource type="Script" path="res://enemies/tu_22.gd" id="1_nungk"]
 [ext_resource type="PackedScene" uid="uid://oj2tpd5e7bml" path="res://components/despawn_component.tscn" id="3_ap0y8"]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://qpsyv77bxuxy"]
 
-[ext_resource type="Texture2D" uid="uid://b6smtnec40psk" path="res://assets/air/blackhawk_helicopter_no_rotor.png" id="1_7xud4"]
+[ext_resource type="Texture2D" uid="uid://b6smtnec40psk" path="res://assets/allies/blackhawk_helicopter_no_rotor.png" id="1_7xud4"]
 [ext_resource type="Script" path="res://allies/blackhawk.gd" id="1_qlw65"]
 [ext_resource type="PackedScene" uid="uid://oj2tpd5e7bml" path="res://components/despawn_component.tscn" id="3_6x3nk"]
-[ext_resource type="Texture2D" uid="uid://di03xl2lwl3ty" path="res://assets/air/blackhawk_helicopter_rotor.png" id="4_nx560"]
+[ext_resource type="Texture2D" uid="uid://di03xl2lwl3ty" path="res://assets/allies/blackhawk_helicopter_rotor.png" id="4_nx560"]
 
 [sub_resource type="Animation" id="Animation_spf4q"]
 length = 0.001
