@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b75ima0605ntm"]
+
+[ext_resource type="PackedScene" uid="uid://jlux7tept8t3" path="res://allies/civilian.tscn" id="1_qjsl8"]
+[ext_resource type="Texture2D" uid="uid://bohatjhrg4j6t" path="res://assets/allies/iraqi_child_1.png" id="2_0pdxk"]
+[ext_resource type="Texture2D" uid="uid://dxis51tiy22in" path="res://assets/allies/iraqi_child_2.png" id="3_8r4h3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_01t3u"]
+radius = 305.577
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_icu3w"]
+radius = 38.0
+height = 98.0
+
+[node name="Child" instance=ExtResource("1_qjsl8")]
+collision_layer = 2
+speed = 450
+
+[node name="Sprite2D" parent="Sprites" index="0"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_0pdxk")
+
+[node name="Sprite2D2" parent="Sprites" index="1"]
+position = Vector2(2, 0)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_8r4h3")
+
+[node name="CollisionShape2D" parent="AvoidanceArea" index="0"]
+shape = SubResource("CircleShape2D_01t3u")
+debug_color = Color(0.937255, 0, 0.623529, 0.419608)
+
+[node name="CollisionShape2D" parent="." index="4"]
+shape = SubResource("CapsuleShape2D_icu3w")

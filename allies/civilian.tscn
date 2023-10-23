@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://jlux7tept8t3"]
+
+[ext_resource type="Script" path="res://allies/civilian.gd" id="1_4hc5b"]
+[ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="2_d37tk"]
+[ext_resource type="PackedScene" uid="uid://bf8isb5x7u54f" path="res://components/death_component.tscn" id="3_ui2c4"]
+
+[sub_resource type="Animation" id="Animation_n12yh"]
+resource_name = "die"
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fa3ol"]
+_data = {
+"die": SubResource("Animation_n12yh")
+}
+
+[node name="Civilian" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 15
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_4hc5b")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("death_component") instance=ExtResource("2_d37tk")]
+max_hp = 1
+death_component = NodePath("../DeathComponent")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("death_animation_player", "death_animation") instance=ExtResource("3_ui2c4")]
+death_animation_player = NodePath("DeathAnimationPlayer")
+death_animation = NodePath("DeathAnimation")
+
+[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="DeathComponent"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_fa3ol")
+}
+
+[node name="DeathAnimation" type="Sprite2D" parent="DeathComponent"]
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+visible = false
+
+[node name="AvoidanceArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvoidanceArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="KeepRunningTimer" type="Timer" parent="Timers"]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="body_entered" from="AvoidanceArea" to="." method="_on_avoidance_area_body_entered"]
+[connection signal="body_exited" from="AvoidanceArea" to="." method="_on_avoidance_area_body_exited"]
+[connection signal="timeout" from="Timers/KeepRunningTimer" to="." method="_on_keep_running_timer_timeout"]

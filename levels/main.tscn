@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cy3lo45cy0oew"]
+[gd_scene load_steps=35 format=3 uid="uid://cy3lo45cy0oew"]
 
 [ext_resource type="PackedScene" uid="uid://b4u06cbdgi456" path="res://ui/ui.tscn" id="2_bdf4p"]
 [ext_resource type="Script" path="res://globals/SpawnPointsPath2D.gd" id="2_l15oi"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://enemies/enemies.gd" id="16_fwwg6"]
 [ext_resource type="PackedScene" uid="uid://dht6800xvv48j" path="res://enemies/jeep.tscn" id="16_gd63a"]
 [ext_resource type="PackedScene" uid="uid://cvtqhhqpi1d6j" path="res://enemies/tank.tscn" id="20_1vbt6"]
+[ext_resource type="PackedScene" uid="uid://b75ima0605ntm" path="res://allies/child.tscn" id="20_qenu2"]
 [ext_resource type="Script" path="res://allies/allies.gd" id="21_5mrx4"]
 
 [sub_resource type="Curve2D" id="Curve2D_omvre"]
@@ -253,6 +254,9 @@ position = Vector2(-1168, 378)
 script = ExtResource("21_5mrx4")
 
 [node name="AirDropTimer" type="Timer" parent="Allies"]
+
+[node name="Child" parent="Allies" instance=ExtResource("20_qenu2")]
+position = Vector2(-1338, 664)
 
 [node name="Tank" parent="." instance=ExtResource("20_1vbt6")]
 position = Vector2(-1332, 1104)
