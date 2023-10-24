@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsa7espht4fgv"]
+[gd_scene load_steps=6 format=3 uid="uid://bsa7espht4fgv"]
 
-[ext_resource type="Texture2D" uid="uid://dy27yytkqhsj" path="res://assets/enemies/tu-22a.png" id="1_8dwye"]
 [ext_resource type="Script" path="res://enemies/tu_22.gd" id="1_nungk"]
+[ext_resource type="Texture2D" uid="uid://dy27yytkqhsj" path="res://assets/enemies/tu-22a.png" id="3_3a02t"]
 [ext_resource type="PackedScene" uid="uid://oj2tpd5e7bml" path="res://components/despawn_component.tscn" id="3_ap0y8"]
+[ext_resource type="AudioStream" uid="uid://c31r4aj5ipa7o" path="res://assets/audio/jet_flyover_for_tu-22.mp3" id="4_7x7d7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_li371"]
 radius = 839.06
@@ -16,7 +17,7 @@ script = ExtResource("1_nungk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.35, 0.35)
-texture = ExtResource("1_8dwye")
+texture = ExtResource("3_3a02t")
 flip_h = true
 
 [node name="can_bombTimer" type="Timer" parent="."]
@@ -27,6 +28,11 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNearArea"]
 shape = SubResource("CircleShape2D_li371")
+
+[node name="Jet_Flyover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7x7d7")
+volume_db = 10.0
+autoplay = true
 
 [connection signal="timeout" from="can_bombTimer" to="." method="_on_bomb_timer_timeout"]
 [connection signal="body_entered" from="PlayerNearArea" to="." method="_on_player_near_area_body_entered"]
