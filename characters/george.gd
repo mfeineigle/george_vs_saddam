@@ -68,7 +68,7 @@ func shoot() -> void:
 	if cycle_can_shoot \
 	and WeaponsManager.current_weapon \
 	and WeaponsManager.current_weapon.can_shoot:
-		GameEvents.george_shot.emit(last_shoot_dir, WeaponsManager.current_weapon)
+		GameEvents.george_shot.emit(last_shoot_dir, position, WeaponsManager.current_weapon)
 		shoot_animation()
 
 func shoot_animation() -> void:

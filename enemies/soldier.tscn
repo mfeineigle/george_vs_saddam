@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://lj8agpd1vbr7"]
+[gd_scene load_steps=12 format=3 uid="uid://lj8agpd1vbr7"]
 
 [ext_resource type="Script" path="res://enemies/soldier.gd" id="1_171gw"]
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="1_bxc12"]
 [ext_resource type="PackedScene" uid="uid://bf8isb5x7u54f" path="res://components/death_component.tscn" id="2_ukwew"]
 [ext_resource type="Texture2D" uid="uid://c4g61l5i2jxio" path="res://assets/enemies/soldier.png" id="3_54ac2"]
 [ext_resource type="Texture2D" uid="uid://di2vy0qjnak7s" path="res://assets/enemies/soldier_2.png" id="4_wkl7f"]
+[ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="6_fgvit"]
+[ext_resource type="PackedScene" uid="uid://bbm3sb6nu3lft" path="res://weapons/shotgun.tscn" id="7_v1t4p"]
 
 [sub_resource type="Animation" id="Animation_p2ndp"]
 resource_name = "die"
@@ -17,6 +19,9 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yieux"]
 radius = 57.0088
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5vtw"]
+radius = 324.039
 
 [node name="Soldier" type="CharacterBody2D"]
 collision_layer = 2
@@ -50,6 +55,9 @@ process_callback = 0
 wait_time = 0.1
 autostart = true
 
+[node name="ShootTimer" type="Timer" parent="Timers"]
+one_shot = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yieux")
 
@@ -67,4 +75,23 @@ position = Vector2(7, -2)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("4_wkl7f")
 
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="Rifle" parent="Weapons" instance=ExtResource("6_fgvit")]
+visible = false
+position = Vector2(14, 33)
+
+[node name="Shotgun" parent="Weapons" instance=ExtResource("7_v1t4p")]
+visible = false
+position = Vector2(5, 32)
+
+[node name="ShootArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootArea"]
+shape = SubResource("CircleShape2D_k5vtw")
+debug_color = Color(0.960784, 0, 0.505882, 0.419608)
+
 [connection signal="timeout" from="Timers/NavTimer" to="." method="_on_nav_timer_timeout"]
+[connection signal="timeout" from="Timers/ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="body_entered" from="ShootArea" to="." method="_on_shoot_area_body_entered"]
+[connection signal="body_exited" from="ShootArea" to="." method="_on_shoot_area_body_exited"]

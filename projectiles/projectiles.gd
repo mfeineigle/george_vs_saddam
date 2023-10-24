@@ -10,12 +10,20 @@ func _ready() -> void:
 	GameEvents.george_shot.connect(_on_george_shot)
 	GameEvents.scud_fired.connect(_on_scud_fired)
 	GameEvents.tu_22_bomb_dropped.connect(_on_tu_22_bomb_dropped)
+	GameEvents.soldier_shot.connect(_on_soldier_shot)
 
 
 # george
-func _on_george_shot(dir, weapon) -> void:
-	var bullets: Array = weapon.make_bullets(dir)
+func _on_george_shot(dir, pos, weapon) -> void:
+	var bullets: Array = weapon.make_bullets(dir, pos)
 	for bullet in bullets:
+		bullet.set_collision_mask_value(1, false)
+		add_child(bullet)
+
+func _on_soldier_shot(dir, pos, weapon) -> void:
+	var bullets: Array = weapon.make_bullets(dir, pos)
+	for bullet in bullets:
+		bullet.set_collision_mask_value(2, false)
 		add_child(bullet)
 
 

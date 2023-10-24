@@ -7,12 +7,12 @@ class_name Weapon extends Node2D
 @export var shoot_delay: float
 var can_shoot: bool = true
 
-func make_bullets(dir) -> Array:
+func make_bullets(dir, pos) -> Array:
 	if can_shoot:
 		can_shoot = false
 		$CanShootTimer.start(shoot_delay)
 		var bullet = bullet_scene.instantiate()
-		bullet.setup(dir)
+		bullet.setup(dir, pos)
 		$AudioStreamShoot.play()
 		return [bullet]
 	return []

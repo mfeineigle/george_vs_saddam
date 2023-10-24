@@ -1,29 +1,34 @@
 class_name Soldier extends CharacterBody2D
 
 @export var speed: int = 250
-var sprite: Sprite2D
 var get_new_nav: bool = true
+var player_in_range: bool = false
+var can_shoot: bool = true
+var direction: Vector2
+@onready var sprite: Sprite2D = $Sprites.get_children()[randi() % $Sprites.get_children().size()]
+@onready var weapon: Area2D = $Weapons.get_children()[randi() % $Weapons.get_children().size()]
 
 
 func _ready() -> void:
 	$NavigationAgent2D.path_desired_distance = 4.0
 	$NavigationAgent2D.target_desired_distance = 4.0
+	$NavigationAgent2D.target_position = Globals.player_pos
+	sprite.show()
+	weapon.show()
 	
 
 func setup(pos, offset) -> void:
-	sprite = $Sprites.get_children()[randi() % $Sprites.get_children().size()]
-	sprite.show()
 	position.x = pos.x + offset
 	position.y = pos.y
-	$NavigationAgent2D.target_position = Globals.player_pos
 
 
 func _physics_process(_delta):
 	if get_new_nav and not $NavigationAgent2D.is_navigation_finished():
 		velocity = update_nav()
-	var direction = (Globals.player_pos - position).normalized()
+	direction = (Globals.player_pos - position).normalized()
 	Utils.flip_v_sprite_direction(sprite, direction)
 	look_at(Globals.player_pos)
+	shoot()
 	move_and_slide()
 		
 	
@@ -43,3 +48,23 @@ func update_nav() -> Vector2:
 func hit(dmg) -> void:
 	$HealthComponent.damage(dmg)
 
+
+func shoot() -> void:
+	if can_shoot:
+		if weapon.name == "Shotgun" and player_in_range:
+			GameEvents.soldier_shot.emit(direction, position, weapon)
+		elif weapon.name == "Rifle":
+			GameEvents.soldier_shot.emit(direction, position, weapon)
+		can_shoot = false
+		$Timers/ShootTimer.start()
+
+func _on_shoot_timer_timeout() -> void:
+	can_shoot = true
+
+func _on_shoot_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		player_in_range = true
+
+func _on_shoot_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		player_in_range = false
