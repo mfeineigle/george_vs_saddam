@@ -20,6 +20,10 @@ texture = ExtResource("2_38unk")
 [node name="HealthComponent" parent="." index="1"]
 max_hp = 20
 
+[node name="DeathAnimation" parent="." index="4"]
+position = Vector2(-4, -54)
+scale = Vector2(3, 3)
+
 [node name="CollisionShape2D" parent="." index="5"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_p1w8d")

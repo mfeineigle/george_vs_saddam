@@ -14,12 +14,6 @@ func _ready() -> void:
 		vehicle_sprite.rotation_degrees = -3
 
 
-func _process(_delta):
-	velocity = direction * speed
-	Utils.flip_h_sprite_direction(vehicle_sprite, direction)
-	move_and_slide()
-
-
 func _on_spawn_soldier_timer_timeout():
 	if spawned_soldiers < max_spawned_soldiers:
 		spawned_soldiers += 1

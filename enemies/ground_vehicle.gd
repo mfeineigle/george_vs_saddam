@@ -8,5 +8,13 @@ extends CharacterBody2D
 var direction: Vector2 = Vector2.ZERO
 var destroyed: bool = false
 
+
+func _process(_delta):
+	velocity = direction * speed
+	Utils.flip_h_sprite_direction(vehicle_sprite, direction)
+	if not $HealthComponent.destroyed:
+		move_and_slide()
+		
+		
 func hit(dmg) -> void:
 	$HealthComponent.damage(dmg)
