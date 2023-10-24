@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://qpsyv77bxuxy"]
+[gd_scene load_steps=9 format=3 uid="uid://qpsyv77bxuxy"]
 
-[ext_resource type="Texture2D" uid="uid://b6smtnec40psk" path="res://assets/allies/blackhawk_helicopter_no_rotor.png" id="1_7xud4"]
 [ext_resource type="Script" path="res://allies/blackhawk.gd" id="1_qlw65"]
+[ext_resource type="Texture2D" uid="uid://b6smtnec40psk" path="res://assets/allies/blackhawk_helicopter_no_rotor.png" id="2_1fh73"]
 [ext_resource type="PackedScene" uid="uid://oj2tpd5e7bml" path="res://components/despawn_component.tscn" id="3_6x3nk"]
-[ext_resource type="Texture2D" uid="uid://di03xl2lwl3ty" path="res://assets/allies/blackhawk_helicopter_rotor.png" id="4_nx560"]
+[ext_resource type="Texture2D" uid="uid://di03xl2lwl3ty" path="res://assets/allies/blackhawk_helicopter_rotor.png" id="4_3qwlm"]
+[ext_resource type="AudioStream" uid="uid://b4wu1irit0jf5" path="res://assets/audio/helicopter_flying.mp3" id="5_f2kts"]
 
 [sub_resource type="Animation" id="Animation_spf4q"]
 length = 0.001
@@ -74,17 +75,22 @@ collision_mask = 0
 script = ExtResource("1_qlw65")
 
 [node name="body" type="Sprite2D" parent="."]
-texture = ExtResource("1_7xud4")
+texture = ExtResource("2_1fh73")
 
 [node name="DespawnComponent" parent="." instance=ExtResource("3_6x3nk")]
 
 [node name="rotor_right" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(126.154, -76.9231)
-texture = ExtResource("4_nx560")
+texture = ExtResource("4_3qwlm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spin_rotor_right"
 libraries = {
 "": SubResource("AnimationLibrary_dxdne")
 }
+
+[node name="Helicopter_Flyover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_f2kts")
+volume_db = 7.0
+autoplay = true
