@@ -19,6 +19,8 @@ func _ready() -> void:
 	fall_down_tween.tween_property(self, "position", target_pos, 1.0)
 	await fall_down_tween.finished
 	$CollisionShape2D.disabled = false
+	$Thud.play()
+	await $Thud.finished
 
 func _on_body_entered(_body) -> void:
 	Globals.hp += 5
