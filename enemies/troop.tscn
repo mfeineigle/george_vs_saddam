@@ -6,5 +6,5 @@
 [node name="Troop" instance=ExtResource("1_ibods")]
 script = ExtResource("1_q87hb")
 
-[node name="NavigationAgent2D" parent="." index="3"]
+[node name="NavigationAgent2D" parent="." index="2"]
 debug_enabled = false

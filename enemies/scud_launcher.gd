@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var can_fire: bool = true
 var destroyed: bool = false
@@ -17,7 +17,7 @@ func _on_scud_triggered(nearest_launch_point):
 		$ExhaustExplosion2.emitting = true
 		can_fire = false
 		$CanFireTimer.start()
-		$AnimationPlayer.play("fire_scud")
+		animation_player.play("fire_scud")
 		GameEvents.scud_fired.emit(position)
 
 func _on_fire_timer_timeout():
@@ -31,7 +31,7 @@ func hit(dmg) -> void:
 
 func die() -> void:
 	print(name, " died.")
-	death_animation_player.play("die")
+	animation_player.play("die")
 	$base.hide()
 	$missile.hide()
 	$base_destroyed.show()

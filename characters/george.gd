@@ -115,10 +115,16 @@ func _on_can_shoot_timer_timeout():
 
 
 func hit(dmg) -> void:
-	$Camera2D.add_trauma()
+	if dmg > 2:
+		$Camera2D.add_trauma()
 	$HealthComponent.damage(dmg)
 	Globals.hp = $HealthComponent.hp
+	if Globals.hp <= 0:
+		die()
 
+func die() -> void:
+	print(name, " died.")
+	call_deferred("queue_free")
 
 func dash() -> void:
 	if dashCount < maxDashCount:

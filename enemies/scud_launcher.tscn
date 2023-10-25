@@ -165,7 +165,7 @@ scale = Vector2(13.3333, 13.3333)
 texture = ExtResource("5_1vgsh")
 hframes = 9
 vframes = 9
-frame = 49
+frame = 1
 
 [node name="Fire2" type="Sprite2D" parent="Fires"]
 visible = false
@@ -174,7 +174,7 @@ scale = Vector2(13.3333, 13.3333)
 texture = ExtResource("5_1vgsh")
 hframes = 9
 vframes = 9
-frame = 77
+frame = 27
 
 [node name="Fire3" type="Sprite2D" parent="Fires"]
 visible = false
@@ -183,7 +183,7 @@ scale = Vector2(13.3333, 13.3333)
 texture = ExtResource("5_1vgsh")
 hframes = 9
 vframes = 9
-frame = 22
+frame = 54
 
 [node name="Fire4" type="Sprite2D" parent="Fires"]
 visible = false
@@ -192,7 +192,7 @@ scale = Vector2(13.3333, 13.3333)
 texture = ExtResource("5_1vgsh")
 hframes = 9
 vframes = 9
-frame = 62
+frame = 12
 
 [node name="base_destroyed" type="Sprite2D" parent="."]
 visible = false
@@ -204,7 +204,7 @@ texture = ExtResource("4_xktyf")
 wait_time = 2.0
 one_shot = true
 
-[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ubaon")
 }
