@@ -2,7 +2,7 @@ extends Node2D
 class_name  HealthComponent
 
 @export var max_hp: int
-@export var death_component: DeathComponent
+#@export var death_component: DeathComponent
 
 var hp: int
 var destroyed: bool = false
@@ -20,5 +20,5 @@ func damage(dmg) -> void:
 	if hp <= 0:
 		destroyed = true
 		#get_owner().modulate = Color.RED
-		if death_component:
-			death_component.die()
+		#if death_component:
+			#death_component.die()

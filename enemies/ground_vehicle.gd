@@ -15,6 +15,3 @@ func _process(_delta):
 	if not $HealthComponent.destroyed:
 		move_and_slide()
 		
-		
-func hit(dmg) -> void:
-	$HealthComponent.damage(dmg)

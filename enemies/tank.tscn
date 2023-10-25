@@ -1,12 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvtqhhqpi1d6j"]
+[gd_scene load_steps=9 format=3 uid="uid://cvtqhhqpi1d6j"]
 
 [ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_gqbit"]
 [ext_resource type="Texture2D" uid="uid://dxheusm3d2wnk" path="res://assets/enemies/T72_tank.png" id="2_38unk"]
 [ext_resource type="Script" path="res://enemies/tank.gd" id="2_py8y4"]
+[ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_a4ryh"]
+[ext_resource type="Texture2D" uid="uid://wfh5n2353qwu" path="res://assets/enemies/T72_tank_destroyed.png" id="4_rrjit"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p1w8d"]
 radius = 50.0
 height = 330.0
+
+[sub_resource type="Animation" id="Animation_ore3a"]
+resource_name = "die"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fires/Fire1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 80]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fires/Fire2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.9, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fires/Fire3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_va2tn"]
+_data = {
+"die": SubResource("Animation_ore3a")
+}
 
 [node name="Tank" groups=["armored"] instance=ExtResource("1_gqbit")]
 script = ExtResource("2_py8y4")
@@ -20,10 +68,48 @@ texture = ExtResource("2_38unk")
 [node name="HealthComponent" parent="." index="1"]
 max_hp = 20
 
-[node name="DeathAnimation" parent="." index="4"]
-position = Vector2(-4, -54)
-scale = Vector2(3, 3)
-
-[node name="CollisionShape2D" parent="." index="5"]
+[node name="CollisionShape2D" parent="." index="2"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_p1w8d")
+
+[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_va2tn")
+}
+
+[node name="Fire1" type="Sprite2D" parent="Fires" index="0"]
+visible = false
+position = Vector2(-113, -76)
+scale = Vector2(3, 3)
+skew = -0.0523599
+texture = ExtResource("4_a4ryh")
+hframes = 9
+vframes = 9
+frame = 38
+
+[node name="Fire2" type="Sprite2D" parent="Fires" index="1"]
+visible = false
+position = Vector2(-12, -47)
+scale = Vector2(2.5, 2.5)
+skew = 0.0698131
+texture = ExtResource("4_a4ryh")
+hframes = 9
+vframes = 9
+frame = 66
+
+[node name="Fire3" type="Sprite2D" parent="Fires" index="2"]
+visible = false
+position = Vector2(105, -71)
+scale = Vector2(3.2, 3.2)
+skew = 0.095993
+texture = ExtResource("4_a4ryh")
+hframes = 9
+vframes = 9
+frame = 16
+
+[node name="DestroyedVehicleSprite" type="Sprite2D" parent="." index="5"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.835294)
+position = Vector2(41, -22)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_rrjit")

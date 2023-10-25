@@ -47,6 +47,15 @@ func update_nav() -> Vector2:
 	
 func hit(dmg) -> void:
 	$HealthComponent.damage(dmg)
+	if $HealthComponent.destroyed:
+		die()
+
+func die() -> void:
+	print(name, " died.")
+	$deathSprite.show()
+	$AnimationPlayer.play("die")
+	await $AnimationPlayer.animation_finished
+	call_deferred("queue_free")
 
 
 func shoot() -> void:
