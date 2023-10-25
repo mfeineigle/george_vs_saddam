@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+@onready var fire: Node2D = $Fire
 var can_fire: bool = true
 var destroyed: bool = false
 
@@ -24,3 +25,14 @@ func _on_scud_triggered(nearest_launch_point):
 
 func hit(dmg) -> void:
 	$HealthComponent.damage(dmg)
+	if $HealthComponent.destroyed:
+		destroy()
+
+
+func destroy() -> void:
+	$base.hide()
+	$missile.hide()
+	$base_destroyed.show()
+	for f in fire.get_children():
+		f.show()
+
