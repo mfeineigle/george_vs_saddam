@@ -46,6 +46,7 @@ func update_nav() -> Vector2:
 
 	
 func hit(dmg) -> void:
+	$AnimationPlayer.play("hit")
 	$HealthComponent.damage(dmg)
 	if $HealthComponent.destroyed:
 		die()

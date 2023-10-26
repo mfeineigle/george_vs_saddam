@@ -1,23 +1,142 @@
-[gd_scene load_steps=11 format=3 uid="uid://lj8agpd1vbr7"]
+[gd_scene load_steps=16 format=3 uid="uid://lj8agpd1vbr7"]
 
 [ext_resource type="Script" path="res://enemies/soldier.gd" id="1_171gw"]
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="1_bxc12"]
 [ext_resource type="Texture2D" uid="uid://c4g61l5i2jxio" path="res://assets/enemies/soldier.png" id="3_54ac2"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_80cbu"]
 [ext_resource type="Texture2D" uid="uid://di2vy0qjnak7s" path="res://assets/enemies/soldier_2.png" id="4_wkl7f"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="6_fgvit"]
 [ext_resource type="PackedScene" uid="uid://bbm3sb6nu3lft" path="res://weapons/shotgun.tscn" id="7_v1t4p"]
+
+[sub_resource type="Animation" id="Animation_nkp0f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Sprite2D:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Sprite2D2:material:shader_parameter/flash_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/Sprite2D2:material:shader_parameter/flash_modifier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_p2ndp"]
 resource_name = "die"
 length = 0.001
 
+[sub_resource type="Animation" id="Animation_uviy1"]
+resource_name = "hit"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Sprite2D:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Sprite2D:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Sprite2D2:material:shader_parameter/flash_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/Sprite2D2:material:shader_parameter/flash_modifier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_50po1"]
 _data = {
-"die": SubResource("Animation_p2ndp")
+"RESET": SubResource("Animation_nkp0f"),
+"die": SubResource("Animation_p2ndp"),
+"hit": SubResource("Animation_uviy1")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yieux"]
 radius = 57.0088
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nf207"]
+resource_local_to_scene = true
+shader = ExtResource("3_80cbu")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yx53"]
+resource_local_to_scene = true
+shader = ExtResource("3_80cbu")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k5vtw"]
 radius = 324.039
@@ -59,12 +178,14 @@ shape = SubResource("CircleShape2D_yieux")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprites"]
 visible = false
+material = SubResource("ShaderMaterial_nf207")
 position = Vector2(4, -1)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_54ac2")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
 visible = false
+material = SubResource("ShaderMaterial_3yx53")
 position = Vector2(7, -2)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("4_wkl7f")
