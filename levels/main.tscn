@@ -24,7 +24,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_omvre"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1425, 649, 0, 0, 0, 0, 1411, 649, 0, 0, 0, 0, 1427, -607, 0, 0, 0, 0, 186.251, -606, 0, 0, 0, 0, -1445, -599, 0, 0, 0, 0, -1425, 649)
+"points": PackedVector2Array(0, 0, 0, 0, -1425, 649, 0, 0, 0, 0, 1808, 1361, 0, 0, 0, 0, 1427, -607, 0, 0, 0, 0, 186.251, -606, 0, 0, 0, 0, -2074, -1093, 0, 0, 0, 0, -1425, 649)
 }
 point_count = 6
 
@@ -139,8 +139,6 @@ metadata/_edit_horizontal_guides_ = [217.0, 211.0]
 [node name="UI" parent="." instance=ExtResource("2_bdf4p")]
 
 [node name="SpawnPointsPath2D" type="Path2D" parent="."]
-position = Vector2(35.6993, -14.9368)
-scale = Vector2(0.966574, 0.908993)
 curve = SubResource("Curve2D_omvre")
 script = ExtResource("2_l15oi")
 metadata/_edit_group_ = true
@@ -148,6 +146,7 @@ metadata/_edit_group_ = true
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPointsPath2D" groups=["spawn_points"]]
 unique_name_in_owner = true
 position = Vector2(-1425, 649)
+rotation = 0.216769
 
 [node name="Background" type="Node2D" parent="."]
 
