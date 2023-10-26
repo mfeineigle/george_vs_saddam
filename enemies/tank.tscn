@@ -1,10 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvtqhhqpi1d6j"]
+[gd_scene load_steps=13 format=3 uid="uid://cvtqhhqpi1d6j"]
 
 [ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_gqbit"]
 [ext_resource type="Texture2D" uid="uid://dxheusm3d2wnk" path="res://assets/enemies/T72_tank.png" id="2_38unk"]
 [ext_resource type="Script" path="res://enemies/tank.gd" id="2_py8y4"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_hqqn6"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_a4ryh"]
 [ext_resource type="Texture2D" uid="uid://wfh5n2353qwu" path="res://assets/enemies/T72_tank_destroyed.png" id="4_rrjit"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ntsbx"]
+resource_local_to_scene = true
+shader = ExtResource("3_hqqn6")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p1w8d"]
 radius = 50.0
@@ -51,9 +58,67 @@ tracks/2/keys = {
 "values": [80, 0]
 }
 
+[sub_resource type="Animation" id="Animation_40apx"]
+resource_name = "hit"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VehicleSprite:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VehicleSprite:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5r52w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VehicleSprite:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VehicleSprite:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_va2tn"]
 _data = {
-"die": SubResource("Animation_ore3a")
+"RESET": SubResource("Animation_5r52w"),
+"die": SubResource("Animation_ore3a"),
+"hit": SubResource("Animation_40apx")
 }
 
 [node name="Tank" groups=["armored"] instance=ExtResource("1_gqbit")]
@@ -61,6 +126,7 @@ script = ExtResource("2_py8y4")
 speed = 100
 
 [node name="VehicleSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_ntsbx")
 position = Vector2(41, -20)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_38unk")
@@ -85,7 +151,6 @@ skew = -0.0523599
 texture = ExtResource("4_a4ryh")
 hframes = 9
 vframes = 9
-frame = 38
 
 [node name="Fire2" type="Sprite2D" parent="Fires" index="1"]
 visible = false
@@ -95,7 +160,7 @@ skew = 0.0698131
 texture = ExtResource("4_a4ryh")
 hframes = 9
 vframes = 9
-frame = 66
+frame = 27
 
 [node name="Fire3" type="Sprite2D" parent="Fires" index="2"]
 visible = false
@@ -105,7 +170,7 @@ skew = 0.095993
 texture = ExtResource("4_a4ryh")
 hframes = 9
 vframes = 9
-frame = 16
+frame = 58
 
 [node name="DestroyedVehicleSprite" type="Sprite2D" parent="." index="5"]
 visible = false

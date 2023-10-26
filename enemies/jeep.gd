@@ -24,6 +24,7 @@ func _on_spawn_soldier_timer_timeout():
 
 
 func hit(dmg) -> void:
+	$DeathAnimationPlayer.play("hit")
 	$HealthComponent.damage(dmg)
 	if $HealthComponent.destroyed:
 		$VehicleSprite.hide()

@@ -8,6 +8,7 @@ func _ready():
 
 
 func hit(dmg) -> void:
+	$DeathAnimationPlayer.play("hit")
 	$HealthComponent.damage(dmg)
 	if $HealthComponent.destroyed:
 		$VehicleSprite.hide()

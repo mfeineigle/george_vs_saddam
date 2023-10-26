@@ -25,6 +25,7 @@ func _on_fire_timer_timeout():
 
 
 func hit(dmg) -> void:
+	$'AnimationPlayer'.play("hit")
 	$HealthComponent.damage(dmg)
 	if $HealthComponent.destroyed:
 		die()
