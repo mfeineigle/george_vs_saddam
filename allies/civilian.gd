@@ -50,4 +50,9 @@ func _on_keep_running_timer_timeout() -> void:
 	
 func hit(dmg) -> void:
 	$HealthComponent.damage(dmg)
+	if $HealthComponent.destroyed:
+		die()
+
+func die() -> void:
+	queue_free()
 	

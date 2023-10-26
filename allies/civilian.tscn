@@ -20,9 +20,8 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_4hc5b")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("death_component") instance=ExtResource("2_d37tk")]
+[node name="HealthComponent" parent="." instance=ExtResource("2_d37tk")]
 max_hp = 1
-death_component = NodePath("../DeathComponent")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("death_animation_player", "death_animation") instance=ExtResource("3_ui2c4")]
 death_animation_player = NodePath("DeathAnimationPlayer")
