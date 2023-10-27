@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvtqhhqpi1d6j"]
+[gd_scene load_steps=14 format=3 uid="uid://cvtqhhqpi1d6j"]
 
 [ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_gqbit"]
 [ext_resource type="Texture2D" uid="uid://dxheusm3d2wnk" path="res://assets/enemies/T72_tank.png" id="2_38unk"]
@@ -16,6 +16,33 @@ shader_parameter/flash_modifier = 0.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p1w8d"]
 radius = 50.0
 height = 330.0
+
+[sub_resource type="Animation" id="Animation_5r52w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VehicleSprite:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VehicleSprite:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ore3a"]
 resource_name = "die"
@@ -87,39 +114,15 @@ tracks/1/keys = {
 "values": [0.5, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_5r52w"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VehicleSprite:material:shader_parameter/flash_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VehicleSprite:material:shader_parameter/flash_modifier")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_va2tn"]
 _data = {
 "RESET": SubResource("Animation_5r52w"),
 "die": SubResource("Animation_ore3a"),
 "hit": SubResource("Animation_40apx")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ujfh4"]
+radius = 1381.47
 
 [node name="Tank" groups=["armored"] instance=ExtResource("1_gqbit")]
 script = ExtResource("2_py8y4")
@@ -178,3 +181,17 @@ self_modulate = Color(1, 1, 1, 0.835294)
 position = Vector2(41, -22)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_rrjit")
+
+[node name="CanShootTimer" type="Timer" parent="." index="6"]
+wait_time = 2.0
+one_shot = true
+
+[node name="ShootArea" type="Area2D" parent="." index="7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootArea" index="0"]
+shape = SubResource("CircleShape2D_ujfh4")
+debug_color = Color(0.835294, 0, 0.933333, 0.419608)
+
+[connection signal="timeout" from="CanShootTimer" to="." method="_on_can_shoot_timer_timeout"]
+[connection signal="body_entered" from="ShootArea" to="." method="_on_shoot_area_body_entered"]
+[connection signal="body_exited" from="ShootArea" to="." method="_on_shoot_area_body_exited"]

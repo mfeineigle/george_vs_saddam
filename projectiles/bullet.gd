@@ -19,6 +19,7 @@ func _process(_delta) -> void:
 	
 	
 func _on_body_entered(body) -> void:
+	print(body)
 	if body.has_method("hit"):
 		if body.is_in_group("armored"):
 			damage -= 1

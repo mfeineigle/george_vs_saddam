@@ -11,6 +11,7 @@ func _ready() -> void:
 	GameEvents.scud_fired.connect(_on_scud_fired)
 	GameEvents.tu_22_bomb_dropped.connect(_on_tu_22_bomb_dropped)
 	GameEvents.soldier_shot.connect(_on_soldier_shot)
+	GameEvents.tank_shot.connect(_on_tank_shot)
 
 
 # george
@@ -38,3 +39,6 @@ func _on_tu_22_bomb_dropped(pos, rot) -> void:
 	var tu_22_bomb = tu_22_bomb_scene.instantiate()
 	tu_22_bomb.setup(pos, rot)
 	add_child(tu_22_bomb)
+
+func _on_tank_shot(shell) -> void:
+	add_child(shell)

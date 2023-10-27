@@ -18,6 +18,7 @@ signal scud_triggered(nearest_launch_point)
 signal scud_fired(position)
 signal tu_22_bomb_dropped(position, direction)
 signal soldier_shot(dir, pos, weapon)
+signal tank_shot(shell)
 
 # enemies
 signal spawn_guard(position, offset)
