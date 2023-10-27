@@ -1,9 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsa7espht4fgv"]
+[gd_scene load_steps=10 format=3 uid="uid://bsa7espht4fgv"]
 
 [ext_resource type="Script" path="res://enemies/tu_22.gd" id="1_nungk"]
 [ext_resource type="Texture2D" uid="uid://dy27yytkqhsj" path="res://assets/enemies/tu-22a.png" id="3_3a02t"]
 [ext_resource type="PackedScene" uid="uid://oj2tpd5e7bml" path="res://components/despawn_component.tscn" id="3_ap0y8"]
 [ext_resource type="AudioStream" uid="uid://c31r4aj5ipa7o" path="res://assets/audio/jet_flyover_for_tu-22.mp3" id="4_7x7d7"]
+[ext_resource type="Texture2D" uid="uid://crnglitq4tytw" path="res://assets/enemies/smoke_puff.png" id="5_ixyqe"]
+
+[sub_resource type="Gradient" id="Gradient_1f7yi"]
+offsets = PackedFloat32Array(0, 0.993355)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_atmmx"]
+gradient = SubResource("Gradient_1f7yi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_62dxt"]
+emission_shape = 1
+emission_sphere_radius = 22.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+angular_velocity_min = 105.17
+angular_velocity_max = 105.17
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.15
+color_ramp = SubResource("GradientTexture1D_atmmx")
+turbulence_enabled = true
+turbulence_noise_strength = 4.48
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_li371"]
 radius = 839.06
@@ -13,6 +37,15 @@ z_index = 10
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_nungk")
+
+[node name="Exhaust" type="GPUParticles2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.54902)
+position = Vector2(-161, -2)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_62dxt")
+texture = ExtResource("5_ixyqe")
+lifetime = 2.0
+visibility_rect = Rect2(-10000, -10000, 20000, 20000)
 
 [node name="DespawnComponent" parent="." instance=ExtResource("3_ap0y8")]
 
@@ -26,6 +59,7 @@ wait_time = 0.7
 autostart = true
 
 [node name="PlayerNearArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNearArea"]
 shape = SubResource("CircleShape2D_li371")

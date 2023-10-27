@@ -3,6 +3,7 @@ extends Node2D
 @onready var screensize = get_viewport_rect().size
 @export var health_component: HealthComponent
 
+
 func _process(_delta):
 	if is_off_screen() or is_dead():
 		get_owner().queue_free()
