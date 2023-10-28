@@ -238,6 +238,9 @@ position = Vector2(-512, -164)
 [node name="jeep" parent="Enemies/Ground_Vehicles" instance=ExtResource("16_gd63a")]
 position = Vector2(1480, 1651)
 
+[node name="Tank" parent="Enemies/Ground_Vehicles" instance=ExtResource("20_1vbt6")]
+position = Vector2(-1568, 1680)
+
 [node name="Saddam" parent="Enemies" instance=ExtResource("7_48f75")]
 
 [node name="Aircraft" type="Node2D" parent="Enemies"]
@@ -256,9 +259,6 @@ script = ExtResource("21_5mrx4")
 
 [node name="Child" parent="Allies" instance=ExtResource("20_qenu2")]
 position = Vector2(-1338, 664)
-
-[node name="Tank" parent="." instance=ExtResource("20_1vbt6")]
-position = Vector2(-1568, 1680)
 
 [connection signal="timeout" from="Enemies/Aircraft/tu_22Timer" to="Enemies" method="_on_tu_22_timer_timeout"]
 [connection signal="timeout" from="Allies/AirDropTimer" to="Allies" method="_on_air_drop_timer_timeout"]
