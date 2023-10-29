@@ -195,10 +195,12 @@ texture = ExtResource("4_wkl7f")
 [node name="Rifle" parent="Weapons" instance=ExtResource("6_fgvit")]
 visible = false
 position = Vector2(14, 33)
+monitoring = false
 
 [node name="Shotgun" parent="Weapons" instance=ExtResource("7_v1t4p")]
 visible = false
 position = Vector2(5, 32)
+monitoring = false
 
 [node name="ShootArea" type="Area2D" parent="."]
 
