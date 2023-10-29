@@ -10,12 +10,17 @@ var direction: Vector2
 
 
 func _ready() -> void:
+	sprite.show()
+	weapon.show()
+	call_deferred("nav_setup")
+
+
+func nav_setup() -> void:
+	await get_tree().physics_frame
 	$NavigationAgent2D.path_desired_distance = 4.0
 	$NavigationAgent2D.target_desired_distance = 4.0
 	$NavigationAgent2D.target_position = Globals.player_pos
-	sprite.show()
-	weapon.show()
-	
+
 
 func setup(pos, offset) -> void:
 	position.x = pos.x + offset
