@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ewoqwtu8db8g"]
+
+[ext_resource type="FontFile" uid="uid://4q1f672e7ux2" path="res://addons/godot_vim/hack_regular.ttf" id="1_cftkb"]
+
+[resource]
+default_font = ExtResource("1_cftkb")
+default_font_size = 48

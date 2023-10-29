@@ -236,7 +236,7 @@ position = Vector2(-512, -164)
 [node name="Ground_Vehicles" type="Node2D" parent="Enemies"]
 
 [node name="jeep" parent="Enemies/Ground_Vehicles" instance=ExtResource("16_gd63a")]
-position = Vector2(1480, 1651)
+position = Vector2(155, 1066)
 
 [node name="Tank" parent="Enemies/Ground_Vehicles" instance=ExtResource("20_1vbt6")]
 position = Vector2(-1568, 1680)
