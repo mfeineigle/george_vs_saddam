@@ -10,7 +10,7 @@ func _physics_process(_delta):
 		Utils.rotate_sprite_direction(shield_sprite, rotation)
 
 func _on_shield_area_entered(area: Area2D) -> void:
-	if area.is_in_group("bullets"):
+	if area.is_in_group("player_bullets"):
 		area.queue_free()
 		stun()
 	

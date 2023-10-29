@@ -1,8 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl65sivnf31rf"]
+[gd_scene load_steps=8 format=3 uid="uid://dl65sivnf31rf"]
 
 [ext_resource type="PackedScene" uid="uid://lj8agpd1vbr7" path="res://enemies/soldier.tscn" id="1_u26jx"]
 [ext_resource type="Script" path="res://enemies/guard.gd" id="1_v4hv3"]
 [ext_resource type="Texture2D" uid="uid://bp0ivy8058se1" path="res://assets/enemies/riot_shield.png" id="2_uagjb"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_eytax"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f73gm"]
+resource_local_to_scene = true
+shader = ExtResource("3_eytax")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4a16t"]
+resource_local_to_scene = true
+shader = ExtResource("3_eytax")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiw7m"]
 size = Vector2(52, 135)
@@ -10,16 +23,22 @@ size = Vector2(52, 135)
 [node name="Guard" instance=ExtResource("1_u26jx")]
 script = ExtResource("1_v4hv3")
 
-[node name="NavigationAgent2D" parent="." index="3"]
+[node name="NavigationAgent2D" parent="." index="2"]
 debug_enabled = false
 
 [node name="StunTimer" type="Timer" parent="Timers" index="1"]
 wait_time = 2.0
 one_shot = true
 
+[node name="Sprite2D" parent="Sprites" index="0"]
+material = SubResource("ShaderMaterial_f73gm")
+
+[node name="Sprite2D2" parent="Sprites" index="1"]
+material = SubResource("ShaderMaterial_4a16t")
+
 [node name="Shield" type="Area2D" parent="." index="8"]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shield" index="0"]
 position = Vector2(72, 1.5)
