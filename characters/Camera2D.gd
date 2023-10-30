@@ -9,11 +9,12 @@ var trauma_power: int = 2  # Trauma exponent. Use [2, 3].
 @onready var noise = FastNoiseLite.new()
 var noise_y = 0
 
-# Screen follow mouse
+# Screen follow mouse/gamepad
 @onready var screensize: Vector2 = get_viewport_rect().size
 @onready var MAX_DISTANCE: float = screensize.y/4
-var target_distance: float
 var center_pos: Vector2 = position
+var dir_to_target: Vector2 = Vector2.ZERO
+var target_distance: Vector2 = Vector2(1000, 200)
 
 
 func _ready():
@@ -24,17 +25,19 @@ func _ready():
 
 func _input(event) -> void:
 	if event is InputEventMouseMotion:
-		target_distance = center_pos.distance_to(get_local_mouse_position())
-
-
-func _process(delta):
-	# follow mouse
-	var dir_to_mouse = center_pos.direction_to(get_local_mouse_position())
-	var target_pos = center_pos + dir_to_mouse * target_distance
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		dir_to_target = center_pos.direction_to(get_local_mouse_position())
+		#target_distance = center_pos.distance_to(get_local_mouse_position())
+	elif event is InputEventJoypadMotion:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		dir_to_target = Input.get_vector("fleft", "fright", "fup", "fdown")
+	var target_pos = center_pos + dir_to_target * target_distance
 	target_pos = target_pos.clamp(center_pos - Vector2(MAX_DISTANCE, MAX_DISTANCE),
 								  center_pos + Vector2(MAX_DISTANCE, MAX_DISTANCE))
 	position = target_pos
-	
+
+
+func _process(delta):
 	if trauma:
 		trauma = max(trauma - decay * delta, 0)
 		shake()
