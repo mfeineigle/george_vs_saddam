@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b4u06cbdgi456" path="res://ui/ui.tscn" id="2_bdf4p"]
 [ext_resource type="Script" path="res://globals/SpawnPointsPath2D.gd" id="2_l15oi"]
-[ext_resource type="Texture2D" uid="uid://bjypb8d446dc7" path="res://assets/background/dry-soil-texture-of-a-barren-land.jpg" id="3_6yv41"]
+[ext_resource type="Texture2D" uid="uid://bjypb8d446dc7" path="res://assets/background/lvl-Main_dry-soil-texture-of-a-barren-land.jpg" id="3_fihmv"]
 [ext_resource type="Material" uid="uid://fhg3qqai4nlg" path="res://ui/pause_menu.tres" id="4_uu7gh"]
 [ext_resource type="AudioStream" uid="uid://bj8c7cbcs3ne" path="res://assets/audio/distantExplosions.mp3" id="5_wbxqy"]
 [ext_resource type="PackedScene" uid="uid://ddipj33loevtv" path="res://characters/george.tscn" id="6_o08ph"]
@@ -154,7 +154,7 @@ rotation = 0.216769
 texture_repeat = 2
 position = Vector2(-63, 26)
 scale = Vector2(0.07, 0.07)
-texture = ExtResource("3_6yv41")
+texture = ExtResource("3_fihmv")
 region_enabled = true
 region_rect = Rect2(0, 0, 50000, 50000)
 

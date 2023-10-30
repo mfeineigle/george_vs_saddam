@@ -40,6 +40,10 @@ rotation = 0.216769
 [node name="Collectibles" type="Node2D" parent="."]
 script = ExtResource("3_dawd3")
 
+[node name="Oil_Barrels" type="Node2D" parent="Collectibles"]
+
+[node name="Guns" type="Node2D" parent="Collectibles"]
+
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Projectiles" type="Node2D" parent="."]
