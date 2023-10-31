@@ -11,6 +11,8 @@ script = ExtResource("1_xoxvu")
 
 [node name="VehicleSprite" type="Sprite2D" parent="."]
 
+[node name="DestroyedVehicleSprite" type="Sprite2D" parent="."]
+
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("1_llw7g")
 

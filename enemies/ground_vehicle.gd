@@ -2,6 +2,7 @@ class_name GroundVehicle
 extends CharacterBody2D
 
 @onready var vehicle_sprite: Sprite2D = $VehicleSprite
+@onready var destroyed_vehicle_sprite: Sprite2D = $DestroyedVehicleSprite
 
 @export var speed: int
 

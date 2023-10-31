@@ -7,18 +7,13 @@ var can_shoot: bool = true
 var in_range: bool = false
 
 
-func _ready():
-	direction = Vector2.RIGHT
-
-
 func _process(_delta) -> void:
-	Utils.flip_v_sprite_direction(vehicle_sprite, direction)
 	if not $HealthComponent.destroyed:
+		Utils.flip_v_sprite_direction(vehicle_sprite, direction)
 		velocity = direction * speed
 		direction = position.direction_to(Globals.player_pos)
 		look_at(Globals.player_pos)
-		if not $HealthComponent.destroyed:
-			move_and_slide()
+		move_and_slide()
 		shoot()
 
 
@@ -47,12 +42,18 @@ func hit(dmg) -> void:
 		$DeathAnimationPlayer.play("hit")
 		$HealthComponent.damage(dmg)
 		if $HealthComponent.destroyed:
-			$VehicleSprite.hide()
-			$DestroyedVehicleSprite.show()
-			for f in $Fires.get_children():
-				f.show()
 			die()
 
 func die() -> void:
-	print(name, " died.")
+	$VehicleSprite.hide()
+	$DestroyedVehicleSprite.show()
+	Utils.flip_v_sprite_direction(destroyed_vehicle_sprite, direction)
+	for f in $Fires.get_children():
+		Utils.flip_v_sprite_direction(f, direction)
+		f.show()
+	if $Fires/Fire1.flip_v:
+		$Fires/Fire1.position = Vector2(131,52)
+		$Fires/Fire2.position = Vector2(10,52)
+		$Fires/Fire3.position = Vector2(-110,52)
 	death_animation_player.play("die")
+	print(name, " died.")
