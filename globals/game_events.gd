@@ -21,7 +21,7 @@ signal soldier_shot(dir, pos, weapon)
 signal tank_shot(shell)
 
 # enemies
-signal spawn_guard(position, offset)
-signal spawn_troop(position, offset)
+signal spawn_guard(position)
+signal spawn_troop(position)
 signal spawn_tu_22
 signal spawn_jeep

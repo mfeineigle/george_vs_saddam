@@ -10,9 +10,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_gsa30"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1425, 649, 0, 0, 0, 0, 1808, 1361, 0, 0, 0, 0, 1427, -607, 0, 0, 0, 0, 186.251, -606, 0, 0, 0, 0, -2074, -1093, 0, 0, 0, 0, -1425, 649)
+"points": PackedVector2Array(0, 0, 0, 0, -2036, 1334, 0, 0, 0, 0, 1808, 1361, 0, 0, 0, 0, 1770, -392, 0, 0, 0, 0, 1770, -1048, 0, 0, 0, 0, -2074, -1093, 0, 0, 0, 0, -2037, 1312, 0, 0, 0, 0, -2036, 1334)
 }
-point_count = 6
+point_count = 7
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8ocw3"]
 vertices = PackedVector2Array(-2000, -2000, 2001, -2001, 2000, 2000, -2001, 2000)
@@ -30,8 +30,8 @@ metadata/_edit_group_ = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPointsPath2D" groups=["spawn_points"]]
 unique_name_in_owner = true
-position = Vector2(-1425, 649)
-rotation = 0.216769
+position = Vector2(-2036, 1334)
+rotation = 0.00702382
 
 [node name="Background" type="Node2D" parent="."]
 

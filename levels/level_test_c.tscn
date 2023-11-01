@@ -1,10 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1sitvjpgw5b5"]
+[gd_scene load_steps=7 format=3 uid="uid://b1sitvjpgw5b5"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_pud3l"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
-[ext_resource type="PackedScene" uid="uid://cvtqhhqpi1d6j" path="res://enemies/tank.tscn" id="3_k1pud"]
+[ext_resource type="Script" path="res://levels/jeep_path.gd" id="3_330ol"]
+[ext_resource type="PackedScene" uid="uid://dht6800xvv48j" path="res://enemies/jeep.tscn" id="3_ec5le"]
 
 [sub_resource type="TileSet" id="TileSet_wi6lh"]
+
+[sub_resource type="Curve2D" id="Curve2D_w5gkn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1655, 757, 0, 0, 0, 0, 663, 752, 0, 0, 0, 0, 661, 752, 0, 0, 0, 0, 1650, 757, 0, 0, 0, 0, 1655, 757)
+}
+point_count = 5
 
 [node name="LevelTestC" instance=ExtResource("1_pud3l")]
 
@@ -21,5 +28,14 @@ position = Vector2(1055, 539)
 [node name="NavigationRegion2D" parent="." index="7"]
 visible = false
 
-[node name="Tank" parent="Enemies/Ground_Vehicles" index="0" instance=ExtResource("3_k1pud")]
-position = Vector2(1859, 591)
+[node name="Path2D" type="Path2D" parent="." index="10"]
+curve = SubResource("Curve2D_w5gkn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+position = Vector2(1655, 757)
+rotation = -3.13655
+script = ExtResource("3_330ol")
+speed = 0.25
+
+[node name="jeep" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("3_ec5le")]
+position = Vector2(-0.00012207, 0)

@@ -22,9 +22,8 @@ func nav_setup() -> void:
 	$NavigationAgent2D.target_position = Globals.player_pos
 
 
-func setup(pos, offset) -> void:
-	position.x = pos.x + offset
-	position.y = pos.y
+func setup(pos) -> void:
+	position = pos
 
 
 func _physics_process(_delta):

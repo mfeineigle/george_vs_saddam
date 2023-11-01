@@ -16,15 +16,15 @@ func _ready() -> void:
 	GameEvents.spawn_jeep.connect(_spawn_jeep)
 
 
-func _spawn_guard(pos, offset) -> void:
+func _spawn_guard(pos) -> void:
 	var guard = guard_scene.instantiate()
-	guard.setup(pos, offset)
+	guard.setup(pos)
 	$Soldiers.add_child(guard)
 	
 	
-func _spawn_troop(pos, offset) -> void:
+func _spawn_troop(pos) -> void:
 	var troop = troop_scene.instantiate()
-	troop.setup(pos, offset)
+	troop.setup(pos)
 	$Soldiers.add_child(troop)
 
 

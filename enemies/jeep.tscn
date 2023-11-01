@@ -110,6 +110,7 @@ radius = 51.0
 height = 196.0
 
 [node name="jeep" instance=ExtResource("1_afvxu")]
+rotation = -6.28319
 script = ExtResource("2_uye4o")
 max_spawned_soldiers = 3
 speed = 222
@@ -119,6 +120,12 @@ material = SubResource("ShaderMaterial_fargd")
 position = Vector2(8, -2)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_if1yt")
+
+[node name="DestroyedVehicleSprite" parent="." index="1"]
+visible = false
+position = Vector2(8, -2)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_d0moj")
 
 [node name="HealthComponent" parent="." index="2"]
 max_hp = 10
@@ -136,16 +143,9 @@ libraries = {
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_th4nt")
 
-[node name="DestroyedVehicleSprite2" type="Sprite2D" parent="." index="6"]
-visible = false
-self_modulate = Color(1, 1, 1, 0.843137)
-position = Vector2(8, -2)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("5_d0moj")
-
 [node name="Fire" type="Sprite2D" parent="Fires" index="0"]
 visible = false
-position = Vector2(-66, -57)
+position = Vector2(-49, -53)
 scale = Vector2(3, 3)
 skew = -0.169297
 texture = ExtResource("4_1tmqt")
@@ -155,12 +155,15 @@ frame = 2
 
 [node name="Fire2" type="Sprite2D" parent="Fires" index="1"]
 visible = false
-position = Vector2(47, -43)
+position = Vector2(56, -43)
 scale = Vector2(2.5, 2.5)
 skew = 0.0575958
 texture = ExtResource("4_1tmqt")
 hframes = 9
 vframes = 9
 frame = 43
+
+[node name="SoldierSpawnPoint" type="Marker2D" parent="." index="7"]
+position = Vector2(-166, -2.90244e-05)
 
 [connection signal="timeout" from="SpawnSoldierTimer" to="." method="_on_spawn_soldier_timer_timeout"]
