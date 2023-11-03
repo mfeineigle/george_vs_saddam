@@ -13,6 +13,10 @@ shader = ExtResource("3_yrpqi")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_th4nt"]
+radius = 51.0
+height = 196.0
+
 [sub_resource type="Animation" id="Animation_6qy05"]
 length = 0.001
 tracks/0/type = "value"
@@ -105,10 +109,6 @@ _data = {
 "hit": SubResource("Animation_deel4")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_th4nt"]
-radius = 51.0
-height = 196.0
-
 [node name="jeep" instance=ExtResource("1_afvxu")]
 rotation = -6.28319
 script = ExtResource("2_uye4o")
@@ -130,16 +130,7 @@ texture = ExtResource("5_d0moj")
 [node name="HealthComponent" parent="." index="2"]
 max_hp = 10
 
-[node name="SpawnSoldierTimer" type="Timer" parent="." index="3"]
-wait_time = 0.6
-autostart = true
-
-[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="." index="4"]
-libraries = {
-"": SubResource("AnimationLibrary_hleiy")
-}
-
-[node name="CollisionShape2D" parent="." index="5"]
+[node name="CollisionShape2D" parent="." index="3"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_th4nt")
 
@@ -162,6 +153,15 @@ texture = ExtResource("4_1tmqt")
 hframes = 9
 vframes = 9
 frame = 43
+
+[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_hleiy")
+}
+
+[node name="SpawnSoldierTimer" type="Timer" parent="." index="6"]
+wait_time = 0.6
+autostart = true
 
 [node name="SoldierSpawnPoint" type="Marker2D" parent="." index="7"]
 position = Vector2(-166, -2.90244e-05)

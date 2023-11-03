@@ -1,0 +1,164 @@
+[gd_scene load_steps=13 format=3 uid="uid://ns8jjlyi884e"]
+
+[ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_asg1l"]
+[ext_resource type="Script" path="res://enemies/soldier_transport.gd" id="2_2puk3"]
+[ext_resource type="Texture2D" uid="uid://buq8usola37uh" path="res://assets/enemies/soldier_transport_top.png" id="2_o8hjx"]
+[ext_resource type="Texture2D" uid="uid://cdlc4et6mex26" path="res://assets/enemies/soldier_transport_top_destroyed.png" id="3_e878u"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_yry34"]
+[ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_8vmff"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jy8g6"]
+shader = ExtResource("3_yry34")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o33ue"]
+radius = 49.0
+height = 326.0
+
+[sub_resource type="Animation" id="Animation_k1a2g"]
+resource_name = "die"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fires/Fire1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 80]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fires/Fire2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.4, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 0]
+}
+
+[sub_resource type="Animation" id="Animation_hb3ga"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VehicleSprite:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VehicleSprite:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_8s08l"]
+resource_name = "hit"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VehicleSprite:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VehicleSprite:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vnmu2"]
+_data = {
+"RESET": SubResource("Animation_hb3ga"),
+"die": SubResource("Animation_k1a2g"),
+"hit": SubResource("Animation_8s08l")
+}
+
+[node name="SoldierTransport" instance=ExtResource("1_asg1l")]
+script = ExtResource("2_2puk3")
+max_spawned_soldiers = 3
+speed = 222
+
+[node name="VehicleSprite" parent="." index="0"]
+material = SubResource("ShaderMaterial_jy8g6")
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_o8hjx")
+
+[node name="DestroyedVehicleSprite" parent="." index="1"]
+visible = false
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("3_e878u")
+
+[node name="HealthComponent" parent="." index="2"]
+max_hp = 5
+
+[node name="CollisionShape2D" parent="." index="3"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_o33ue")
+
+[node name="Fire1" type="Sprite2D" parent="Fires" index="0"]
+visible = false
+position = Vector2(-115, -56)
+scale = Vector2(3, 3)
+skew = -0.164061
+texture = ExtResource("4_8vmff")
+hframes = 9
+vframes = 9
+
+[node name="Fire2" type="Sprite2D" parent="Fires" index="1"]
+visible = false
+position = Vector2(94, -68)
+scale = Vector2(3, 3)
+skew = 0.0907571
+texture = ExtResource("4_8vmff")
+hframes = 9
+vframes = 9
+frame = 47
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_vnmu2")
+}
+
+[node name="SpawnSoldierTimer" type="Timer" parent="." index="6"]
+wait_time = 0.6
+autostart = true
+
+[node name="SoldierSpawnPoint" type="Marker2D" parent="." index="7"]
+position = Vector2(-250, 0)
+
+[connection signal="timeout" from="SpawnSoldierTimer" to="." method="_on_spawn_soldier_timer_timeout"]

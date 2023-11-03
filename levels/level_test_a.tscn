@@ -253,10 +253,6 @@ sources/2 = SubResource("TileSetAtlasSource_wu2g0")
 
 [node name="LevelTestA" instance=ExtResource("1_7qhx8")]
 
-[node name="PathFollow2D" parent="SpawnPointsPath2D" index="0"]
-position = Vector2(-2036, 1334)
-rotation = 0.00702382
-
 [node name="TileMap" type="TileMap" parent="Background" index="0"]
 tile_set = SubResource("TileSet_meg1e")
 format = 2
