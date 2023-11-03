@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1sitvjpgw5b5"]
+[gd_scene load_steps=8 format=3 uid="uid://b1sitvjpgw5b5"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_pud3l"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
+[ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="3_fv6t2"]
 [ext_resource type="Script" path="res://levels/path.gd" id="3_jnvwd"]
 [ext_resource type="PackedScene" uid="uid://ns8jjlyi884e" path="res://enemies/soldier_transport.tscn" id="3_q7275"]
 
@@ -27,6 +28,18 @@ position = Vector2(1055, 539)
 
 [node name="NavigationRegion2D" parent="." index="7"]
 visible = false
+
+[node name="scud_launcher" parent="Enemies/ScudLauchers" index="0" instance=ExtResource("3_fv6t2")]
+position = Vector2(0, 314)
+
+[node name="scud_launcher2" parent="Enemies/ScudLauchers" index="1" instance=ExtResource("3_fv6t2")]
+position = Vector2(219, 305)
+
+[node name="scud_launcher3" parent="Enemies/ScudLauchers" index="2" instance=ExtResource("3_fv6t2")]
+position = Vector2(624, 298)
+
+[node name="scud_launcher4" parent="Enemies/ScudLauchers" index="3" instance=ExtResource("3_fv6t2")]
+position = Vector2(435, 301)
 
 [node name="Path2D" type="Path2D" parent="." index="10"]
 curve = SubResource("Curve2D_w5gkn")

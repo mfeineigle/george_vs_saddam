@@ -64,7 +64,7 @@ func die() -> void:
 
 
 func shoot() -> void:
-	if can_shoot:
+	if can_shoot and check_los():
 		if weapon.name == "Shotgun" and player_in_range:
 			GameEvents.soldier_shot.emit(direction, position, weapon)
 		elif weapon.name == "Rifle":
@@ -74,6 +74,15 @@ func shoot() -> void:
 
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
+
+func check_los() -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(Vector2(0, 0), Globals.player_pos)
+	var result = space_state.intersect_ray(query)
+	print("los: ", result.collider.name)
+	if result.collider.name == "George":
+		return true
+	return false
 
 func _on_shoot_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
