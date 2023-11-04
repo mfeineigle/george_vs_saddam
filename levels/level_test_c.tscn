@@ -1,17 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1sitvjpgw5b5"]
+[gd_scene load_steps=11 format=3 uid="uid://b1sitvjpgw5b5"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_pud3l"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
 [ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="3_fv6t2"]
 [ext_resource type="Script" path="res://levels/path.gd" id="3_jnvwd"]
 [ext_resource type="PackedScene" uid="uid://ns8jjlyi884e" path="res://enemies/soldier_transport.tscn" id="3_q7275"]
+[ext_resource type="PackedScene" uid="uid://dht6800xvv48j" path="res://enemies/jeep.tscn" id="6_ba8fx"]
 [ext_resource type="PackedScene" uid="uid://bsxfyirod1uw7" path="res://buildings/barracks.tscn" id="6_ufc7t"]
 
 [sub_resource type="TileSet" id="TileSet_wi6lh"]
 
-[sub_resource type="Curve2D" id="Curve2D_w5gkn"]
+[sub_resource type="Curve2D" id="Curve2D_6bky4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1665, 141, 0, 0, 0, 0, 659, 143, 0, 0, 0, 0, 661, 752, 0, 0, 0, 0, 1650, 757, 0, 0, 0, 0, 1655, 757, 0, 0, 0, 0, 1652, 621, 0, 0, 0, 0, 1665, 141)
+"points": PackedVector2Array(0, 0, 0, 0, 631, 220, 0, 0, 0, 0, 612, 791, 0, 0, 0, 0, 1475, 824, 0, 0, 0, 0, 1473, 220, 0, 0, 0, 0, 631, 220)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_3qdm0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1478, -220, 0, 0, 0, 0, 600, -246, -59.4603, 225.949, 59.4603, -225.949, 303, -505, 0, 0, 0, 0, 778, -674, 0, 0, 0, 0, 1247, -658, -59.4603, -214.057, 59.4603, 214.057, 1872, -520, 0, 0, 0, 0, 1478, -220)
 }
 point_count = 7
 
@@ -42,17 +49,37 @@ position = Vector2(-246, 320)
 [node name="scud_launcher4" parent="Enemies/ScudLauchers" index="3" instance=ExtResource("3_fv6t2")]
 position = Vector2(-463, 333)
 
-[node name="Path2D" type="Path2D" parent="." index="10"]
-curve = SubResource("Curve2D_w5gkn")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
-position = Vector2(1100.14, 754.22)
-rotation = 0.00505557
-progress = 2054.15
-script = ExtResource("3_jnvwd")
-speed = 0.1
-
-[node name="SoldierTransport" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("3_q7275")]
-
-[node name="Barracks" parent="." index="11" instance=ExtResource("6_ufc7t")]
+[node name="Barracks" parent="." index="10" instance=ExtResource("6_ufc7t")]
 position = Vector2(2255, 489)
+
+[node name="Path2D" type="Path2D" parent="." index="11"]
+curve = SubResource("Curve2D_6bky4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" node_paths=PackedStringArray("follower")]
+position = Vector2(1473.89, 488.605)
+rotation = -1.57411
+progress = 1770.34
+script = ExtResource("3_jnvwd")
+speed = 0.15
+follower = NodePath("jeep")
+pick_up_lower = 0.61
+pick_up_upper = 0.62
+wait_time = 3.0
+
+[node name="jeep" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("6_ba8fx")]
+
+[node name="Path2D2" type="Path2D" parent="." index="12"]
+curve = SubResource("Curve2D_3qdm0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" index="0" node_paths=PackedStringArray("follower")]
+position = Vector2(1740.91, -311.515)
+rotation = 2.63881
+progress = 3292.63
+script = ExtResource("3_jnvwd")
+speed = 0.15
+follower = NodePath("SoldierTransport")
+pick_up_lower = 0.92
+pick_up_upper = 0.93
+wait_time = 1.0
+
+[node name="SoldierTransport" parent="Path2D2/PathFollow2D" index="0" instance=ExtResource("3_q7275")]
