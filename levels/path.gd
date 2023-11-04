@@ -6,6 +6,7 @@ extends PathFollow2D
 
 
 func _process(delta: float) -> void:
+	unit.global_position = position
 	if not (unit.get_node("HealthComponent").destroyed):
 		progress_ratio += speed * delta
 		if progress_ratio >= 1.0:
