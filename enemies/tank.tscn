@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://cvtqhhqpi1d6j"]
 
 [ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_gqbit"]
-[ext_resource type="Texture2D" uid="uid://dxheusm3d2wnk" path="res://assets/enemies/T72_tank.png" id="2_38unk"]
 [ext_resource type="Script" path="res://enemies/tank.gd" id="2_py8y4"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_hqqn6"]
+[ext_resource type="Texture2D" uid="uid://tx11ptovf7v2" path="res://assets/enemies/tank.png" id="4_6b8gs"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_a4ryh"]
-[ext_resource type="Texture2D" uid="uid://wfh5n2353qwu" path="res://assets/enemies/T72_tank_destroyed.png" id="4_rrjit"]
+[ext_resource type="Texture2D" uid="uid://01u58tkti4ul" path="res://assets/enemies/tank_destroyed.png" id="5_06qr0"]
 
 [sub_resource type="Animation" id="Animation_5r52w"]
 length = 0.001
@@ -121,8 +121,8 @@ shader_parameter/flash_modifier = 0.0
 radius = 1381.47
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p1w8d"]
-radius = 50.0
-height = 330.0
+radius = 67.0
+height = 280.0
 
 [node name="Tank" groups=["armored"] instance=ExtResource("1_gqbit")]
 script = ExtResource("2_py8y4")
@@ -135,15 +135,16 @@ libraries = {
 
 [node name="VehicleSprite" parent="." index="1"]
 material = SubResource("ShaderMaterial_ntsbx")
-position = Vector2(41, -20)
+position = Vector2(46, 0)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_38unk")
+texture = ExtResource("4_6b8gs")
 
 [node name="CanShootTimer" type="Timer" parent="." index="2"]
 wait_time = 2.0
 one_shot = true
 
 [node name="ShootArea" type="Area2D" parent="." index="3"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShootArea" index="0"]
 shape = SubResource("CircleShape2D_ujfh4")
@@ -151,9 +152,9 @@ debug_color = Color(0.835294, 0, 0.933333, 0.419608)
 
 [node name="DestroyedVehicleSprite" parent="." index="4"]
 visible = false
-position = Vector2(41, -22)
+position = Vector2(46, 0)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_rrjit")
+texture = ExtResource("5_06qr0")
 
 [node name="HealthComponent" parent="." index="5"]
 max_hp = 1
@@ -163,6 +164,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_p1w8d")
 
 [node name="Fire1" type="Sprite2D" parent="Fires" index="0"]
+visible = false
 position = Vector2(-131, -72)
 scale = Vector2(3, 3)
 skew = -0.13439
@@ -172,6 +174,7 @@ vframes = 9
 frame = 21
 
 [node name="Fire2" type="Sprite2D" parent="Fires" index="1"]
+visible = false
 position = Vector2(12, -117)
 scale = Vector2(4, 4)
 skew = 0.0698129
@@ -181,6 +184,7 @@ vframes = 9
 frame = 76
 
 [node name="Fire3" type="Sprite2D" parent="Fires" index="2"]
+visible = false
 position = Vector2(144, -70)
 scale = Vector2(3.2, 3.2)
 skew = 0.0959928

@@ -9,7 +9,6 @@ var in_range: bool = false
 
 func _process(_delta) -> void:
 	if not $HealthComponent.destroyed:
-		Utils.flip_v_sprite_direction(vehicle_sprite, direction)
 		velocity = direction * speed
 		direction = position.direction_to(Globals.player_pos)
 		look_at(Globals.player_pos)
@@ -18,7 +17,7 @@ func _process(_delta) -> void:
 
 
 func shoot() -> void:
-	if can_shoot and in_range and not $HealthComponent.destroyed:
+	if can_shoot and in_range and check_los() and not $HealthComponent.destroyed:
 		var shell = shell_scene.instantiate()
 		shell.setup(direction, position)
 		GameEvents.tank_shot.emit(shell)
@@ -35,6 +34,17 @@ func _on_shoot_area_body_entered(body: Node2D) -> void:
 func _on_shoot_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		in_range = false
+
+func check_los() -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(global_position, Globals.player_pos)
+	query.exclude = [self]
+	var result = space_state.intersect_ray(query)
+	print("los: ", result.collider.name)
+	if result.collider.name == "George":
+		print("true")
+		return true
+	return false
 
 
 func hit(dmg) -> void:

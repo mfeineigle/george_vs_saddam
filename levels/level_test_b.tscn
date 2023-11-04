@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs862b8l8ppme"]
+[gd_scene load_steps=8 format=3 uid="uid://cs862b8l8ppme"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_b3qbn"]
 [ext_resource type="Texture2D" uid="uid://bcknj4vll5m46" path="res://assets/background/lvl-B_desert_sand_tileset.png" id="2_n0a3t"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="3_fl85d"]
+[ext_resource type="PackedScene" uid="uid://cvtqhhqpi1d6j" path="res://enemies/tank.tscn" id="4_ll31y"]
+[ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="5_bnsmm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3kqip"]
 texture = ExtResource("2_n0a3t")
@@ -260,3 +262,27 @@ position = Vector2(1080, 589)
 
 [node name="NavigationRegion2D" parent="." index="7"]
 metadata/_edit_lock_ = true
+
+[node name="Tank" parent="." index="10" instance=ExtResource("4_ll31y")]
+position = Vector2(372, 514)
+
+[node name="scud_launcher" parent="." index="11" instance=ExtResource("5_bnsmm")]
+position = Vector2(840, 658)
+
+[node name="scud_launcher2" parent="." index="12" instance=ExtResource("5_bnsmm")]
+position = Vector2(830, 548)
+
+[node name="scud_launcher3" parent="." index="13" instance=ExtResource("5_bnsmm")]
+position = Vector2(826, 444)
+
+[node name="scud_launcher4" parent="." index="14" instance=ExtResource("5_bnsmm")]
+position = Vector2(820, 346)
+
+[node name="scud_launcher5" parent="." index="15" instance=ExtResource("5_bnsmm")]
+position = Vector2(696, 274)
+
+[node name="scud_launcher6" parent="." index="16" instance=ExtResource("5_bnsmm")]
+position = Vector2(530, 212)
+
+[node name="scud_launcher7" parent="." index="17" instance=ExtResource("5_bnsmm")]
+position = Vector2(358, 160)
