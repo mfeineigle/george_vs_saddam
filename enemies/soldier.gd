@@ -77,10 +77,12 @@ func _on_shoot_timer_timeout() -> void:
 
 func check_los() -> bool:
 	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(Vector2(0, 0), Globals.player_pos)
+	var query = PhysicsRayQueryParameters2D.create(global_position, Globals.player_pos)
+	query.exclude = [self]
 	var result = space_state.intersect_ray(query)
 	print("los: ", result.collider.name)
 	if result.collider.name == "George":
+		print("true")
 		return true
 	return false
 
