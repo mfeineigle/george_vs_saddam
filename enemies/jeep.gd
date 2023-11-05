@@ -30,8 +30,6 @@ func die() -> void:
 	$DestroyedVehicleSprite.show()
 	Utils.rotate_sprite_direction(destroyed_vehicle_sprite, get_parent().rotation)
 	for f in $Fires.get_children():
-		if $DestroyedVehicleSprite.flip_v:
-			Utils.rotate_sprite_direction(f, get_parent().rotation)
-			$Fires.position = Vector2(-30, 100)
+		f.look_at(Vector2(1_000_000, f.position.y))
 		f.show()
 	death_animation_player.play("die")

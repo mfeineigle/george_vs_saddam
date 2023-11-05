@@ -24,6 +24,7 @@ func die() -> void:
 	print(name, " died.")
 	$VehicleSprite.hide()
 	$DestroyedVehicleSprite.show()
-	#for f in $Fires.get_children():
-		#f.show()
+	for f in $Fires.get_children():
+		f.look_at(Vector2(1_000_000, f.position.y))
+		f.show()
 	animation_player.play("die")

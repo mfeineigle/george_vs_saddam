@@ -56,7 +56,7 @@ position = Vector2(2255, 489)
 curve = SubResource("Curve2D_6bky4")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" node_paths=PackedStringArray("follower")]
-position = Vector2(1473.89, 488.605)
+position = Vector2(1473.89, 488.609)
 rotation = -1.57411
 progress = 1770.34
 script = ExtResource("3_jnvwd")
@@ -72,7 +72,7 @@ wait_time = 3.0
 curve = SubResource("Curve2D_3qdm0")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" index="0" node_paths=PackedStringArray("follower")]
-position = Vector2(1740.91, -311.515)
+position = Vector2(1740.91, -311.516)
 rotation = 2.63881
 progress = 3292.63
 script = ExtResource("3_jnvwd")
@@ -80,6 +80,5 @@ speed = 0.15
 follower = NodePath("SoldierTransport")
 pick_up_lower = 0.92
 pick_up_upper = 0.93
-wait_time = 1.0
 
 [node name="SoldierTransport" parent="Path2D2/PathFollow2D" index="0" instance=ExtResource("3_q7275")]
