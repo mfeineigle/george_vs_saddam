@@ -10,8 +10,8 @@ var in_range: bool = false
 func _process(_delta) -> void:
 	if not $HealthComponent.destroyed:
 		velocity = direction * speed
-		direction = position.direction_to(Globals.player_pos)
-		look_at(Globals.player_pos)
+		direction = $Turret/BulletSpawnPoint.global_position.direction_to(Globals.player_pos)
+		$Turret.look_at(Globals.player_pos)
 		move_and_slide()
 		shoot()
 
@@ -19,7 +19,7 @@ func _process(_delta) -> void:
 func shoot() -> void:
 	if can_shoot and in_range and check_los() and not $HealthComponent.destroyed:
 		var shell = shell_scene.instantiate()
-		shell.setup(direction, position)
+		shell.setup(direction, $Turret/BulletSpawnPoint.global_position)
 		GameEvents.tank_shot.emit(shell)
 		can_shoot = false
 		$CanShootTimer.start()
@@ -56,14 +56,13 @@ func hit(dmg) -> void:
 
 func die() -> void:
 	$VehicleSprite.hide()
+	$Turret.hide()
 	$DestroyedVehicleSprite.show()
+	$DestroyedTurretSprite.show()
+	$DestroyedTurretSprite.look_at(Globals.player_pos)
 	Utils.flip_v_sprite_direction(destroyed_vehicle_sprite, direction)
 	for f in $Fires.get_children():
-		Utils.flip_v_sprite_direction(f, direction)
+		f.look_at(Vector2(1_000_000, f.position.y))
 		f.show()
-	if $Fires/Fire1.flip_v:
-		$Fires/Fire1.position = Vector2(131,52)
-		$Fires/Fire2.position = Vector2(10,52)
-		$Fires/Fire3.position = Vector2(-110,52)
 	death_animation_player.play("die")
 	print(name, " died.")

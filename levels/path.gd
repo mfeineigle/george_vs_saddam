@@ -4,7 +4,7 @@ extends PathFollow2D
 @export var follower: GroundVehicle
 @export var pick_up_lower: float
 @export var pick_up_upper: float
-@export var wait_time: float
+@export var wait_time: float = 1.0
 
 @onready var timer := Timer.new()
 var pick_up: bool = false
