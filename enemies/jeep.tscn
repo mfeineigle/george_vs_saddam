@@ -135,6 +135,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_th4nt")
 
 [node name="Fire" type="Sprite2D" parent="Fires" index="0"]
+visible = false
 position = Vector2(-59.9999, -11.0003)
 scale = Vector2(3, 3)
 skew = -0.169297
@@ -146,6 +147,7 @@ vframes = 9
 frame = 2
 
 [node name="Fire2" type="Sprite2D" parent="Fires" index="1"]
+visible = false
 position = Vector2(45, 4.00019)
 scale = Vector2(2.5, 2.5)
 skew = 0.0575958
