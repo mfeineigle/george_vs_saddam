@@ -66,9 +66,9 @@ func die() -> void:
 func shoot() -> void:
 	if can_shoot and check_los():
 		if weapon.name == "Shotgun" and player_in_range:
-			GameEvents.soldier_shot.emit(direction, position, weapon)
+			GameEvents.soldier_shot.emit(direction, $BulletSpawnPoint.global_position, weapon)
 		elif weapon.name == "Rifle":
-			GameEvents.soldier_shot.emit(direction, position, weapon)
+			GameEvents.soldier_shot.emit(direction, $BulletSpawnPoint.global_position, weapon)
 		can_shoot = false
 		$Timers/ShootTimer.start()
 

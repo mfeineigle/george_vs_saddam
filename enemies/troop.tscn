@@ -23,7 +23,11 @@ script = ExtResource("1_q87hb")
 debug_enabled = false
 
 [node name="Sprite2D" parent="Sprites" index="0"]
+visible = true
 material = SubResource("ShaderMaterial_2xltu")
 
 [node name="Sprite2D2" parent="Sprites" index="1"]
 material = SubResource("ShaderMaterial_x33yu")
+
+[node name="BulletSpawnPoint" parent="." index="9"]
+position = Vector2(61, 26)

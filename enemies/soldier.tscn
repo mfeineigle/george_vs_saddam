@@ -208,6 +208,9 @@ monitoring = false
 shape = SubResource("CircleShape2D_k5vtw")
 debug_color = Color(0.960784, 0, 0.505882, 0.419608)
 
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(50, 0)
+
 [connection signal="timeout" from="Timers/NavTimer" to="." method="_on_nav_timer_timeout"]
 [connection signal="timeout" from="Timers/ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="body_entered" from="ShootArea" to="." method="_on_shoot_area_body_entered"]

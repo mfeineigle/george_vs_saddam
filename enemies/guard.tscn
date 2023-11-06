@@ -18,7 +18,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiw7m"]
-size = Vector2(52, 135)
+size = Vector2(42.1707, 135)
 
 [node name="Guard" instance=ExtResource("1_u26jx")]
 script = ExtResource("1_v4hv3")
@@ -31,17 +31,21 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Sprite2D" parent="Sprites" index="0"]
+visible = true
 material = SubResource("ShaderMaterial_f73gm")
 
 [node name="Sprite2D2" parent="Sprites" index="1"]
 material = SubResource("ShaderMaterial_4a16t")
+
+[node name="Rifle" parent="Weapons" index="0"]
+visible = true
 
 [node name="Shield" type="Area2D" parent="." index="8"]
 collision_layer = 2
 collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shield" index="0"]
-position = Vector2(72, 1.5)
+position = Vector2(67.1105, 1.99665)
 rotation = -0.101229
 shape = SubResource("RectangleShape2D_yiw7m")
 debug_color = Color(0, 0.631373, 0.482353, 0.419608)
@@ -50,6 +54,9 @@ debug_color = Color(0, 0.631373, 0.482353, 0.419608)
 position = Vector2(68, 0)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_uagjb")
+
+[node name="BulletSpawnPoint" parent="." index="10"]
+position = Vector2(97, 27)
 
 [connection signal="timeout" from="Timers/StunTimer" to="." method="_on_stun_timer_timeout"]
 [connection signal="area_entered" from="Shield" to="." method="_on_shield_area_entered"]
