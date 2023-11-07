@@ -18,7 +18,6 @@ func _ready() -> void:
 func _on_george_shot(dir, pos, weapon) -> void:
 	var bullets: Array = weapon.make_bullets(dir, pos)
 	for bullet in bullets:
-		bullet.set_collision_mask_value(1, false)
 		bullet.add_to_group("player_bullets")
 		add_child(bullet)
 

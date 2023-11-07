@@ -62,13 +62,18 @@ func aim() -> void:
 	$Guns.rotation = last_shoot_dir.angle()
 	for gun in $Guns.get_children():
 		Utils.flip_v_sprite_direction(gun, last_shoot_dir)
+	var distance: int = 100
+	$BulletSpawnPoint.position = Vector2(cos(last_shoot_dir.angle()),
+										 sin(last_shoot_dir.angle())) * distance
 
 
 func shoot() -> void:
 	if cycle_can_shoot \
 	and WeaponsManager.current_weapon \
 	and WeaponsManager.current_weapon.can_shoot:
-		GameEvents.george_shot.emit(last_shoot_dir, position, WeaponsManager.current_weapon)
+		GameEvents.george_shot.emit(last_shoot_dir,
+									$BulletSpawnPoint.global_position,
+									WeaponsManager.current_weapon)
 		shoot_animation()
 
 func shoot_animation() -> void:

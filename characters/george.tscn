@@ -65,6 +65,9 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(70, 25)
+
 [connection signal="timeout" from="Timers/DashingTimer" to="." method="_on_dashing_timer_timeout"]
 [connection signal="timeout" from="Timers/CanDashTimer" to="." method="_on_can_dash_timer_timeout"]
 [connection signal="timeout" from="Timers/CanShootTimer" to="." method="_on_can_shoot_timer_timeout"]
