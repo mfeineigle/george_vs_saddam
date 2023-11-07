@@ -31,6 +31,13 @@ func _physics_process(_delta):
 		velocity = update_nav()
 	direction = (Globals.player_pos - position).normalized()
 	Utils.flip_v_sprite_direction(sprite, direction)
+	Utils.flip_v_sprite_direction(weapon.sprite_2d, direction)
+	if weapon.sprite_2d.flip_v == true:
+		weapon.sprite_2d.position = Vector2(14, -83)
+		$BulletSpawnPoint.position = Vector2(70, -40)
+	else:
+		weapon.sprite_2d.position = Vector2(14, 13)
+		$BulletSpawnPoint.position = Vector2(70, 40)
 	look_at(Globals.player_pos)
 	shoot()
 	move_and_slide()

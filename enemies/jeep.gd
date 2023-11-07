@@ -13,7 +13,7 @@ func _process(_delta: float) -> void:
 func _on_spawn_soldier_timer_timeout():
 	if spawned_soldiers < max_spawned_soldiers:
 		spawned_soldiers += 1
-		GameEvents.spawn_guard.emit($SoldierSpawnPoint.global_position)
+		GameEvents.spawn_troop.emit($SoldierSpawnPoint.global_position)
 	else:
 		$SpawnSoldierTimer.stop()
 

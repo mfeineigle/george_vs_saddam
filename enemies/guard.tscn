@@ -31,14 +31,10 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Sprite2D" parent="Sprites" index="0"]
-visible = true
 material = SubResource("ShaderMaterial_f73gm")
 
 [node name="Sprite2D2" parent="Sprites" index="1"]
 material = SubResource("ShaderMaterial_4a16t")
-
-[node name="Rifle" parent="Weapons" index="0"]
-visible = true
 
 [node name="Shield" type="Area2D" parent="." index="8"]
 collision_layer = 2

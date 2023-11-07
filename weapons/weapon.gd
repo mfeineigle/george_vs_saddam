@@ -6,6 +6,7 @@ class_name Weapon extends Node2D
 ## How long between shots
 @export var shoot_delay: float
 var can_shoot: bool = true
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 func make_bullets(dir, pos) -> Array:
 	if can_shoot:
