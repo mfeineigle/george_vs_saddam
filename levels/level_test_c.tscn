@@ -67,6 +67,7 @@ pick_up_upper = 0.62
 wait_time = 3.0
 
 [node name="jeep" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("6_ba8fx")]
+can_spawn_troops = true
 
 [node name="Path2D2" type="Path2D" parent="." index="12"]
 curve = SubResource("Curve2D_3qdm0")

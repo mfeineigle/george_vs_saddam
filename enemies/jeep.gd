@@ -3,8 +3,12 @@ extends GroundVehicle
 @onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
 
 @export var max_spawned_soldiers: int
-var spawned_soldiers: int = 0
+@export var can_spawn_troops: bool
+@export var can_spawn_guards: bool
 
+var spawned_soldiers: int = 0
+var soldier_types: Array[Signal] = [GameEvents.spawn_guard,
+									GameEvents.spawn_troop]
 
 func _process(_delta: float) -> void:
 	Utils.rotate_sprite_direction(vehicle_sprite, get_parent().rotation)
@@ -13,7 +17,13 @@ func _process(_delta: float) -> void:
 func _on_spawn_soldier_timer_timeout():
 	if spawned_soldiers < max_spawned_soldiers:
 		spawned_soldiers += 1
-		GameEvents.spawn_troop.emit($SoldierSpawnPoint.global_position)
+		if can_spawn_guards and can_spawn_troops:
+			var spawn_random: Signal = soldier_types[randi() % soldier_types.size()]
+			spawn_random.emit($SoldierSpawnPoint.global_position)
+		elif can_spawn_guards:
+			GameEvents.spawn_guard.emit($SoldierSpawnPoint.global_position)
+		elif can_spawn_troops:
+			GameEvents.spawn_troop.emit($SoldierSpawnPoint.global_position)
 	else:
 		$SpawnSoldierTimer.stop()
 
