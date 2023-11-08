@@ -82,3 +82,4 @@ pick_up_lower = 0.92
 pick_up_upper = 0.93
 
 [node name="SoldierTransport" parent="Path2D2/PathFollow2D" index="0" instance=ExtResource("3_q7275")]
+can_spawn_troops = true

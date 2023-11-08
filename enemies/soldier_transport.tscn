@@ -111,6 +111,8 @@ _data = {
 [node name="SoldierTransport" instance=ExtResource("1_asg1l")]
 script = ExtResource("2_2puk3")
 max_spawned_soldiers = 3
+can_spawn_troops = false
+can_spawn_guards = false
 speed = 222
 
 [node name="VehicleSprite" parent="." index="0"]
