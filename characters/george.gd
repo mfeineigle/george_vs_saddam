@@ -35,6 +35,9 @@ func _ready():
 
 
 func _process(_delta):
+	# testing - spawn stuff
+	if Input.is_action_just_pressed("spawn_test"):
+		spawn()
 	direction = Input.get_vector("left", "right", "up", "down")
 	aim()
 	if Input.is_action_pressed("shoot"):
@@ -145,3 +148,7 @@ func _on_can_dash_timer_timeout():
 func _on_dashing_timer_timeout():
 	george_sprite.texture = load("res://assets/characters/george.png")
 	dashing = false
+
+func spawn() -> void:
+	print("in func")
+	GameEvents.spawn_an_26.emit()
