@@ -21,7 +21,13 @@ signal soldier_shot(dir, pos, weapon)
 signal tank_shot(shell)
 
 # enemies
+# Aircraft
+signal spawn_an_26
+signal spawn_tu_22
+# Ground Vehicles
+signal spawn_jeep
+signal spawn_soldier_transport
+signal spawn_tank
+# Soldiers
 signal spawn_guard(position)
 signal spawn_troop(position)
-signal spawn_tu_22
-signal spawn_jeep
