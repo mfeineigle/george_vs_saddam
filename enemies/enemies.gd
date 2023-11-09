@@ -27,7 +27,6 @@ func _ready() -> void:
 	GameEvents.spawn_troop.connect(_spawn_troop)
 
 func _spawn_an_26() -> void:
-	print("spawning an-26")
 	var an_26 = an_26_scene.instantiate()
 	$Aircraft.add_child(an_26)
 

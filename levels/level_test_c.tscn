@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1sitvjpgw5b5"]
+[gd_scene load_steps=10 format=3 uid="uid://b1sitvjpgw5b5"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_pud3l"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
 [ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="3_fv6t2"]
+[ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="6_0q3fl"]
 [ext_resource type="PackedScene" uid="uid://bsxfyirod1uw7" path="res://buildings/barracks.tscn" id="6_ufc7t"]
 [ext_resource type="PackedScene" uid="uid://wfpixhv32um1" path="res://enemies/an_26.tscn" id="8_bcoh5"]
 
@@ -67,4 +68,7 @@ rotation = 2.63881
 progress = 3292.63
 
 [node name="an-26" parent="." index="13" instance=ExtResource("8_bcoh5")]
-position = Vector2(656, 498)
+position = Vector2(466, 560)
+
+[node name="Troop" parent="." index="14" instance=ExtResource("6_0q3fl")]
+position = Vector2(-181, 705)
