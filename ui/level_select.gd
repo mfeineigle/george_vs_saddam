@@ -6,11 +6,11 @@ var last_level: String
 
 
 func _ready() -> void:
+	last_level = "1"
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
-		last_level = file.get_var()
-	else:
-		last_level = "1"	
+		if file.get_length() > 0:
+			last_level = file.get_var()
 	match last_level:
 		"1":
 			$CanvasGroup/VBoxContainer/Lvl_01_Button.grab_focus()
