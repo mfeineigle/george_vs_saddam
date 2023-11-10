@@ -150,4 +150,4 @@ func _on_dashing_timer_timeout():
 	dashing = false
 
 func spawn() -> void:
-	GameEvents.spawn_an_26.emit()
+	GameEvents.spawn_mi_24.emit()

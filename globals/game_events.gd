@@ -16,6 +16,7 @@ signal pallet_of_dollars_dropped(position, direction)
 # projectiles
 signal scud_triggered(nearest_launch_point)
 signal scud_fired(position)
+signal mi_24_shot(dir, pos, weapon)
 signal tu_22_bomb_dropped(position, direction)
 signal soldier_shot(dir, pos, weapon)
 signal tank_shot(shell)
@@ -23,6 +24,7 @@ signal tank_shot(shell)
 # enemies
 # Aircraft
 signal spawn_an_26
+signal spawn_mi_24
 signal spawn_tu_22
 # Ground Vehicles
 signal spawn_jeep

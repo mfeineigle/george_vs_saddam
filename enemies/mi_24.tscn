@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://cj3y0osywp6ys"]
+
+[ext_resource type="Texture2D" uid="uid://dplduebbe3s33" path="res://assets/enemies/mi-24.png" id="1_3t7lx"]
+[ext_resource type="Script" path="res://enemies/mi_24.gd" id="1_afhek"]
+[ext_resource type="PackedScene" uid="uid://oj2tpd5e7bml" path="res://components/despawn_component.tscn" id="2_vc0cv"]
+[ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="4_d8i2v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oqi8s"]
+radius = 618.003
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxyue"]
+size = Vector2(1629, 2280)
+
+[node name="mi-24" type="CharacterBody2D"]
+script = ExtResource("1_afhek")
+
+[node name="DespawnComponent" parent="." instance=ExtResource("2_vc0cv")]
+
+[node name="body" type="Sprite2D" parent="."]
+rotation = -0.654498
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_3t7lx")
+
+[node name="PlayerNearArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerNearArea"]
+shape = SubResource("CircleShape2D_oqi8s")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="TargetArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea"]
+position = Vector2(1344, -6.50016)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_uxyue")
+debug_color = Color(1, 0.219608, 0.407843, 0.419608)
+
+[node name="Guns" type="Node2D" parent="."]
+
+[node name="LeftGun" type="Node2D" parent="Guns"]
+
+[node name="Rifle" parent="Guns/LeftGun" instance=ExtResource("4_d8i2v")]
+visible = false
+monitoring = false
+monitorable = false
+shoot_delay = 0.0
+
+[node name="CanShootLeftTimer" type="Timer" parent="Guns/LeftGun"]
+one_shot = true
+
+[node name="BulletSpawnPointLeft" type="Marker2D" parent="Guns/LeftGun"]
+position = Vector2(76, -62)
+
+[node name="RightGun" type="Node2D" parent="Guns"]
+
+[node name="Rifle2" parent="Guns/RightGun" instance=ExtResource("4_d8i2v")]
+visible = false
+monitoring = false
+monitorable = false
+
+[node name="CanShootRightTimer" type="Timer" parent="Guns/RightGun"]
+one_shot = true
+
+[node name="BulletSpawnPointRight" type="Marker2D" parent="Guns/RightGun"]
+position = Vector2(65, 76)
+
+[connection signal="body_entered" from="PlayerNearArea" to="." method="_on_player_near_area_body_entered"]
+[connection signal="body_entered" from="TargetArea" to="." method="_on_target_area_body_entered"]
+[connection signal="body_exited" from="TargetArea" to="." method="_on_target_area_body_exited"]
+[connection signal="timeout" from="Guns/LeftGun/CanShootLeftTimer" to="." method="_on_can_shoot_left_timer_timeout"]
+[connection signal="timeout" from="Guns/RightGun/CanShootRightTimer" to="." method="_on_can_shoot_right_timer_timeout"]

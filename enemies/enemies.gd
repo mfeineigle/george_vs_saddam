@@ -2,6 +2,7 @@ extends Node2D
 
 # Aircraft
 var an_26_scene: PackedScene = preload("res://enemies/an_26.tscn")
+var mi_24_scene: PackedScene = preload("res://enemies/mi_24.tscn")
 var tu_22_scene: PackedScene = preload("res://enemies/tu_22.tscn")
 var can_tu_22: bool = true
 
@@ -18,6 +19,7 @@ var troop_scene: PackedScene = preload("res://enemies/troop.tscn")
 func _ready() -> void:
 	# Aircraft
 	GameEvents.spawn_an_26.connect(_spawn_an_26)
+	GameEvents.spawn_mi_24.connect(_spawn_mi_24)
 	GameEvents.spawn_tu_22.connect(_spawn_tu_22)
 	# Ground Vehicles
 	GameEvents.spawn_jeep.connect(_spawn_jeep)
@@ -26,9 +28,15 @@ func _ready() -> void:
 	GameEvents.spawn_guard.connect(_spawn_guard)
 	GameEvents.spawn_troop.connect(_spawn_troop)
 
+
 func _spawn_an_26() -> void:
 	var an_26 = an_26_scene.instantiate()
 	$Aircraft.add_child(an_26)
+
+
+func _spawn_mi_24() -> void:
+	var mi_24 = mi_24_scene.instantiate()
+	$Aircraft.add_child(mi_24)
 
 
 func _spawn_tu_22() -> void:
