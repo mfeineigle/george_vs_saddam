@@ -32,6 +32,7 @@ func _ready():
 	Globals.hp = $HealthComponent.hp
 	GameEvents.player_hit.connect(hit)
 	GameEvents.weapon_picked_up.connect(equip_first_weapon)
+	cycle_weapon()
 
 
 func _process(_delta):
