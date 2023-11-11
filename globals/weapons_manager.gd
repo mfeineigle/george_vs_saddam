@@ -13,6 +13,9 @@ func _on_weapon_picked_up(weapon) -> void:
 	if weapons.size() <= 0:
 		current_weapon = weapon
 		GameEvents.cycled_weapon.emit(WeaponsManager.current_weapon)
+	for w in weapons:
+		if w.name == weapon.name:
+			return # don't pick up duplicate weapons
 	weapons.append(weapon)
 	weapons.sort_custom(sort_alpha)
 	weapon.call_deferred("reparent", self)

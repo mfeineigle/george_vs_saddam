@@ -23,6 +23,7 @@ func _on_body_entered(_body):
 	GameEvents.weapon_picked_up.emit(self)
 	set_deferred("monitoring", false)
 	set_deferred("monitorable", false)
+	visible = false
 
 
 func _on_can_shoot_timer_timeout():
