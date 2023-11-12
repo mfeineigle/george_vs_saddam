@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://2me22oet7hi3"]
+
+[ext_resource type="Texture2D" uid="uid://c57rl3xawymu5" path="res://assets/enemies/paratrooper.png" id="1_8aohm"]
+[ext_resource type="Script" path="res://enemies/paratrooper.gd" id="2_2ikbc"]
+
+[node name="Paratrooper" type="Sprite2D"]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("1_8aohm")
+offset = Vector2(0, -250)
+script = ExtResource("2_2ikbc")
