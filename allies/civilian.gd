@@ -2,6 +2,7 @@ class_name Civilian extends CharacterBody2D
 
 @export var speed: int = 250
 @onready var sprite: Sprite2D = $Sprites.get_children()[randi() % $Sprites.get_children().size()]
+var blood_scene: PackedScene = preload("res://enemies/blood.tscn")
 var run_away: bool = false
 var direction: Vector2
 
@@ -43,4 +44,7 @@ func hit(dmg) -> void:
 		die()
 
 func die() -> void:
+	var blood = blood_scene.instantiate()
+	get_tree().current_scene.get_node("Background/Blood").add_child(blood)
+	blood.setup(global_position)
 	queue_free()

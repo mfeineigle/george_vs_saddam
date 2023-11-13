@@ -170,6 +170,8 @@ stream = ExtResource("5_wbxqy")
 volume_db = -5.0
 autoplay = true
 
+[node name="Blood" type="Node2D" parent="Background"]
+
 [node name="George" parent="." instance=ExtResource("6_o08ph")]
 position = Vector2(-852, 684)
 

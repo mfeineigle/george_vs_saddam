@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1sitvjpgw5b5"]
+[gd_scene load_steps=13 format=3 uid="uid://b1sitvjpgw5b5"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_pud3l"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://co26m2qlm3mjw" path="res://assets/buildings/hangar.png" id="5_l7j6d"]
 [ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="5_xc7v4"]
 [ext_resource type="PackedScene" uid="uid://bsxfyirod1uw7" path="res://buildings/barracks.tscn" id="6_ufc7t"]
+[ext_resource type="PackedScene" uid="uid://b75ima0605ntm" path="res://allies/child.tscn" id="7_nvqtq"]
 
 [sub_resource type="TileSet" id="TileSet_wi6lh"]
 
@@ -74,6 +75,9 @@ position = Vector2(-246, 320)
 
 [node name="scud_launcher4" parent="Enemies/ScudLauchers" index="3" instance=ExtResource("3_fv6t2")]
 position = Vector2(-463, 333)
+
+[node name="Child" parent="Allies" index="1" instance=ExtResource("7_nvqtq")]
+position = Vector2(726, -45)
 
 [node name="Barracks" parent="." index="10" instance=ExtResource("6_ufc7t")]
 position = Vector2(2255, 489)
