@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1sitvjpgw5b5"]
+[gd_scene load_steps=12 format=3 uid="uid://b1sitvjpgw5b5"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_pud3l"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
 [ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="3_fv6t2"]
 [ext_resource type="PackedScene" uid="uid://y4687yg2fuia" path="res://levels/exit_level_area.tscn" id="3_hc6l2"]
 [ext_resource type="Texture2D" uid="uid://co26m2qlm3mjw" path="res://assets/buildings/hangar.png" id="5_l7j6d"]
+[ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="5_xc7v4"]
 [ext_resource type="PackedScene" uid="uid://bsxfyirod1uw7" path="res://buildings/barracks.tscn" id="6_ufc7t"]
 
 [sub_resource type="TileSet" id="TileSet_wi6lh"]
@@ -51,13 +52,16 @@ position = Vector2(416.5, 773)
 shape = SubResource("RectangleShape2D_yasfm")
 
 [node name="George" parent="." index="3"]
-position = Vector2(1261, 495)
+position = Vector2(945, 374)
 
 [node name="Rifle" parent="Collectibles/Guns" index="0" instance=ExtResource("2_rfmbg")]
-position = Vector2(511, 499)
+position = Vector2(1068, 390)
 
 [node name="NavigationRegion2D" parent="." index="7"]
 visible = false
+
+[node name="Troop" parent="Enemies/Soldiers" index="0" instance=ExtResource("5_xc7v4")]
+position = Vector2(1648, 404)
 
 [node name="scud_launcher" parent="Enemies/ScudLauchers" index="0" instance=ExtResource("3_fv6t2")]
 position = Vector2(0, 314)
