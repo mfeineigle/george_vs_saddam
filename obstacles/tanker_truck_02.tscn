@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfyjibsm4tkuq"]
+
+[ext_resource type="Texture2D" uid="uid://6gpk00iw2ctj" path="res://assets/obstacles/tanker_truck_02.png" id="1_o5tk8"]
+
+[node name="TankerTruck02" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o5tk8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-300, 57, -223, 62, -163, 9, -25, 4, 114, 53, 338, 98, 363, 17, 308, -40, 161, -94, -296, -85, -317, -79, -363, -5, -310, 58)
