@@ -1,13 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1sitvjpgw5b5"]
+[gd_scene load_steps=16 format=3 uid="uid://b1sitvjpgw5b5"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_pud3l"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
 [ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="3_fv6t2"]
 [ext_resource type="PackedScene" uid="uid://y4687yg2fuia" path="res://levels/exit_level_area.tscn" id="3_hc6l2"]
+[ext_resource type="PackedScene" uid="uid://qxnr355c2ly1" path="res://background/fire_column.tscn" id="4_gexcc"]
 [ext_resource type="Texture2D" uid="uid://co26m2qlm3mjw" path="res://assets/buildings/hangar.png" id="5_l7j6d"]
 [ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="5_xc7v4"]
+[ext_resource type="PackedScene" uid="uid://mo6ph6cnq1lw" path="res://obstacles/tanker_truck_01.tscn" id="6_ac23p"]
 [ext_resource type="PackedScene" uid="uid://bsxfyirod1uw7" path="res://buildings/barracks.tscn" id="6_ufc7t"]
 [ext_resource type="PackedScene" uid="uid://b75ima0605ntm" path="res://allies/child.tscn" id="7_nvqtq"]
+[ext_resource type="PackedScene" uid="uid://bfyjibsm4tkuq" path="res://obstacles/tanker_truck_02.tscn" id="7_umuy6"]
 
 [sub_resource type="TileSet" id="TileSet_wi6lh"]
 
@@ -52,11 +55,36 @@ polygon = PackedVector2Array(260, -92.3077, 225.385, -195.385, -279.231, -202.30
 position = Vector2(416.5, 773)
 shape = SubResource("RectangleShape2D_yasfm")
 
+[node name="FireColumn" parent="Background" index="3" instance=ExtResource("4_gexcc")]
+position = Vector2(818, 913)
+
+[node name="FireColumn2" parent="Background" index="4" instance=ExtResource("4_gexcc")]
+position = Vector2(854, 902)
+delay = 3.25
+
+[node name="FireColumn3" parent="Background" index="5" instance=ExtResource("4_gexcc")]
+position = Vector2(885, 920)
+delay = 1.75
+
+[node name="FireColumn4" parent="Background" index="6" instance=ExtResource("4_gexcc")]
+position = Vector2(921, 925)
+delay = 2.25
+
+[node name="FireColumn5" parent="Background" index="7" instance=ExtResource("4_gexcc")]
+position = Vector2(960, 922)
+delay = 1.5
+
 [node name="George" parent="." index="3"]
 position = Vector2(945, 374)
 
 [node name="Rifle" parent="Collectibles/Guns" index="0" instance=ExtResource("2_rfmbg")]
-position = Vector2(1068, 390)
+position = Vector2(920, 392)
+
+[node name="TankerTruck01" parent="Obstacles" index="0" instance=ExtResource("6_ac23p")]
+position = Vector2(956, 676)
+
+[node name="TankerTruck02" parent="Obstacles" index="1" instance=ExtResource("7_umuy6")]
+position = Vector2(1092, 204)
 
 [node name="NavigationRegion2D" parent="." index="7"]
 visible = false
