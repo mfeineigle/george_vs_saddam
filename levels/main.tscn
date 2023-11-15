@@ -260,7 +260,7 @@ script = ExtResource("21_5mrx4")
 [node name="AirDropTimer" type="Timer" parent="Allies"]
 
 [node name="Child" parent="Allies" instance=ExtResource("20_qenu2")]
-position = Vector2(-1338, 664)
+position = Vector2(-1462, 540)
 
 [connection signal="timeout" from="Enemies/Aircraft/tu_22Timer" to="Enemies" method="_on_tu_22_timer_timeout"]
 [connection signal="timeout" from="Allies/AirDropTimer" to="Allies" method="_on_air_drop_timer_timeout"]

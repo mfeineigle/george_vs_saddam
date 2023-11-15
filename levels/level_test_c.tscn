@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1sitvjpgw5b5"]
+[gd_scene load_steps=18 format=3 uid="uid://b1sitvjpgw5b5"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_pud3l"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bsxfyirod1uw7" path="res://buildings/barracks.tscn" id="6_ufc7t"]
 [ext_resource type="PackedScene" uid="uid://b75ima0605ntm" path="res://allies/child.tscn" id="7_nvqtq"]
 [ext_resource type="PackedScene" uid="uid://bfyjibsm4tkuq" path="res://obstacles/tanker_truck_02.tscn" id="7_umuy6"]
+[ext_resource type="Script" path="res://levels/path.gd" id="12_2cyxy"]
+[ext_resource type="PackedScene" uid="uid://dht6800xvv48j" path="res://enemies/jeep.tscn" id="13_qx1fj"]
 
 [sub_resource type="TileSet" id="TileSet_wi6lh"]
 
@@ -81,10 +83,10 @@ position = Vector2(945, 374)
 position = Vector2(920, 392)
 
 [node name="TankerTruck01" parent="Obstacles" index="0" instance=ExtResource("6_ac23p")]
-position = Vector2(956, 676)
+position = Vector2(1184, 1114)
 
 [node name="TankerTruck02" parent="Obstacles" index="1" instance=ExtResource("7_umuy6")]
-position = Vector2(1092, 204)
+position = Vector2(1092, -429)
 
 [node name="NavigationRegion2D" parent="." index="7"]
 visible = false
@@ -113,10 +115,16 @@ position = Vector2(2255, 489)
 [node name="Path2D" type="Path2D" parent="." index="11"]
 curve = SubResource("Curve2D_6bky4")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" node_paths=PackedStringArray("follower")]
 position = Vector2(1473.89, 488.609)
 rotation = -1.57411
 progress = 1770.34
+script = ExtResource("12_2cyxy")
+speed = 0.2
+follower = NodePath("jeep")
+
+[node name="jeep" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("13_qx1fj")]
+can_spawn_troops = true
 
 [node name="Path2D2" type="Path2D" parent="." index="12"]
 curve = SubResource("Curve2D_3qdm0")
