@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dht6800xvv48j"]
+[gd_scene load_steps=14 format=3 uid="uid://dht6800xvv48j"]
 
 [ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_afvxu"]
 [ext_resource type="Script" path="res://enemies/jeep.gd" id="2_uye4o"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_yrpqi"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_1tmqt"]
 [ext_resource type="Texture2D" uid="uid://clkia74puwsrb" path="res://assets/enemies/jeep_destroyed.png" id="5_d0moj"]
+[ext_resource type="AudioStream" uid="uid://2yrr5wepqtau" path="res://assets/audio/soldiers_leaving_transport.mp3" id="7_cyeey"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fargd"]
 resource_local_to_scene = true
@@ -171,5 +172,9 @@ autostart = true
 
 [node name="SoldierSpawnPoint" type="Marker2D" parent="." index="7"]
 position = Vector2(-166, -2.90244e-05)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("7_cyeey")
+volume_db = -5.0
 
 [connection signal="timeout" from="SpawnSoldierTimer" to="." method="_on_spawn_soldier_timer_timeout"]

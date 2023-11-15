@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ns8jjlyi884e"]
+[gd_scene load_steps=14 format=3 uid="uid://ns8jjlyi884e"]
 
 [ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_asg1l"]
 [ext_resource type="Script" path="res://enemies/soldier_transport.gd" id="2_2puk3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cdlc4et6mex26" path="res://assets/enemies/soldier_transport_top_destroyed.png" id="3_e878u"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_yry34"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_8vmff"]
+[ext_resource type="AudioStream" uid="uid://2yrr5wepqtau" path="res://assets/audio/soldiers_leaving_transport.mp3" id="7_7cjlr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jy8g6"]
 shader = ExtResource("3_yry34")
@@ -167,5 +168,9 @@ autostart = true
 
 [node name="SoldierSpawnPoint" type="Marker2D" parent="." index="7"]
 position = Vector2(-250, 0)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("7_7cjlr")
+volume_db = -5.0
 
 [connection signal="timeout" from="SpawnSoldierTimer" to="." method="_on_spawn_soldier_timer_timeout"]

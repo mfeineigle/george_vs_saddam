@@ -14,6 +14,7 @@ var soldier_types: Array[Signal] = [GameEvents.spawn_guard,
 func _on_spawn_soldier_timer_timeout() -> void:
 	if spawned_soldiers < max_spawned_soldiers:
 		spawned_soldiers += 1
+		$AudioStreamPlayer2D.play()
 		if can_spawn_guards and can_spawn_troops:
 			var spawn_random: Signal = soldier_types[randi() % soldier_types.size()]
 			spawn_random.emit($SoldierSpawnPoint.global_position)
