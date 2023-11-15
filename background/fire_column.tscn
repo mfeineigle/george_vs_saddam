@@ -87,7 +87,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"burn",
-"speed": 10.0
+"speed": 7.0
 }]
 
 [node name="FireColumn" type="Node2D"]
