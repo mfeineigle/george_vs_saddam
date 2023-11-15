@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7i0qbpunp5ei"]
+[gd_scene load_steps=17 format=3 uid="uid://c7i0qbpunp5ei"]
 
 [ext_resource type="Script" path="res://enemies/radar_tower.gd" id="1_aeohx"]
 [ext_resource type="Texture2D" uid="uid://gknk73i5o1fq" path="res://assets/enemies/radar_tower_bottom.png" id="1_y8c87"]
@@ -6,9 +6,59 @@
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="2_tv78m"]
 [ext_resource type="PackedScene" uid="uid://bf8isb5x7u54f" path="res://components/death_component.tscn" id="3_d4eil"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_iot2t"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="4_kxx88"]
+[ext_resource type="AudioStream" uid="uid://clg5ujn32uscq" path="res://assets/audio/radar_detection_beep.mp3" id="8_jy7xr"]
 
 [sub_resource type="Animation" id="Animation_24ypw"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottom:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottom:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Top:material:shader_parameter/flash_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Top:material:shader_parameter/flash_modifier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_b2hdt"]
 resource_name = "die"
@@ -27,15 +77,79 @@ tracks/0/keys = {
 "values": [0, 80]
 }
 
+[sub_resource type="Animation" id="Animation_8orqg"]
+resource_name = "hit"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bottom:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bottom:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Top:material:shader_parameter/flash_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Top:material:shader_parameter/flash_modifier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1l5w5"]
 _data = {
 "RESET": SubResource("Animation_24ypw"),
-"die": SubResource("Animation_b2hdt")
+"die": SubResource("Animation_b2hdt"),
+"hit": SubResource("Animation_8orqg")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50ptu"]
+shader = ExtResource("4_kxx88")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ul131"]
 radius = 35.0
 height = 136.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jw6qd"]
+shader = ExtResource("4_kxx88")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qk7is"]
 radius = 787.522
@@ -43,11 +157,11 @@ radius = 787.522
 [node name="RadarTower" type="StaticBody2D"]
 scale = Vector2(0.75, 0.75)
 collision_layer = 8
+collision_mask = 23
 script = ExtResource("1_aeohx")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("death_component") instance=ExtResource("2_tv78m")]
+[node name="HealthComponent" parent="." instance=ExtResource("2_tv78m")]
 max_hp = 5
-death_component = NodePath("../DeathComponent")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("death_animation_player", "death_animation") instance=ExtResource("3_d4eil")]
 death_animation_player = NodePath("../DeathAnimationPlayer")
@@ -59,6 +173,7 @@ libraries = {
 }
 
 [node name="Bottom" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_50ptu")
 position = Vector2(1, -242.667)
 texture = ExtResource("1_y8c87")
 
@@ -66,6 +181,7 @@ texture = ExtResource("1_y8c87")
 shape = SubResource("CapsuleShape2D_ul131")
 
 [node name="Top" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jw6qd")
 position = Vector2(0, -528)
 texture = ExtResource("2_gx1dp")
 
@@ -86,12 +202,12 @@ rotation = -0.1309
 target_position = Vector2(0, 800)
 
 [node name="DeathAnimation" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-6.66667, -37.3333)
 scale = Vector2(3, 3)
 texture = ExtResource("4_iot2t")
 hframes = 9
 vframes = 9
+frame = 2
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
@@ -99,6 +215,10 @@ vframes = 9
 position = Vector2(5.33333, -506.667)
 shape = SubResource("CircleShape2D_qk7is")
 debug_color = Color(0.596078, 0.407843, 0.427451, 0.223529)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_jy7xr")
+volume_db = -5.0
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
