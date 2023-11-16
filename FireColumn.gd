@@ -12,7 +12,6 @@ func _ready() -> void:
 
 
 func _on_timer_timeout() -> void:
-	print("timer")
 	sprite.show()
 	sprite.play("burn")
 	particles.emitting = true
