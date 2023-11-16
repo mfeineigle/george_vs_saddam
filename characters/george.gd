@@ -150,5 +150,14 @@ func _on_dashing_timer_timeout():
 	george_sprite.texture = load("res://assets/characters/george.png")
 	dashing = false
 
+
+func knockback(dir, knock_strength) -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,
+						 "global_position",
+						 global_position+(dir * knock_strength),
+						 0.1)
+
+
 func spawn() -> void:
 	GameEvents.spawn_an_26.emit()
