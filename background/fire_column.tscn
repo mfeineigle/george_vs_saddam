@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://qxnr355c2ly1"]
 
 [ext_resource type="Texture2D" uid="uid://crnglitq4tytw" path="res://assets/enemies/smoke_puff.png" id="1_4j1vq"]
-[ext_resource type="Script" path="res://FireColumn.gd" id="1_ug0jv"]
+[ext_resource type="Script" path="res://background/FireColumn.gd" id="1_ug0jv"]
 [ext_resource type="Texture2D" uid="uid://dvuxnxp8e2u6e" path="res://assets/background/fire_column_medium/fire_column_medium_01.png" id="2_wd0qf"]
 [ext_resource type="Texture2D" uid="uid://c1wjcimkm5h8q" path="res://assets/background/fire_column_medium/fire_column_medium_02.png" id="3_8p2ep"]
 [ext_resource type="Texture2D" uid="uid://b2eos74bxb53c" path="res://assets/background/fire_column_medium/fire_column_medium_03.png" id="4_utl5p"]
