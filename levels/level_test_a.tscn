@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3mkylkdhtc4e"]
+[gd_scene load_steps=16 format=3 uid="uid://c3mkylkdhtc4e"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_7qhx8"]
 [ext_resource type="Texture2D" uid="uid://dlymds1mxs36t" path="res://assets/background/lvl-A_ground_textures.png" id="2_hupca"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="4_e6ayp"]
 [ext_resource type="Texture2D" uid="uid://bcknj4vll5m46" path="res://assets/background/lvl-B_desert_sand_tileset.png" id="4_ffn7y"]
 [ext_resource type="PackedScene" uid="uid://dl65sivnf31rf" path="res://enemies/guard.tscn" id="4_m634b"]
+[ext_resource type="Texture2D" uid="uid://bq4olaflelq1y" path="res://assets/buildings/bunker_enterance_01.png" id="5_8ffk4"]
 [ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="5_ly66f"]
+[ext_resource type="PackedScene" uid="uid://y4687yg2fuia" path="res://levels/exit_level_area.tscn" id="6_qmtpk"]
+[ext_resource type="PackedScene" uid="uid://cgixm048bev0e" path="res://cut_scenes/page_test_a.tscn" id="7_3bg0q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oeqm3"]
 texture = ExtResource("2_hupca")
@@ -251,6 +254,9 @@ sources/0 = SubResource("TileSetAtlasSource_oeqm3")
 sources/1 = SubResource("TileSetAtlasSource_siadx")
 sources/2 = SubResource("TileSetAtlasSource_wu2g0")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oo1ot"]
+size = Vector2(182, 80)
+
 [node name="LevelTestA" instance=ExtResource("1_7qhx8")]
 
 [node name="TileMap" type="TileMap" parent="Background" index="0"]
@@ -265,6 +271,23 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(131059, 1, 0)
+
+[node name="Bunker" type="StaticBody2D" parent="Background" index="2"]
+
+[node name="Bunker" type="Sprite2D" parent="Background/Bunker" index="0"]
+position = Vector2(-686, -587)
+scale = Vector2(4, 4)
+texture = ExtResource("5_8ffk4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/Bunker" index="1"]
+polygon = PackedVector2Array(-198, -654, -347, -746, -212, -845, -164, -1390, -90, -1432, 72, -1421, 87, -1226, 137, -1137, 134, -1081, 17, -1013, 8, -840, 157, -697, 35, -631, -16, -796, -133, -802)
+
+[node name="ExitLevelArea" parent="Background/Bunker" index="2" instance=ExtResource("6_qmtpk")]
+next_level = ExtResource("7_3bg0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Bunker/ExitLevelArea" index="0"]
+position = Vector2(-80, -770)
+shape = SubResource("RectangleShape2D_oo1ot")
 
 [node name="George" parent="." index="3"]
 position = Vector2(-144, 137)

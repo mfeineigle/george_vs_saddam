@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgixm048bev0e"]
+
+[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://cut_scenes/page.tscn" id="1_dbolm"]
+[ext_resource type="PackedScene" uid="uid://cs862b8l8ppme" path="res://levels/level_test_b.tscn" id="2_w1p7t"]
+[ext_resource type="Texture2D" uid="uid://c4ntlnb66h5oa" path="res://assets/cut_scenes/frame_a.png" id="2_ywnt8"]
+
+[node name="PageTestA" node_paths=PackedStringArray("frames") instance=ExtResource("1_dbolm")]
+frames = [NodePath("Frame01"), NodePath("Frame02"), NodePath("Frame03")]
+next_level = ExtResource("2_w1p7t")
+
+[node name="Frame01" type="TextureRect" parent="." index="4"]
+visible = false
+layout_mode = 0
+offset_left = 174.0
+offset_top = 306.0
+offset_right = 823.0
+offset_bottom = 662.0
+texture = ExtResource("2_ywnt8")
+
+[node name="Frame02" type="TextureRect" parent="." index="5"]
+visible = false
+layout_mode = 0
+offset_left = 730.0
+offset_top = 28.0
+offset_right = 1379.0
+offset_bottom = 384.0
+texture = ExtResource("2_ywnt8")
+
+[node name="Frame03" type="TextureRect" parent="." index="6"]
+visible = false
+layout_mode = 0
+offset_left = 1446.0
+offset_top = 26.0
+offset_right = 2095.0
+offset_bottom = 382.0
+texture = ExtResource("2_ywnt8")
