@@ -3,42 +3,30 @@
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://cut_scenes/page.tscn" id="1_v3dow"]
 [ext_resource type="Texture2D" uid="uid://c4ntlnb66h5oa" path="res://assets/cut_scenes/frame_a.png" id="2_gou8t"]
 [ext_resource type="PackedScene" uid="uid://vjtx2gbkd8m" path="res://cut_scenes/page_02.tscn" id="2_nskx1"]
-[ext_resource type="PackedScene" uid="uid://c3mkylkdhtc4e" path="res://levels/level_test_a.tscn" id="3_rhthd"]
+[ext_resource type="PackedScene" uid="uid://cs862b8l8ppme" path="res://levels/level_test_b.tscn" id="3_kodc0"]
 
 [node name="Page01" node_paths=PackedStringArray("frames") instance=ExtResource("1_v3dow")]
-frames = [NodePath("Frame01"), NodePath("Frame02"), NodePath("Frame03")]
+frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
 next_page = ExtResource("2_nskx1")
-next_level = ExtResource("3_rhthd")
+next_level = ExtResource("3_kodc0")
 
-[node name="Background" parent="." index="1"]
-offset_left = -1081.0
-offset_top = -499.0
-offset_right = 799.0
-offset_bottom = 541.0
-
-[node name="Frame01" type="TextureRect" parent="." index="3"]
-visible = false
-layout_mode = 0
+[node name="Frame01" type="TextureRect" parent="Frames" index="0"]
 offset_left = 49.0
 offset_top = 26.0
 offset_right = 698.0
 offset_bottom = 382.0
 texture = ExtResource("2_gou8t")
 
-[node name="Frame02" type="TextureRect" parent="." index="4"]
-visible = false
-layout_mode = 0
-offset_left = 730.0
-offset_top = 28.0
-offset_right = 1379.0
-offset_bottom = 384.0
+[node name="Frame02" type="TextureRect" parent="Frames" index="1"]
+offset_left = 130.0
+offset_top = 208.0
+offset_right = 779.0
+offset_bottom = 564.0
 texture = ExtResource("2_gou8t")
 
-[node name="Frame03" type="TextureRect" parent="." index="5"]
-visible = false
-layout_mode = 0
-offset_left = 1446.0
-offset_top = 26.0
-offset_right = 2095.0
-offset_bottom = 382.0
+[node name="Frame03" type="TextureRect" parent="Frames" index="2"]
+offset_left = 70.0
+offset_top = 442.0
+offset_right = 719.0
+offset_bottom = 798.0
 texture = ExtResource("2_gou8t")

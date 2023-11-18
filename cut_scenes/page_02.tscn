@@ -5,32 +5,26 @@
 [ext_resource type="Texture2D" uid="uid://c4ntlnb66h5oa" path="res://assets/cut_scenes/frame_a.png" id="2_qggos"]
 
 [node name="Page02" node_paths=PackedStringArray("frames") instance=ExtResource("1_ex4qr")]
-frames = [NodePath("Frame01"), NodePath("Frame02"), NodePath("Frame03")]
+frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
 next_level = ExtResource("2_qb8l0")
 
-[node name="Frame01" type="TextureRect" parent="." index="3"]
-visible = false
-layout_mode = 0
-offset_left = 174.0
-offset_top = 306.0
-offset_right = 823.0
-offset_bottom = 662.0
+[node name="Frame01" type="TextureRect" parent="Frames" index="0"]
+offset_left = 702.0
+offset_top = 231.0
+offset_right = 1351.0
+offset_bottom = 587.0
 texture = ExtResource("2_qggos")
 
-[node name="Frame02" type="TextureRect" parent="." index="4"]
-visible = false
-layout_mode = 0
+[node name="Frame02" type="TextureRect" parent="Frames" index="1"]
 offset_left = 730.0
 offset_top = 28.0
 offset_right = 1379.0
 offset_bottom = 384.0
 texture = ExtResource("2_qggos")
 
-[node name="Frame03" type="TextureRect" parent="." index="5"]
-visible = false
-layout_mode = 0
-offset_left = 1446.0
-offset_top = 26.0
-offset_right = 2095.0
-offset_bottom = 382.0
+[node name="Frame03" type="TextureRect" parent="Frames" index="2"]
+offset_left = 717.0
+offset_top = 461.0
+offset_right = 1366.0
+offset_bottom = 817.0
 texture = ExtResource("2_qggos")

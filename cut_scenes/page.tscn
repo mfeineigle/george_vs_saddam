@@ -13,21 +13,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y80vr")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1200, 500)
-
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -991.0
-offset_top = -481.0
-offset_right = 889.0
-offset_bottom = 559.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_p5208")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
 
 [node name="SkipTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -58,5 +54,7 @@ offset_top = -13.5
 offset_bottom = 13.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Frames" type="Node2D" parent="."]
 
 [connection signal="timeout" from="SkipTimer" to="." method="_on_skip_timer_timeout"]
