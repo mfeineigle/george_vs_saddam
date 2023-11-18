@@ -16,8 +16,10 @@ func _process(_delta: float) -> void:
 		if idx < frames.size():
 			frames[idx].visible = true
 			idx += 1
-		else:
+		elif next_page:
 			get_tree().change_scene_to_packed(next_page)
+		else:
+			get_tree().change_scene_to_packed(next_level)
 
 
 func _on_skip_timer_timeout() -> void:
