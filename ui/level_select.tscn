@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxdi15oue2aga"]
+[gd_scene load_steps=4 format=3 uid="uid://bxdi15oue2aga"]
 
 [ext_resource type="Theme" uid="uid://ewoqwtu8db8g" path="res://ui/level_select.tres" id="1_db7hg"]
 [ext_resource type="Script" path="res://ui/level_select.gd" id="1_nj28c"]
+[ext_resource type="Texture2D" uid="uid://bi6daoyk5djpr" path="res://assets/cut_scenes/cutscene_background.png" id="2_f6whj"]
 
 [node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_nj28c")
 
 [node name="CanvasGroup" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="TextureRect" parent="CanvasGroup"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_f6whj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup"]
 anchors_preset = 8
