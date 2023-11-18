@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bveoflewrnrhn"]
+
+[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://cut_scenes/page.tscn" id="1_pvru8"]
+[ext_resource type="PackedScene" uid="uid://cs862b8l8ppme" path="res://levels/level_test_b.tscn" id="2_300hv"]
+[ext_resource type="Texture2D" uid="uid://c4ntlnb66h5oa" path="res://assets/cut_scenes/frame_a.png" id="3_y78t2"]
+
+[node name="PageTestA2" node_paths=PackedStringArray("frames") instance=ExtResource("1_pvru8")]
+frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
+next_level = ExtResource("2_300hv")
+
+[node name="Frame01" type="TextureRect" parent="Frames" index="0"]
+offset_left = 81.0
+offset_top = 27.0
+offset_right = 730.0
+offset_bottom = 383.0
+texture = ExtResource("3_y78t2")
+
+[node name="Frame02" type="TextureRect" parent="Frames" index="1"]
+offset_left = 1174.0
+offset_top = 184.0
+offset_right = 1823.0
+offset_bottom = 540.0
+texture = ExtResource("3_y78t2")
+
+[node name="Frame03" type="TextureRect" parent="Frames" index="2"]
+offset_left = 1179.0
+offset_top = 47.0
+offset_right = 1828.0
+offset_bottom = 403.0
+texture = ExtResource("3_y78t2")
