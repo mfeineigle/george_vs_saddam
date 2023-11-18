@@ -11,6 +11,11 @@ var value: float = 0
 var idx: int = 0
 
 
+func _ready() -> void:
+	for frame in $Frames.get_children():
+		frame.visible = false
+
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		if idx < frames.size():
