@@ -26,6 +26,10 @@ var dashCount: int = 0
 ## Velocity multiplier during a dash
 @export var dash_speed: float = 3.0
 
+var knockback_vector: Vector2 = Vector2(0,0)
+var is_knockback: bool = false
+var knock_count: int = 0
+
 
 func _ready():
 	Globals.player_pos = position
@@ -52,6 +56,11 @@ func _process(_delta):
 	velocity = direction * speed
 	if dashing:
 		velocity *= dash_speed
+	if is_knockback:
+		velocity = knockback_vector
+		knock_count -= 1
+		if knock_count <= 0:
+			is_knockback = false
 	Utils.flip_h_sprite_direction(george_sprite, direction)
 	move_and_slide()
 	Globals.player_pos = position
@@ -152,11 +161,9 @@ func _on_dashing_timer_timeout():
 
 
 func knockback(dir, knock_strength) -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_property(self,
-						 "global_position",
-						 global_position+(dir * knock_strength),
-						 0.1)
+	is_knockback = true
+	knock_count = 5
+	knockback_vector = dir * knock_strength
 
 
 func spawn() -> void:

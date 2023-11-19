@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cy3lo45cy0oew"]
+[gd_scene load_steps=36 format=3 uid="uid://cy3lo45cy0oew"]
 
 [ext_resource type="PackedScene" uid="uid://b4u06cbdgi456" path="res://ui/ui.tscn" id="2_bdf4p"]
 [ext_resource type="Script" path="res://globals/SpawnPointsPath2D.gd" id="2_l15oi"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bbm3sb6nu3lft" path="res://weapons/shotgun.tscn" id="10_mrx6y"]
 [ext_resource type="PackedScene" uid="uid://byvu6338wp13j" path="res://weapons/rocket_launcher.tscn" id="11_q3v2x"]
 [ext_resource type="Texture2D" uid="uid://d33v5whjcl4ew" path="res://assets/obstacles/crate_sheet.png" id="12_wldx6"]
+[ext_resource type="PackedScene" uid="uid://iwp2j1y6mc1u" path="res://weapons/landmine.tscn" id="14_rdk7e"]
 [ext_resource type="PackedScene" uid="uid://c7i0qbpunp5ei" path="res://enemies/radar_tower.tscn" id="15_658ud"]
 [ext_resource type="Script" path="res://projectiles/projectiles.gd" id="15_vpq4a"]
 [ext_resource type="Script" path="res://enemies/enemies.gd" id="16_fwwg6"]
@@ -217,6 +218,7 @@ layer_1/tile_data = PackedInt32Array(196600, 131075, 1, 196601, 65539, 2, 262137
 script = ExtResource("15_vpq4a")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_wrvnq")
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -244,6 +246,7 @@ position = Vector2(155, 1066)
 position = Vector2(-1568, 1680)
 
 [node name="Saddam" parent="Enemies" instance=ExtResource("7_48f75")]
+position = Vector2(68, -276)
 
 [node name="Aircraft" type="Node2D" parent="Enemies"]
 
@@ -253,6 +256,9 @@ one_shot = true
 
 [node name="RadarTower" parent="Enemies" instance=ExtResource("15_658ud")]
 position = Vector2(-1168, 378)
+
+[node name="Mine" parent="Enemies" instance=ExtResource("14_rdk7e")]
+position = Vector2(-567, 469)
 
 [node name="Allies" type="Node2D" parent="."]
 script = ExtResource("21_5mrx4")

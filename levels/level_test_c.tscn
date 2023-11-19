@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1sitvjpgw5b5"]
+[gd_scene load_steps=17 format=3 uid="uid://b1sitvjpgw5b5"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_pud3l"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://bsxfyirod1uw7" path="res://buildings/barracks.tscn" id="6_ufc7t"]
 [ext_resource type="PackedScene" uid="uid://b75ima0605ntm" path="res://allies/child.tscn" id="7_nvqtq"]
 [ext_resource type="PackedScene" uid="uid://bfyjibsm4tkuq" path="res://obstacles/tanker_truck_02.tscn" id="7_umuy6"]
-[ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="8_l845a"]
 [ext_resource type="PackedScene" uid="uid://iwp2j1y6mc1u" path="res://weapons/landmine.tscn" id="12_pncim"]
 
 [sub_resource type="TileSet" id="TileSet_wi6lh"]
@@ -92,9 +91,6 @@ position = Vector2(1092, -429)
 [node name="NavigationRegion2D" parent="." index="7"]
 visible = false
 
-[node name="Troop" parent="Enemies/Soldiers" index="0" instance=ExtResource("8_l845a")]
-position = Vector2(1572, 636)
-
 [node name="scud_launcher" parent="Enemies/ScudLauchers" index="0" instance=ExtResource("3_fv6t2")]
 position = Vector2(0, 314)
 
@@ -130,4 +126,16 @@ rotation = 2.63881
 progress = 3292.63
 
 [node name="Mine" parent="." index="13" instance=ExtResource("12_pncim")]
-position = Vector2(1236, 534)
+position = Vector2(1250, 396)
+
+[node name="Mine2" parent="." index="14" instance=ExtResource("12_pncim")]
+position = Vector2(1696, 239)
+
+[node name="Mine3" parent="." index="15" instance=ExtResource("12_pncim")]
+position = Vector2(1694, 1070)
+
+[node name="Mine4" parent="." index="16" instance=ExtResource("12_pncim")]
+position = Vector2(583, 376)
+
+[node name="Mine5" parent="." index="17" instance=ExtResource("12_pncim")]
+position = Vector2(1167, 994)
