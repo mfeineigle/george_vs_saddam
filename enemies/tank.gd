@@ -41,9 +41,7 @@ func check_los() -> bool:
 	var query = PhysicsRayQueryParameters2D.create(global_position, Globals.player_pos)
 	query.exclude = [self]
 	var result = space_state.intersect_ray(query)
-	#print("los: ", result.collider.name)
-	if result.collider.name == "George":
-		#print("true")
+	if result and result.collider.name == "George":
 		return true
 	return false
 
