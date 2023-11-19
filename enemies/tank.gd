@@ -23,6 +23,7 @@ func shoot() -> void:
 		GameEvents.tank_shot.emit(shell)
 		can_shoot = false
 		$CanShootTimer.start()
+		$FiringSound.play()
 
 func _on_can_shoot_timer_timeout() -> void:
 	can_shoot = true
@@ -40,9 +41,9 @@ func check_los() -> bool:
 	var query = PhysicsRayQueryParameters2D.create(global_position, Globals.player_pos)
 	query.exclude = [self]
 	var result = space_state.intersect_ray(query)
-	print("los: ", result.collider.name)
+	#print("los: ", result.collider.name)
 	if result.collider.name == "George":
-		print("true")
+		#print("true")
 		return true
 	return false
 
