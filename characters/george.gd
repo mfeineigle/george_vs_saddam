@@ -39,7 +39,7 @@ func _ready():
 	cycle_weapon()
 
 
-func _process(_delta):
+func _input(_event: InputEvent) -> void:
 	# testing - spawn stuff
 	if Input.is_action_just_pressed("spawn_test"):
 		spawn()
@@ -53,6 +53,9 @@ func _process(_delta):
 		cycle_weapon()
 	if Input.is_action_just_pressed("dash"):
 		dash()
+
+
+func _physics_process(_delta: float) -> void:
 	velocity = direction * speed
 	if dashing:
 		velocity *= dash_speed
@@ -61,8 +64,11 @@ func _process(_delta):
 		knock_count -= 1
 		if knock_count <= 0:
 			is_knockback = false
-	Utils.flip_h_sprite_direction(george_sprite, direction)
 	move_and_slide()
+
+
+func _process(_delta):
+	Utils.flip_h_sprite_direction(george_sprite, direction)
 	Globals.player_pos = position
 
 
