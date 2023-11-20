@@ -272,7 +272,7 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(131059, 1, 0)
 
-[node name="Bunker" type="StaticBody2D" parent="Background" index="2"]
+[node name="Bunker" type="StaticBody2D" parent="Background" index="1"]
 
 [node name="Bunker" type="Sprite2D" parent="Background/Bunker" index="0"]
 position = Vector2(-686, -587)
