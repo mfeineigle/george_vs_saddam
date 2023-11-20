@@ -29,3 +29,8 @@ func _on_quit_button_pressed():
 func _on_level_select_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://ui/level_select.tscn")
+
+
+func _on_restart_level_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
