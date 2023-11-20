@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://cut_scenes/page.tscn" id="1_jbuj3"]
 [ext_resource type="PackedScene" uid="uid://b1sitvjpgw5b5" path="res://levels/level_test_c.tscn" id="2_34qqv"]
-[ext_resource type="Texture2D" uid="uid://c4ntlnb66h5oa" path="res://assets/cut_scenes/frame_a.png" id="3_fanfs"]
+[ext_resource type="Texture2D" uid="uid://bojch8f2jv6j1" path="res://assets/cut_scenes/frame_b.png" id="3_v0qyf"]
 
 [node name="PageTestB" node_paths=PackedStringArray("frames") instance=ExtResource("1_jbuj3")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
@@ -13,18 +13,18 @@ offset_left = 40.0
 offset_top = 287.0
 offset_right = 689.0
 offset_bottom = 643.0
-texture = ExtResource("3_fanfs")
+texture = ExtResource("3_v0qyf")
 
 [node name="Frame02" type="TextureRect" parent="Frames" index="1"]
 offset_left = 1189.0
 offset_top = 295.0
 offset_right = 1838.0
 offset_bottom = 651.0
-texture = ExtResource("3_fanfs")
+texture = ExtResource("3_v0qyf")
 
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
 offset_left = 447.0
 offset_top = 293.0
 offset_right = 1096.0
 offset_bottom = 649.0
-texture = ExtResource("3_fanfs")
+texture = ExtResource("3_v0qyf")
