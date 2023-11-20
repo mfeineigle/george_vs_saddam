@@ -5,8 +5,8 @@ extends Control
 @export var next_level: PackedScene
 
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var progress_bar: ProgressBar = $SkipScene/ProgressBar
-var value: float = 0
 
 var idx: int = 0
 
@@ -22,6 +22,8 @@ func _process(_delta: float) -> void:
 			frames[idx].visible = true
 			idx += 1
 		elif next_page:
+			audio_stream_player_2d.play()
+			await audio_stream_player_2d.finished
 			get_tree().change_scene_to_packed(next_page)
 		else:
 			get_tree().change_scene_to_packed(next_level)
