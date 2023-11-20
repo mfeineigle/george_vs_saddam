@@ -34,6 +34,7 @@ offset_bottom = 426.0
 texture = ExtResource("2_ywnt8")
 
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
+modulate = Color(1, 1, 1, 0)
 offset_left = 1224.0
 offset_top = 71.0
 offset_right = 1873.0

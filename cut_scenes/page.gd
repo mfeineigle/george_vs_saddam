@@ -14,12 +14,15 @@ var idx: int = 0
 func _ready() -> void:
 	for frame in $Frames.get_children():
 		frame.visible = false
+		frame.modulate.a = 0
 
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		if idx < frames.size():
 			frames[idx].visible = true
+			var frameTween = get_tree().create_tween()
+			frameTween.tween_property(frames[idx], "modulate:a", 1, 1)
 			idx += 1
 		elif next_page:
 			audio_stream_player_2d.play()
