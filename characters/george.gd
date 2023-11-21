@@ -33,7 +33,7 @@ var knock_count: int = 0
 
 func _ready():
 	Globals.player_pos = position
-	Globals.hp = $HealthComponent.hp
+	$HealthComponent.hp = Globals.hp
 	GameEvents.player_hit.connect(hit)
 	GameEvents.weapon_picked_up.connect(equip_first_weapon)
 	cycle_weapon()

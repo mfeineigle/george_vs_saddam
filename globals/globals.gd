@@ -5,7 +5,7 @@ var air_drop_timer: int = 100
 var player_pos: Vector2
 
 
-var hp: int = 0:
+var hp: int = 55:
 	get:
 		return hp
 	set(value):
