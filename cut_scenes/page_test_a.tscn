@@ -1,14 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgixm048bev0e"]
+[gd_scene load_steps=3 format=3 uid="uid://cgixm048bev0e"]
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://cut_scenes/page.tscn" id="1_dbolm"]
-[ext_resource type="PackedScene" uid="uid://bveoflewrnrhn" path="res://cut_scenes/page_test_a_2.tscn" id="2_40ux8"]
-[ext_resource type="PackedScene" uid="uid://cs862b8l8ppme" path="res://levels/level_test_b.tscn" id="2_w1p7t"]
 [ext_resource type="Texture2D" uid="uid://c4ntlnb66h5oa" path="res://assets/cut_scenes/frame_a.png" id="2_ywnt8"]
 
 [node name="PageTestA" node_paths=PackedStringArray("frames") instance=ExtResource("1_dbolm")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
-next_page = ExtResource("2_40ux8")
-next_level = ExtResource("2_w1p7t")
+next_page = "res://cut_scenes/page_test_a_2.tscn"
+next_level = "res://levels/level_test_b.tscn"
 
 [node name="Background" parent="." index="0"]
 offset_left = -910.0

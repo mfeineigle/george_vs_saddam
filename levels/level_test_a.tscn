@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3mkylkdhtc4e"]
+[gd_scene load_steps=15 format=3 uid="uid://c3mkylkdhtc4e"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_7qhx8"]
 [ext_resource type="Texture2D" uid="uid://dlymds1mxs36t" path="res://assets/background/lvl-A_ground_textures.png" id="2_hupca"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bq4olaflelq1y" path="res://assets/buildings/bunker_enterance_01.png" id="5_8ffk4"]
 [ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="5_ly66f"]
 [ext_resource type="PackedScene" uid="uid://y4687yg2fuia" path="res://levels/exit_level_area.tscn" id="6_qmtpk"]
-[ext_resource type="PackedScene" uid="uid://cgixm048bev0e" path="res://cut_scenes/page_test_a.tscn" id="7_3bg0q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oeqm3"]
 texture = ExtResource("2_hupca")
@@ -283,7 +282,7 @@ texture = ExtResource("5_8ffk4")
 polygon = PackedVector2Array(-198, -654, -347, -746, -212, -845, -164, -1390, -90, -1432, 72, -1421, 87, -1226, 137, -1137, 134, -1081, 17, -1013, 8, -840, 157, -697, 35, -631, -16, -796, -133, -802)
 
 [node name="ExitLevelArea" parent="Background/Bunker" index="2" instance=ExtResource("6_qmtpk")]
-next_level = ExtResource("7_3bg0q")
+next_level = "res://cut_scenes/page_test_a.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Bunker/ExitLevelArea" index="0"]
 position = Vector2(-80, -770)

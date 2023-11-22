@@ -25,25 +25,25 @@ func _ready() -> void:
 func _on_lvl_01_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var("1")
-	get_tree().change_scene_to_file("res://levels/main.tscn")
+	SceneManager.goto_scene("res://levels/main.tscn")
 
 
 func _on_lvl_a_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var("A")
-	get_tree().change_scene_to_file("res://levels/level_test_a.tscn")
+	SceneManager.goto_scene("res://levels/level_test_a.tscn")
 
 
 func _on_lvl_b_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var("B")
-	get_tree().change_scene_to_file("res://levels/level_test_b.tscn")
+	SceneManager.goto_scene("res://levels/level_test_b.tscn")
 
 
 func _on_lvl_c_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var("C")
-	get_tree().change_scene_to_file("res://levels/level_test_c.tscn")
+	SceneManager.goto_scene("res://levels/level_test_c.tscn")
 
 
 func _on_quit_button_pressed() -> void:
