@@ -1,8 +1,8 @@
 extends Control
 
 @export var frames: Array[TextureRect]
-@export var next_page: String = "res://"
-@export var next_level: String = "res://"
+@export var next_page: String = ""
+@export var next_level: String = ""
 
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -15,27 +15,44 @@ func _ready() -> void:
 	for frame in $Frames.get_children():
 		frame.visible = false
 		frame.modulate.a = 0
+	if idx < frames.size():
+		goto_next_frame() # auto show the first frame
 
 
-func _process(_delta: float) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		if idx < frames.size():
-			frames[idx].visible = true
-			var frameTween = get_tree().create_tween()
-			frameTween.tween_property(frames[idx], "modulate:a", 1, 1)
-			idx += 1
+			goto_next_frame()
 		elif next_page:
-			audio_stream_player_2d.play()
-			await audio_stream_player_2d.finished
-			SceneManager.goto_scene(next_page)
+			goto_next_page()
 		else:
-			SceneManager.goto_scene(next_level)
+			goto_next_level()
+
+
+func goto_next_frame() -> void:
+	frames[idx].visible = true
+	var frameTween = get_tree().create_tween()
+	frameTween.tween_property(frames[idx], "modulate:a", 1, 1)
+	idx += 1
+
+
+func goto_next_page() -> void:
+	set_process_input(false) # don't allow input on page turn
+	audio_stream_player_2d.play()
+	# TODO page turn animation
+	await audio_stream_player_2d.finished
+	SceneManager.goto_scene(next_page)
+	set_process_input(true)
+
+
+func goto_next_level() -> void:
+	SceneManager.goto_scene(next_level)
 
 
 func _on_skip_timer_timeout() -> void:
 	if Input.is_action_pressed("shoot"):  
 		progress_bar.value += 5  #Button is pressed, increase the progress
-		if progress_bar.value >= 10:
+		if progress_bar.value >= 20:
 			$SkipScene.visible = true
 	else:  
 		progress_bar.value = 0  #The button wasn't down during this tick, reset progress
