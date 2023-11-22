@@ -22,7 +22,7 @@ GameEvents="*res://globals/game_events.gd"
 Utils="*res://globals/utils.gd"
 WeaponsManager="*res://globals/weapons_manager.gd"
 SceneManager="*res://globals/scene_manager.gd"
-FadeToBlack="*res://ui/fade_to_black.tscn"
+FadeScene="*res://ui/fade_scene.tscn"
 
 [display]
 
