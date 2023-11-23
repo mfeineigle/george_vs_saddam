@@ -1,10 +1,13 @@
-extends Node
+extends Node2D
 
-var current_scene = null
+@onready var current_scene: Node2D = $CurrentScene
 
-func _ready():
-	var root = get_tree().root
-	current_scene = root.get_child(root.get_child_count() - 1)
+
+func _ready() -> void:
+	GameEvents.level_changed.connect(goto_scene)
+	var init_scene= ResourceLoader.load("res://ui/level_select.tscn")
+	current_scene.add_child(init_scene.instantiate())
+	#get_tree().current_scene = current_scene.get_child(0)
 
 
 func goto_scene(path):
@@ -21,10 +24,9 @@ func goto_scene(path):
 
 func _deferred_goto_scene(path):
 	await FadeScene.fade_to_black()
-	current_scene.free()
+	current_scene.get_child(0).free()
 	var s = ResourceLoader.load(path)
-	current_scene = s.instantiate()
-	get_tree().root.add_child(current_scene)
+	var cs = s.instantiate()
+	current_scene.add_child(cs)
 	await FadeScene.fade_to_white()
-	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
-	get_tree().current_scene = current_scene
+	#get_tree().current_scene = current_scene.get_child(0)
