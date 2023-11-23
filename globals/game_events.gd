@@ -1,5 +1,6 @@
 extends Node
 
+signal level_changed(path)
 signal stats_changed
 signal cycled_weapon(weapon)
 

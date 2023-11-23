@@ -6,7 +6,8 @@ extends Control
 
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var progress_bar: ProgressBar = $SkipScene/ProgressBar
+@onready var skip_frame: TextureRect = $Background/SkipFrame
+@onready var progress_bar: ProgressBar = $Background/SkipFrame/ProgressBar
 
 var idx: int = 0
 
@@ -41,20 +42,20 @@ func goto_next_page() -> void:
 	audio_stream_player_2d.play()
 	# TODO page turn animation
 	await audio_stream_player_2d.finished
-	SceneManager.goto_scene(next_page)
+	GameEvents.level_changed.emit(next_page)
 	set_process_input(true)
 
 
 func goto_next_level() -> void:
-	SceneManager.goto_scene(next_level)
+	GameEvents.level_changed.emit(next_level)
 
 
 func _on_skip_timer_timeout() -> void:
 	if Input.is_action_pressed("shoot"):  
 		progress_bar.value += 5  #Button is pressed, increase the progress
 		if progress_bar.value >= 20:
-			$SkipScene.visible = true
+			skip_frame.visible = true
 	else:  
 		progress_bar.value = 0  #The button wasn't down during this tick, reset progress
 	if progress_bar.value >= 100:
-		SceneManager.goto_scene(next_level)
+		GameEvents.level_changed.emit(next_level)

@@ -28,7 +28,7 @@ func _on_quit_button_pressed():
 
 func _on_level_select_pressed() -> void:
 	get_tree().paused = false
-	SceneManager.goto_scene("res://ui/level_select.tscn")
+	GameEvents.level_changed.emit("res://ui/level_select.tscn")
 
 
 func _on_restart_level_pressed() -> void:

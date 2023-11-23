@@ -25,25 +25,25 @@ func _ready() -> void:
 func _on_lvl_01_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var("1")
-	SceneManager.goto_scene("res://levels/main.tscn")
+	GameEvents.level_changed.emit("res://levels/level_01.tscn")
 
 
 func _on_lvl_a_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var("A")
-	SceneManager.goto_scene("res://levels/level_test_a.tscn")
+	GameEvents.level_changed.emit("res://levels/level_test_a.tscn")
 
 
 func _on_lvl_b_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var("B")
-	SceneManager.goto_scene("res://levels/level_test_b.tscn")
+	GameEvents.level_changed.emit("res://levels/level_test_b.tscn")
 
 
 func _on_lvl_c_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var("C")
-	SceneManager.goto_scene("res://levels/level_test_c.tscn")
+	GameEvents.level_changed.emit("res://levels/level_test_c.tscn")
 
 
 func _on_quit_button_pressed() -> void:
