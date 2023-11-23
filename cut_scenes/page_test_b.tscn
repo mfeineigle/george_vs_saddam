@@ -8,22 +8,22 @@ frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Fram
 next_level = "res://levels/level_test_c.tscn"
 
 [node name="Frame01" type="TextureRect" parent="Frames" index="0"]
-offset_left = 40.0
-offset_top = 287.0
-offset_right = 689.0
-offset_bottom = 643.0
+offset_left = 34.0
+offset_top = 341.0
+offset_right = 683.0
+offset_bottom = 697.0
 texture = ExtResource("3_v0qyf")
 
 [node name="Frame02" type="TextureRect" parent="Frames" index="1"]
-offset_left = 1189.0
+offset_left = 985.0
 offset_top = 295.0
-offset_right = 1838.0
+offset_right = 1634.0
 offset_bottom = 651.0
 texture = ExtResource("3_v0qyf")
 
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
-offset_left = 447.0
-offset_top = 293.0
-offset_right = 1096.0
-offset_bottom = 649.0
+offset_left = 1266.0
+offset_top = 392.0
+offset_right = 1915.0
+offset_bottom = 748.0
 texture = ExtResource("3_v0qyf")
