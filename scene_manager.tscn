@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvsbllga55kar"]
+[gd_scene load_steps=3 format=3 uid="uid://cvsbllga55kar"]
 
 [ext_resource type="Script" path="res://scene_manager.gd" id="1_e1rh0"]
+[ext_resource type="PackedScene" uid="uid://bejyl7a0ivphh" path="res://ui/fade_scene.tscn" id="2_r0e2l"]
 
 [node name="SceneManager" type="Node2D"]
 script = ExtResource("1_e1rh0")
 
 [node name="CurrentScene" type="Node2D" parent="."]
+
+[node name="FadeScene" parent="." instance=ExtResource("2_r0e2l")]

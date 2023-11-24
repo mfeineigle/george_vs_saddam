@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var current_scene: Node2D = $CurrentScene
+@onready var fade_scene: CanvasLayer = $FadeScene
 
 
 func _ready() -> void:
@@ -23,10 +24,10 @@ func goto_scene(path):
 
 
 func _deferred_goto_scene(path):
-	await FadeScene.fade_to_black()
+	await fade_scene.fade_to_black()
 	current_scene.get_child(0).free()
 	var s = ResourceLoader.load(path)
 	var cs = s.instantiate()
 	current_scene.add_child(cs)
-	await FadeScene.fade_to_white()
+	await fade_scene.fade_to_white()
 	#get_tree().current_scene = current_scene.get_child(0)
