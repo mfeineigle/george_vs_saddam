@@ -9,8 +9,8 @@ func _ready() -> void:
 	GameEvents.level_changed.connect(goto_scene)
 	var init_scene= ResourceLoader.load("res://ui/level_select.tscn")
 	current_scene.add_child(init_scene.instantiate())
-	#get_tree().current_scene = current_scene.get_child(0)
-	
+
+
 func goto_scene(path):
 	# This function will usually be called from a signal callback,
 	# or some other function in the current scene.
@@ -26,9 +26,8 @@ func goto_scene(path):
 func _deferred_goto_scene(path):
 	await fade_scene.fade_to_black()
 	current_scene.get_child(0).free()
-	var s = ResourceLoader.load(path)
-	var cs = s.instantiate()
-	current_scene.add_child(cs)
+	var new_scene = ResourceLoader.load(path).instantiate()
+	current_scene.add_child(new_scene)
 	await fade_scene.fade_to_white()
 	music_manager.change_music()
 	#get_tree().current_scene = current_scene.get_child(0)
