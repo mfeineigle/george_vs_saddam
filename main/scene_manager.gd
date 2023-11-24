@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var current_scene: Node2D = $CurrentScene
 @onready var fade_scene: CanvasLayer = $FadeScene
+@onready var music_manager: AudioStreamPlayer = $MusicManager
 
 
 func _ready() -> void:
@@ -9,8 +10,7 @@ func _ready() -> void:
 	var init_scene= ResourceLoader.load("res://ui/level_select.tscn")
 	current_scene.add_child(init_scene.instantiate())
 	#get_tree().current_scene = current_scene.get_child(0)
-
-
+	
 func goto_scene(path):
 	# This function will usually be called from a signal callback,
 	# or some other function in the current scene.
@@ -30,4 +30,5 @@ func _deferred_goto_scene(path):
 	var cs = s.instantiate()
 	current_scene.add_child(cs)
 	await fade_scene.fade_to_white()
+	music_manager.change_music()
 	#get_tree().current_scene = current_scene.get_child(0)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvsbllga55kar"]
+
+[ext_resource type="Script" path="res://main/scene_manager.gd" id="1_1fj2f"]
+[ext_resource type="Script" path="res://main/MusicManager.gd" id="2_1iols"]
+[ext_resource type="PackedScene" uid="uid://bejyl7a0ivphh" path="res://ui/fade_scene.tscn" id="3_dc8ol"]
+
+[node name="SceneManager" type="Node2D"]
+script = ExtResource("1_1fj2f")
+
+[node name="MusicManager" type="AudioStreamPlayer" parent="."]
+script = ExtResource("2_1iols")
+
+[node name="FadeScene" parent="." instance=ExtResource("3_dc8ol")]
+
+[node name="CurrentScene" type="Node2D" parent="."]
+
+[connection signal="finished" from="MusicManager" to="MusicManager" method="_on_finished"]
