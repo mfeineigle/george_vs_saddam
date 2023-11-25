@@ -45,8 +45,6 @@ func _input(_event: InputEvent) -> void:
 		spawn()
 	direction = Input.get_vector("left", "right", "up", "down")
 	aim()
-	if Input.is_action_pressed("shoot"):
-		shoot()
 	if Input.is_action_just_pressed("air_drop"):
 		GameEvents.air_drop_called.emit()
 	if Input.is_action_just_pressed("cycle_weapon"):
@@ -68,6 +66,8 @@ func _physics_process(_delta: float) -> void:
 
 
 func _process(_delta):
+	if Input.is_action_pressed("shoot"):
+		shoot()
 	Utils.flip_h_sprite_direction(george_sprite, direction)
 	Globals.player_pos = position
 
