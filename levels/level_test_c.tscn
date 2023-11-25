@@ -122,9 +122,12 @@ progress = 871.56
 script = ExtResource("11_0d6br")
 speed = 0.2
 follower = NodePath("SoldierTransport")
+pick_up_lower = 0.3
+pick_up_upper = 0.31
 
 [node name="SoldierTransport" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("12_khsqt")]
 can_spawn_troops = true
+can_spawn_guards = true
 
 [node name="Path2D2" type="Path2D" parent="." index="12"]
 curve = SubResource("Curve2D_3qdm0")
