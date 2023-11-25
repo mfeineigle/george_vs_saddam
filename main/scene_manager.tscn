@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvsbllga55kar"]
+[gd_scene load_steps=5 format=3 uid="uid://cvsbllga55kar"]
 
 [ext_resource type="Script" path="res://main/scene_manager.gd" id="1_1fj2f"]
 [ext_resource type="Script" path="res://main/music_manager.gd" id="2_hdtvl"]
+[ext_resource type="Resource" uid="uid://v1gm132sj1sq" path="res://levels/soundtrack/soundtrack.tres" id="3_8610r"]
 [ext_resource type="PackedScene" uid="uid://bejyl7a0ivphh" path="res://ui/fade_scene.tscn" id="3_dc8ol"]
 
 [node name="SceneManager" type="Node2D"]
@@ -9,6 +10,7 @@ script = ExtResource("1_1fj2f")
 
 [node name="MusicManager" type="AudioStreamPlayer" parent="."]
 script = ExtResource("2_hdtvl")
+music = ExtResource("3_8610r")
 
 [node name="FadeScene" parent="." instance=ExtResource("3_dc8ol")]
 
