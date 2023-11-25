@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdanvnnood0tq"]
+
+[ext_resource type="Texture2D" uid="uid://xss6r5iofm06" path="res://assets/buildings/test_barracks.png" id="1_k2wy5"]
+[ext_resource type="Script" path="res://set_pieces/reload_depot.gd" id="1_vykq5"]
+
+[node name="ReloadDepot" type="Area2D"]
+script = ExtResource("1_vykq5")
+total_soldiers = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k2wy5")

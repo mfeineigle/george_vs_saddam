@@ -2,6 +2,7 @@ extends PathFollow2D
 
 @export var speed: float
 @export var follower: GroundVehicle
+@export var reload_depot: Area2D
 ## progress_ratio start pickup position (eg: 0.3)
 @export var pick_up_lower: float
 ## progress_ratio done pickup position (eg: 0.31)
@@ -35,5 +36,10 @@ func _on_timer_timeout() -> void:
 	pick_up = false
 	progress_ratio = pick_up_upper
 	if follower.can_spawn_troops or follower.can_spawn_guards:
-		follower.spawned_soldiers = 0
+		for i in follower.spawned_soldiers:
+			if reload_depot.total_soldiers > 0 and follower.spawned_soldiers > 0:
+				reload_depot.total_soldiers -= 1
+				follower.spawned_soldiers -= 1
+			else:
+				set_process(false)
 		follower.spawn_soldier_timer.start()

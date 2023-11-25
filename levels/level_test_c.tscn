@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://levels/path.gd" id="11_0d6br"]
 [ext_resource type="PackedScene" uid="uid://ns8jjlyi884e" path="res://enemies/soldier_transport.tscn" id="12_khsqt"]
 [ext_resource type="PackedScene" uid="uid://iwp2j1y6mc1u" path="res://weapons/landmine.tscn" id="12_pncim"]
-[ext_resource type="Texture2D" uid="uid://xss6r5iofm06" path="res://assets/buildings/test_barracks.png" id="14_ofc41"]
+[ext_resource type="PackedScene" uid="uid://cdanvnnood0tq" path="res://set_pieces/reload_depot.tscn" id="13_wm4ke"]
 
 [sub_resource type="TileSet" id="TileSet_wi6lh"]
 
@@ -115,19 +115,25 @@ position = Vector2(2255, 489)
 position = Vector2(100, 601)
 curve = SubResource("Curve2D_6bky4")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" node_paths=PackedStringArray("follower")]
-position = Vector2(911.893, 805.489)
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" node_paths=PackedStringArray("follower", "reload_depot")]
+position = Vector2(1292.06, 823.856)
 rotation = 0.0482752
-progress = 871.56
+progress = 1252.15
 script = ExtResource("11_0d6br")
 speed = 0.2
 follower = NodePath("SoldierTransport")
+reload_depot = NodePath("../ReloadDepot")
 pick_up_lower = 0.3
 pick_up_upper = 0.31
 
 [node name="SoldierTransport" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("12_khsqt")]
 can_spawn_troops = true
-can_spawn_guards = true
+
+[node name="ReloadDepot" parent="Path2D" index="1" instance=ExtResource("13_wm4ke")]
+position = Vector2(910, 804)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+total_soldiers = 1
 
 [node name="Path2D2" type="Path2D" parent="." index="12"]
 curve = SubResource("Curve2D_3qdm0")
@@ -150,9 +156,3 @@ position = Vector2(509, 378)
 
 [node name="Mine5" parent="." index="17" instance=ExtResource("12_pncim")]
 position = Vector2(1167, 994)
-
-[node name="TestBarracks" type="Sprite2D" parent="." index="18"]
-position = Vector2(1010, 1407)
-rotation = 1.5708
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("14_ofc41")
