@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgixm048bev0e"]
 
-[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://cut_scenes/page.tscn" id="1_dbolm"]
+[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_dbolm"]
 [ext_resource type="Texture2D" uid="uid://c4ntlnb66h5oa" path="res://assets/cut_scenes/frame_a.png" id="2_ywnt8"]
 
 [node name="PageTestA" node_paths=PackedStringArray("frames") instance=ExtResource("1_dbolm")]

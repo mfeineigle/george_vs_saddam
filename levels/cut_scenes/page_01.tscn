@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://wwfrau5v16ck"]
 
-[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://cut_scenes/page.tscn" id="1_v3dow"]
+[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_v3dow"]
 [ext_resource type="Texture2D" uid="uid://c4ntlnb66h5oa" path="res://assets/cut_scenes/frame_a.png" id="2_gou8t"]
-[ext_resource type="PackedScene" uid="uid://vjtx2gbkd8m" path="res://cut_scenes/page_02.tscn" id="2_nskx1"]
+[ext_resource type="PackedScene" uid="uid://vjtx2gbkd8m" path="res://levels/cut_scenes/page_02.tscn" id="2_nskx1"]
 [ext_resource type="PackedScene" uid="uid://cs862b8l8ppme" path="res://levels/level_test_b.tscn" id="3_kodc0"]
 
 [node name="Page01" node_paths=PackedStringArray("frames") instance=ExtResource("1_v3dow")]
