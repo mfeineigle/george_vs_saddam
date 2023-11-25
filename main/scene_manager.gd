@@ -1,5 +1,6 @@
 extends Node2D
 
+var current_level: Node2D
 @onready var current_scene: Node2D = $CurrentScene
 @onready var fade_scene: CanvasLayer = $FadeScene
 @onready var music_manager: AudioStreamPlayer = $MusicManager
@@ -9,6 +10,7 @@ func _ready() -> void:
 	GameEvents.level_changed.connect(goto_scene)
 	var init_scene= ResourceLoader.load("res://ui/level_select.tscn")
 	current_scene.add_child(init_scene.instantiate())
+	current_level = current_scene.get_child(0)
 
 
 func goto_scene(path):
@@ -28,6 +30,7 @@ func _deferred_goto_scene(path):
 	current_scene.get_child(0).free()
 	var new_scene = ResourceLoader.load(path).instantiate()
 	current_scene.add_child(new_scene)
+	current_level = current_scene.get_child(0)
 	await fade_scene.fade_to_white()
 	music_manager.change_music()
 	#get_tree().current_scene = current_scene.get_child(0)
