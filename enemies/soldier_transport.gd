@@ -1,6 +1,7 @@
 extends GroundVehicle
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var spawn_soldier_timer: Timer = $SpawnSoldierTimer
 
 @export var max_spawned_soldiers: int
 @export var can_spawn_troops: bool
@@ -23,7 +24,7 @@ func _on_spawn_soldier_timer_timeout() -> void:
 		elif can_spawn_troops:
 			GameEvents.spawn_troop.emit($SoldierSpawnPoint.global_position)
 	else:
-		$SpawnSoldierTimer.stop()
+		spawn_soldier_timer.stop()
 
 
 func hit(dmg) -> void:

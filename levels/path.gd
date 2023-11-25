@@ -35,4 +35,5 @@ func _on_timer_timeout() -> void:
 	pick_up = false
 	progress_ratio = pick_up_upper
 	if follower.can_spawn_troops:
-		print("loading more soldiers")
+		follower.spawned_soldiers = 0
+		follower.spawn_soldier_timer.start()

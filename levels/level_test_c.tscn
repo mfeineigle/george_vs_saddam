@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1sitvjpgw5b5"]
+[gd_scene load_steps=19 format=3 uid="uid://b1sitvjpgw5b5"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_pud3l"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
@@ -10,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://bsxfyirod1uw7" path="res://set_pieces/buildings/barracks.tscn" id="6_ufc7t"]
 [ext_resource type="PackedScene" uid="uid://b75ima0605ntm" path="res://allies/child.tscn" id="7_nvqtq"]
 [ext_resource type="PackedScene" uid="uid://bfyjibsm4tkuq" path="res://set_pieces/obstacles/tanker_truck_02.tscn" id="7_umuy6"]
+[ext_resource type="Script" path="res://levels/path.gd" id="11_0d6br"]
+[ext_resource type="PackedScene" uid="uid://ns8jjlyi884e" path="res://enemies/soldier_transport.tscn" id="12_khsqt"]
 [ext_resource type="PackedScene" uid="uid://iwp2j1y6mc1u" path="res://weapons/landmine.tscn" id="12_pncim"]
+[ext_resource type="Texture2D" uid="uid://xss6r5iofm06" path="res://assets/buildings/test_barracks.png" id="14_ofc41"]
 
 [sub_resource type="TileSet" id="TileSet_wi6lh"]
 
@@ -19,15 +22,15 @@ size = Vector2(73, 238)
 
 [sub_resource type="Curve2D" id="Curve2D_6bky4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 631, 220, 0, 0, 0, 0, 612, 791, 0, 0, 0, 0, 1475, 824, 0, 0, 0, 0, 1473, 220, 0, 0, 0, 0, 631, 220)
+"points": PackedVector2Array(0, 0, 0, 0, 631, 220, 0, 0, 0, 0, 612, 791, 0, 0, 0, 0, 1323.53, 825.376, 0, 0, 0, 0, 1475, 824, 0, 0, 0, 0, 1473, 220, 0, 0, 0, 0, 631, 220)
 }
-point_count = 5
+point_count = 6
 
 [sub_resource type="Curve2D" id="Curve2D_3qdm0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1478, -220, 0, 0, 0, 0, 600, -246, -59.4603, 225.949, 59.4603, -225.949, 303, -505, 0, 0, 0, 0, 778, -674, 0, 0, 0, 0, 1247, -658, -59.4603, -214.057, 59.4603, 214.057, 1872, -520, 0, 0, 0, 0, 1478, -220)
+"points": PackedVector2Array(0, 0, 0, 0, 1478, -220, 0, 0, 0, 0, 600, -246, -59.4603, 225.949, 59.4603, -225.949, 303, -505, 0, 0, 0, 0, 778, -674, 0, 0, 0, 0, 976.239, -650.959, 0, 0, 0, 0, 1247, -658, -59.4603, -214.057, 59.4603, 214.057, 1872, -520, 0, 0, 0, 0, 1478, -220)
 }
-point_count = 7
+point_count = 8
 
 [node name="LevelTestC" instance=ExtResource("1_pud3l")]
 
@@ -109,32 +112,44 @@ position = Vector2(726, -45)
 position = Vector2(2255, 489)
 
 [node name="Path2D" type="Path2D" parent="." index="11"]
+position = Vector2(100, 601)
 curve = SubResource("Curve2D_6bky4")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
-position = Vector2(1473.89, 488.609)
-rotation = -1.57411
-progress = 1770.34
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" node_paths=PackedStringArray("follower")]
+position = Vector2(911.893, 805.489)
+rotation = 0.0482752
+progress = 871.56
+script = ExtResource("11_0d6br")
+speed = 0.2
+follower = NodePath("SoldierTransport")
+
+[node name="SoldierTransport" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("12_khsqt")]
+can_spawn_troops = true
 
 [node name="Path2D2" type="Path2D" parent="." index="12"]
 curve = SubResource("Curve2D_3qdm0")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" index="0"]
-position = Vector2(1740.91, -311.516)
-rotation = 2.63881
-progress = 3292.63
+position = Vector2(1478, -220)
+rotation = -3.11199
 
 [node name="Mine" parent="." index="13" instance=ExtResource("12_pncim")]
 position = Vector2(1250, 396)
 
 [node name="Mine2" parent="." index="14" instance=ExtResource("12_pncim")]
-position = Vector2(1696, 239)
+position = Vector2(1640, -52)
 
 [node name="Mine3" parent="." index="15" instance=ExtResource("12_pncim")]
 position = Vector2(1694, 1070)
 
 [node name="Mine4" parent="." index="16" instance=ExtResource("12_pncim")]
-position = Vector2(583, 376)
+position = Vector2(509, 378)
 
 [node name="Mine5" parent="." index="17" instance=ExtResource("12_pncim")]
 position = Vector2(1167, 994)
+
+[node name="TestBarracks" type="Sprite2D" parent="." index="18"]
+position = Vector2(1010, 1407)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("14_ofc41")
