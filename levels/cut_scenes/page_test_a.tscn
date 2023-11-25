@@ -5,7 +5,7 @@
 
 [node name="PageTestA" node_paths=PackedStringArray("frames") instance=ExtResource("1_dbolm")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
-next_page = "res://cut_scenes/page_test_a_2.tscn"
+next_page = "res://levels/cut_scenes/page_test_a_2.tscn"
 next_level = "res://levels/level_test_b.tscn"
 
 [node name="Frame01" type="TextureRect" parent="Frames" index="0"]

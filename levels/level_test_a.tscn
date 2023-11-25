@@ -282,7 +282,7 @@ texture = ExtResource("5_8ffk4")
 polygon = PackedVector2Array(-198, -654, -347, -746, -212, -845, -164, -1390, -90, -1432, 72, -1421, 87, -1226, 137, -1137, 134, -1081, 17, -1013, 8, -840, 157, -697, 35, -631, -16, -796, -133, -802)
 
 [node name="ExitLevelArea" parent="Background/Bunker" index="2" instance=ExtResource("6_qmtpk")]
-next_level = "res://cut_scenes/page_test_a.tscn"
+next_level = "res://levels/cut_scenes/page_test_a.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Bunker/ExitLevelArea" index="0"]
 position = Vector2(-80, -770)

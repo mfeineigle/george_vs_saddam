@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
 [ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="3_fv6t2"]
 [ext_resource type="PackedScene" uid="uid://y4687yg2fuia" path="res://levels/exit_level_area.tscn" id="3_hc6l2"]
-[ext_resource type="PackedScene" uid="uid://qxnr355c2ly1" path="res://background/fire_column.tscn" id="4_gexcc"]
+[ext_resource type="PackedScene" uid="uid://qxnr355c2ly1" path="res://set_pieces/obstacles/fire_column.tscn" id="4_gexcc"]
 [ext_resource type="Texture2D" uid="uid://co26m2qlm3mjw" path="res://assets/buildings/hangar.png" id="5_l7j6d"]
-[ext_resource type="PackedScene" uid="uid://mo6ph6cnq1lw" path="res://obstacles/tanker_truck_01.tscn" id="6_ac23p"]
-[ext_resource type="PackedScene" uid="uid://bsxfyirod1uw7" path="res://buildings/barracks.tscn" id="6_ufc7t"]
+[ext_resource type="PackedScene" uid="uid://mo6ph6cnq1lw" path="res://set_pieces/obstacles/tanker_truck_01.tscn" id="6_ac23p"]
+[ext_resource type="PackedScene" uid="uid://bsxfyirod1uw7" path="res://set_pieces/buildings/barracks.tscn" id="6_ufc7t"]
 [ext_resource type="PackedScene" uid="uid://b75ima0605ntm" path="res://allies/child.tscn" id="7_nvqtq"]
-[ext_resource type="PackedScene" uid="uid://bfyjibsm4tkuq" path="res://obstacles/tanker_truck_02.tscn" id="7_umuy6"]
+[ext_resource type="PackedScene" uid="uid://bfyjibsm4tkuq" path="res://set_pieces/obstacles/tanker_truck_02.tscn" id="7_umuy6"]
 [ext_resource type="PackedScene" uid="uid://iwp2j1y6mc1u" path="res://weapons/landmine.tscn" id="12_pncim"]
 
 [sub_resource type="TileSet" id="TileSet_wi6lh"]
@@ -50,7 +50,7 @@ scale = Vector2(1.3, 1.3)
 polygon = PackedVector2Array(260, -92.3077, 225.385, -195.385, -279.231, -202.308, -284.615, -9.23083, -272.308, 195.385, 223.077, 209.231, 249.231, 76.1538, 180.769, 76.1538, 183.846, -94.6154)
 
 [node name="ExitLevelArea" parent="Background/HangarStaticBody" index="2" instance=ExtResource("3_hc6l2")]
-next_level = "res://cut_scenes/page_test_c.tscn"
+next_level = "res://levels/cut_scenes/page_test_c.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/HangarStaticBody/ExitLevelArea" index="0"]
 position = Vector2(416.5, 773)
