@@ -33,10 +33,11 @@ func _on_spawn_soldier_timer_timeout() -> void:
 
 
 func hit(dmg) -> void:
-	animation_player.play("hit")
-	$HealthComponent.damage(dmg)
-	if $HealthComponent.destroyed:
-		die()
+	if not $HealthComponent.destroyed:
+		animation_player.play("hit")
+		$HealthComponent.damage(dmg)
+		if $HealthComponent.destroyed:
+			die()
 
 func die() -> void:
 	print(name, " died.")
