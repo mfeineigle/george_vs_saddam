@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ns8jjlyi884e"]
+[gd_scene load_steps=15 format=3 uid="uid://ns8jjlyi884e"]
 
 [ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_asg1l"]
 [ext_resource type="Script" path="res://enemies/soldier_transport.gd" id="2_2puk3"]
@@ -109,9 +109,12 @@ _data = {
 "hit": SubResource("Animation_8s08l")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8wdah"]
+radius = 931.005
+
 [node name="SoldierTransport" instance=ExtResource("1_asg1l")]
 script = ExtResource("2_2puk3")
-max_spawned_soldiers = 3
+max_soldier_capacity = 0
 can_spawn_troops = false
 can_spawn_guards = false
 speed = 222
@@ -173,4 +176,11 @@ position = Vector2(-250, 0)
 stream = ExtResource("7_7cjlr")
 volume_db = -5.0
 
+[node name="DeployArea" type="Area2D" parent="." index="9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeployArea" index="0"]
+shape = SubResource("CircleShape2D_8wdah")
+
 [connection signal="timeout" from="SpawnSoldierTimer" to="." method="_on_spawn_soldier_timer_timeout"]
+[connection signal="body_entered" from="DeployArea" to="." method="_on_deploy_area_body_entered"]
+[connection signal="body_exited" from="DeployArea" to="." method="_on_deploy_area_body_exited"]

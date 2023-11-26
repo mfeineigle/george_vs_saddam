@@ -3,18 +3,23 @@ extends GroundVehicle
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var spawn_soldier_timer: Timer = $SpawnSoldierTimer
 
-@export var max_spawned_soldiers: int
+@export var max_soldier_capacity: int
 @export var can_spawn_troops: bool
 @export var can_spawn_guards: bool
 
-var spawned_soldiers: int = 0
+var can_deploy: bool = false
+var deployable_soldiers: int
 var soldier_types: Array[Signal] = [GameEvents.spawn_guard,
 									GameEvents.spawn_troop]
 
 
+func _ready() -> void:
+	deployable_soldiers = max_soldier_capacity
+
+
 func _on_spawn_soldier_timer_timeout() -> void:
-	if spawned_soldiers < max_spawned_soldiers:
-		spawned_soldiers += 1
+	if deployable_soldiers > 0 and can_deploy:
+		deployable_soldiers -= 1
 		$AudioStreamPlayer2D.play()
 		if can_spawn_guards and can_spawn_troops:
 			var spawn_random: Signal = soldier_types[randi() % soldier_types.size()]
@@ -23,8 +28,8 @@ func _on_spawn_soldier_timer_timeout() -> void:
 			GameEvents.spawn_guard.emit($SoldierSpawnPoint.global_position)
 		elif can_spawn_troops:
 			GameEvents.spawn_troop.emit($SoldierSpawnPoint.global_position)
-	else:
-		spawn_soldier_timer.stop()
+	if deployable_soldiers <= 0:
+		$SpawnSoldierTimer.stop()
 
 
 func hit(dmg) -> void:
@@ -41,3 +46,12 @@ func die() -> void:
 		f.look_at(Vector2(1_000_000, f.position.y))
 		f.show()
 	animation_player.play("die")
+
+
+func _on_deploy_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		can_deploy = true
+
+func _on_deploy_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		can_deploy = false

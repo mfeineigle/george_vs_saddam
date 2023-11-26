@@ -36,10 +36,10 @@ func _on_timer_timeout() -> void:
 	pick_up = false
 	progress_ratio = pick_up_upper
 	if follower.can_spawn_troops or follower.can_spawn_guards:
-		for i in follower.spawned_soldiers:
-			if reload_depot.total_soldiers > 0 and follower.spawned_soldiers > 0:
+		for i in follower.max_soldier_capacity:
+			if reload_depot.total_soldiers > 0 and follower.deployable_soldiers < follower.max_soldier_capacity:
 				reload_depot.total_soldiers -= 1
-				follower.spawned_soldiers -= 1
-			else:
-				set_process(false)
+				follower.deployable_soldiers += 1
+		if reload_depot.total_soldiers <= 0 and follower.deployable_soldiers <= 0:
+			set_process(false)
 		follower.spawn_soldier_timer.start()

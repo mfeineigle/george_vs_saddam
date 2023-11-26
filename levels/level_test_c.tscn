@@ -127,6 +127,7 @@ pick_up_lower = 0.3
 pick_up_upper = 0.31
 
 [node name="SoldierTransport" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("12_khsqt")]
+max_soldier_capacity = 3
 can_spawn_troops = true
 
 [node name="ReloadDepot" parent="Path2D" index="1" instance=ExtResource("13_wm4ke")]
