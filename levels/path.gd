@@ -2,7 +2,7 @@ extends PathFollow2D
 
 @export var speed: float
 @export var follower: GroundVehicle
-@export var reload_depot: Area2D
+@export var reload_depot: StaticBody2D
 ## progress_ratio start pickup position (eg: 0.3)
 @export var pick_up_lower: float
 ## progress_ratio done pickup position (eg: 0.31)

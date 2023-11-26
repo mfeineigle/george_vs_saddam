@@ -1,11 +1,235 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdanvnnood0tq"]
+[gd_scene load_steps=13 format=3 uid="uid://cdanvnnood0tq"]
 
 [ext_resource type="Texture2D" uid="uid://xss6r5iofm06" path="res://assets/buildings/test_barracks.png" id="1_k2wy5"]
 [ext_resource type="Script" path="res://set_pieces/reload_depot.gd" id="1_vykq5"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_rt06r"]
+[ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="3_xwj4d"]
+[ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_b0gww"]
 
-[node name="ReloadDepot" type="Area2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_id4kx"]
+shader = ExtResource("2_rt06r")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ea7p"]
+size = Vector2(256, 20)
+
+[sub_resource type="Animation" id="Animation_61c1s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_37w1w"]
+resource_name = "die"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fires/Fire:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.4, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fires/Fire2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fires/Fire3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.2, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Fires/Fire4:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Fires/Fire5:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(4.8, 4.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 0]
+}
+
+[sub_resource type="Animation" id="Animation_486c4"]
+resource_name = "hit"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_18sdg"]
+_data = {
+"RESET": SubResource("Animation_61c1s"),
+"die": SubResource("Animation_37w1w"),
+"hit": SubResource("Animation_486c4")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d03vq"]
+size = Vector2(586, 118)
+
+[node name="ReloadDepot" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 23
 script = ExtResource("1_vykq5")
 total_soldiers = 5
 
+[node name="HealthComponent" parent="." instance=ExtResource("3_xwj4d")]
+max_hp = 1
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_id4kx")
+rotation = 1.5708
 texture = ExtResource("1_k2wy5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(2, 69)
+shape = SubResource("RectangleShape2D_8ea7p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -71)
+shape = SubResource("RectangleShape2D_8ea7p")
+
+[node name="DeathAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_18sdg")
+}
+
+[node name="Fires" type="Node2D" parent="."]
+
+[node name="Fire" type="Sprite2D" parent="Fires"]
+visible = false
+position = Vector2(-66, -73)
+scale = Vector2(2, 2)
+skew = -0.237365
+texture = ExtResource("4_b0gww")
+hframes = 9
+vframes = 9
+frame = 80
+
+[node name="Fire2" type="Sprite2D" parent="Fires"]
+visible = false
+position = Vector2(54, -85)
+scale = Vector2(2, 2)
+skew = 0.0436332
+texture = ExtResource("4_b0gww")
+hframes = 9
+vframes = 9
+
+[node name="Fire3" type="Sprite2D" parent="Fires"]
+visible = false
+position = Vector2(-112, 4)
+scale = Vector2(2, 2)
+skew = -0.1309
+texture = ExtResource("4_b0gww")
+hframes = 9
+vframes = 9
+frame = 51
+
+[node name="Fire4" type="Sprite2D" parent="Fires"]
+visible = false
+position = Vector2(3, 3)
+scale = Vector2(2, 2)
+texture = ExtResource("4_b0gww")
+hframes = 9
+vframes = 9
+frame = 66
+
+[node name="Fire5" type="Sprite2D" parent="Fires"]
+visible = false
+position = Vector2(113, -4)
+scale = Vector2(2, 2)
+skew = 0.191986
+texture = ExtResource("4_b0gww")
+hframes = 9
+vframes = 9
+frame = 16
+
+[node name="DelayDeployment" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DelayDeployment"]
+position = Vector2(87, 0)
+shape = SubResource("RectangleShape2D_d03vq")
+debug_color = Color(0, 0.639216, 0.388235, 0.419608)
+
+[connection signal="body_entered" from="DelayDeployment" to="." method="_on_delay_deployment_body_entered"]
+[connection signal="body_exited" from="DelayDeployment" to="." method="_on_delay_deployment_body_exited"]

@@ -115,7 +115,14 @@ position = Vector2(2255, 489)
 position = Vector2(100, 601)
 curve = SubResource("Curve2D_6bky4")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" node_paths=PackedStringArray("follower", "reload_depot")]
+[node name="ReloadDepot" parent="Path2D" index="0" node_paths=PackedStringArray("follower", "path") instance=ExtResource("13_wm4ke")]
+position = Vector2(910, 804)
+scale = Vector2(1.5, 1.5)
+total_soldiers = 1
+follower = NodePath("../PathFollow2D/SoldierTransport")
+path = NodePath("../PathFollow2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="1" node_paths=PackedStringArray("follower", "reload_depot")]
 position = Vector2(1292.06, 823.856)
 rotation = 0.0482752
 progress = 1252.15
@@ -129,12 +136,6 @@ pick_up_upper = 0.31
 [node name="SoldierTransport" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("12_khsqt")]
 max_soldier_capacity = 3
 can_spawn_troops = true
-
-[node name="ReloadDepot" parent="Path2D" index="1" instance=ExtResource("13_wm4ke")]
-position = Vector2(910, 804)
-rotation = 1.5708
-scale = Vector2(1.5, 1.5)
-total_soldiers = 1
 
 [node name="Path2D2" type="Path2D" parent="." index="12"]
 curve = SubResource("Curve2D_3qdm0")
