@@ -1,12 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddipj33loevtv"]
+[gd_scene load_steps=13 format=3 uid="uid://ddipj33loevtv"]
 
 [ext_resource type="Script" path="res://characters/george.gd" id="1_rmo37"]
 [ext_resource type="Script" path="res://characters/Camera2D.gd" id="3_0vf3l"]
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="4_fnmib"]
+[ext_resource type="Texture2D" uid="uid://d4hi408enp7gl" path="res://assets/weapons/ar15_muzzle_flash.png" id="5_5quw0"]
 [ext_resource type="Texture2D" uid="uid://ckn1kkhxiisd" path="res://assets/characters/george.png" id="5_4032p"]
 [ext_resource type="Texture2D" uid="uid://v40khrhhlsbp" path="res://assets/weapons/ar-15.png" id="6_vd5mg"]
+[ext_resource type="Texture2D" uid="uid://f0txkl5224x2" path="res://assets/weapons/rocket_muzzle_flash.png" id="7_4kuio"]
 [ext_resource type="Texture2D" uid="uid://cvkajy17emwcj" path="res://assets/weapons/rocket_launcher.png" id="7_g67x7"]
+[ext_resource type="Texture2D" uid="uid://cckgixlpie0nc" path="res://assets/weapons/rocket_muzzle_exhaust.png" id="8_di3bs"]
 [ext_resource type="Texture2D" uid="uid://bgv2arde03bhj" path="res://assets/weapons/shotgun.png" id="8_g6ej4"]
+[ext_resource type="Texture2D" uid="uid://bm847wiksd0bq" path="res://assets/weapons/shotgun_muzzle_flash.png" id="8_w3pmm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usucr"]
 radius = 36.0
@@ -37,15 +41,37 @@ visible = false
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("6_vd5mg")
 
+[node name="RifleFlash" type="Sprite2D" parent="Guns/Rifle"]
+visible = false
+position = Vector2(440, -46.6666)
+scale = Vector2(0.324137, 0.31591)
+texture = ExtResource("5_5quw0")
+
 [node name="RocketLauncher" type="Sprite2D" parent="Guns"]
 visible = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_g67x7")
 
+[node name="RocketFlash" type="Sprite2D" parent="Guns/RocketLauncher"]
+visible = false
+position = Vector2(280, -40)
+texture = ExtResource("7_4kuio")
+
+[node name="RocketExhaust" type="Sprite2D" parent="Guns/RocketLauncher"]
+visible = false
+position = Vector2(-440, -28)
+texture = ExtResource("8_di3bs")
+
 [node name="Shotgun" type="Sprite2D" parent="Guns"]
 visible = false
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_g6ej4")
+
+[node name="ShotgunFlash" type="Sprite2D" parent="Guns/Shotgun"]
+visible = false
+position = Vector2(500, -45)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_w3pmm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

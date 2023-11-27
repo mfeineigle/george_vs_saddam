@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 
 @onready var george_sprite: Sprite2D = $GeorgeSprite
+@onready var rifle_flash: Sprite2D = $Guns/Rifle/RifleFlash
+@onready var rocket_flash: Sprite2D = $Guns/RocketLauncher/RocketFlash
+@onready var rocket_exhaust: Sprite2D = $Guns/RocketLauncher/RocketExhaust
+@onready var shotgun_flash: Sprite2D = $Guns/Shotgun/ShotgunFlash
 
 @export var speed: int = 500
 var direction: Vector2
@@ -96,11 +100,38 @@ func shoot() -> void:
 		shoot_animation()
 
 func shoot_animation() -> void:
+	muzzle_flash(WeaponsManager.current_weapon)
 	var tween = create_tween().set_loops(1)
 	tween.tween_property($Guns, "position:y", 10, 0.05).from(40)
 	tween.tween_property($Guns, "position:y", 40, 0.15).from(10)
-	
-	
+
+func muzzle_flash(weapon) -> void:
+	var tween = get_tree().create_tween()
+	match weapon.name:
+		"Rifle":
+			rifle_flash.show()
+			tween.tween_property(rifle_flash, "scale", Vector2(0.3, 0.3), 0.1)
+			tween.tween_property(rifle_flash, "scale", Vector2(0.0, 0.0), 0.1)
+			await tween.finished
+			rifle_flash.hide()
+		"RocketLauncher":
+			var exhaust_tween = get_tree().create_tween()
+			rocket_flash.show()
+			rocket_exhaust.show()
+			tween.tween_property(rocket_flash, "scale", Vector2(1, 1), 0.1)
+			tween.tween_property(rocket_flash, "scale", Vector2(0.0, 0.0), 0.1)
+			exhaust_tween.tween_property(rocket_exhaust, "scale", Vector2(1, 1), 0.1)
+			exhaust_tween.tween_property(rocket_exhaust, "scale", Vector2(0.0, 0.0), 0.3)
+			await exhaust_tween.finished
+			rocket_flash.hide()
+			rocket_exhaust.hide()
+		"Shotgun":
+			shotgun_flash.show()
+			tween.tween_property(shotgun_flash, "scale", Vector2(0.7, 0.7), 0.05)
+			tween.tween_property(shotgun_flash, "scale", Vector2(0.0, 0.0), 0.1)
+			await tween.finished
+			shotgun_flash.hide()
+
 # The first weapon you pick up will instantly equip and become active
 func equip_first_weapon(_weapon):
 	if WeaponsManager.weapons.size() <= 1:
