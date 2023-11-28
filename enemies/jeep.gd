@@ -2,6 +2,8 @@ extends GroundVehicle
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var spawn_soldier_timer: Timer = $SpawnSoldierTimer
+@onready var health_component: Node2D = $HealthComponent
+@onready var soldier_spawn_point: Marker2D = $SoldierSpawnPoint
 
 @export var max_soldier_capacity: int
 @export var can_spawn_troops: bool
@@ -21,25 +23,25 @@ func _ready() -> void:
 
 
 func _on_spawn_soldier_timer_timeout() -> void:
-	if deployable_soldiers > 0 and can_deploy and not $HealthComponent.destroyed:
+	if deployable_soldiers > 0 and can_deploy and not health_component.destroyed:
 		deployable_soldiers -= 1
 		$AudioStreamPlayer2D.play()
 		if can_spawn_guards and can_spawn_troops:
 			var spawn_random: Signal = soldier_types[randi() % soldier_types.size()]
-			spawn_random.emit($SoldierSpawnPoint.global_position)
+			spawn_random.emit(soldier_spawn_point.global_position)
 		elif can_spawn_guards:
-			GameEvents.spawn_guard.emit($SoldierSpawnPoint.global_position)
+			GameEvents.spawn_guard.emit(soldier_spawn_point.global_position)
 		elif can_spawn_troops:
-			GameEvents.spawn_troop.emit($SoldierSpawnPoint.global_position)
+			GameEvents.spawn_troop.emit(soldier_spawn_point.global_position)
 	if deployable_soldiers <= 0:
 		spawn_soldier_timer.stop()
 
 
 func hit(dmg) -> void:
-	if not $HealthComponent.destroyed:
+	if not health_component.destroyed:
 		animation_player.play("hit")
-		$HealthComponent.damage(dmg)
-		if $HealthComponent.destroyed:
+		health_component.damage(dmg)
+		if health_component.destroyed:
 			die()
 
 func die() -> void:
