@@ -1,22 +1,28 @@
 extends GroundVehicle
 
-@onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var spawn_soldier_timer: Timer = $SpawnSoldierTimer
 
-@export var max_spawned_soldiers: int
+@export var max_soldier_capacity: int
 @export var can_spawn_troops: bool
 @export var can_spawn_guards: bool
 
-var spawned_soldiers: int = 0
+var can_deploy: bool = false
+var deployable_soldiers: int
 var soldier_types: Array[Signal] = [GameEvents.spawn_guard,
 									GameEvents.spawn_troop]
 
-func _process(_delta: float) -> void:
-	Utils.rotate_sprite_direction(vehicle_sprite, get_parent().rotation)
+
+func _ready() -> void:
+	deployable_soldiers = max_soldier_capacity
+
+#func _process(_delta: float) -> void:
+	#Utils.rotate_sprite_direction(vehicle_sprite, get_parent().rotation)
 
 
-func _on_spawn_soldier_timer_timeout():
-	if spawned_soldiers < max_spawned_soldiers:
-		spawned_soldiers += 1
+func _on_spawn_soldier_timer_timeout() -> void:
+	if deployable_soldiers > 0 and can_deploy and not $HealthComponent.destroyed:
+		deployable_soldiers -= 1
 		$AudioStreamPlayer2D.play()
 		if can_spawn_guards and can_spawn_troops:
 			var spawn_random: Signal = soldier_types[randi() % soldier_types.size()]
@@ -25,15 +31,16 @@ func _on_spawn_soldier_timer_timeout():
 			GameEvents.spawn_guard.emit($SoldierSpawnPoint.global_position)
 		elif can_spawn_troops:
 			GameEvents.spawn_troop.emit($SoldierSpawnPoint.global_position)
-	else:
-		$SpawnSoldierTimer.stop()
+	if deployable_soldiers <= 0:
+		spawn_soldier_timer.stop()
 
 
 func hit(dmg) -> void:
-	$DeathAnimationPlayer.play("hit")
-	$HealthComponent.damage(dmg)
-	if $HealthComponent.destroyed:
-		die()
+	if not $HealthComponent.destroyed:
+		animation_player.play("hit")
+		$HealthComponent.damage(dmg)
+		if $HealthComponent.destroyed:
+			die()
 
 func die() -> void:
 	print(name, " died.")
@@ -43,4 +50,13 @@ func die() -> void:
 	for f in $Fires.get_children():
 		f.look_at(Vector2(1_000_000, f.position.y))
 		f.show()
-	death_animation_player.play("die")
+	animation_player.play("die")
+
+
+func _on_deploy_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		can_deploy = true
+
+func _on_deploy_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		can_deploy = false
