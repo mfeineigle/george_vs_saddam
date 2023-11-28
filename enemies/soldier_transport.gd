@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func _on_spawn_soldier_timer_timeout() -> void:
-	if deployable_soldiers > 0 and can_deploy:
+	if deployable_soldiers > 0 and can_deploy and not $HealthComponent.destroyed:
 		deployable_soldiers -= 1
 		$AudioStreamPlayer2D.play()
 		if can_spawn_guards and can_spawn_troops:
@@ -29,7 +29,7 @@ func _on_spawn_soldier_timer_timeout() -> void:
 		elif can_spawn_troops:
 			GameEvents.spawn_troop.emit($SoldierSpawnPoint.global_position)
 	if deployable_soldiers <= 0:
-		$SpawnSoldierTimer.stop()
+		spawn_soldier_timer.stop()
 
 
 func hit(dmg) -> void:

@@ -153,7 +153,7 @@ script = ExtResource("1_vykq5")
 total_soldiers = 5
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_xwj4d")]
-max_hp = 1
+max_hp = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_id4kx")

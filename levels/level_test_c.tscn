@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1sitvjpgw5b5"]
+[gd_scene load_steps=20 format=3 uid="uid://b1sitvjpgw5b5"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_pud3l"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="2_rfmbg"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ns8jjlyi884e" path="res://enemies/soldier_transport.tscn" id="12_khsqt"]
 [ext_resource type="PackedScene" uid="uid://iwp2j1y6mc1u" path="res://weapons/landmine.tscn" id="12_pncim"]
 [ext_resource type="PackedScene" uid="uid://cdanvnnood0tq" path="res://set_pieces/reload_depot.tscn" id="13_wm4ke"]
+[ext_resource type="PackedScene" uid="uid://dht6800xvv48j" path="res://enemies/jeep.tscn" id="14_u11d6"]
 
 [sub_resource type="TileSet" id="TileSet_wi6lh"]
 
@@ -132,9 +133,8 @@ position = Vector2(1292.06, 823.856)
 rotation = 0.0482752
 progress = 1252.15
 script = ExtResource("11_0d6br")
-speed = 0.2
 follower = NodePath("SoldierTransport")
-reload_depot = NodePath("../../ReloadDepot")
+reload_depot = NodePath("../ReloadDepot")
 pick_up_lower = 0.3
 pick_up_upper = 0.31
 
@@ -142,19 +142,35 @@ pick_up_upper = 0.31
 max_soldier_capacity = 3
 can_spawn_troops = true
 
-[node name="ReloadDepot" parent="Enemies/Ground_Vehicles" index="1" node_paths=PackedStringArray("follower", "path") instance=ExtResource("13_wm4ke")]
-position = Vector2(1010, 1405)
+[node name="ReloadDepot" parent="Enemies/Ground_Vehicles/Path2D" index="1" node_paths=PackedStringArray("follower", "path") instance=ExtResource("13_wm4ke")]
+position = Vector2(910, 804)
 scale = Vector2(1.5, 1.5)
 total_soldiers = 10
-follower = NodePath("../Path2D/PathFollow2D/SoldierTransport")
-path = NodePath("../Path2D/PathFollow2D")
+follower = NodePath("../PathFollow2D/SoldierTransport")
+path = NodePath("../PathFollow2D")
 
-[node name="Path2D2" type="Path2D" parent="Enemies/Ground_Vehicles" index="2"]
+[node name="Path2D2" type="Path2D" parent="Enemies/Ground_Vehicles" index="1"]
 curve = SubResource("Curve2D_3qdm0")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Ground_Vehicles/Path2D2" index="0"]
-position = Vector2(1478, -220)
-rotation = -3.11199
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Ground_Vehicles/Path2D2" index="0" node_paths=PackedStringArray("follower", "reload_depot")]
+position = Vector2(1008.61, -651.801)
+rotation = -0.0259987
+progress = 2108.14
+script = ExtResource("11_0d6br")
+follower = NodePath("jeep")
+reload_depot = NodePath("../ReloadDepot")
+pick_up_lower = 0.59
+pick_up_upper = 0.6
+
+[node name="jeep" parent="Enemies/Ground_Vehicles/Path2D2/PathFollow2D" index="0" instance=ExtResource("14_u11d6")]
+max_soldier_capacity = 1
+can_spawn_troops = true
+
+[node name="ReloadDepot" parent="Enemies/Ground_Vehicles/Path2D2" index="1" node_paths=PackedStringArray("follower", "path") instance=ExtResource("13_wm4ke")]
+position = Vector2(1017, -662)
+total_soldiers = 1
+follower = NodePath("../PathFollow2D/jeep")
+path = NodePath("../PathFollow2D")
 
 [node name="Child" parent="Allies" index="1" instance=ExtResource("7_nvqtq")]
 position = Vector2(726, -45)

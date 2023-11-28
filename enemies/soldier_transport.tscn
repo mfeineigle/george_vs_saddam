@@ -110,7 +110,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8wdah"]
-radius = 931.005
+radius = 919.157
 
 [node name="SoldierTransport" instance=ExtResource("1_asg1l")]
 script = ExtResource("2_2puk3")
