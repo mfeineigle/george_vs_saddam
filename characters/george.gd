@@ -155,10 +155,13 @@ func set_wielded_weapon(weapon) -> void:
 	match weapon.name:
 		"Rifle":
 			$Guns/Rifle.show()
+			$Guns/Rifle/RifleLoad.play()
 		"RocketLauncher":
 			$Guns/RocketLauncher.show()
+			$Guns/RocketLauncher/RocketLoad.play()
 		"Shotgun":
 			$Guns/Shotgun.show()
+			$Guns/Shotgun/ShotgunLoad.play()
 	
 # A cooldown to prevent cycle spamming to avoid weapon cooldowns
 func cycled_weapon_cooldown() -> void:
