@@ -15,8 +15,8 @@ func hit(dmg) -> void:
 
 func die() -> void:
 	total_soldiers = 0
-	#$Sprite2D.hide()
-	#$DestroyedSprite2D.show()
+	$Sprite2D.hide()
+	$DestroyedSprite.show()
 	for f in $Fires.get_children():
 		f.show()
 	death_animation_player.play("die")

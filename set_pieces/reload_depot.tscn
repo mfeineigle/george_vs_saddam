@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdanvnnood0tq"]
+[gd_scene load_steps=14 format=3 uid="uid://cdanvnnood0tq"]
 
-[ext_resource type="Texture2D" uid="uid://xss6r5iofm06" path="res://assets/buildings/test_barracks.png" id="1_k2wy5"]
 [ext_resource type="Script" path="res://set_pieces/reload_depot.gd" id="1_vykq5"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_rt06r"]
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="3_xwj4d"]
+[ext_resource type="Texture2D" uid="uid://xss6r5iofm06" path="res://assets/buildings/reload_depot.png" id="4_4k7xh"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_b0gww"]
+[ext_resource type="Texture2D" uid="uid://bompjcy44eews" path="res://assets/buildings/reload_depot_destroyed.png" id="5_uq6ol"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_id4kx"]
 shader = ExtResource("2_rt06r")
@@ -13,6 +14,9 @@ shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ea7p"]
 size = Vector2(256, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d03vq"]
+size = Vector2(586, 118)
 
 [sub_resource type="Animation" id="Animation_61c1s"]
 length = 0.001
@@ -142,9 +146,6 @@ _data = {
 "hit": SubResource("Animation_486c4")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d03vq"]
-size = Vector2(586, 118)
-
 [node name="ReloadDepot" type="StaticBody2D"]
 collision_layer = 8
 collision_mask = 23
@@ -156,16 +157,28 @@ max_hp = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_id4kx")
-rotation = 1.5708
-texture = ExtResource("1_k2wy5")
+texture = ExtResource("4_4k7xh")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="DestroyedSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_uq6ol")
+
+[node name="LowerWall" type="CollisionShape2D" parent="."]
 position = Vector2(2, 69)
 shape = SubResource("RectangleShape2D_8ea7p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="UpperWall" type="CollisionShape2D" parent="."]
 position = Vector2(0, -71)
 shape = SubResource("RectangleShape2D_8ea7p")
+
+[node name="DelayDeployment" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DelayDeployment"]
+position = Vector2(87, 0)
+shape = SubResource("RectangleShape2D_d03vq")
+debug_color = Color(0, 0.639216, 0.388235, 0.419608)
 
 [node name="DeathAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -176,8 +189,8 @@ libraries = {
 
 [node name="Fire" type="Sprite2D" parent="Fires"]
 visible = false
-position = Vector2(-66, -73)
-scale = Vector2(2, 2)
+position = Vector2(-68, -106)
+scale = Vector2(1.8, 1.8)
 skew = -0.237365
 texture = ExtResource("4_b0gww")
 hframes = 9
@@ -186,18 +199,18 @@ frame = 80
 
 [node name="Fire2" type="Sprite2D" parent="Fires"]
 visible = false
-position = Vector2(54, -85)
-scale = Vector2(2, 2)
-skew = 0.0436332
+position = Vector2(74, 9)
+scale = Vector2(1.5, 1.5)
+skew = -0.193732
 texture = ExtResource("4_b0gww")
 hframes = 9
 vframes = 9
 
 [node name="Fire3" type="Sprite2D" parent="Fires"]
 visible = false
-position = Vector2(-112, 4)
+position = Vector2(-131, -5)
 scale = Vector2(2, 2)
-skew = -0.1309
+skew = -0.233874
 texture = ExtResource("4_b0gww")
 hframes = 9
 vframes = 9
@@ -205,8 +218,7 @@ frame = 51
 
 [node name="Fire4" type="Sprite2D" parent="Fires"]
 visible = false
-position = Vector2(3, 3)
-scale = Vector2(2, 2)
+position = Vector2(19, 33)
 texture = ExtResource("4_b0gww")
 hframes = 9
 vframes = 9
@@ -214,22 +226,13 @@ frame = 66
 
 [node name="Fire5" type="Sprite2D" parent="Fires"]
 visible = false
-position = Vector2(113, -4)
-scale = Vector2(2, 2)
-skew = 0.191986
+position = Vector2(115, -45)
+scale = Vector2(1.8, 1.8)
+skew = 0.0296706
 texture = ExtResource("4_b0gww")
 hframes = 9
 vframes = 9
 frame = 16
-
-[node name="DelayDeployment" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DelayDeployment"]
-position = Vector2(87, 0)
-shape = SubResource("RectangleShape2D_d03vq")
-debug_color = Color(0, 0.639216, 0.388235, 0.419608)
 
 [connection signal="body_entered" from="DelayDeployment" to="." method="_on_delay_deployment_body_entered"]
 [connection signal="body_exited" from="DelayDeployment" to="." method="_on_delay_deployment_body_exited"]

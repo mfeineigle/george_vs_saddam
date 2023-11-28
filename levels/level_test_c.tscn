@@ -78,6 +78,9 @@ delay = 2.25
 position = Vector2(960, 922)
 delay = 1.5
 
+[node name="Barracks" parent="Background" index="8" instance=ExtResource("6_ufc7t")]
+position = Vector2(2255, 489)
+
 [node name="George" parent="." index="3"]
 position = Vector2(945, 374)
 
@@ -89,6 +92,21 @@ position = Vector2(1184, 1114)
 
 [node name="TankerTruck02" parent="Obstacles" index="1" instance=ExtResource("7_umuy6")]
 position = Vector2(1092, -429)
+
+[node name="Mine" parent="Projectiles" index="0" instance=ExtResource("12_pncim")]
+position = Vector2(1250, 396)
+
+[node name="Mine2" parent="Projectiles" index="1" instance=ExtResource("12_pncim")]
+position = Vector2(1640, -52)
+
+[node name="Mine3" parent="Projectiles" index="2" instance=ExtResource("12_pncim")]
+position = Vector2(1694, 1070)
+
+[node name="Mine4" parent="Projectiles" index="3" instance=ExtResource("12_pncim")]
+position = Vector2(509, 378)
+
+[node name="Mine5" parent="Projectiles" index="4" instance=ExtResource("12_pncim")]
+position = Vector2(1167, 994)
 
 [node name="NavigationRegion2D" parent="." index="7"]
 visible = false
@@ -105,56 +123,38 @@ position = Vector2(-246, 320)
 [node name="scud_launcher4" parent="Enemies/ScudLauchers" index="3" instance=ExtResource("3_fv6t2")]
 position = Vector2(-463, 333)
 
-[node name="Child" parent="Allies" index="1" instance=ExtResource("7_nvqtq")]
-position = Vector2(726, -45)
-
-[node name="Barracks" parent="." index="10" instance=ExtResource("6_ufc7t")]
-position = Vector2(2255, 489)
-
-[node name="Path2D" type="Path2D" parent="." index="11"]
+[node name="Path2D" type="Path2D" parent="Enemies/Ground_Vehicles" index="0"]
 position = Vector2(100, 601)
 curve = SubResource("Curve2D_6bky4")
 
-[node name="ReloadDepot" parent="Path2D" index="0" node_paths=PackedStringArray("follower", "path") instance=ExtResource("13_wm4ke")]
-position = Vector2(910, 804)
-scale = Vector2(1.5, 1.5)
-total_soldiers = 1
-follower = NodePath("../PathFollow2D/SoldierTransport")
-path = NodePath("../PathFollow2D")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="1" node_paths=PackedStringArray("follower", "reload_depot")]
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Ground_Vehicles/Path2D" index="0" node_paths=PackedStringArray("follower", "reload_depot")]
 position = Vector2(1292.06, 823.856)
 rotation = 0.0482752
 progress = 1252.15
 script = ExtResource("11_0d6br")
 speed = 0.2
 follower = NodePath("SoldierTransport")
-reload_depot = NodePath("../ReloadDepot")
+reload_depot = NodePath("../../ReloadDepot")
 pick_up_lower = 0.3
 pick_up_upper = 0.31
 
-[node name="SoldierTransport" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("12_khsqt")]
+[node name="SoldierTransport" parent="Enemies/Ground_Vehicles/Path2D/PathFollow2D" index="0" instance=ExtResource("12_khsqt")]
 max_soldier_capacity = 3
 can_spawn_troops = true
 
-[node name="Path2D2" type="Path2D" parent="." index="12"]
+[node name="ReloadDepot" parent="Enemies/Ground_Vehicles" index="1" node_paths=PackedStringArray("follower", "path") instance=ExtResource("13_wm4ke")]
+position = Vector2(1010, 1405)
+scale = Vector2(1.5, 1.5)
+total_soldiers = 10
+follower = NodePath("../Path2D/PathFollow2D/SoldierTransport")
+path = NodePath("../Path2D/PathFollow2D")
+
+[node name="Path2D2" type="Path2D" parent="Enemies/Ground_Vehicles" index="2"]
 curve = SubResource("Curve2D_3qdm0")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" index="0"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Ground_Vehicles/Path2D2" index="0"]
 position = Vector2(1478, -220)
 rotation = -3.11199
 
-[node name="Mine" parent="." index="13" instance=ExtResource("12_pncim")]
-position = Vector2(1250, 396)
-
-[node name="Mine2" parent="." index="14" instance=ExtResource("12_pncim")]
-position = Vector2(1640, -52)
-
-[node name="Mine3" parent="." index="15" instance=ExtResource("12_pncim")]
-position = Vector2(1694, 1070)
-
-[node name="Mine4" parent="." index="16" instance=ExtResource("12_pncim")]
-position = Vector2(509, 378)
-
-[node name="Mine5" parent="." index="17" instance=ExtResource("12_pncim")]
-position = Vector2(1167, 994)
+[node name="Child" parent="Allies" index="1" instance=ExtResource("7_nvqtq")]
+position = Vector2(726, -45)
