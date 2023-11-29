@@ -1,6 +1,7 @@
 class_name Soldier extends CharacterBody2D
 
 @export var speed: int = 250
+@export var hit_sounds: Array[AudioStreamMP3]
 var get_new_nav: bool = true
 var player_in_range: bool = false
 var can_shoot: bool = true
@@ -59,6 +60,7 @@ func update_nav() -> Vector2:
 	
 func hit(dmg) -> void:
 	$AnimationPlayer.play("hit")
+	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
 	$HealthComponent.damage(dmg)
 	if $HealthComponent.destroyed:
 		die()
@@ -69,9 +71,10 @@ func die() -> void:
 	get_tree().current_scene.current_level.get_node("Background/Blood").add_child(blood)
 	blood.setup(global_position)
 	$deathSprite.show()
+	sprite.hide()
 	$AnimationPlayer.play("die")
 	await $AnimationPlayer.animation_finished
-	call_deferred("queue_free")
+	queue_free()
 
 
 
