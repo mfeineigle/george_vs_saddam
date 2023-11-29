@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://lj8agpd1vbr7"]
+[gd_scene load_steps=19 format=3 uid="uid://lj8agpd1vbr7"]
 
 [ext_resource type="Script" path="res://enemies/soldier.gd" id="1_171gw"]
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="1_bxc12"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://di2vy0qjnak7s" path="res://assets/enemies/soldier_2.png" id="4_wkl7f"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="6_fgvit"]
 [ext_resource type="PackedScene" uid="uid://bbm3sb6nu3lft" path="res://weapons/shotgun.tscn" id="7_v1t4p"]
+[ext_resource type="AudioStream" uid="uid://cmkvjbynuoytm" path="res://assets/audio/weapons/bullet_hit_01.mp3" id="9_uhwct"]
+[ext_resource type="AudioStream" uid="uid://dtci3swkxrn3d" path="res://assets/audio/weapons/bullet_hit_02.mp3" id="10_odqrh"]
+[ext_resource type="AudioStream" uid="uid://c6jgc1uy0yfjj" path="res://assets/audio/weapons/bullet_hit_03.mp3" id="11_ra7pk"]
 
 [sub_resource type="Animation" id="Animation_nkp0f"]
 length = 0.001
@@ -147,6 +150,7 @@ collision_mask = 15
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_171gw")
+hit_sounds = Array[AudioStreamMP3]([ExtResource("9_uhwct"), ExtResource("10_odqrh"), ExtResource("11_ra7pk")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_bxc12")]
 max_hp = 5

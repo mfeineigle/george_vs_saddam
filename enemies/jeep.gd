@@ -8,6 +8,7 @@ extends GroundVehicle
 @export var max_soldier_capacity: int
 @export var can_spawn_troops: bool
 @export var can_spawn_guards: bool
+@export var hit_sounds: Array[AudioStreamMP3]
 
 var can_deploy: bool = false
 var deployable_soldiers: int
@@ -38,6 +39,7 @@ func _on_spawn_soldier_timer_timeout() -> void:
 
 
 func hit(dmg) -> void:
+	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
 	if not health_component.destroyed:
 		animation_player.play("hit")
 		health_component.damage(dmg)

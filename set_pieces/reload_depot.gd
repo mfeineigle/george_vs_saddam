@@ -5,8 +5,11 @@ extends StaticBody2D
 @export var total_soldiers: int
 @export var follower: GroundVehicle
 @export var path: PathFollow2D
+@export var hit_sounds: Array[AudioStreamMP3]
+
 
 func hit(dmg) -> void:
+	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
 	if not $HealthComponent.destroyed:
 		$DeathAnimationPlayer.play("hit")
 		$HealthComponent.damage(dmg)

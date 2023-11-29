@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdanvnnood0tq"]
+[gd_scene load_steps=16 format=3 uid="uid://cdanvnnood0tq"]
 
 [ext_resource type="Script" path="res://set_pieces/reload_depot.gd" id="1_vykq5"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_rt06r"]
+[ext_resource type="AudioStream" uid="uid://bp06uk3u0py7h" path="res://assets/audio/bullet_hit_car_01.mp3" id="2_vje4q"]
+[ext_resource type="AudioStream" uid="uid://cfj515r2e2y6g" path="res://assets/audio/bullet_hit_car_02.mp3" id="3_6iplf"]
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="3_xwj4d"]
 [ext_resource type="Texture2D" uid="uid://xss6r5iofm06" path="res://assets/buildings/reload_depot.png" id="4_4k7xh"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_b0gww"]
@@ -151,6 +153,7 @@ collision_layer = 8
 collision_mask = 23
 script = ExtResource("1_vykq5")
 total_soldiers = 5
+hit_sounds = Array[AudioStreamMP3]([ExtResource("2_vje4q"), ExtResource("3_6iplf")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_xwj4d")]
 max_hp = 10

@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://ns8jjlyi884e"]
+[gd_scene load_steps=17 format=3 uid="uid://ns8jjlyi884e"]
 
 [ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_asg1l"]
 [ext_resource type="Script" path="res://enemies/soldier_transport.gd" id="2_2puk3"]
 [ext_resource type="Texture2D" uid="uid://buq8usola37uh" path="res://assets/enemies/soldier_transport_top.png" id="2_o8hjx"]
 [ext_resource type="Texture2D" uid="uid://cdlc4et6mex26" path="res://assets/enemies/soldier_transport_top_destroyed.png" id="3_e878u"]
+[ext_resource type="AudioStream" uid="uid://bp06uk3u0py7h" path="res://assets/audio/bullet_hit_car_01.mp3" id="3_sf50d"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_yry34"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_8vmff"]
+[ext_resource type="AudioStream" uid="uid://cfj515r2e2y6g" path="res://assets/audio/bullet_hit_car_02.mp3" id="4_43456"]
 [ext_resource type="AudioStream" uid="uid://2yrr5wepqtau" path="res://assets/audio/soldiers_leaving_transport.mp3" id="7_7cjlr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jy8g6"]
@@ -117,6 +119,7 @@ script = ExtResource("2_2puk3")
 max_soldier_capacity = 0
 can_spawn_troops = false
 can_spawn_guards = false
+hit_sounds = Array[AudioStreamMP3]([ExtResource("3_sf50d"), ExtResource("4_43456")])
 speed = 222
 
 [node name="VehicleSprite" parent="." index="0"]

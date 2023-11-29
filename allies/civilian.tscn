@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://jlux7tept8t3"]
+[gd_scene load_steps=9 format=3 uid="uid://jlux7tept8t3"]
 
 [ext_resource type="Script" path="res://allies/civilian.gd" id="1_4hc5b"]
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="2_d37tk"]
+[ext_resource type="AudioStream" uid="uid://cmkvjbynuoytm" path="res://assets/audio/weapons/bullet_hit_01.mp3" id="2_yb2jk"]
 [ext_resource type="PackedScene" uid="uid://bf8isb5x7u54f" path="res://components/death_component.tscn" id="3_ui2c4"]
+[ext_resource type="AudioStream" uid="uid://dtci3swkxrn3d" path="res://assets/audio/weapons/bullet_hit_02.mp3" id="3_ymsdr"]
+[ext_resource type="AudioStream" uid="uid://c6jgc1uy0yfjj" path="res://assets/audio/weapons/bullet_hit_03.mp3" id="4_fu65e"]
 
 [sub_resource type="Animation" id="Animation_n12yh"]
 resource_name = "die"
@@ -19,6 +22,7 @@ collision_mask = 15
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_4hc5b")
+hit_sounds = Array[AudioStreamMP3]([ExtResource("2_yb2jk"), ExtResource("3_ymsdr"), ExtResource("4_fu65e")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_d37tk")]
 max_hp = 1

@@ -1,6 +1,7 @@
 class_name Civilian extends CharacterBody2D
 
 @export var speed: int = 250
+@export var hit_sounds: Array[AudioStreamMP3]
 @onready var sprite: Sprite2D = $Sprites.get_children()[randi() % $Sprites.get_children().size()]
 var blood_scene: PackedScene = preload("res://enemies/blood.tscn")
 var run_away: bool = false
@@ -39,6 +40,7 @@ func look_away(target_pos):
 
 
 func hit(dmg) -> void:
+	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
 	$HealthComponent.damage(dmg)
 	if $HealthComponent.destroyed:
 		die()
