@@ -1,7 +1,10 @@
 extends GroundVehicle
 
-var shell_scene: PackedScene = preload("res://projectiles/tank_shell.tscn")
+
 @onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
+var shell_scene: PackedScene = preload("res://projectiles/tank_shell.tscn")
+
+@export var hit_sounds: Array[AudioStreamMP3]
 
 var can_shoot: bool = true
 var in_range: bool = false
@@ -47,6 +50,7 @@ func check_los() -> bool:
 
 
 func hit(dmg) -> void:
+	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
 	if not $HealthComponent.destroyed:
 		$DeathAnimationPlayer.play("hit")
 		$HealthComponent.damage(dmg)

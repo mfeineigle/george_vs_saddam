@@ -1,9 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvtqhhqpi1d6j"]
+[gd_scene load_steps=21 format=3 uid="uid://cvtqhhqpi1d6j"]
 
 [ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_gqbit"]
 [ext_resource type="Script" path="res://enemies/tank.gd" id="2_py8y4"]
+[ext_resource type="AudioStream" uid="uid://bp06uk3u0py7h" path="res://assets/audio/bullet_hit_car_01.mp3" id="3_3d577"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_hqqn6"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_a4ryh"]
+[ext_resource type="AudioStream" uid="uid://cfj515r2e2y6g" path="res://assets/audio/bullet_hit_car_02.mp3" id="4_e0rj4"]
 [ext_resource type="Texture2D" uid="uid://idyaohtwibdc" path="res://assets/enemies/tank_base.png" id="4_yw430"]
 [ext_resource type="Texture2D" uid="uid://dmoq4cyjkj7uf" path="res://assets/enemies/tank_turret.png" id="5_p6iaj"]
 [ext_resource type="Texture2D" uid="uid://dhlq63gi54jfv" path="res://assets/enemies/tank_base_destroyed.png" id="6_ljku8"]
@@ -183,6 +185,7 @@ height = 280.0
 
 [node name="Tank" groups=["armored"] instance=ExtResource("1_gqbit")]
 script = ExtResource("2_py8y4")
+hit_sounds = Array[AudioStreamMP3]([ExtResource("3_3d577"), ExtResource("4_e0rj4")])
 speed = 100
 
 [node name="DeathAnimationPlayer" type="AnimationPlayer" parent="." index="0"]
