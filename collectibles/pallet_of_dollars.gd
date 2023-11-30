@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var pickup_sound: AudioStreamMP3
 
 var direction: Vector2
 
@@ -24,4 +25,5 @@ func _ready() -> void:
 
 func _on_body_entered(_body) -> void:
 	Globals.hp += 5
+	AudioStreamManager.play(pickup_sound)
 	queue_free()

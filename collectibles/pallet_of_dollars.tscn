@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://df5djludduwpv"]
+[gd_scene load_steps=10 format=3 uid="uid://df5djludduwpv"]
 
 [ext_resource type="Script" path="res://collectibles/pallet_of_dollars.gd" id="1_5t7ky"]
 [ext_resource type="Texture2D" uid="uid://e6machjhh78l" path="res://assets/collectibles/pallet_of_dollars.png" id="1_geydo"]
+[ext_resource type="AudioStream" uid="uid://dagutobufkiyo" path="res://assets/audio/cash_register.mp3" id="2_c25h6"]
 [ext_resource type="Texture2D" uid="uid://b7jxh1lv4y2ql" path="res://assets/collectibles/parachute.png" id="3_slrpf"]
 [ext_resource type="AudioStream" uid="uid://0l12nvyjquxh" path="res://assets/audio/thudfall.wav" id="4_ia2es"]
 
@@ -98,6 +99,7 @@ _data = {
 scale = Vector2(0.8, 0.8)
 collision_layer = 16
 script = ExtResource("1_5t7ky")
+pickup_sound = ExtResource("2_c25h6")
 
 [node name="pallet" type="Sprite2D" parent="."]
 position = Vector2(10, 6)
