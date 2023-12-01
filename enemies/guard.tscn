@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl65sivnf31rf"]
+[gd_scene load_steps=10 format=3 uid="uid://dl65sivnf31rf"]
 
 [ext_resource type="PackedScene" uid="uid://lj8agpd1vbr7" path="res://enemies/soldier.tscn" id="1_u26jx"]
 [ext_resource type="Script" path="res://enemies/guard.gd" id="1_v4hv3"]
 [ext_resource type="Texture2D" uid="uid://bp0ivy8058se1" path="res://assets/enemies/riot_shield.png" id="2_uagjb"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_eytax"]
+[ext_resource type="AudioStream" uid="uid://bp06uk3u0py7h" path="res://assets/audio/bullet_hit_car_01.mp3" id="3_vrj0m"]
+[ext_resource type="AudioStream" uid="uid://cfj515r2e2y6g" path="res://assets/audio/bullet_hit_car_02.mp3" id="4_fq1q3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f73gm"]
 resource_local_to_scene = true
@@ -22,6 +24,7 @@ size = Vector2(42.1707, 135)
 
 [node name="Guard" instance=ExtResource("1_u26jx")]
 script = ExtResource("1_v4hv3")
+shield_hit_sounds = Array[AudioStreamMP3]([ExtResource("3_vrj0m"), ExtResource("4_fq1q3")])
 
 [node name="NavigationAgent2D" parent="." index="2"]
 debug_enabled = false
