@@ -12,8 +12,9 @@ func _process(delta):
 
 
 func check_radar(delta) -> void:
-	if player_near and not health_component.destroyed:
+	if not health_component.destroyed:
 		$Top.rotation += rotation_speed * delta
+	if player_near:
 		for ray in rays:
 			var collider = ray.get_collider()
 			if collider in get_tree().get_nodes_in_group("player"):
