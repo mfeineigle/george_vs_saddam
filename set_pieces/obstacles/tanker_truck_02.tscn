@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfyjibsm4tkuq"]
+[gd_scene load_steps=5 format=3 uid="uid://bfyjibsm4tkuq"]
 
 [ext_resource type="Texture2D" uid="uid://6gpk00iw2ctj" path="res://assets/obstacles/tanker_truck_02.png" id="1_o5tk8"]
+[ext_resource type="Script" path="res://set_pieces/obstacles/tanker_truck.gd" id="1_pcs43"]
+[ext_resource type="AudioStream" uid="uid://bp06uk3u0py7h" path="res://assets/audio/bullet_hit_car_01.mp3" id="2_8n4ay"]
+[ext_resource type="AudioStream" uid="uid://cfj515r2e2y6g" path="res://assets/audio/bullet_hit_car_02.mp3" id="3_kbvlp"]
 
 [node name="TankerTruck02" type="StaticBody2D"]
+script = ExtResource("1_pcs43")
+hit_sounds = Array[AudioStreamMP3]([ExtResource("2_8n4ay"), ExtResource("3_kbvlp")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_o5tk8")
