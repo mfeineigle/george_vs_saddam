@@ -1,8 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bfjwx2vpr6rb1"]
+[gd_scene load_steps=20 format=3 uid="uid://bfjwx2vpr6rb1"]
 
 [ext_resource type="Script" path="res://enemies/scud_launcher.gd" id="1_434nm"]
+[ext_resource type="AudioStream" uid="uid://bp06uk3u0py7h" path="res://assets/audio/bullet_hit_car_01.mp3" id="2_l8oun"]
 [ext_resource type="Texture2D" uid="uid://8b3tpsdfebva" path="res://assets/enemies/scudMissileLauncherBase.png" id="2_rjg4k"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="3_5n0uo"]
+[ext_resource type="AudioStream" uid="uid://cfj515r2e2y6g" path="res://assets/audio/bullet_hit_car_02.mp3" id="3_kf11i"]
 [ext_resource type="Texture2D" uid="uid://cyy1wh1vid43a" path="res://assets/projectiles/scudMissile.png" id="3_sfyo5"]
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="4_g10yl"]
 [ext_resource type="Texture2D" uid="uid://bwd6fw8ym8s2i" path="res://assets/enemies/scudMissileLauncherBase_destroyed.png" id="4_xktyf"]
@@ -249,6 +251,7 @@ scale_max = 6.0
 [node name="scud_launcher" type="StaticBody2D" groups=["scudLaunchers"]]
 collision_layer = 2
 script = ExtResource("1_434nm")
+hit_sounds = Array[AudioStreamMP3]([ExtResource("2_l8oun"), ExtResource("3_kf11i")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_g10yl")]
 max_hp = 5

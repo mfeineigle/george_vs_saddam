@@ -2,6 +2,8 @@ extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+@export var hit_sounds: Array[AudioStreamMP3]
+
 var can_fire: bool = true
 var destroyed: bool = false
 
@@ -25,6 +27,7 @@ func _on_fire_timer_timeout():
 
 
 func hit(dmg) -> void:
+	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
 	$AnimationPlayer.play("hit")
 	$HealthComponent.damage(dmg)
 	if $HealthComponent.destroyed:
