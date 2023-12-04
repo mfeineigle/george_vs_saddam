@@ -12,7 +12,6 @@ var blood_scene: PackedScene = preload("res://enemies/blood.tscn")
 
 
 func _ready() -> void:
-	print("soldier: ", hit_sounds)
 	sprite.show()
 	weapon.show()
 	call_deferred("nav_setup")
