@@ -70,6 +70,10 @@ func _physics_process(_delta: float) -> void:
 
 
 func _process(_delta):
+	if direction:
+		$AnimationPlayer.play("walking")
+	else:
+		$AnimationPlayer.stop()
 	if Input.is_action_pressed("shoot"):
 		shoot()
 	Utils.flip_h_sprite_direction(george_sprite, direction)
