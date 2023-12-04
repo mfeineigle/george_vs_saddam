@@ -26,9 +26,9 @@ func goto_scene(path):
 
 
 func _deferred_goto_scene(path):
+	var new_scene = ResourceLoader.load(path).instantiate()
 	await fade_scene.fade_to_black()
 	current_scene.get_child(0).free()
-	var new_scene = ResourceLoader.load(path).instantiate()
 	current_scene.add_child(new_scene)
 	if new_scene.get_class() == "Node2D" : #don't set cutscenes as current_level (Control nodes)
 		current_level = current_scene.get_child(0)
