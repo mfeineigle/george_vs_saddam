@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @export var rotation_speed: float = 1.0
+@export var hit_sounds: Array[AudioStreamMP3]
 @onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
 @onready var health_component: Node2D = $HealthComponent
 @onready var rays = get_node("Top").get_children()
@@ -14,12 +15,12 @@ func _process(delta):
 func check_radar(delta) -> void:
 	if not health_component.destroyed:
 		$Top.rotation += rotation_speed * delta
-	if player_near:
-		for ray in rays:
-			var collider = ray.get_collider()
-			if collider in get_tree().get_nodes_in_group("player"):
-				$AudioStreamPlayer2D.play()
-				GameEvents.spawn_tu_22.emit()
+		if player_near:
+			for ray in rays:
+				var collider = ray.get_collider()
+				if collider in get_tree().get_nodes_in_group("player"):
+					$AudioStreamPlayer2D.play()
+					GameEvents.spawn_tu_22.emit()
 
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("player"):
@@ -31,6 +32,7 @@ func _on_detection_area_body_exited(body):
 
 
 func hit(dmg) -> void:
+	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
 	if not health_component.destroyed:
 		death_animation_player.play("hit")
 		health_component.damage(dmg)
@@ -38,5 +40,7 @@ func hit(dmg) -> void:
 		die()
 
 func die() -> void:
-	$DeathAnimation.show()
+	$Bottom.hide()
+	$Top.hide()
+	$DestroyedSprite.show()
 	death_animation_player.play("die")

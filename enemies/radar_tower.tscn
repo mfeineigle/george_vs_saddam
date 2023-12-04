@@ -1,13 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7i0qbpunp5ei"]
+[gd_scene load_steps=21 format=3 uid="uid://c7i0qbpunp5ei"]
 
 [ext_resource type="Script" path="res://enemies/radar_tower.gd" id="1_aeohx"]
 [ext_resource type="Texture2D" uid="uid://gknk73i5o1fq" path="res://assets/enemies/radar_tower_bottom.png" id="1_y8c87"]
 [ext_resource type="Texture2D" uid="uid://cuuy2ushiqpf8" path="res://assets/enemies/radar_top.png" id="2_gx1dp"]
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="2_tv78m"]
+[ext_resource type="AudioStream" uid="uid://bbfmc0qkmr46u" path="res://assets/audio/weapons/bullet_hit_building_01.mp3" id="2_uprtr"]
 [ext_resource type="PackedScene" uid="uid://bf8isb5x7u54f" path="res://components/death_component.tscn" id="3_d4eil"]
+[ext_resource type="AudioStream" uid="uid://ckdvegncksj1t" path="res://assets/audio/weapons/bullet_hit_building_02.mp3" id="3_rrgl5"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_iot2t"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="4_kxx88"]
+[ext_resource type="AudioStream" uid="uid://bvmw1m2rt4q0l" path="res://assets/audio/weapons/bullet_hit_building_03.mp3" id="4_q1alm"]
 [ext_resource type="AudioStream" uid="uid://clg5ujn32uscq" path="res://assets/audio/radar_detection_beep.mp3" id="8_jy7xr"]
+[ext_resource type="Texture2D" uid="uid://bbx3mepj8ssgh" path="res://assets/enemies/radar_tower_bottom_destroyed.png" id="10_hut81"]
 
 [sub_resource type="Animation" id="Animation_24ypw"]
 length = 0.001
@@ -59,6 +63,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeathAnimation:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DeathAnimation2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_b2hdt"]
 resource_name = "die"
@@ -75,6 +103,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 80]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathAnimation2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.2, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathAnimation:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DeathAnimation2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_8orqg"]
@@ -138,6 +202,7 @@ _data = {
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_50ptu"]
+resource_local_to_scene = true
 shader = ExtResource("4_kxx88")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
@@ -147,6 +212,7 @@ radius = 35.0
 height = 136.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jw6qd"]
+resource_local_to_scene = true
 shader = ExtResource("4_kxx88")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
@@ -159,6 +225,7 @@ scale = Vector2(0.75, 0.75)
 collision_layer = 8
 collision_mask = 23
 script = ExtResource("1_aeohx")
+hit_sounds = Array[AudioStreamMP3]([ExtResource("2_uprtr"), ExtResource("3_rrgl5"), ExtResource("4_q1alm")])
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_tv78m")]
 max_hp = 5
@@ -201,13 +268,29 @@ target_position = Vector2(0, 800)
 rotation = -0.1309
 target_position = Vector2(0, 800)
 
+[node name="DestroyedSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-157.333, -108)
+texture = ExtResource("10_hut81")
+
 [node name="DeathAnimation" type="Sprite2D" parent="."]
-position = Vector2(-6.66667, -37.3333)
+visible = false
+position = Vector2(17.3333, -45.3333)
 scale = Vector2(3, 3)
+skew = 0.188496
 texture = ExtResource("4_iot2t")
 hframes = 9
 vframes = 9
-frame = 2
+
+[node name="DeathAnimation2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-261.333, -64)
+scale = Vector2(2.5, 2.5)
+skew = -0.109956
+texture = ExtResource("4_iot2t")
+hframes = 9
+vframes = 9
+frame = 50
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
