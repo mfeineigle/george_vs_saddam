@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cabh25coyssxs"]
+
+[ext_resource type="Script" path="res://main/loading_screen.gd" id="1_jcog7"]
+
+[node name="LoadingScreen" type="CanvasLayer"]
+script = ExtResource("1_jcog7")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Loading:"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
