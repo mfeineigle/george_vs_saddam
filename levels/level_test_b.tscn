@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs862b8l8ppme"]
+[gd_scene load_steps=13 format=3 uid="uid://cs862b8l8ppme"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_b3qbn"]
 [ext_resource type="Texture2D" uid="uid://bcknj4vll5m46" path="res://assets/background/lvl-B_desert_sand_tileset.png" id="2_n0a3t"]
@@ -250,6 +250,11 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_inr0d"]
+vertices = PackedVector2Array(2003, -1924, 2045, 2003, -1924, 2052, -1931, -1938)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(2003, -1924, 2045, 2003, -1924, 2052, -1931, -1938)])
+
 [node name="LevelTestB" instance=ExtResource("1_b3qbn")]
 
 [node name="TileMap" type="TileMap" parent="Background" index="0"]
@@ -278,31 +283,28 @@ position = Vector2(1272, 488)
 [node name="Rifle" parent="Collectibles/Guns" index="0" instance=ExtResource("3_fl85d")]
 position = Vector2(1080, 589)
 
-[node name="NavigationRegion2D" parent="." index="7"]
-metadata/_edit_lock_ = true
-
-[node name="scud_launcher" parent="." index="10" instance=ExtResource("5_bnsmm")]
+[node name="scud_launcher" parent="." index="9" instance=ExtResource("5_bnsmm")]
 position = Vector2(840, 658)
 
-[node name="scud_launcher2" parent="." index="11" instance=ExtResource("5_bnsmm")]
+[node name="scud_launcher2" parent="." index="10" instance=ExtResource("5_bnsmm")]
 position = Vector2(830, 548)
 
-[node name="scud_launcher3" parent="." index="12" instance=ExtResource("5_bnsmm")]
+[node name="scud_launcher3" parent="." index="11" instance=ExtResource("5_bnsmm")]
 position = Vector2(826, 444)
 
-[node name="scud_launcher4" parent="." index="13" instance=ExtResource("5_bnsmm")]
+[node name="scud_launcher4" parent="." index="12" instance=ExtResource("5_bnsmm")]
 position = Vector2(820, 346)
 
-[node name="scud_launcher5" parent="." index="14" instance=ExtResource("5_bnsmm")]
+[node name="scud_launcher5" parent="." index="13" instance=ExtResource("5_bnsmm")]
 position = Vector2(696, 274)
 
-[node name="scud_launcher6" parent="." index="15" instance=ExtResource("5_bnsmm")]
+[node name="scud_launcher6" parent="." index="14" instance=ExtResource("5_bnsmm")]
 position = Vector2(530, 212)
 
-[node name="scud_launcher7" parent="." index="16" instance=ExtResource("5_bnsmm")]
+[node name="scud_launcher7" parent="." index="15" instance=ExtResource("5_bnsmm")]
 position = Vector2(358, 160)
 
-[node name="Path2D" type="Path2D" parent="." index="17"]
+[node name="Path2D" type="Path2D" parent="." index="16"]
 curve = SubResource("Curve2D_7hrko")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" node_paths=PackedStringArray("follower")]
@@ -314,3 +316,6 @@ follower = NodePath("Tank")
 
 [node name="Tank" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("4_ll31y")]
 position = Vector2(1.88061, -1.20972)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="17"]
+navigation_polygon = SubResource("NavigationPolygon_inr0d")

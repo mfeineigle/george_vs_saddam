@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3mkylkdhtc4e"]
+[gd_scene load_steps=18 format=3 uid="uid://c3mkylkdhtc4e"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_7qhx8"]
 [ext_resource type="Texture2D" uid="uid://dlymds1mxs36t" path="res://assets/background/lvl-A_ground_textures.png" id="2_hupca"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bq4olaflelq1y" path="res://assets/buildings/bunker_enterance_01.png" id="5_8ffk4"]
 [ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="5_ly66f"]
 [ext_resource type="PackedScene" uid="uid://y4687yg2fuia" path="res://levels/exit_level_area.tscn" id="6_qmtpk"]
+[ext_resource type="PackedScene" uid="uid://bbpukyyyvrxn5" path="res://set_pieces/obstacles/boulders_h.tscn" id="8_w7dtb"]
+[ext_resource type="PackedScene" uid="uid://henmrnwuesl5" path="res://set_pieces/obstacles/boulders_v.tscn" id="9_r5obu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oeqm3"]
 texture = ExtResource("2_hupca")
@@ -256,6 +258,11 @@ sources/2 = SubResource("TileSetAtlasSource_wu2g0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo1ot"]
 size = Vector2(182, 80)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wfxqw"]
+vertices = PackedVector2Array(2119, -2404, 2119, 1304, 277, -682, 111, -910, 211, -1120, 167, -1440, 117, -526, -4095, 1251, -253, -532, -407, -642, -4211, -2332, -377, -770, -241, -870, -185, -1470, -13, -1516)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(0, 4, 5), PackedInt32Array(6, 2, 1), PackedInt32Array(6, 1, 7, 8), PackedInt32Array(9, 8, 7, 10), PackedInt32Array(11, 9, 10), PackedInt32Array(12, 11, 10, 13), PackedInt32Array(13, 10, 0, 14), PackedInt32Array(14, 0, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-4095, 1251, 2119, 1304, 2119, -2404, -4211, -2332), PackedVector2Array(-377, -770, -241, -870, -185, -1470, -13, -1516, 167, -1440, 211, -1120, 111, -910, 277, -682, 117, -526, -253, -532, -407, -642)])
+
 [node name="LevelTestA" instance=ExtResource("1_7qhx8")]
 
 [node name="TileMap" type="TileMap" parent="Background" index="0"]
@@ -297,11 +304,56 @@ position = Vector2(-132, 12)
 [node name="TileMap" type="TileMap" parent="Obstacles" index="0"]
 format = 2
 
-[node name="NavigationRegion2D" parent="." index="7"]
-visible = false
+[node name="Boulders" type="Node" parent="Obstacles" index="1"]
+
+[node name="Boulders_H3" parent="Obstacles/Boulders" index="0" instance=ExtResource("8_w7dtb")]
+position = Vector2(-3956, 1352)
+
+[node name="Boulders_H2" parent="Obstacles/Boulders" index="1" instance=ExtResource("8_w7dtb")]
+position = Vector2(-1971, 1359)
+
+[node name="Boulders_H" parent="Obstacles/Boulders" index="2" instance=ExtResource("8_w7dtb")]
+position = Vector2(108, 1366)
+
+[node name="Boulders_H4" parent="Obstacles/Boulders" index="3" instance=ExtResource("8_w7dtb")]
+position = Vector2(1921, -1837)
+rotation = 3.14159
+
+[node name="Boulders_H5" parent="Obstacles/Boulders" index="4" instance=ExtResource("8_w7dtb")]
+position = Vector2(-97, -1824)
+rotation = 3.14159
+
+[node name="Boulders_H6" parent="Obstacles/Boulders" index="5" instance=ExtResource("8_w7dtb")]
+position = Vector2(-2169, -1831)
+rotation = 3.14159
+
+[node name="Boulders_V" parent="Obstacles/Boulders" index="6" instance=ExtResource("9_r5obu")]
+position = Vector2(-370, -1830)
+
+[node name="Boulders_V6" parent="Obstacles/Boulders" index="7" instance=ExtResource("9_r5obu")]
+position = Vector2(-1721, -702)
+rotation = -3.14159
+
+[node name="Boulders_V5" parent="Obstacles/Boulders" index="8" instance=ExtResource("9_r5obu")]
+position = Vector2(-1711, 339)
+rotation = -3.14159
+
+[node name="Boulders_V4" parent="Obstacles/Boulders" index="9" instance=ExtResource("9_r5obu")]
+position = Vector2(-1742, 1352)
+rotation = 3.14159
+
+[node name="Boulders_V3" parent="Obstacles/Boulders" index="10" instance=ExtResource("9_r5obu")]
+position = Vector2(-398, -796)
+
+[node name="Boulders_V2" parent="Obstacles/Boulders" index="11" instance=ExtResource("9_r5obu")]
+position = Vector2(-410, 235)
 
 [node name="Guard" parent="Enemies/Soldiers" index="0" instance=ExtResource("4_m634b")]
 position = Vector2(654, 227)
 
 [node name="Troop" parent="Enemies/Soldiers" index="1" instance=ExtResource("5_ly66f")]
 position = Vector2(603, -242)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="9"]
+navigation_polygon = SubResource("NavigationPolygon_wfxqw")
+metadata/_edit_lock_ = true
