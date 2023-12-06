@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://henmrnwuesl5"]
+
+[ext_resource type="Texture2D" uid="uid://dreoyw4g5015e" path="res://assets/background/boulder_02.png" id="1_2214t"]
+[ext_resource type="Texture2D" uid="uid://bbboa5ndq5sn" path="res://assets/background/boulder_01.png" id="2_u6c4p"]
+[ext_resource type="Texture2D" uid="uid://bi8fcqeub2fui" path="res://assets/background/boulder_03.png" id="3_fdu3y"]
+[ext_resource type="Texture2D" uid="uid://b101kpwc26x2f" path="res://assets/background/boulder_04.png" id="4_g8osc"]
+
+[node name="Boulders_V" type="StaticBody2D"]
+
+[node name="Medium3" type="Sprite2D" parent="."]
+position = Vector2(2021, 1045)
+texture = ExtResource("1_2214t")
+flip_h = true
+
+[node name="Medium2" type="Sprite2D" parent="."]
+position = Vector2(2038, 830)
+texture = ExtResource("1_2214t")
+
+[node name="XL" type="Sprite2D" parent="."]
+position = Vector2(2136, 160)
+texture = ExtResource("2_u6c4p")
+flip_h = true
+
+[node name="XL2" type="Sprite2D" parent="."]
+position = Vector2(2130, 956)
+texture = ExtResource("2_u6c4p")
+
+[node name="Small3" type="Sprite2D" parent="."]
+position = Vector2(2020, 500)
+texture = ExtResource("3_fdu3y")
+flip_h = true
+
+[node name="Medium" type="Sprite2D" parent="."]
+position = Vector2(2038, 564)
+texture = ExtResource("1_2214t")
+flip_h = true
+
+[node name="Small" type="Sprite2D" parent="."]
+position = Vector2(2017, 329)
+texture = ExtResource("3_fdu3y")
+
+[node name="Small2" type="Sprite2D" parent="."]
+position = Vector2(2025, 640)
+texture = ExtResource("3_fdu3y")
+
+[node name="Large" type="Sprite2D" parent="."]
+position = Vector2(2103, 412)
+texture = ExtResource("4_g8osc")
+
+[node name="Large2" type="Sprite2D" parent="."]
+position = Vector2(2093, 713)
+texture = ExtResource("4_g8osc")
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(2059, -1, 2184, 16, 2252, 36, 2324, 80, 2356, 146, 2297, 272, 2189, 327, 2270, 386, 2267, 426, 2210, 489, 2143, 532, 2143, 587, 2160, 615, 2257, 681, 2267, 729, 2246, 789, 2322, 862, 2351, 959, 2345, 1038, 2305, 1094, 2083, 1124, 1967, 1105, 1916, 1070, 1923, 1004, 1911, 961, 1914, 937, 1934, 862, 1933, 807, 1945, 782, 1943, 763, 1933, 741, 1926, 702, 1928, 511, 1928, 486, 1942, 451, 1937, 405, 1927, 305, 1913, 176, 1937, 80, 1989, 14)
