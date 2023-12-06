@@ -46,7 +46,7 @@ func _on_spawn_soldier_timer_timeout() -> void:
 
 func play_paratrooper_animation(spawnPoint, rot, dir) -> void:
 	var paratrooper = paratrooper_scene.instantiate()
-	get_node("/root/LevelTestC/Enemies/Soldiers").add_child(paratrooper)
+	get_tree().current_scene.current_level.get_node("Enemies/Soldiers").add_child(paratrooper)
 	paratrooper.setup(spawnPoint, rot, dir, paratrooper_delay)
 
 
