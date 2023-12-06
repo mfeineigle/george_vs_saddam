@@ -58,6 +58,7 @@ func hit(dmg) -> void:
 			die()
 
 func die() -> void:
+	$DrivingSound.stop()
 	$VehicleSprite.hide()
 	$Turret.hide()
 	$DestroyedVehicleSprite.show()
