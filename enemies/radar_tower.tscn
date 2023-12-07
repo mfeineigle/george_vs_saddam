@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c7i0qbpunp5ei"]
+[gd_scene load_steps=26 format=3 uid="uid://c7i0qbpunp5ei"]
 
 [ext_resource type="Script" path="res://enemies/radar_tower.gd" id="1_aeohx"]
 [ext_resource type="Texture2D" uid="uid://gknk73i5o1fq" path="res://assets/enemies/radar_tower_bottom.png" id="1_y8c87"]
@@ -11,7 +11,189 @@
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="4_kxx88"]
 [ext_resource type="AudioStream" uid="uid://bvmw1m2rt4q0l" path="res://assets/audio/weapons/bullet_hit_building_03.mp3" id="4_q1alm"]
 [ext_resource type="AudioStream" uid="uid://clg5ujn32uscq" path="res://assets/audio/radar_detection_beep.mp3" id="8_jy7xr"]
-[ext_resource type="Texture2D" uid="uid://bbx3mepj8ssgh" path="res://assets/enemies/radar_tower_bottom_destroyed.png" id="10_hut81"]
+[ext_resource type="Texture2D" uid="uid://dfd2s51bq4hek" path="res://assets/enemies/radar_tower_top_half_destroyed.png" id="13_06061"]
+[ext_resource type="Texture2D" uid="uid://dh6lbbreoq60g" path="res://assets/enemies/radar_tower_bottom_half_destroyed.png" id="14_k2wpt"]
+
+[sub_resource type="Animation" id="Animation_a7mf7"]
+resource_name = "collapse"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.33331, -385.333), Vector2(-182.667, -328), Vector2(-185, 1.33)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.76278, 0.881391, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Destroyed/DestroyedBottomSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Destroyed/DestroyedTop/DestroyedTopCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Destroyed/DestroyedTop:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Top:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bottom:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xqekx"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.76278]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.33331, -385.333)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Destroyed/DestroyedBottomSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Top:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bottom:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pi5ob"]
+_data = {
+"RESET": SubResource("Animation_xqekx"),
+"collapse": SubResource("Animation_a7mf7")
+}
 
 [sub_resource type="Animation" id="Animation_24ypw"]
 length = 0.001
@@ -66,7 +248,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("DeathAnimation:visible")
+tracks/4/path = NodePath("Destroyed/Fire1:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -78,7 +260,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("DeathAnimation2:visible")
+tracks/5/path = NodePath("Destroyed/Fire2:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -87,58 +269,17 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
-
-[sub_resource type="Animation" id="Animation_b2hdt"]
-resource_name = "die"
-length = 6.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DeathAnimation:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 80]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DeathAnimation2:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2.2, 2.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [80, 0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DeathAnimation:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Destroyed/Fire3:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("DeathAnimation2:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_8orqg"]
@@ -194,10 +335,87 @@ tracks/3/keys = {
 "values": [0.5, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_b2hdt"]
+resource_name = "burn"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Destroyed/Fire1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 80]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Destroyed/Fire2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.2, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Destroyed/Fire1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Destroyed/Fire2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Destroyed/Fire3:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Destroyed/Fire3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1l5w5"]
 _data = {
 "RESET": SubResource("Animation_24ypw"),
-"die": SubResource("Animation_b2hdt"),
+"burn": SubResource("Animation_b2hdt"),
 "hit": SubResource("Animation_8orqg")
 }
 
@@ -217,6 +435,10 @@ shader = ExtResource("4_kxx88")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72em0"]
+radius = 37.708
+height = 323.021
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_qk7is"]
 radius = 787.522
 
@@ -232,7 +454,12 @@ max_hp = 5
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("death_animation_player", "death_animation") instance=ExtResource("3_d4eil")]
 death_animation_player = NodePath("../DeathAnimationPlayer")
-death_animation = NodePath("../DeathAnimation")
+death_animation = NodePath("../Destroyed/Fire1")
+
+[node name="CollapseAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pi5ob")
+}
 
 [node name="DeathAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -244,7 +471,7 @@ material = SubResource("ShaderMaterial_50ptu")
 position = Vector2(1, -242.667)
 texture = ExtResource("1_y8c87")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BottomCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ul131")
 
 [node name="Top" type="Sprite2D" parent="."]
@@ -268,12 +495,9 @@ target_position = Vector2(0, 800)
 rotation = -0.1309
 target_position = Vector2(0, 800)
 
-[node name="DestroyedSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-157.333, -108)
-texture = ExtResource("10_hut81")
+[node name="Destroyed" type="Node2D" parent="."]
 
-[node name="DeathAnimation" type="Sprite2D" parent="."]
+[node name="Fire1" type="Sprite2D" parent="Destroyed"]
 visible = false
 position = Vector2(17.3333, -45.3333)
 scale = Vector2(3, 3)
@@ -281,8 +505,34 @@ skew = 0.188496
 texture = ExtResource("4_iot2t")
 hframes = 9
 vframes = 9
+frame = 20
 
-[node name="DeathAnimation2" type="Sprite2D" parent="."]
+[node name="Fire3" type="Sprite2D" parent="Destroyed"]
+visible = false
+position = Vector2(-68, -84)
+scale = Vector2(3, 3)
+skew = -0.383973
+texture = ExtResource("4_iot2t")
+hframes = 9
+vframes = 9
+frame = 8
+
+[node name="DestroyedTop" type="StaticBody2D" parent="Destroyed"]
+
+[node name="DestroyedTopSprite" type="Sprite2D" parent="Destroyed/DestroyedTop"]
+visible = false
+position = Vector2(1.33331, -385.333)
+rotation = 1.76278
+scale = Vector2(1, 1)
+texture = ExtResource("13_06061")
+
+[node name="DestroyedTopCollision" type="CollisionShape2D" parent="Destroyed/DestroyedTop"]
+visible = false
+position = Vector2(-189.333, -1.33333)
+rotation = 1.41372
+shape = SubResource("CapsuleShape2D_72em0")
+
+[node name="Fire2" type="Sprite2D" parent="Destroyed"]
 visible = false
 position = Vector2(-261.333, -64)
 scale = Vector2(2.5, 2.5)
@@ -290,9 +540,16 @@ skew = -0.109956
 texture = ExtResource("4_iot2t")
 hframes = 9
 vframes = 9
-frame = 50
+frame = 70
+
+[node name="DestroyedBottomSprite" type="Sprite2D" parent="Destroyed"]
+visible = false
+position = Vector2(1.33333, -108)
+texture = ExtResource("14_k2wpt")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(5.33333, -506.667)

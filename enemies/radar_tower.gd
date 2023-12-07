@@ -3,9 +3,14 @@ extends StaticBody2D
 @export var rotation_speed: float = 1.0
 @export var hit_sounds: Array[AudioStreamMP3]
 @onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
+@onready var collapse_animation_player: AnimationPlayer = $CollapseAnimationPlayer
 @onready var health_component: Node2D = $HealthComponent
 @onready var rays = get_node("Top").get_children()
 var player_near: bool = false
+
+
+func _ready() -> void:
+	$Destroyed/DestroyedTop/DestroyedTopCollision.disabled = true
 
 
 func _process(delta):
@@ -40,7 +45,5 @@ func hit(dmg) -> void:
 		die()
 
 func die() -> void:
-	$Bottom.hide()
-	$Top.hide()
-	$DestroyedSprite.show()
-	death_animation_player.play("die")
+	collapse_animation_player.play("collapse")
+	death_animation_player.play("burn")
