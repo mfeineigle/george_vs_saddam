@@ -24,7 +24,7 @@ func check_radar(delta) -> void:
 			for ray in rays:
 				var collider = ray.get_collider()
 				if collider in get_tree().get_nodes_in_group("player"):
-					$AudioStreamPlayer2D.play()
+					$PingAudio.play()
 					GameEvents.spawn_tu_22.emit()
 
 func _on_detection_area_body_entered(body):
@@ -45,5 +45,6 @@ func hit(dmg) -> void:
 		die()
 
 func die() -> void:
+	$CollapseAudio.play()
 	collapse_animation_player.play("collapse")
 	death_animation_player.play("burn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c7i0qbpunp5ei"]
+[gd_scene load_steps=27 format=3 uid="uid://c7i0qbpunp5ei"]
 
 [ext_resource type="Script" path="res://enemies/radar_tower.gd" id="1_aeohx"]
 [ext_resource type="Texture2D" uid="uid://gknk73i5o1fq" path="res://assets/enemies/radar_tower_bottom.png" id="1_y8c87"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bvmw1m2rt4q0l" path="res://assets/audio/weapons/bullet_hit_building_03.mp3" id="4_q1alm"]
 [ext_resource type="AudioStream" uid="uid://clg5ujn32uscq" path="res://assets/audio/radar_detection_beep.mp3" id="8_jy7xr"]
 [ext_resource type="Texture2D" uid="uid://dfd2s51bq4hek" path="res://assets/enemies/radar_tower_top_half_destroyed.png" id="13_06061"]
+[ext_resource type="AudioStream" uid="uid://bkh87yn3qpywu" path="res://assets/audio/radar_tower_collapse.mp3" id="14_gorjp"]
 [ext_resource type="Texture2D" uid="uid://dh6lbbreoq60g" path="res://assets/enemies/radar_tower_bottom_half_destroyed.png" id="14_k2wpt"]
 
 [sub_resource type="Animation" id="Animation_a7mf7"]
@@ -556,9 +557,12 @@ position = Vector2(5.33333, -506.667)
 shape = SubResource("CircleShape2D_qk7is")
 debug_color = Color(0.596078, 0.407843, 0.427451, 0.223529)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="PingAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_jy7xr")
 volume_db = -5.0
+
+[node name="CollapseAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_gorjp")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
