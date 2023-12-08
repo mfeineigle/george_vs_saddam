@@ -33,4 +33,5 @@ func _on_level_select_pressed() -> void:
 
 func _on_restart_level_pressed() -> void:
 	get_tree().paused = false
+	Globals.reset()
 	get_tree().reload_current_scene()

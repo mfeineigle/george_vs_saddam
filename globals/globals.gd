@@ -21,3 +21,6 @@ var oil: int = 0:
 		GameEvents.stats_changed.emit()
 
 
+func reset() -> void:
+	hp = 55
+	oil = 0
