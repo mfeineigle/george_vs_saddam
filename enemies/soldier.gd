@@ -54,10 +54,21 @@ func update_nav() -> Vector2:
 	$NavigationAgent2D.target_position = Globals.player_pos
 	var current_agent_pos = global_position
 	var next_path_pos = $NavigationAgent2D.get_next_path_position()
-	var new_velocity = (next_path_pos - current_agent_pos).normalized() * speed
+	var new_velocity = (next_path_pos - current_agent_pos).normalized()
+	new_velocity -= avoidance().normalized()
+	new_velocity *= speed
 	return new_velocity
 
-	
+func avoidance() -> Vector2:
+	var avoidance_force: Vector2 = Vector2.ZERO
+	for ray in $Rays.get_children():
+		#if the ray sees another soldier
+		if ray.is_colliding():
+			#add vector to new_velocity that is opposite the ray's vector
+			avoidance_force += ray.get_collision_point()
+	return avoidance_force
+
+
 func hit(dmg) -> void:
 	$AnimationPlayer.play("hit")
 	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
