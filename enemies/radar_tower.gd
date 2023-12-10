@@ -5,12 +5,13 @@ extends StaticBody2D
 @onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
 @onready var collapse_animation_player: AnimationPlayer = $CollapseAnimationPlayer
 @onready var health_component: Node2D = $HealthComponent
-@onready var rays = get_node("Top").get_children()
+@onready var rays = get_node("Top/Rays").get_children()
 var player_near: bool = false
 
 
 func _ready() -> void:
 	$Destroyed/DestroyedTop/DestroyedTopCollision.disabled = true
+	$Top.rotation = randi_range(0, 360)
 
 
 func _process(delta):
