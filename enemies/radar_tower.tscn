@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c7i0qbpunp5ei"]
+[gd_scene load_steps=31 format=3 uid="uid://c7i0qbpunp5ei"]
 
 [ext_resource type="Script" path="res://enemies/radar_tower.gd" id="1_aeohx"]
 [ext_resource type="Texture2D" uid="uid://gknk73i5o1fq" path="res://assets/enemies/radar_tower_bottom.png" id="1_y8c87"]
@@ -11,9 +11,87 @@
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="4_kxx88"]
 [ext_resource type="AudioStream" uid="uid://bvmw1m2rt4q0l" path="res://assets/audio/weapons/bullet_hit_building_03.mp3" id="4_q1alm"]
 [ext_resource type="AudioStream" uid="uid://clg5ujn32uscq" path="res://assets/audio/radar_detection_beep.mp3" id="8_jy7xr"]
+[ext_resource type="Texture2D" uid="uid://bqccm652jn70g" path="res://assets/enemies/radar_slice.png" id="10_2j272"]
+[ext_resource type="Shader" path="res://enemies/radar_waves.gdshader" id="10_mtu4n"]
+[ext_resource type="Script" path="res://enemies/RadarWaves.gd" id="12_pa1mh"]
 [ext_resource type="Texture2D" uid="uid://dfd2s51bq4hek" path="res://assets/enemies/radar_tower_top_half_destroyed.png" id="13_06061"]
 [ext_resource type="AudioStream" uid="uid://bkh87yn3qpywu" path="res://assets/audio/radar_tower_collapse.mp3" id="14_gorjp"]
 [ext_resource type="Texture2D" uid="uid://dh6lbbreoq60g" path="res://assets/enemies/radar_tower_bottom_half_destroyed.png" id="14_k2wpt"]
+
+[sub_resource type="Animation" id="Animation_xqekx"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.76278]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.33331, -385.333)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Destroyed/DestroyedBottomSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Top:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bottom:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_a7mf7"]
 resource_name = "collapse"
@@ -113,81 +191,6 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_xqekx"]
-resource_name = "RESET"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.76278]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.33331, -385.333)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Destroyed/DestroyedTop/DestroyedTopSprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Destroyed/DestroyedBottomSprite:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Top:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Bottom:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pi5ob"]
@@ -436,6 +439,10 @@ shader = ExtResource("4_kxx88")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ov2b6"]
+shader = ExtResource("10_mtu4n")
+shader_parameter/DisappearHeight = 0.289
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72em0"]
 radius = 37.708
 height = 323.021
@@ -480,19 +487,29 @@ material = SubResource("ShaderMaterial_jw6qd")
 position = Vector2(0, -528)
 texture = ExtResource("2_gx1dp")
 
-[node name="RayCast2D" type="RayCast2D" parent="Top"]
+[node name="RadarWaves" type="Sprite2D" parent="Top"]
+material = SubResource("ShaderMaterial_ov2b6")
+position = Vector2(1.33333, 392)
+rotation = -3.14159
+scale = Vector2(1, 1.5)
+texture = ExtResource("10_2j272")
+script = ExtResource("12_pa1mh")
+
+[node name="Rays" type="Node2D" parent="Top"]
+
+[node name="RayCast2D" type="RayCast2D" parent="Top/Rays"]
 rotation = 0.1309
 target_position = Vector2(0, 800)
 
-[node name="RayCast2D2" type="RayCast2D" parent="Top"]
+[node name="RayCast2D2" type="RayCast2D" parent="Top/Rays"]
 rotation = 0.0436332
 target_position = Vector2(0, 800)
 
-[node name="RayCast2D3" type="RayCast2D" parent="Top"]
+[node name="RayCast2D3" type="RayCast2D" parent="Top/Rays"]
 rotation = -0.0436332
 target_position = Vector2(0, 800)
 
-[node name="RayCast2D4" type="RayCast2D" parent="Top"]
+[node name="RayCast2D4" type="RayCast2D" parent="Top/Rays"]
 rotation = -0.1309
 target_position = Vector2(0, 800)
 
@@ -524,7 +541,6 @@ frame = 8
 visible = false
 position = Vector2(1.33331, -385.333)
 rotation = 1.76278
-scale = Vector2(1, 1)
 texture = ExtResource("13_06061")
 
 [node name="DestroyedTopCollision" type="CollisionShape2D" parent="Destroyed/DestroyedTop"]
