@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bvmw1m2rt4q0l" path="res://assets/audio/weapons/bullet_hit_building_03.mp3" id="4_q1alm"]
 [ext_resource type="AudioStream" uid="uid://clg5ujn32uscq" path="res://assets/audio/radar_detection_beep.mp3" id="8_jy7xr"]
 [ext_resource type="Texture2D" uid="uid://bqccm652jn70g" path="res://assets/enemies/radar_slice.png" id="10_2j272"]
-[ext_resource type="Shader" path="res://enemies/radar_waves.gdshader" id="10_mtu4n"]
+[ext_resource type="Shader" path="res://shaders/radar_waves.gdshader" id="10_x5f4p"]
 [ext_resource type="Script" path="res://enemies/RadarWaves.gd" id="12_pa1mh"]
 [ext_resource type="Texture2D" uid="uid://dfd2s51bq4hek" path="res://assets/enemies/radar_tower_top_half_destroyed.png" id="13_06061"]
 [ext_resource type="AudioStream" uid="uid://bkh87yn3qpywu" path="res://assets/audio/radar_tower_collapse.mp3" id="14_gorjp"]
@@ -440,7 +440,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ov2b6"]
-shader = ExtResource("10_mtu4n")
+shader = ExtResource("10_x5f4p")
 shader_parameter/DisappearHeight = 0.289
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_72em0"]
