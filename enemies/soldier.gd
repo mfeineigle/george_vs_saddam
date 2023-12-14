@@ -65,7 +65,7 @@ func avoidance() -> Vector2:
 		#if the ray sees another soldier
 		if ray.is_colliding():
 			#add vector to new_velocity that is opposite the ray's vector
-			avoidance_force += ray.get_collision_point()
+			avoidance_force += ray.get_collision_point() - position
 	return avoidance_force
 
 
