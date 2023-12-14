@@ -62,9 +62,8 @@ func update_nav() -> Vector2:
 func avoidance() -> Vector2:
 	var avoidance_force: Vector2 = Vector2.ZERO
 	for ray in $Rays.get_children():
-		#if the ray sees another soldier
-		if ray.is_colliding():
-			#add vector to new_velocity that is opposite the ray's vector
+		if ray.is_colliding(): #if the ray sees another soldier
+			#accumulate vector to new_velocity that is opposite the ray's vector
 			avoidance_force += ray.get_collision_point() - position
 	return avoidance_force
 
@@ -86,7 +85,6 @@ func die() -> void:
 	$AnimationPlayer.play("die")
 	await $AnimationPlayer.animation_finished
 	queue_free()
-
 
 
 func shoot() -> void:
