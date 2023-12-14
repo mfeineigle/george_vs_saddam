@@ -264,6 +264,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(-4095, 1251, 2119, 1304, 2119, -2404, -4211, -2332), PackedVector2Array(-377, -770, -241, -870, -185, -1470, -13, -1516, 167, -1440, 211, -1120, 111, -910, 277, -682, 117, -526, -253, -532, -407, -642)])
 
 [node name="LevelTestA" instance=ExtResource("1_7qhx8")]
+metadata/Level = "res://levels/level_test_a.tscn"
 
 [node name="TileMap" type="TileMap" parent="Background" index="0"]
 tile_set = SubResource("TileSet_meg1e")
