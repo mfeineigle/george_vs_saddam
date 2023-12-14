@@ -186,7 +186,8 @@ func hit(dmg) -> void:
 
 func die() -> void:
 	print(name, " died.")
-	call_deferred("queue_free")
+	Globals.reset()
+	GameEvents.level_changed.emit(Globals.current_level.get_meta("Level"))
 
 func dash() -> void:
 	if dashCount < maxDashCount:
