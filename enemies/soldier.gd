@@ -79,7 +79,7 @@ func hit(dmg) -> void:
 func die() -> void:
 	print(name, " died.")
 	var blood = blood_scene.instantiate()
-	get_tree().current_scene.current_level.get_node("Background/Blood").add_child(blood)
+	Globals.current_level.get_node("Background/Blood").add_child(blood)
 	blood.setup(global_position)
 	$deathSprite.show()
 	sprite.hide()

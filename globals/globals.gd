@@ -3,6 +3,7 @@ extends Node
 
 var air_drop_timer: int = 100
 var player_pos: Vector2
+var current_level: Node2D
 
 
 var hp: int = 55:
