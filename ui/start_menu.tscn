@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://d23hdovu4t8qb"]
+
+[ext_resource type="Texture2D" uid="uid://bi6daoyk5djpr" path="res://assets/cut_scenes/cutscene_background.png" id="1_356cg"]
+[ext_resource type="Script" path="res://ui/start_menu.gd" id="1_qwvnd"]
+[ext_resource type="Theme" uid="uid://ewoqwtu8db8g" path="res://ui/level_select.tres" id="2_pgasq"]
+[ext_resource type="Texture2D" uid="uid://bohatjhrg4j6t" path="res://assets/allies/iraqi_child_1.png" id="3_fv6ix"]
+[ext_resource type="Theme" uid="uid://bv467htpxf00q" path="res://ui/ui.tres" id="5_m6lad"]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qwvnd")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_356cg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleHBox" type="HBoxContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/separation = 10
+
+[node name="GeorgeLabel" type="Label" parent="Background/VBoxContainer/TitleHBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme = ExtResource("2_pgasq")
+theme_override_font_sizes/font_size = 64
+text = "George
+"
+
+[node name="VsTextureRect" type="TextureRect" parent="Background/VBoxContainer/TitleHBox"]
+layout_mode = 2
+texture = ExtResource("3_fv6ix")
+stretch_mode = 3
+
+[node name="SaddamLabel" type="Label" parent="Background/VBoxContainer/TitleHBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("2_pgasq")
+theme_override_font_sizes/font_size = 64
+text = "Saddam
+"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 10
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="Background/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="StartButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+layout_mode = 2
+theme = ExtResource("5_m6lad")
+text = "Start"
+
+[node name="ContinueButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+layout_mode = 2
+theme = ExtResource("5_m6lad")
+text = "Continue"
+
+[node name="OptionsButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+layout_mode = 2
+theme = ExtResource("5_m6lad")
+text = "Options"
+
+[node name="StoryButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+layout_mode = 2
+theme = ExtResource("5_m6lad")
+text = "Story"
+
+[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/ContinueButton" to="." method="_on_continue_button_pressed"]

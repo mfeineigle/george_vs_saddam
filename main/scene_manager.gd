@@ -7,7 +7,8 @@ extends Node2D
 
 func _ready() -> void:
 	GameEvents.level_changed.connect(goto_scene)
-	var init_scene= ResourceLoader.load("res://ui/level_select.tscn")
+	#var init_scene= ResourceLoader.load("res://ui/level_select.tscn")
+	var init_scene= ResourceLoader.load("res://ui/start_menu.tscn")
 	current_scene.add_child(init_scene.instantiate())
 	Globals.current_level = current_scene.get_child(0)
 
