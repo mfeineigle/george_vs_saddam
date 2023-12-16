@@ -65,6 +65,14 @@ theme = ExtResource("3_0b648")
 theme_override_font_sizes/font_size = 55
 text = "Select"
 
+[node name="LevelSave" type="Button" parent="Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_bottom = NodePath("../QuitButton")
+theme = ExtResource("3_0b648")
+theme_override_font_sizes/font_size = 55
+text = "SAVE"
+
 [node name="QuitButton" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
@@ -75,4 +83,5 @@ text = "Quit"
 [connection signal="pressed" from="Buttons/VBoxContainer/ResumeButton" to="." method="_on_paused"]
 [connection signal="pressed" from="Buttons/VBoxContainer/RestartLevel" to="." method="_on_restart_level_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/LevelSelect" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/LevelSave" to="." method="_on_level_save_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

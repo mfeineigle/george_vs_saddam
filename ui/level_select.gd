@@ -11,38 +11,39 @@ func _ready() -> void:
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		if file.get_length() > 0:
 			last_level = file.get_var()
+			print(last_level)
 	match last_level:
-		"1":
+		"res://levels/level_01.tscn":
 			$CanvasGroup/VBoxContainer/Lvl_01_Button.grab_focus()
-		"A":
+		"res://levels/level_test_a.tscn":
 			$CanvasGroup/VBoxContainer/Lvl_A_Button.grab_focus()
-		"B":
+		"res://levels/level_test_b.tscn":
 			$CanvasGroup/VBoxContainer/Lvl_B_Button.grab_focus()
-		"C":
+		"res://levels/level_test_c.tscn":
 			$CanvasGroup/VBoxContainer/Lvl_C_Button.grab_focus()
 
 
 func _on_lvl_01_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var("1")
+	file.store_var("res://levels/level_01.tscn")
 	GameEvents.level_changed.emit("res://levels/level_01.tscn")
 
 
 func _on_lvl_a_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var("A")
+	file.store_var("res://levels/level_test_a.tscn")
 	GameEvents.level_changed.emit("res://levels/level_test_a.tscn")
 
 
 func _on_lvl_b_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var("B")
+	file.store_var("res://levels/level_test_b.tscn")
 	GameEvents.level_changed.emit("res://levels/level_test_b.tscn")
 
 
 func _on_lvl_c_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var("C")
+	file.store_var("res://levels/level_test_c.tscn")
 	GameEvents.level_changed.emit("res://levels/level_test_c.tscn")
 
 

@@ -3,6 +3,7 @@ extends Control
 @onready var quit_button: Button = $Buttons/VBoxContainer/QuitButton
 
 var paused: bool = false
+var save_path = "res://levels/last_level.save"
 
 
 func _process(_delta):
@@ -20,10 +21,12 @@ func _on_paused() -> void:
 		self.hide()
 		get_tree().paused = false
 	paused = not paused
-	
 
-func _on_quit_button_pressed():
-	get_tree().quit()
+
+func _on_restart_level_pressed() -> void:
+	get_tree().paused = false
+	Globals.reset()
+	GameEvents.level_changed.emit(Globals.current_level.get_meta("Level"))
 
 
 func _on_level_select_pressed() -> void:
@@ -31,8 +34,10 @@ func _on_level_select_pressed() -> void:
 	GameEvents.level_changed.emit("res://ui/level_select.tscn")
 
 
-func _on_restart_level_pressed() -> void:
-	get_tree().paused = false
-	Globals.reset()
-	GameEvents.level_changed.emit(Globals.current_level.get_meta("Level"))
-	#get_tree().reload_current_scene()
+func _on_level_save_pressed() -> void:
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_var(Globals.current_level.get_meta("Level"))
+
+
+func _on_quit_button_pressed():
+	get_tree().quit()
