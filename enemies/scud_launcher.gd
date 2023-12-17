@@ -1,11 +1,11 @@
 extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var health_component: Node2D = $HealthComponent
 
 @export var hit_sounds: Array[AudioStreamMP3]
 
 var can_fire: bool = true
-var destroyed: bool = false
 
 
 func _ready():
@@ -14,7 +14,7 @@ func _ready():
 
 
 func _on_scud_triggered(nearest_launch_point):
-	if not $HealthComponent.destroyed and self == nearest_launch_point and can_fire:
+	if not health_component.destroyed and self == nearest_launch_point and can_fire:
 		$ExhaustExplosion.emitting = true
 		$ExhaustExplosion2.emitting = true
 		can_fire = false
@@ -28,9 +28,9 @@ func _on_fire_timer_timeout():
 
 func hit(dmg) -> void:
 	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
-	$AnimationPlayer.play("hit")
-	$HealthComponent.damage(dmg)
-	if $HealthComponent.destroyed:
+	animation_player.play("hit")
+	health_component.damage(dmg)
+	if health_component.destroyed:
 		die()
 
 func die() -> void:
