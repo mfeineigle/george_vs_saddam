@@ -13,3 +13,11 @@ func _on_continue_button_pressed() -> void:
 		if file.get_length() > 0:
 			last_level = file.get_var()
 	GameEvents.level_changed.emit(last_level)
+
+
+func _on_level_select_button_pressed() -> void:
+	GameEvents.level_changed.emit("res://ui/level_select.tscn")
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
