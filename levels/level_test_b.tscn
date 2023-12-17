@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cs862b8l8ppme"]
+[gd_scene load_steps=14 format=3 uid="uid://cs862b8l8ppme"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_b3qbn"]
 [ext_resource type="Texture2D" uid="uid://bcknj4vll5m46" path="res://assets/background/lvl-B_desert_sand_tileset.png" id="2_n0a3t"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cvtqhhqpi1d6j" path="res://enemies/tank.tscn" id="4_ll31y"]
 [ext_resource type="Script" path="res://levels/path.gd" id="5_ac4wq"]
 [ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="5_bnsmm"]
+[ext_resource type="PackedScene" uid="uid://dvegaq0esyjct" path="res://characters/saddam.tscn" id="5_vil3t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3kqip"]
 texture = ExtResource("2_n0a3t")
@@ -283,6 +284,9 @@ position = Vector2(1272, 488)
 
 [node name="Rifle" parent="Collectibles/Guns" index="0" instance=ExtResource("3_fl85d")]
 position = Vector2(1080, 589)
+
+[node name="Saddam" parent="Enemies" index="4" instance=ExtResource("5_vil3t")]
+position = Vector2(649, -270)
 
 [node name="scud_launcher" parent="." index="9" instance=ExtResource("5_bnsmm")]
 position = Vector2(840, 658)
