@@ -3,7 +3,8 @@ class_name Soldier extends CharacterBody2D
 @export var speed: int = 250
 @export var hit_sounds: Array[AudioStreamMP3]
 var get_new_nav: bool = true
-var player_in_range: bool = false
+var in_shotgun_range: bool = false
+var in_rifle_range: bool = false
 var can_shoot: bool = true
 var direction: Vector2
 var blood_scene: PackedScene = preload("res://enemies/blood.tscn")
@@ -89,9 +90,9 @@ func die() -> void:
 
 func shoot() -> void:
 	if can_shoot and check_los():
-		if weapon.name == "Shotgun" and player_in_range:
+		if weapon.name == "Shotgun" and in_shotgun_range:
 			GameEvents.soldier_shot.emit(direction, $BulletSpawnPoint.global_position, weapon)
-		elif weapon.name == "Rifle":
+		elif weapon.name == "Rifle" and in_rifle_range:
 			GameEvents.soldier_shot.emit(direction, $BulletSpawnPoint.global_position, weapon)
 		can_shoot = false
 		$Timers/ShootTimer.start()
@@ -108,10 +109,20 @@ func check_los() -> bool:
 		return true
 	return false
 
-func _on_shoot_area_body_entered(body: Node2D) -> void:
+func _on_shotgun_shoot_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		player_in_range = true
+		in_shotgun_range = true
 
-func _on_shoot_area_body_exited(body: Node2D) -> void:
+func _on_shotgun_shoot_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		player_in_range = false
+		in_shotgun_range = false
+
+
+func _on_rifle_shoot_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		in_rifle_range = true
+
+
+func _on_rifle_shoot_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		in_rifle_range = false

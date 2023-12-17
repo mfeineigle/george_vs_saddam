@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://lj8agpd1vbr7"]
+[gd_scene load_steps=20 format=3 uid="uid://lj8agpd1vbr7"]
 
 [ext_resource type="Script" path="res://enemies/soldier.gd" id="1_171gw"]
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="1_bxc12"]
@@ -141,6 +141,10 @@ shader = ExtResource("3_80cbu")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qvoqh"]
+radius = 524.0
+height = 2164.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_k5vtw"]
 radius = 324.039
 
@@ -206,9 +210,17 @@ visible = false
 position = Vector2(5, 32)
 monitoring = false
 
-[node name="ShootArea" type="Area2D" parent="."]
+[node name="RifleShootArea" type="Area2D" parent="."]
+collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RifleShootArea"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qvoqh")
+
+[node name="ShotgunShootArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShotgunShootArea"]
 shape = SubResource("CircleShape2D_k5vtw")
 debug_color = Color(0.960784, 0, 0.505882, 0.419608)
 
@@ -239,5 +251,7 @@ collision_mask = 2
 
 [connection signal="timeout" from="Timers/NavTimer" to="." method="_on_nav_timer_timeout"]
 [connection signal="timeout" from="Timers/ShootTimer" to="." method="_on_shoot_timer_timeout"]
-[connection signal="body_entered" from="ShootArea" to="." method="_on_shoot_area_body_entered"]
-[connection signal="body_exited" from="ShootArea" to="." method="_on_shoot_area_body_exited"]
+[connection signal="body_entered" from="RifleShootArea" to="." method="_on_rifle_shoot_area_body_entered"]
+[connection signal="body_exited" from="RifleShootArea" to="." method="_on_rifle_shoot_area_body_exited"]
+[connection signal="body_entered" from="ShotgunShootArea" to="." method="_on_shotgun_shoot_area_body_entered"]
+[connection signal="body_exited" from="ShotgunShootArea" to="." method="_on_shotgun_shoot_area_body_exited"]
