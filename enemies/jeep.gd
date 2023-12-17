@@ -48,6 +48,7 @@ func hit(dmg) -> void:
 
 func die() -> void:
 	print(name, " died.")
+	$DestructionSound.play()
 	$VehicleSprite.hide()
 	$DestroyedVehicleSprite.show()
 	Utils.rotate_sprite_direction(destroyed_vehicle_sprite, get_parent().rotation)

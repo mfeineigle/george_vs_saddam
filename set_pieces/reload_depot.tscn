@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdanvnnood0tq"]
+[gd_scene load_steps=17 format=3 uid="uid://cdanvnnood0tq"]
 
 [ext_resource type="Script" path="res://set_pieces/reload_depot.gd" id="1_vykq5"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_rt06r"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://xss6r5iofm06" path="res://assets/buildings/reload_depot.png" id="4_4k7xh"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="4_b0gww"]
 [ext_resource type="Texture2D" uid="uid://bompjcy44eews" path="res://assets/buildings/reload_depot_destroyed.png" id="5_uq6ol"]
+[ext_resource type="AudioStream" uid="uid://dobvocvadw3od" path="res://assets/audio/depot_destruction.mp3" id="9_naakr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_id4kx"]
 shader = ExtResource("2_rt06r")
@@ -236,6 +237,10 @@ texture = ExtResource("4_b0gww")
 hframes = 9
 vframes = 9
 frame = 16
+
+[node name="DestructionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_naakr")
+volume_db = 5.0
 
 [connection signal="body_entered" from="DelayDeployment" to="." method="_on_delay_deployment_body_entered"]
 [connection signal="body_exited" from="DelayDeployment" to="." method="_on_delay_deployment_body_exited"]

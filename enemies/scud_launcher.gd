@@ -35,6 +35,7 @@ func hit(dmg) -> void:
 
 func die() -> void:
 	print(name, " died.")
+	$DestructionSound.play()
 	animation_player.play("die")
 	$base.hide()
 	$missile.hide()

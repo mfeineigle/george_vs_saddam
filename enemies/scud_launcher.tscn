@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfjwx2vpr6rb1"]
+[gd_scene load_steps=21 format=3 uid="uid://bfjwx2vpr6rb1"]
 
 [ext_resource type="Script" path="res://enemies/scud_launcher.gd" id="1_434nm"]
 [ext_resource type="AudioStream" uid="uid://bp06uk3u0py7h" path="res://assets/audio/bullet_hit_car_01.mp3" id="2_l8oun"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="4_g10yl"]
 [ext_resource type="Texture2D" uid="uid://bwd6fw8ym8s2i" path="res://assets/enemies/scudMissileLauncherBase_destroyed.png" id="4_xktyf"]
 [ext_resource type="Texture2D" uid="uid://d0qx04c0b3isw" path="res://assets/projectiles/fire_sheet_1.png" id="5_1vgsh"]
+[ext_resource type="AudioStream" uid="uid://c34wnoelw0cy3" path="res://assets/audio/scud_destruction.mp3" id="10_kmi6h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a37pr"]
 radius = 34.0
@@ -346,5 +347,9 @@ amount = 111
 process_material = SubResource("ParticleProcessMaterial_22avm")
 lifetime = 0.5
 one_shot = true
+
+[node name="DestructionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_kmi6h")
+volume_db = 6.0
 
 [connection signal="timeout" from="CanFireTimer" to="." method="_on_fire_timer_timeout"]

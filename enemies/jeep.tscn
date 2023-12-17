@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dht6800xvv48j"]
+[gd_scene load_steps=18 format=3 uid="uid://dht6800xvv48j"]
 
 [ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_afvxu"]
 [ext_resource type="Script" path="res://enemies/jeep.gd" id="2_uye4o"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cfj515r2e2y6g" path="res://assets/audio/bullet_hit_car_02.mp3" id="4_hdueq"]
 [ext_resource type="Texture2D" uid="uid://doxpxcobot08a" path="res://assets/enemies/Ural_destroyed.png" id="5_vgy18"]
 [ext_resource type="AudioStream" uid="uid://2yrr5wepqtau" path="res://assets/audio/soldiers_leaving_transport.mp3" id="7_cyeey"]
+[ext_resource type="AudioStream" uid="uid://doxikn3ex3su4" path="res://assets/audio/jeep_destruction.mp3" id="10_ebxwr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fargd"]
 resource_local_to_scene = true
@@ -211,6 +212,10 @@ volume_db = -5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeployArea" index="0"]
 shape = SubResource("CircleShape2D_68li4")
+
+[node name="DestructionSound" type="AudioStreamPlayer2D" parent="." index="10"]
+stream = ExtResource("10_ebxwr")
+volume_db = 11.0
 
 [connection signal="timeout" from="SpawnSoldierTimer" to="." method="_on_spawn_soldier_timer_timeout"]
 [connection signal="body_entered" from="DeployArea" to="." method="_on_deploy_area_body_entered"]

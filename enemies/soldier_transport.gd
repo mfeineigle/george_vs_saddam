@@ -46,6 +46,7 @@ func hit(dmg) -> void:
 
 func die() -> void:
 	print(name, " died.")
+	$DestructionSound.play()
 	$VehicleSprite.hide()
 	$DestroyedVehicleSprite.show()
 	for f in $Fires.get_children():

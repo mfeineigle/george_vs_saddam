@@ -20,6 +20,7 @@ func die() -> void:
 	total_soldiers = 0
 	$Sprite2D.hide()
 	$DestroyedSprite.show()
+	$DestructionSound.play()
 	for f in $Fires.get_children():
 		f.show()
 	death_animation_player.play("die")

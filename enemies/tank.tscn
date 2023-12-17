@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cvtqhhqpi1d6j"]
+[gd_scene load_steps=22 format=3 uid="uid://cvtqhhqpi1d6j"]
 
 [ext_resource type="PackedScene" uid="uid://dqem531qms3s4" path="res://enemies/ground_vehicle.tscn" id="1_gqbit"]
 [ext_resource type="Script" path="res://enemies/tank.gd" id="2_py8y4"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dps5ji5ic4bym" path="res://assets/enemies/tank_turret_destroyed.png" id="7_tqbq5"]
 [ext_resource type="AudioStream" uid="uid://stwiwbyl8gv6" path="res://assets/audio/tank_driving.mp3" id="9_68d0p"]
 [ext_resource type="AudioStream" uid="uid://dxa6rj60clobh" path="res://assets/audio/tank_fire.mp3" id="10_whdg3"]
+[ext_resource type="AudioStream" uid="uid://dy0ftmsoblick" path="res://assets/audio/tank_destruction.mp3" id="13_heyyj"]
 
 [sub_resource type="Animation" id="Animation_5r52w"]
 length = 0.001
@@ -250,7 +251,7 @@ centered = false
 offset = Vector2(-68, -75)
 hframes = 9
 vframes = 9
-frame = 8
+frame = 16
 
 [node name="Fire2" type="Sprite2D" parent="Fires" index="1"]
 visible = false
@@ -262,7 +263,7 @@ centered = false
 offset = Vector2(-62, -75)
 hframes = 9
 vframes = 9
-frame = 62
+frame = 70
 
 [node name="Fire3" type="Sprite2D" parent="Fires" index="2"]
 visible = false
@@ -274,7 +275,7 @@ centered = false
 offset = Vector2(-65, -70)
 hframes = 9
 vframes = 9
-frame = 43
+frame = 51
 
 [node name="DrivingSound" type="AudioStreamPlayer2D" parent="." index="10"]
 stream = ExtResource("9_68d0p")
@@ -282,6 +283,10 @@ autoplay = true
 
 [node name="FiringSound" type="AudioStreamPlayer2D" parent="." index="11"]
 stream = ExtResource("10_whdg3")
+
+[node name="DestructionSound" type="AudioStreamPlayer2D" parent="." index="12"]
+stream = ExtResource("13_heyyj")
+volume_db = 7.0
 
 [connection signal="timeout" from="CanShootTimer" to="." method="_on_can_shoot_timer_timeout"]
 [connection signal="body_entered" from="ShootArea" to="." method="_on_shoot_area_body_entered"]
