@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player_2: AnimationPlayer = $AnimationPlayer2
 @onready var health_component: Node2D = $HealthComponent
 
 @export var hit_sounds: Array[AudioStreamMP3]
@@ -28,17 +29,14 @@ func _on_fire_timer_timeout():
 
 func hit(dmg) -> void:
 	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
-	animation_player.play("hit")
-	health_component.damage(dmg)
-	if health_component.destroyed:
-		die()
+	if not health_component.destroyed:
+		animation_player.play("hit")
+		health_component.damage(dmg)
+		if health_component.destroyed:
+			die()
 
 func die() -> void:
 	print(name, " died.")
 	$DestructionSound.play()
 	animation_player.play("die")
-	$base.hide()
-	$missile.hide()
-	$base_destroyed.show()
-	for f in $Fires.get_children():
-		f.show()
+	animation_player_2.play("burn")
