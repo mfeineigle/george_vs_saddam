@@ -516,6 +516,7 @@ texture = ExtResource("2_rjg4k")
 [node name="missile" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_qyb43")
 position = Vector2(63, -20)
+rotation = -1.5708
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_sfyo5")
 centered = false
@@ -532,7 +533,7 @@ scale = Vector2(13.3333, 13.3333)
 texture = ExtResource("5_1vgsh")
 hframes = 9
 vframes = 9
-frame = 48
+frame = 1
 
 [node name="Fire2" type="Sprite2D" parent="Fires"]
 position = Vector2(-620, -246.667)
@@ -540,7 +541,7 @@ scale = Vector2(13.3333, 13.3333)
 texture = ExtResource("5_1vgsh")
 hframes = 9
 vframes = 9
-frame = 75
+frame = 27
 
 [node name="Fire3" type="Sprite2D" parent="Fires"]
 position = Vector2(-300, -233.333)
@@ -548,7 +549,7 @@ scale = Vector2(13.3333, 13.3333)
 texture = ExtResource("5_1vgsh")
 hframes = 9
 vframes = 9
-frame = 21
+frame = 54
 
 [node name="Fire4" type="Sprite2D" parent="Fires"]
 position = Vector2(120, -120)
@@ -556,7 +557,7 @@ scale = Vector2(13.3333, 13.3333)
 texture = ExtResource("5_1vgsh")
 hframes = 9
 vframes = 9
-frame = 60
+frame = 12
 
 [node name="base_destroyed" type="Sprite2D" parent="."]
 visible = false
