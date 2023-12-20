@@ -5,7 +5,7 @@
 
 [node name="PageTestC" node_paths=PackedStringArray("frames") instance=ExtResource("1_nr3ua")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
-next_level = "res://ui/level_select.tscn"
+next_level = "res://ui/start_menu.tscn"
 
 [node name="Frame01" type="TextureRect" parent="Frames" index="0"]
 offset_left = 202.0

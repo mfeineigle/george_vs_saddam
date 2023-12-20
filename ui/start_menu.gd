@@ -1,5 +1,7 @@
 extends Control
 
+@export var first_cutscene: String = ""
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var title: TextureRect = $Background/VBoxContainer/TitleHBox/TitleTextureRect
 @onready var start_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/StartButton
@@ -21,6 +23,7 @@ func _ready() -> void:
 	title_tween.tween_property(story_button, "position:x", 0, 1.0).from(2000)
 	title_tween.tween_property(level_select_button, "position:x", 0, 1.0).from(-3000)
 	title_tween.tween_property(quit_button, "position:x", 0, 1.0).from(3000)
+	Globals.story_mode = false
 	if not OS.is_debug_build():
 		level_select_button.hide()
 
@@ -42,6 +45,11 @@ func _on_continue_button_pressed() -> void:
 func _on_options_button_pressed() -> void:
 	$Background/VBoxContainer.hide()
 	$Background/OptionsMenu.show()
+
+
+func _on_story_button_pressed() -> void:
+	Globals.story_mode = true
+	GameEvents.level_changed.emit(first_cutscene)
 
 
 func _on_level_select_button_pressed() -> void:

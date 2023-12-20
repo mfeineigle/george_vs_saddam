@@ -6,6 +6,7 @@
 [node name="PageTestB" node_paths=PackedStringArray("frames") instance=ExtResource("1_jbuj3")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
 next_level = "res://levels/level_test_c.tscn"
+next_cutscene = "res://levels/cut_scenes/page_test_c.tscn"
 
 [node name="Frame01" type="TextureRect" parent="Frames" index="0"]
 offset_left = 34.0

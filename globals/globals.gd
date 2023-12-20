@@ -1,6 +1,7 @@
 extends Node
 
 var invincible: bool = false
+var story_mode: bool = false
 
 var air_drop_timer: int = 100
 var player_pos: Vector2

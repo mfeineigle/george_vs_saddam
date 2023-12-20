@@ -105,6 +105,7 @@ _data = {
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_qwvnd")
+first_cutscene = "res://levels/cut_scenes/page_test_a.tscn"
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -218,5 +219,6 @@ libraries = {
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/StoryButton" to="." method="_on_story_button_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/QuitButton" to="." method="_on_quit_button_pressed"]

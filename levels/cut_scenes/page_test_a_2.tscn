@@ -6,6 +6,7 @@
 [node name="PageTestA2" node_paths=PackedStringArray("frames") instance=ExtResource("1_pvru8")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
 next_level = "res://levels/level_test_b.tscn"
+next_cutscene = "res://levels/cut_scenes/page_test_b.tscn"
 
 [node name="Frame01" type="TextureRect" parent="Frames" index="0"]
 offset_left = 78.0
