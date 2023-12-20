@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4u06cbdgi456"]
+[gd_scene load_steps=13 format=3 uid="uid://b4u06cbdgi456"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_umpmm"]
 [ext_resource type="PackedScene" uid="uid://c1m7rk3gpry6q" path="res://ui/pause_menu.tscn" id="1_ycn5h"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dl4he0svxadq3" path="res://assets/progress_bars/air_drop_progress_bar/progress.png" id="9_k4uhi"]
 [ext_resource type="PackedScene" uid="uid://bid0uwbkdj5su" path="res://ui/weapon_hud.tscn" id="10_uvgr5"]
 [ext_resource type="PackedScene" uid="uid://cc33ahmqajp34" path="res://ui/inventory_gui.tscn" id="11_qup7j"]
+[ext_resource type="PackedScene" uid="uid://b3locbppi35js" path="res://ui/options_menu.tscn" id="12_ntb3s"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_umpmm")
@@ -93,3 +94,6 @@ offset_right = 226.5
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="OptionsMenu" parent="." instance=ExtResource("12_ntb3s")]
+visible = false

@@ -37,6 +37,11 @@ func _on_continue_button_pressed() -> void:
 	GameEvents.level_changed.emit(last_level)
 
 
+func _on_options_button_pressed() -> void:
+	$Background/VBoxContainer.hide()
+	$Background/OptionsMenu.show()
+
+
 func _on_level_select_button_pressed() -> void:
 	GameEvents.level_changed.emit("res://ui/level_select.tscn")
 

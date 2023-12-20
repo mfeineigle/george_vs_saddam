@@ -29,6 +29,11 @@ func _on_restart_level_pressed() -> void:
 	GameEvents.level_changed.emit(Globals.current_level.get_meta("Level"))
 
 
+func _on_options_button_pressed() -> void:
+	$"../OptionsMenu".show()
+	self.hide()
+
+
 func _on_level_select_pressed() -> void:
 	get_tree().paused = false
 	GameEvents.level_changed.emit("res://ui/level_select.tscn")
