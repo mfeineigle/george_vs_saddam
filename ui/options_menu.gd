@@ -5,6 +5,8 @@ extends Control
 
 func _ready() -> void:
 	check_button.button_pressed = Globals.invincible
+	if not OS.is_debug_build():
+		$VBoxContainer/InvincibleHBox.hide()
 
 
 func _on_resume_button_pressed() -> void:
