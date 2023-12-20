@@ -177,6 +177,8 @@ func _on_can_shoot_timer_timeout():
 
 
 func hit(dmg) -> void:
+	if Globals.invincible:
+		return
 	if dmg > 2:
 		$Camera2D.add_trauma()
 	$HealthComponent.damage(dmg)
