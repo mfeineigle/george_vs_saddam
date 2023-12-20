@@ -12,9 +12,7 @@ extends AudioStreamPlayer
 
 
 func _ready() -> void:
-	#stream = load(music["LevelSelect"])
-	stream = music.track["LevelSelect"]
-	play()
+	change_music.call_deferred()
 	
 	
 func change_music() -> void:
