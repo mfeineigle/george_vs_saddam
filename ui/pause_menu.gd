@@ -6,6 +6,12 @@ var paused: bool = false
 var save_path = "res://levels/last_level.save"
 
 
+func _ready() -> void:
+	if not OS.is_debug_build():
+		$Buttons/VBoxContainer/LevelSelect.hide()
+		$Buttons/VBoxContainer/LevelSave.hide()
+
+
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		_on_paused()

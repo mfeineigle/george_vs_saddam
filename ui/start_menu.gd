@@ -21,6 +21,8 @@ func _ready() -> void:
 	title_tween.tween_property(story_button, "position:x", 0, 1.0).from(2000)
 	title_tween.tween_property(level_select_button, "position:x", 0, 1.0).from(-3000)
 	title_tween.tween_property(quit_button, "position:x", 0, 1.0).from(3000)
+	if not OS.is_debug_build():
+		level_select_button.hide()
 
 
 func _on_start_button_pressed() -> void:
