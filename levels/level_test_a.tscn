@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3mkylkdhtc4e"]
+[gd_scene load_steps=19 format=3 uid="uid://c3mkylkdhtc4e"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_7qhx8"]
 [ext_resource type="Texture2D" uid="uid://dlymds1mxs36t" path="res://assets/background/lvl-A_ground_textures.png" id="2_hupca"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://y4687yg2fuia" path="res://levels/exit_level_area.tscn" id="6_qmtpk"]
 [ext_resource type="PackedScene" uid="uid://bbpukyyyvrxn5" path="res://set_pieces/obstacles/boulders_h.tscn" id="8_w7dtb"]
 [ext_resource type="PackedScene" uid="uid://henmrnwuesl5" path="res://set_pieces/obstacles/boulders_v.tscn" id="9_r5obu"]
+[ext_resource type="PackedScene" uid="uid://iwp2j1y6mc1u" path="res://weapons/landmine.tscn" id="12_nyxdv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oeqm3"]
 texture = ExtResource("2_hupca")
@@ -354,6 +355,21 @@ position = Vector2(654, 227)
 
 [node name="Troop" parent="Enemies/Soldiers" index="1" instance=ExtResource("5_ly66f")]
 position = Vector2(603, -242)
+
+[node name="Mine" parent="Enemies" index="4" instance=ExtResource("12_nyxdv")]
+position = Vector2(-141, -123)
+
+[node name="Mine2" parent="Enemies" index="5" instance=ExtResource("12_nyxdv")]
+position = Vector2(-505, -136)
+
+[node name="Mine3" parent="Enemies" index="6" instance=ExtResource("12_nyxdv")]
+position = Vector2(-608, 170)
+
+[node name="Mine4" parent="Enemies" index="7" instance=ExtResource("12_nyxdv")]
+position = Vector2(222, -94)
+
+[node name="Mine5" parent="Enemies" index="8" instance=ExtResource("12_nyxdv")]
+position = Vector2(38, 158)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="9"]
 navigation_polygon = SubResource("NavigationPolygon_wfxqw")
