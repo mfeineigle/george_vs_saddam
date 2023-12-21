@@ -111,6 +111,7 @@ volume_db = 5.0
 layer = 0
 
 [node name="ShockwaveRect" type="ColorRect" parent="ShockwaveCanvas"]
+visible = false
 material = SubResource("ShaderMaterial_7cyc4")
 anchors_preset = 15
 anchor_right = 1.0
