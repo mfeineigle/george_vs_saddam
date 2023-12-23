@@ -1,6 +1,6 @@
 extends Node
 
-var invincible: bool = false
+var invincible: bool = true
 var story_mode: bool = false
 
 var air_drop_timer: int = 100
