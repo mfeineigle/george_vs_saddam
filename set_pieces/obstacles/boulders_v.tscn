@@ -8,49 +8,50 @@
 [node name="Boulders_V" type="StaticBody2D"]
 
 [node name="Medium3" type="Sprite2D" parent="."]
-position = Vector2(2021, 1045)
+position = Vector2(118.5, 1042.5)
 texture = ExtResource("1_2214t")
 flip_h = true
 
 [node name="Medium2" type="Sprite2D" parent="."]
-position = Vector2(2038, 830)
+position = Vector2(135.5, 827.5)
 texture = ExtResource("1_2214t")
 
 [node name="XL" type="Sprite2D" parent="."]
-position = Vector2(2136, 160)
+position = Vector2(233.5, 157.5)
 texture = ExtResource("2_u6c4p")
 flip_h = true
 
 [node name="XL2" type="Sprite2D" parent="."]
-position = Vector2(2130, 956)
+position = Vector2(227.5, 953.5)
 texture = ExtResource("2_u6c4p")
 
 [node name="Small3" type="Sprite2D" parent="."]
-position = Vector2(2020, 500)
+position = Vector2(117.5, 497.5)
 texture = ExtResource("3_fdu3y")
 flip_h = true
 
 [node name="Medium" type="Sprite2D" parent="."]
-position = Vector2(2038, 564)
+position = Vector2(135.5, 561.5)
 texture = ExtResource("1_2214t")
 flip_h = true
 
 [node name="Small" type="Sprite2D" parent="."]
-position = Vector2(2017, 329)
+position = Vector2(114.5, 326.5)
 texture = ExtResource("3_fdu3y")
 
 [node name="Small2" type="Sprite2D" parent="."]
-position = Vector2(2025, 640)
+position = Vector2(122.5, 637.5)
 texture = ExtResource("3_fdu3y")
 
 [node name="Large" type="Sprite2D" parent="."]
-position = Vector2(2103, 412)
+position = Vector2(200.5, 409.5)
 texture = ExtResource("4_g8osc")
 
 [node name="Large2" type="Sprite2D" parent="."]
-position = Vector2(2093, 713)
+position = Vector2(190.5, 710.5)
 texture = ExtResource("4_g8osc")
 flip_h = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1902.5, -2.5)
 polygon = PackedVector2Array(2059, -1, 2184, 16, 2252, 36, 2324, 80, 2356, 146, 2297, 272, 2189, 327, 2270, 386, 2267, 426, 2210, 489, 2143, 532, 2143, 587, 2160, 615, 2257, 681, 2267, 729, 2246, 789, 2322, 862, 2351, 959, 2345, 1038, 2305, 1094, 2083, 1124, 1967, 1105, 1916, 1070, 1923, 1004, 1911, 961, 1914, 937, 1934, 862, 1933, 807, 1945, 782, 1943, 763, 1933, 741, 1926, 702, 1928, 511, 1928, 486, 1942, 451, 1937, 405, 1927, 305, 1913, 176, 1937, 80, 1989, 14)
