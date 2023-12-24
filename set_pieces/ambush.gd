@@ -19,6 +19,7 @@ func _ready() -> void:
 		unit.set_physics_process(false)
 		if invisible_units:
 			unit.visible = false
+			unit.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -28,6 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 			unit.set_process(true)
 			unit.set_physics_process(true)
 			unit.visible = true
+			unit.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func _on_all_units_dead_timer_timeout() -> void:
