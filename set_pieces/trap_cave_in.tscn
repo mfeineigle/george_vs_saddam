@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgasb1bkua85m"]
+
+[ext_resource type="Script" path="res://set_pieces/trap_cave_in.gd" id="1_x4rv5"]
+
+[node name="TrapCaveIn" type="Area2D"]
+script = ExtResource("1_x4rv5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
