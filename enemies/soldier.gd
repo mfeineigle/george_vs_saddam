@@ -1,6 +1,8 @@
 class_name Soldier extends CharacterBody2D
 
 @export var speed: int = 250
+@export var pursue: bool = true
+var in_pursue_range: bool = true
 @export var hit_sounds: Array[AudioStreamMP3]
 var get_new_nav: bool = true
 var in_shotgun_range: bool = false
@@ -29,6 +31,16 @@ func setup(pos) -> void:
 	position = pos
 
 
+func check_los() -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(global_position, Globals.player_pos)
+	query.exclude = [self]
+	var result = space_state.intersect_ray(query)
+	if result and result.collider.name == "George":
+		return true
+	return false
+
+
 func _physics_process(_delta):
 	if get_new_nav and not $NavigationAgent2D.is_navigation_finished():
 		velocity = update_nav()
@@ -43,9 +55,10 @@ func _physics_process(_delta):
 		$BulletSpawnPoint.position = Vector2(70, 40)
 	look_at(Globals.player_pos)
 	shoot()
-	move_and_slide()
-		
-	
+	if check_pursue():
+		move_and_slide()
+
+
 func _on_nav_timer_timeout() -> void:
 	get_new_nav = true
 	
@@ -100,14 +113,6 @@ func shoot() -> void:
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
 
-func check_los() -> bool:
-	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(global_position, Globals.player_pos)
-	query.exclude = [self]
-	var result = space_state.intersect_ray(query)
-	if result and result.collider.name == "George":
-		return true
-	return false
 
 func _on_shotgun_shoot_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -126,3 +131,16 @@ func _on_rifle_shoot_area_body_entered(body: Node2D) -> void:
 func _on_rifle_shoot_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		in_rifle_range = false
+
+func check_pursue() -> bool:
+	if pursue:
+		return true
+	if in_pursue_range and check_los():
+		pursue = true
+		return true
+	else:
+		return false
+
+func _on_pursue_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		in_pursue_range = true
