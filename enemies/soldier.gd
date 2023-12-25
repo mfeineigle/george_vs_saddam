@@ -45,18 +45,11 @@ func _physics_process(_delta):
 	if get_new_nav and not $NavigationAgent2D.is_navigation_finished():
 		velocity = update_nav()
 	direction = (Globals.player_pos - position).normalized()
-	Utils.flip_v_sprite_direction(sprite, direction)
-	Utils.flip_v_sprite_direction(weapon.sprite_2d, direction)
-	if weapon.sprite_2d.flip_v == true:
-		weapon.sprite_2d.position = Vector2(14, -83)
-		$BulletSpawnPoint.position = Vector2(70, -40)
-	else:
-		weapon.sprite_2d.position = Vector2(14, 13)
-		$BulletSpawnPoint.position = Vector2(70, 40)
-	look_at(Globals.player_pos)
+	set_spirte_direction()
 	shoot()
 	if check_pursue():
 		move_and_slide()
+
 
 
 func _on_nav_timer_timeout() -> void:
@@ -82,6 +75,61 @@ func avoidance() -> Vector2:
 	return avoidance_force
 
 
+func set_spirte_direction() -> void:
+	Utils.flip_v_sprite_direction(sprite, direction)
+	Utils.flip_v_sprite_direction(weapon.sprite_2d, direction)
+	if weapon.sprite_2d.flip_v == true:
+		weapon.sprite_2d.position = Vector2(14, -83)
+		$BulletSpawnPoint.position = Vector2(70, -40)
+	else:
+		weapon.sprite_2d.position = Vector2(14, 13)
+		$BulletSpawnPoint.position = Vector2(70, 40)
+	look_at(Globals.player_pos)
+
+
+func shoot() -> void:
+	if can_shoot and check_los():
+		if weapon.name == "Shotgun" and in_shotgun_range:
+			GameEvents.soldier_shot.emit(direction, $BulletSpawnPoint.global_position, weapon)
+		elif weapon.name == "Rifle" and in_rifle_range:
+			GameEvents.soldier_shot.emit(direction, $BulletSpawnPoint.global_position, weapon)
+		can_shoot = false
+		$Timers/ShootTimer.start()
+
+func _on_shoot_timer_timeout() -> void:
+	can_shoot = true
+
+func _on_shotgun_shoot_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		in_shotgun_range = true
+
+func _on_shotgun_shoot_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		in_shotgun_range = false
+
+func _on_rifle_shoot_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		in_rifle_range = true
+
+func _on_rifle_shoot_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		in_rifle_range = false
+
+
+func check_pursue() -> bool:
+	if pursue:
+		return true
+	if in_pursue_range and check_los():
+		pursue = true
+		return true
+	else:
+		return false
+
+func _on_pursue_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		in_pursue_range = true
+
+
 func hit(dmg) -> void:
 	$AnimationPlayer.play("hit")
 	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
@@ -99,48 +147,3 @@ func die() -> void:
 	$AnimationPlayer.play("die")
 	await $AnimationPlayer.animation_finished
 	queue_free()
-
-
-func shoot() -> void:
-	if can_shoot and check_los():
-		if weapon.name == "Shotgun" and in_shotgun_range:
-			GameEvents.soldier_shot.emit(direction, $BulletSpawnPoint.global_position, weapon)
-		elif weapon.name == "Rifle" and in_rifle_range:
-			GameEvents.soldier_shot.emit(direction, $BulletSpawnPoint.global_position, weapon)
-		can_shoot = false
-		$Timers/ShootTimer.start()
-
-func _on_shoot_timer_timeout() -> void:
-	can_shoot = true
-
-
-func _on_shotgun_shoot_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		in_shotgun_range = true
-
-func _on_shotgun_shoot_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		in_shotgun_range = false
-
-
-func _on_rifle_shoot_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		in_rifle_range = true
-
-
-func _on_rifle_shoot_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		in_rifle_range = false
-
-func check_pursue() -> bool:
-	if pursue:
-		return true
-	if in_pursue_range and check_los():
-		pursue = true
-		return true
-	else:
-		return false
-
-func _on_pursue_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		in_pursue_range = true
