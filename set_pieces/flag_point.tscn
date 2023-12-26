@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://wdeypjhrfm8r"]
+
+[ext_resource type="Script" path="res://set_pieces/flag_point.gd" id="1_pg2rt"]
+[ext_resource type="PackedScene" uid="uid://budsnlgga1e1s" path="res://set_pieces/flag_pole.tscn" id="1_xombv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qami3"]
+radius = 163.003
+
+[node name="FlagPoint" type="Area2D"]
+script = ExtResource("1_pg2rt")
+
+[node name="FlagPole" parent="." instance=ExtResource("1_xombv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 154)
+shape = SubResource("CircleShape2D_qami3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
