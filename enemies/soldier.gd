@@ -47,7 +47,7 @@ func _physics_process(_delta):
 	direction = (Globals.player_pos - position).normalized()
 	set_spirte_direction()
 	shoot()
-	if check_pursue():
+	if can_pursue():
 		move_and_slide()
 
 
@@ -116,7 +116,7 @@ func _on_rifle_shoot_area_body_exited(body: Node2D) -> void:
 		in_rifle_range = false
 
 
-func check_pursue() -> bool:
+func can_pursue() -> bool:
 	if pursue:
 		return true
 	if in_pursue_range and check_los():
