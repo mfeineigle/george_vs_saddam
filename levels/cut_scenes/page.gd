@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("menu_select"):
+	if Input.is_action_pressed("menu_select") or Input.is_action_pressed("shoot"):
 		if idx < frames.size():
 			goto_next_frame()
 		elif next_page:
@@ -50,7 +50,7 @@ func goto_next_page() -> void:
 
 
 func _on_skip_timer_timeout() -> void:
-	if Input.is_action_pressed("menu_select"):
+	if Input.is_action_pressed("menu_select") or Input.is_action_pressed("shoot"):
 		progress_bar.value += 5  #Button is pressed, increase the progress
 		if progress_bar.value >= 20:
 			skip_frame.visible = true
