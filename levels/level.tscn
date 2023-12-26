@@ -47,6 +47,8 @@ script = ExtResource("3_dawd3")
 [node name="Projectiles" type="Node2D" parent="."]
 script = ExtResource("4_rie51")
 
+[node name="Traps" type="Node2D" parent="."]
+
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("3_5ik1h")
 
