@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4u06cbdgi456"]
+[gd_scene load_steps=14 format=3 uid="uid://b4u06cbdgi456"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_umpmm"]
 [ext_resource type="PackedScene" uid="uid://c1m7rk3gpry6q" path="res://ui/pause_menu.tscn" id="1_ycn5h"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bid0uwbkdj5su" path="res://ui/weapon_hud.tscn" id="10_uvgr5"]
 [ext_resource type="PackedScene" uid="uid://cc33ahmqajp34" path="res://ui/inventory_gui.tscn" id="11_qup7j"]
 [ext_resource type="PackedScene" uid="uid://b3locbppi35js" path="res://ui/options_menu.tscn" id="12_ntb3s"]
+[ext_resource type="PackedScene" uid="uid://d3meg4lt78ynv" path="res://ui/score_card.tscn" id="13_nrmwa"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_umpmm")
@@ -96,4 +97,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="OptionsMenu" parent="." instance=ExtResource("12_ntb3s")]
+visible = false
+
+[node name="ScoreCard" parent="." instance=ExtResource("13_nrmwa")]
 visible = false

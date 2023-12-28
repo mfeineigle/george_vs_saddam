@@ -7,8 +7,15 @@ func _ready() -> void:
 	GameEvents.stats_changed.connect(on_stats_changed)
 	GameEvents.stats_changed.emit()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	
-	
+
+
+func _process(delta: float) -> void:
+	Globals.time += delta
+	Globals.mils = int(fmod(Globals.time, 1)*1000)
+	Globals.secs = int(fmod(Globals.time, 60))
+	Globals.mins = int(fmod(Globals.time, 60*60)/60)
+
+
 func on_stats_changed() -> void:
 	%OilLabel.text = "Oil: " + str(Globals.oil)
 	%HPLabel.text = "HP: " + str(Globals.hp)
@@ -28,5 +35,7 @@ func _on_cycled_weapon(weapon) -> void:
 		$WeaponHUD/shotgunTextureRect.show()
 	if weapon.name == "RocketLauncher":
 		$WeaponHUD/RocketLauncherTextureRect.show()
-		
-		
+
+
+func _on_time_taken_timer_timeout() -> void:
+	Globals.time_taken += 0.1
