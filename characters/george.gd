@@ -188,8 +188,7 @@ func hit(dmg) -> void:
 
 func die() -> void:
 	print(name, " died.")
-	Globals.reset()
-	GameEvents.level_changed.emit(Globals.current_level.get_meta("Level"))
+	GameEvents.george_died.emit()
 
 func dash() -> void:
 	if dashCount < maxDashCount:

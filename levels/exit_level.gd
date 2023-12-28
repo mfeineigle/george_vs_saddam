@@ -8,4 +8,4 @@ extends Area2D
 func _on_exit_level_area_body_entered(body: Node2D) -> void:
 	await flag_pole.capture_flag()
 	if body.is_in_group("player"):
-		GameEvents.level_changed.emit(next_level)
+		GameEvents.score_card_displayed.emit(next_level)

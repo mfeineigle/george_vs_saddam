@@ -1,0 +1,120 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3meg4lt78ynv"]
+
+[ext_resource type="Script" path="res://ui/score_card.gd" id="1_m0myo"]
+[ext_resource type="Theme" uid="uid://bv467htpxf00q" path="res://ui/ui.tres" id="2_t668g"]
+
+[node name="ScoreCard" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m0myo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -45.5
+offset_right = 54.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_t668g")
+
+[node name="TimeTakenHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer/TimeTakenHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Time:"
+
+[node name="TimeTakenLabel" type="Label" parent="VBoxContainer/TimeTakenHbox"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0"
+
+[node name="OilCollectedHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="OilLabel" type="Label" parent="VBoxContainer/OilCollectedHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Oil Collected:"
+
+[node name="OilCollectedLabel" type="Label" parent="VBoxContainer/OilCollectedHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="SoldiersKillHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SoldierLabel" type="Label" parent="VBoxContainer/SoldiersKillHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Soldier Kills:"
+
+[node name="SoldierKillsLabel" type="Label" parent="VBoxContainer/SoldiersKillHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="TankKillsHbox2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TankLabel" type="Label" parent="VBoxContainer/TankKillsHbox2"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Tank Kills:"
+
+[node name="TankKillsLabel" type="Label" parent="VBoxContainer/TankKillsHbox2"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="FlagsCapturedHbox3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="FlagsLabel" type="Label" parent="VBoxContainer/FlagsCapturedHbox3"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Flags Captured:"
+
+[node name="FlagsCapturedLabel" type="Label" parent="VBoxContainer/FlagsCapturedHbox3"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
