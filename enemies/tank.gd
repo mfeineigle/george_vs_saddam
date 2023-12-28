@@ -58,6 +58,7 @@ func hit(dmg) -> void:
 			die()
 
 func die() -> void:
+	Globals.tank_kills += 1
 	$DrivingSound.stop()
 	$DestructionSound.play()
 	$VehicleSprite.hide()

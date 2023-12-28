@@ -139,6 +139,7 @@ func hit(dmg) -> void:
 
 func die() -> void:
 	print(name, " died.")
+	Globals.soldier_kills += 1
 	var blood = blood_scene.instantiate()
 	Globals.current_level.get_node("Background/Blood").add_child(blood)
 	blood.setup(global_position)
