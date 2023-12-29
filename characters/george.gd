@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var rocket_flash: Sprite2D = $Guns/RocketLauncher/RocketFlash
 @onready var rocket_exhaust: Sprite2D = $Guns/RocketLauncher/RocketExhaust
 @onready var shotgun_flash: Sprite2D = $Guns/Shotgun/ShotgunFlash
+@onready var health_component: Node2D = $HealthComponent
 
 @export var speed: int = 500
 var direction: Vector2
@@ -37,7 +38,7 @@ var knock_count: int = 0
 
 func _ready():
 	Globals.player_pos = position
-	$HealthComponent.hp = Globals.hp
+	health_component.hp = Globals.hp
 	GameEvents.player_hit.connect(hit)
 	GameEvents.weapon_picked_up.connect(equip_first_weapon)
 	cycle_weapon()
@@ -181,8 +182,9 @@ func hit(dmg) -> void:
 		return
 	if dmg > 2:
 		$Camera2D.add_trauma()
-	$HealthComponent.damage(dmg)
-	Globals.hp = $HealthComponent.hp
+	health_component.damage(dmg)
+	Globals.hp = health_component.hp
+	Globals.total_damage_taken += dmg
 	if Globals.hp <= 0:
 		die()
 
