@@ -76,28 +76,106 @@ layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
 
-[node name="TankKillsHbox2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="TankKillsHbox" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="TankLabel" type="Label" parent="VBoxContainer/TankKillsHbox2"]
+[node name="TankLabel" type="Label" parent="VBoxContainer/TankKillsHbox"]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Tank Kills:"
 
-[node name="TankKillsLabel" type="Label" parent="VBoxContainer/TankKillsHbox2"]
+[node name="TankKillsLabel" type="Label" parent="VBoxContainer/TankKillsHbox"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
 
-[node name="FlagsCapturedHbox3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="JeepKillsHbox" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="FlagsLabel" type="Label" parent="VBoxContainer/FlagsCapturedHbox3"]
+[node name="JeepLabel" type="Label" parent="VBoxContainer/JeepKillsHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Jeep Kills:"
+
+[node name="JeepKillsLabel" type="Label" parent="VBoxContainer/JeepKillsHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="TransportKillsHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TransportLabel" type="Label" parent="VBoxContainer/TransportKillsHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Transport Kills:"
+
+[node name="TransportKillsLabel" type="Label" parent="VBoxContainer/TransportKillsHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="DepotKillsHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DepotLabel" type="Label" parent="VBoxContainer/DepotKillsHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Depot Kills:"
+
+[node name="DepotKillsLabel" type="Label" parent="VBoxContainer/DepotKillsHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="RadarTowerKillsHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RadarTowerLabel" type="Label" parent="VBoxContainer/RadarTowerKillsHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Radar Tower Kills:"
+
+[node name="RadarTowerKillsLabel" type="Label" parent="VBoxContainer/RadarTowerKillsHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="FlagsCapturedHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="FlagsLabel" type="Label" parent="VBoxContainer/FlagsCapturedHbox"]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Flags Captured:"
 
-[node name="FlagsCapturedLabel" type="Label" parent="VBoxContainer/FlagsCapturedHbox3"]
+[node name="FlagsCapturedLabel" type="Label" parent="VBoxContainer/FlagsCapturedHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="DamageTakenHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DamageTakenLabel" type="Label" parent="VBoxContainer/DamageTakenHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Damage Taken:"
+
+[node name="DmgTakenLabel" type="Label" parent="VBoxContainer/DamageTakenHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="DamageDoneHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DamageDoneLabel" type="Label" parent="VBoxContainer/DamageDoneHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Damage Done:"
+
+[node name="DmgDoneLabel" type="Label" parent="VBoxContainer/DamageDoneHbox"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"

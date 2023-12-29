@@ -12,6 +12,7 @@ var direction: Vector2
 var blood_scene: PackedScene = preload("res://enemies/blood.tscn")
 @onready var sprite: Sprite2D = $Sprites.get_children()[randi() % $Sprites.get_children().size()]
 @onready var weapon: Area2D = $Weapons.get_children()[randi() % $Weapons.get_children().size()]
+@onready var health_component: Node2D = $HealthComponent
 
 
 func _ready() -> void:
@@ -133,8 +134,9 @@ func _on_pursue_area_body_entered(body: Node2D) -> void:
 func hit(dmg) -> void:
 	$AnimationPlayer.play("hit")
 	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
-	$HealthComponent.damage(dmg)
-	if $HealthComponent.destroyed:
+	health_component.damage(dmg)
+	Globals.total_damage_done += dmg
+	if health_component.destroyed:
 		die()
 
 func die() -> void:

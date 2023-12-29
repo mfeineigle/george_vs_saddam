@@ -3,8 +3,15 @@ extends Control
 @onready var time_taken_label: Label = $VBoxContainer/TimeTakenHbox/TimeTakenLabel
 @onready var oil_collected_label: Label = $VBoxContainer/OilCollectedHbox/OilCollectedLabel
 @onready var soldier_kills_label: Label = $VBoxContainer/SoldiersKillHbox/SoldierKillsLabel
-@onready var tank_kills_label: Label = $VBoxContainer/TankKillsHbox2/TankKillsLabel
-@onready var flags_captured_label: Label = $VBoxContainer/FlagsCapturedHbox3/FlagsCapturedLabel
+@onready var tank_kills_label: Label = $VBoxContainer/TankKillsHbox/TankKillsLabel
+@onready var jeep_kills_label: Label = $VBoxContainer/JeepKillsHbox/JeepKillsLabel
+@onready var transport_kills_label: Label = $VBoxContainer/TransportKillsHbox/TransportKillsLabel
+@onready var depot_kills_label: Label = $VBoxContainer/DepotKillsHbox/DepotKillsLabel
+@onready var radar_tower_kills_label: Label = $VBoxContainer/RadarTowerKillsHbox/RadarTowerKillsLabel
+@onready var flags_captured_label: Label = $VBoxContainer/FlagsCapturedHbox/FlagsCapturedLabel
+@onready var dmg_taken_label: Label = $VBoxContainer/DamageTakenHbox/DmgTakenLabel
+@onready var dmg_done_label: Label = $VBoxContainer/DamageDoneHbox/DmgDoneLabel
+
 
 var next_level: String = ""
 
@@ -19,7 +26,13 @@ func update_scorecard(_next_level: String = "") -> void:
 	oil_collected_label.text = str(Globals.oil)
 	soldier_kills_label.text = str(Globals.soldier_kills)
 	tank_kills_label.text = str(Globals.tank_kills)
+	jeep_kills_label.text = str(Globals.jeep_kills)
+	transport_kills_label.text = str(Globals.transport_kills)
+	depot_kills_label.text = str(Globals.depot_kills)
+	radar_tower_kills_label.text = str(Globals.radar_kills)
 	flags_captured_label.text = str(Globals.flag_captures)
+	dmg_taken_label.text = str(Globals.total_damage_taken)
+	dmg_done_label.text = str(Globals.total_damage_done)
 	Globals.reset()
 	get_tree().paused = true
 

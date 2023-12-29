@@ -42,10 +42,12 @@ func hit(dmg) -> void:
 	if not health_component.destroyed:
 		death_animation_player.play("hit")
 		health_component.damage(dmg)
-	if health_component.destroyed:
-		die()
+		Globals.total_damage_done += dmg
+		if health_component.destroyed:
+			die()
 
 func die() -> void:
+	Globals.radar_kills += 1
 	$CollapseAudio.play()
 	collapse_animation_player.play("collapse")
 	death_animation_player.play("burn")

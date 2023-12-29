@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
+@onready var health_component: Node2D = $HealthComponent
 
 @export var total_soldiers: int
 @export var follower: GroundVehicle
@@ -10,13 +11,15 @@ extends StaticBody2D
 
 func hit(dmg) -> void:
 	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
-	if not $HealthComponent.destroyed:
+	if not health_component.destroyed:
 		$DeathAnimationPlayer.play("hit")
-		$HealthComponent.damage(dmg)
-		if $HealthComponent.destroyed:
+		health_component.damage(dmg)
+		Globals.total_damage_done += dmg
+		if health_component.destroyed:
 			die()
 
 func die() -> void:
+	Globals.depot_kills += 1
 	total_soldiers = 0
 	$Sprite2D.hide()
 	$DestroyedSprite.show()
@@ -30,7 +33,7 @@ func die() -> void:
 func _on_delay_deployment_body_entered(body: Node2D) -> void:
 	if body == follower:
 		follower.spawn_soldier_timer.stop()
-		if $HealthComponent.destroyed:
+		if health_component.destroyed:
 			path.set_process(false)
 
 func _on_delay_deployment_body_exited(body: Node2D) -> void:

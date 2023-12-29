@@ -41,11 +41,13 @@ func hit(dmg) -> void:
 	if not health_component.destroyed:
 		animation_player.play("hit")
 		health_component.damage(dmg)
+		Globals.total_damage_done += dmg
 		if health_component.destroyed:
 			die()
 
 func die() -> void:
 	print(name, " died.")
+	Globals.transport_kills += 1
 	$DestructionSound.play()
 	$VehicleSprite.hide()
 	$DestroyedVehicleSprite.show()

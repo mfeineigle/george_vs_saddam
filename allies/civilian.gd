@@ -1,8 +1,10 @@
 class_name Civilian extends CharacterBody2D
 
+@onready var sprite: Sprite2D = $Sprites.get_children()[randi() % $Sprites.get_children().size()]
+@onready var health_component: Node2D = $HealthComponent
+
 @export var speed: int = 250
 @export var hit_sounds: Array[AudioStreamMP3]
-@onready var sprite: Sprite2D = $Sprites.get_children()[randi() % $Sprites.get_children().size()]
 var blood_scene: PackedScene = preload("res://enemies/blood.tscn")
 var run_away: bool = false
 var direction: Vector2
@@ -41,11 +43,13 @@ func look_away(target_pos):
 
 func hit(dmg) -> void:
 	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
-	$HealthComponent.damage(dmg)
-	if $HealthComponent.destroyed:
+	health_component.damage(dmg)
+	Globals.total_damage_done += dmg
+	if health_component.destroyed:
 		die()
 
 func die() -> void:
+	Globals.civilian_kills += 1
 	var blood = blood_scene.instantiate()
 	get_owner().get_node("Background/Blood").add_child(blood)
 	blood.setup(global_position)

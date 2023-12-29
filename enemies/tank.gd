@@ -1,6 +1,6 @@
 extends GroundVehicle
 
-
+@onready var health_component: Node2D = $HealthComponent
 @onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
 var shell_scene: PackedScene = preload("res://projectiles/tank_shell.tscn")
 
@@ -11,7 +11,7 @@ var in_range: bool = false
 
 
 func _process(_delta) -> void:
-	if not $HealthComponent.destroyed:
+	if not health_component.destroyed:
 		velocity = direction * speed
 		direction = $Turret/BulletSpawnPoint.global_position.direction_to(Globals.player_pos)
 		$Turret.look_at(Globals.player_pos)
@@ -20,7 +20,7 @@ func _process(_delta) -> void:
 
 
 func shoot() -> void:
-	if can_shoot and in_range and check_los() and not $HealthComponent.destroyed:
+	if can_shoot and in_range and check_los() and not health_component.destroyed:
 		var shell = shell_scene.instantiate()
 		shell.setup(direction, $Turret/BulletSpawnPoint.global_position)
 		GameEvents.tank_shot.emit(shell)
@@ -51,10 +51,11 @@ func check_los() -> bool:
 
 func hit(dmg) -> void:
 	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
-	if not $HealthComponent.destroyed:
+	if not health_component.destroyed:
 		$DeathAnimationPlayer.play("hit")
-		$HealthComponent.damage(dmg)
-		if $HealthComponent.destroyed:
+		health_component.damage(dmg)
+		Globals.total_damage_done += dmg
+		if health_component.destroyed:
 			die()
 
 func die() -> void:
