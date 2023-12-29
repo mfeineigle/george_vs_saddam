@@ -7,9 +7,13 @@ extends Control
 @onready var jeep_kills_label: Label = $VBoxContainer/JeepKillsHbox/JeepKillsLabel
 @onready var transport_kills_label: Label = $VBoxContainer/TransportKillsHbox/TransportKillsLabel
 @onready var depot_kills_label: Label = $VBoxContainer/DepotKillsHbox/DepotKillsLabel
+@onready var scud_launcher_kills_label: Label = $VBoxContainer/ScudLauncherKillsHbox/ScudLauncherKillsLabel
+@onready var scud_launcher_triggers_label: Label = $VBoxContainer/ScudLauncherTriggersHbox/ScudLauncherTriggersLabel
 @onready var radar_tower_kills_label: Label = $VBoxContainer/RadarTowerKillsHbox/RadarTowerKillsLabel
+@onready var radar_tower_triggers_label: Label = $VBoxContainer/RadarTowerTriggersHbox/RadarTowerTriggersLabel
 @onready var flags_captured_label: Label = $VBoxContainer/FlagsCapturedHbox/FlagsCapturedLabel
 @onready var dmg_taken_label: Label = $VBoxContainer/DamageTakenHbox/DmgTakenLabel
+@onready var dmg_healed_label: Label = $VBoxContainer/DamageHealedHbox/DmgHealedLabel
 @onready var dmg_done_label: Label = $VBoxContainer/DamageDoneHbox/DmgDoneLabel
 
 
@@ -29,9 +33,13 @@ func update_scorecard(_next_level: String = "") -> void:
 	jeep_kills_label.text = str(Globals.jeep_kills)
 	transport_kills_label.text = str(Globals.transport_kills)
 	depot_kills_label.text = str(Globals.depot_kills)
+	scud_launcher_kills_label.text = str(Globals.scud_launcher_kills)
+	scud_launcher_triggers_label.text = str(Globals.scud_launcher_triggers)
 	radar_tower_kills_label.text = str(Globals.radar_kills)
+	radar_tower_triggers_label.text = str(Globals.radar_triggers)
 	flags_captured_label.text = str(Globals.flag_captures)
 	dmg_taken_label.text = str(Globals.total_damage_taken)
+	dmg_healed_label.text = str(Globals.total_dollars_collected)
 	dmg_done_label.text = str(Globals.total_damage_done)
 	Globals.reset()
 	get_tree().paused = true

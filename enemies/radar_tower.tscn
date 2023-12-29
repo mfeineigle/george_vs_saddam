@@ -580,5 +580,10 @@ volume_db = -5.0
 [node name="CollapseAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_gorjp")
 
+[node name="RetriggerDelayTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="RetriggerDelayTimer" to="." method="_on_retrigger_delay_timer_timeout"]

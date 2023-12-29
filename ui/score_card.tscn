@@ -128,15 +128,54 @@ layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
 
+[node name="ScudLauncherKillsHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ScudLauncherLabel" type="Label" parent="VBoxContainer/ScudLauncherKillsHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Scud Kills:"
+
+[node name="ScudLauncherKillsLabel" type="Label" parent="VBoxContainer/ScudLauncherKillsHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="ScudLauncherTriggersHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ScudLauncherLabel" type="Label" parent="VBoxContainer/ScudLauncherTriggersHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Scud Triggers:"
+
+[node name="ScudLauncherTriggersLabel" type="Label" parent="VBoxContainer/ScudLauncherTriggersHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
 [node name="RadarTowerKillsHbox" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="RadarTowerLabel" type="Label" parent="VBoxContainer/RadarTowerKillsHbox"]
 layout_mode = 2
 size_flags_horizontal = 2
-text = "Radar Tower Kills:"
+text = "Radar Kills:"
 
 [node name="RadarTowerKillsLabel" type="Label" parent="VBoxContainer/RadarTowerKillsHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="RadarTowerTriggersHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RadarTowerLabel" type="Label" parent="VBoxContainer/RadarTowerTriggersHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Radar Triggers:"
+
+[node name="RadarTowerTriggersLabel" type="Label" parent="VBoxContainer/RadarTowerTriggersHbox"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
@@ -163,6 +202,19 @@ size_flags_horizontal = 2
 text = "Damage Taken:"
 
 [node name="DmgTakenLabel" type="Label" parent="VBoxContainer/DamageTakenHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="DamageHealedHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DamageHealedLabel" type="Label" parent="VBoxContainer/DamageHealedHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Damage Healed:"
+
+[node name="DmgHealedLabel" type="Label" parent="VBoxContainer/DamageHealedHbox"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"

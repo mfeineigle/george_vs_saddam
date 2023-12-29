@@ -7,6 +7,7 @@ extends StaticBody2D
 @onready var health_component: Node2D = $HealthComponent
 @onready var rays = get_node("Top/Rays").get_children()
 var player_near: bool = false
+var radar_retrigger_delay: bool = false
 
 
 func _ready() -> void:
@@ -24,8 +25,11 @@ func check_radar(delta) -> void:
 		if player_near:
 			for ray in rays:
 				var collider = ray.get_collider()
-				if collider in get_tree().get_nodes_in_group("player"):
+				if collider in get_tree().get_nodes_in_group("player") and not radar_retrigger_delay:
+					radar_retrigger_delay = true
+					$RetriggerDelayTimer.start()
 					$PingAudio.play()
+					Globals.radar_towers_triggered += 1
 					GameEvents.spawn_tu_22.emit()
 
 func _on_detection_area_body_entered(body):
@@ -51,3 +55,7 @@ func die() -> void:
 	$CollapseAudio.play()
 	collapse_animation_player.play("collapse")
 	death_animation_player.play("burn")
+
+
+func _on_retrigger_delay_timer_timeout() -> void:
+	radar_retrigger_delay = false

@@ -1,13 +1,16 @@
 extends Area2D
 
 @export var pickup_sound: AudioStreamMP3
+@export var dollar_value: int = 5
 
 var direction: Vector2
+
 
 func setup(pos, dir) -> void:
 	position.x = pos.x - 100
 	position.y = pos.y
 	direction = dir
+
 
 func _ready() -> void:
 	$CollisionShape2D.disabled = true
@@ -23,7 +26,9 @@ func _ready() -> void:
 	$Thud.play()
 	await $Thud.finished
 
+
 func _on_body_entered(_body) -> void:
-	Globals.hp += 5
+	Globals.total_dollars_collected += dollar_value
+	Globals.hp += dollar_value
 	AudioStreamManager.play(pickup_sound)
 	queue_free()

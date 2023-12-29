@@ -22,6 +22,7 @@ func _on_scud_triggered(nearest_launch_point):
 		$CanFireTimer.start()
 		animation_player.play("fire_scud")
 		GameEvents.scud_fired.emit(position)
+		Globals.scud_launcher_triggers += 1
 
 func _on_fire_timer_timeout():
 	can_fire = true
@@ -30,6 +31,7 @@ func _on_fire_timer_timeout():
 func hit(dmg) -> void:
 	AudioStreamManager.play(hit_sounds[(randi() % len(hit_sounds))])
 	if not health_component.destroyed:
+		Globals.total_damage_done += dmg
 		animation_player.play("hit")
 		health_component.damage(dmg)
 		if health_component.destroyed:
@@ -37,6 +39,7 @@ func hit(dmg) -> void:
 
 func die() -> void:
 	print(name, " died.")
+	Globals.scud_launcher_kills += 1
 	$DestructionSound.play()
 	animation_player.play("die")
 	animation_player_2.play("burn")
