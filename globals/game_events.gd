@@ -1,13 +1,13 @@
 extends Node
 
 signal level_changed(path)
+signal level_exited(next_level)
+
 signal stats_changed
 signal cycled_weapon(weapon)
 
 signal player_hit(damage)
 signal george_shot(dir, pos, weapon)
-signal george_died
-signal score_card_displayed(next_level)
 
 signal air_drop_called()
 signal air_drop_updated()

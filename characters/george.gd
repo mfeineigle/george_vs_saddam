@@ -188,7 +188,7 @@ func hit(dmg) -> void:
 
 func die() -> void:
 	print(name, " died.")
-	GameEvents.george_died.emit()
+	GameEvents.level_exited.emit()
 
 func dash() -> void:
 	if dashCount < maxDashCount:

@@ -9,8 +9,7 @@ extends Control
 var next_level: String = ""
 
 func _ready() -> void:
-	GameEvents.george_died.connect(update_scorecard)
-	GameEvents.score_card_displayed.connect(update_scorecard)
+	GameEvents.level_exited.connect(update_scorecard)
 
 
 func update_scorecard(_next_level: String = "") -> void:
