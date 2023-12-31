@@ -4,12 +4,16 @@ extends Control
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var title: TextureRect = $Background/VBoxContainer/TitleHBox/TitleTextureRect
+# Buttons
 @onready var start_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/StartButton
 @onready var continue_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/ContinueButton
 @onready var options_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/OptionsButton
 @onready var story_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/StoryButton
 @onready var level_select_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/LevelSelectButton
 @onready var quit_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/QuitButton
+# Menus
+@onready var options_menu: Control = $Background/OptionsMenu
+@onready var high_scores_menu: Control = $Background/HighScoresMenu
 
 
 func _ready() -> void:
@@ -44,7 +48,12 @@ func _on_continue_button_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	$Background/VBoxContainer.hide()
-	$Background/OptionsMenu.show()
+	options_menu.show()
+
+
+func _on_high_scores_button_pressed() -> void:
+	$Background/VBoxContainer.hide()
+	high_scores_menu.show()
 
 
 func _on_story_button_pressed() -> void:

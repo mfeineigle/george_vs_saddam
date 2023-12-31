@@ -1,0 +1,136 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctg67vixoe7hk"]
+
+[ext_resource type="Script" path="res://ui/high_scores_menu.gd" id="1_rt28x"]
+[ext_resource type="Theme" uid="uid://bv467htpxf00q" path="res://ui/ui.tres" id="2_jj3uy"]
+
+[node name="HighScoresMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rt28x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -30.5
+offset_right = 51.5
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="LevelOptionButton" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_jj3uy")
+
+[node name="TimeHBox1" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_jj3uy")
+
+[node name="RankLabel01" type="Label" parent="VBoxContainer/TimeHBox1"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_jj3uy")
+text = "01:"
+
+[node name="BestTimeLabel01" type="Label" parent="VBoxContainer/TimeHBox1"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("2_jj3uy")
+text = "00:00:00"
+
+[node name="TimeHBox2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_jj3uy")
+
+[node name="RankLabel02" type="Label" parent="VBoxContainer/TimeHBox2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_jj3uy")
+text = "02:"
+
+[node name="BestTimeLabel02" type="Label" parent="VBoxContainer/TimeHBox2"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("2_jj3uy")
+text = "00:00:00"
+
+[node name="TimeHBox3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_jj3uy")
+
+[node name="RankLabel03" type="Label" parent="VBoxContainer/TimeHBox3"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_jj3uy")
+text = "03:"
+
+[node name="BestTimeLabel03" type="Label" parent="VBoxContainer/TimeHBox3"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("2_jj3uy")
+text = "00:00:00"
+
+[node name="TimeHBox4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_jj3uy")
+
+[node name="RankLabel04" type="Label" parent="VBoxContainer/TimeHBox4"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_jj3uy")
+text = "04:"
+
+[node name="BestTimeLabel04" type="Label" parent="VBoxContainer/TimeHBox4"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("2_jj3uy")
+text = "00:00:00"
+
+[node name="TimeHBox5" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_jj3uy")
+
+[node name="RankLabel05" type="Label" parent="VBoxContainer/TimeHBox5"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_jj3uy")
+text = "05:"
+
+[node name="BestTimeLabel05" type="Label" parent="VBoxContainer/TimeHBox5"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("2_jj3uy")
+text = "00:00:00"
+
+[node name="ResetButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_jj3uy")
+text = "Reset Times"
+
+[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_jj3uy")
+text = "Resume"
+
+[connection signal="item_selected" from="VBoxContainer/LevelOptionButton" to="." method="_on_level_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

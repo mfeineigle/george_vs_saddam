@@ -16,8 +16,8 @@ extends Control
 @onready var dmg_healed_label: Label = $VBoxContainer/DamageHealedHbox/DmgHealedLabel
 @onready var dmg_done_label: Label = $VBoxContainer/DamageDoneHbox/DmgDoneLabel
 
-
 var next_level: String = ""
+
 
 func _ready() -> void:
 	GameEvents.level_exited.connect(update_scorecard)
@@ -41,13 +41,31 @@ func update_scorecard(_next_level: String = "") -> void:
 	dmg_taken_label.text = str(Globals.total_damage_taken)
 	dmg_healed_label.text = str(Globals.total_dollars_collected)
 	dmg_done_label.text = str(Globals.total_damage_done)
+	update_best_times(Globals.current_level.get_meta("level_number"))
 	Globals.reset()
 	get_tree().paused = true
+
+
+func update_best_times(level: String) -> void:
+	var old_times = Utils.read_best_times(level)
+	var new_times = add_new_best_time(old_times, Globals.time)
+	save_best_times(level, new_times)
+
+func add_new_best_time(old_times, new_time):
+	old_times.append(new_time)
+	old_times.sort()
+	return old_times.slice(0,5)
+
+func save_best_times(level, times):
+	var save_path: String = "res://ui/scores/"+level.to_lower()+"_best_times.save"
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_string(var_to_str(times))
 
 
 func _on_restart_button_pressed() -> void:
 	get_tree().paused = false
 	visible = false
+	Globals.reset()
 	GameEvents.level_changed.emit(Globals.current_level.get_meta("Level"))
 
 

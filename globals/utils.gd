@@ -25,3 +25,13 @@ func get_spawn_point() -> Vector2:
 	path_follow.progress_ratio = randf()
 	return path_follow.global_position
 
+
+func read_best_times(level: String) -> Array:
+	level = level.to_lower()
+	var save_path: String = "res://ui/scores/"+level+"_best_times.save"
+	if FileAccess.file_exists(save_path):
+		var file = FileAccess.open(save_path, FileAccess.READ)
+		var times = file.get_as_text()
+		if times:
+			return str_to_var(times)
+	return [3599, 3599, 3599, 3599, 3599]

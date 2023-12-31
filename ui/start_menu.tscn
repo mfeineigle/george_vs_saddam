@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d23hdovu4t8qb"]
+[gd_scene load_steps=11 format=3 uid="uid://d23hdovu4t8qb"]
 
 [ext_resource type="Script" path="res://ui/start_menu.gd" id="1_qwvnd"]
 [ext_resource type="Texture2D" uid="uid://bfpgg2sf74ylt" path="res://assets/ui/start_menu_background.png" id="2_ldxji"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bohatjhrg4j6t" path="res://assets/allies/iraqi_child_1.png" id="3_fv6ix"]
 [ext_resource type="Theme" uid="uid://bv467htpxf00q" path="res://ui/ui.tres" id="5_m6lad"]
 [ext_resource type="Texture2D" uid="uid://c371j33ow8xwc" path="res://media/george_vs_saddam.png" id="5_n48cp"]
+[ext_resource type="PackedScene" uid="uid://ctg67vixoe7hk" path="res://ui/high_scores_menu.tscn" id="7_d76ma"]
 [ext_resource type="PackedScene" uid="uid://b3locbppi35js" path="res://ui/options_menu.tscn" id="7_ln055"]
 
 [sub_resource type="Animation" id="Animation_7hoes"]
@@ -154,7 +155,6 @@ text = "Saddam
 "
 
 [node name="TitleTextureRect" type="TextureRect" parent="Background/VBoxContainer/TitleHBox"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("5_n48cp")
 
@@ -171,41 +171,44 @@ theme_override_constants/separation = 10
 alignment = 2
 
 [node name="StartButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
-self_modulate = Color(1, 1, 1, 0.00662252)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Start"
 
 [node name="ContinueButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Continue"
 
 [node name="OptionsButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Options"
 
+[node name="HighScoresButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+layout_mode = 2
+theme = ExtResource("5_m6lad")
+text = "High Scores"
+
 [node name="StoryButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Story"
 
 [node name="LevelSelectButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Level Select"
 
 [node name="QuitButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Quit"
+
+[node name="HighScoresMenu" parent="Background" instance=ExtResource("7_d76ma")]
+visible = false
+layout_mode = 1
 
 [node name="OptionsMenu" parent="Background" instance=ExtResource("7_ln055")]
 visible = false
@@ -219,6 +222,7 @@ libraries = {
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/HighScoresButton" to="." method="_on_high_scores_button_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/StoryButton" to="." method="_on_story_button_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/QuitButton" to="." method="_on_quit_button_pressed"]
