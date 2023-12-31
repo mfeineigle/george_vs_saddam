@@ -49,6 +49,7 @@ var oil: int = 0:
 
 
 func reset() -> void:
+	time = 0
 	hp = 55
 	oil = 0
 	soldier_kills = 0
