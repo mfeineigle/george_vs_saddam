@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b53huobt6wuih"]
+[gd_scene load_steps=16 format=3 uid="uid://b53huobt6wuih"]
 
 [ext_resource type="Script" path="res://projectiles/scud.gd" id="1_kovvd"]
 [ext_resource type="Texture2D" uid="uid://cyy1wh1vid43a" path="res://assets/projectiles/scudMissile.png" id="2_mfp0y"]
@@ -6,10 +6,15 @@
 [ext_resource type="AudioStream" uid="uid://plifnc4ypcrh" path="res://assets/audio/scud_launch.mp3" id="4_b8ffm"]
 [ext_resource type="Texture2D" uid="uid://c3i5tke7m00e6" path="res://assets/projectiles/explosion_scud.png" id="5_c0irm"]
 
+[sub_resource type="Gradient" id="Gradient_xmc7b"]
+offsets = PackedFloat32Array(0.0677966, 0.311864, 0.559322)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1)
+
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_50imr"]
+gradient = SubResource("Gradient_xmc7b")
 
 [sub_resource type="Gradient" id="Gradient_q4eyw"]
-offsets = PackedFloat32Array(0, 0.00367647, 0.330882, 0.466912, 0.775735)
+offsets = PackedFloat32Array(0, 0.00367647, 0.330882, 0.466912, 0.979661)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 0.00784314, 1, 1, 0.156863, 0.156863, 1, 1, 0, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_woxd8"]
