@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://drsxc4y4iell8"]
+
+[ext_resource type="Script" path="res://set_pieces/buildings/houses/house_02.gd" id="1_eja66"]
+[ext_resource type="Texture2D" uid="uid://cjn1tx67e2l1x" path="res://assets/buildings/houses/02/house_02_google_earth.png" id="2_kj7w1"]
+[ext_resource type="Texture2D" uid="uid://cualp8tua4ne6" path="res://assets/buildings/houses/01/01_roof.png" id="3_n8tw3"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m5tg0"]
+load_path = "res://.godot/imported/01_roof.png-4cd3e8055deab89b7bade255b526b9a1.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nlml8"]
+load_path = "res://.godot/imported/01_roof.png-4cd3e8055deab89b7bade255b526b9a1.ctex"
+
+[sub_resource type="Animation" id="Animation_j8nyk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Roof:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_16kc7"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Roof:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jrfr"]
+_data = {
+"RESET": SubResource("Animation_j8nyk"),
+"fade_out": SubResource("Animation_16kc7")
+}
+
+[node name="House02" type="Area2D"]
+script = ExtResource("1_eja66")
+
+[node name="Floor" type="Sprite2D" parent="."]
+texture = ExtResource("2_kj7w1")
+
+[node name="Door" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Door"]
+polygon = PackedVector2Array(-430, 158, -484, 3, -497, -11, -577, -15, -574, -424, -51, -423, -59, 218, -415, 225, -416, 162)
+
+[node name="WallsStaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WallsStaticBody2D"]
+polygon = PackedVector2Array(-583, -436, -42, -432, -48, 239, -425, 240, -423, 157, -109, 163, -106, -41, -65, -45, -59, -420, -572, -418, -570, -35, -569, -19, -487, -23, -487, 1, -590, -2)
+
+[node name="Roof" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Roof"]
+position = Vector2(-312.25, -315.25)
+scale = Vector2(1.27625, 0.417708)
+texture = ExtResource("3_n8tw3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Roof"]
+position = Vector2(-507.25, -220.25)
+scale = Vector2(0.30125, 0.813542)
+texture = SubResource("CompressedTexture2D_m5tg0")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Roof"]
+position = Vector2(-102.375, -230.625)
+scale = Vector2(0.218125, 0.773438)
+texture = SubResource("CompressedTexture2D_nlml8")
+
+[node name="RoofAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8jrfr")
+}
+
+[connection signal="body_entered" from="Door" to="." method="_on_door_body_entered"]
+[connection signal="body_exited" from="Door" to="." method="_on_door_body_exited"]
