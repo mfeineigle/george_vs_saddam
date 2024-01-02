@@ -22,6 +22,7 @@ GameEvents="*res://globals/game_events.gd"
 Utils="*res://globals/utils.gd"
 WeaponsManager="*res://globals/weapons_manager.gd"
 AudioStreamManager="*res://globals/AudioStreamManager.gd"
+KeyManager="*res://globals/key_manager.gd"
 
 [display]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3mkylkdhtc4e"]
+[gd_scene load_steps=25 format=3 uid="uid://c3mkylkdhtc4e"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_7qhx8"]
 [ext_resource type="Texture2D" uid="uid://dlymds1mxs36t" path="res://assets/background/lvl-A_ground_textures.png" id="2_hupca"]
@@ -9,9 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://bq4olaflelq1y" path="res://assets/buildings/bunker_enterance_01.png" id="5_8ffk4"]
 [ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="5_ly66f"]
 [ext_resource type="PackedScene" uid="uid://y4687yg2fuia" path="res://levels/exit_level_area.tscn" id="6_qmtpk"]
+[ext_resource type="PackedScene" uid="uid://budsnlgga1e1s" path="res://set_pieces/flag_pole.tscn" id="7_3e2ed"]
+[ext_resource type="PackedScene" uid="uid://b75ima0605ntm" path="res://allies/child.tscn" id="8_lkep6"]
 [ext_resource type="PackedScene" uid="uid://bbpukyyyvrxn5" path="res://set_pieces/obstacles/boulders_h.tscn" id="8_w7dtb"]
 [ext_resource type="PackedScene" uid="uid://drsxc4y4iell8" path="res://set_pieces/buildings/houses/house_02.tscn" id="8_yo8lt"]
 [ext_resource type="PackedScene" uid="uid://henmrnwuesl5" path="res://set_pieces/obstacles/boulders_v.tscn" id="9_r5obu"]
+[ext_resource type="PackedScene" uid="uid://dpx6bh7huxq4v" path="res://collectibles/keys/keycard_red.tscn" id="11_gb52y"]
 [ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="12_hu4jq"]
 [ext_resource type="PackedScene" uid="uid://iwp2j1y6mc1u" path="res://weapons/landmine.tscn" id="12_nyxdv"]
 [ext_resource type="PackedScene" uid="uid://dvegaq0esyjct" path="res://characters/saddam.tscn" id="14_42eps"]
@@ -289,21 +292,36 @@ texture = ExtResource("5_8ffk4")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/Bunker" index="1"]
 polygon = PackedVector2Array(-198, -654, -347, -746, -212, -845, -164, -1390, -90, -1432, 72, -1421, 87, -1226, 137, -1137, 134, -1081, 17, -1013, 8, -840, 157, -697, 35, -631, -16, -796, -133, -802)
 
-[node name="ExitLevelArea" parent="Background/Bunker" index="2" instance=ExtResource("6_qmtpk")]
+[node name="ExitLevelArea" parent="Background/Bunker" index="2" node_paths=PackedStringArray("flag_pole") instance=ExtResource("6_qmtpk")]
+flag_pole = NodePath("FlagPole")
 next_level = "res://levels/cut_scenes/page_test_a.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Bunker/ExitLevelArea" index="0"]
 position = Vector2(-80, -770)
 shape = SubResource("RectangleShape2D_oo1ot")
 
-[node name="House02" parent="Background" index="3" instance=ExtResource("8_yo8lt")]
-position = Vector2(-1569, -1193)
+[node name="FlagPole" parent="Background/Bunker/ExitLevelArea" index="1" instance=ExtResource("7_3e2ed")]
+position = Vector2(-220, -859)
+
+[node name="House02" parent="Background" index="2" node_paths=PackedStringArray("occupants") instance=ExtResource("8_yo8lt")]
+position = Vector2(-1412, -1092)
+occupants = NodePath("Occupants")
+door_locked = true
+lock_color = "red"
+
+[node name="Occupants" type="Node2D" parent="Background/House02" index="9"]
+
+[node name="Child" parent="Background/House02/Occupants" index="0" instance=ExtResource("8_lkep6")]
+position = Vector2(-492, -308)
 
 [node name="George" parent="." index="3"]
 position = Vector2(-1820, -719)
 
 [node name="Rifle" parent="Collectibles/Guns" index="0" instance=ExtResource("4_e6ayp")]
 position = Vector2(-132, 12)
+
+[node name="Keycard_Red" parent="Collectibles" index="2" instance=ExtResource("11_gb52y")]
+position = Vector2(-1688, -695)
 
 [node name="TileMap" type="TileMap" parent="Obstacles" index="0"]
 format = 2
@@ -377,5 +395,6 @@ position = Vector2(476, 172)
 position = Vector2(428, -290)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="9"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_wfxqw")
 metadata/_edit_lock_ = true

@@ -1,13 +1,47 @@
 extends Area2D
 
-@onready var roof_animation: AnimationPlayer = $RoofAnimation
+@onready var roof_animation_player: AnimationPlayer = $RoofAnimationPlayer
+@onready var door_animation_player: AnimationPlayer = $DoorAnimationPlayer
+@onready var locked_door_rattle: AudioStreamPlayer = $LockedDoorRattle
+@onready var door_opening: AudioStreamPlayer = $DoorOpening
 
+## A Node2D that must be added to hold the characters in the building
+@export var occupants: Node2D
+@export var door_locked: bool = false
+@export var lock_color: String
+
+var door_open: bool = false
+
+
+func _ready() -> void:
+	hide_occupants()
 
 func _on_door_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		roof_animation.play("fade_out")
+	if body.is_in_group("player") and door_locked:
+		if lock_color in KeyManager.keys:
+			door_locked = false
+		else:
+			locked_door_rattle.play()
+	if body.is_in_group("player") and not door_locked:
+		roof_animation_player.play("fade_out")
+		show_occupants()
+		if not door_open:
+			door_open = true
+			door_animation_player.play("open_door")
+			door_opening.play()
 
 
 func _on_door_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		roof_animation.play_backwards("fade_out")
+	if body.is_in_group("player") and not door_locked:
+		roof_animation_player.play_backwards("fade_out")
+		hide_occupants()
+
+
+func show_occupants() -> void:
+	for i in occupants.get_children():
+		i.visible = true
+
+
+func hide_occupants() -> void:
+	for i in occupants.get_children():
+		i.visible = false
