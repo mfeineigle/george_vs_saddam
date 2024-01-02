@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cakqd5i57odwm"]
+[gd_scene load_steps=10 format=3 uid="uid://cakqd5i57odwm"]
 
 [ext_resource type="Script" path="res://projectiles/tu_22_bomb.gd" id="1_cxf5t"]
 [ext_resource type="Texture2D" uid="uid://btuqxab0838ib" path="res://assets/projectiles/tu_22_bomb.png" id="2_draf5"]
@@ -92,8 +92,48 @@ tracks/3/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_1vxd4"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosionSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lycp5"]
 _data = {
+"RESET": SubResource("Animation_1vxd4"),
 "drop_bomb": SubResource("Animation_00mir"),
 "explode": SubResource("Animation_vx5bn")
 }
@@ -102,7 +142,6 @@ _data = {
 script = ExtResource("1_cxf5t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_draf5")
 flip_h = true
@@ -120,6 +159,7 @@ libraries = {
 [node name="explosionAudio" type="AudioStreamPlayer2D" parent="."]
 
 [node name="explosionSprite" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("3_jc2wl")
 hframes = 8
 vframes = 8
