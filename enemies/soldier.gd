@@ -143,7 +143,8 @@ func die() -> void:
 	print(name, " died.")
 	Globals.soldier_kills += 1
 	var blood = blood_scene.instantiate()
-	Globals.current_level.get_node("Background/Blood").add_child(blood)
+	get_parent().add_child(blood)
+	#Globals.current_level.get_node("Background/Blood").add_child(blood)
 	blood.setup(global_position)
 	$deathSprite.show()
 	sprite.hide()

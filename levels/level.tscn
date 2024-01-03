@@ -34,8 +34,6 @@ rotation = 0.00702382
 
 [node name="Blood" type="Node2D" parent="Background"]
 
-[node name="George" parent="." instance=ExtResource("5_wtym8")]
-
 [node name="Collectibles" type="Node2D" parent="."]
 script = ExtResource("3_dawd3")
 
@@ -71,6 +69,8 @@ one_shot = true
 script = ExtResource("4_q3t78")
 
 [node name="AirDropTimer" type="Timer" parent="Allies"]
+
+[node name="George" parent="." instance=ExtResource("5_wtym8")]
 
 [connection signal="timeout" from="Enemies/Aircraft/tu_22Timer" to="Enemies" method="_on_tu_22_timer_timeout"]
 [connection signal="timeout" from="Allies/AirDropTimer" to="Allies" method="_on_air_drop_timer_timeout"]
