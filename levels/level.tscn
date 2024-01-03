@@ -43,6 +43,8 @@ script = ExtResource("3_dawd3")
 
 [node name="Guns" type="Node2D" parent="Collectibles"]
 
+[node name="Keys" type="Node2D" parent="Collectibles"]
+
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Projectiles" type="Node2D" parent="."]

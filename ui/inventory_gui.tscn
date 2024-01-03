@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cc33ahmqajp34"]
 
 [ext_resource type="Theme" uid="uid://bv467htpxf00q" path="res://ui/ui.tres" id="1_waptp"]
-[ext_resource type="Script" path="res://ui/InventoryGui.gd" id="2_7ix1e"]
+[ext_resource type="Script" path="res://ui/inventory_weapons_gui.gd" id="2_v0dcd"]
 [ext_resource type="Texture2D" uid="uid://bgljkpeuqw85q" path="res://assets/ui/InventoryRect.png" id="3_ccigk"]
 [ext_resource type="PackedScene" uid="uid://cgnd3cqif5fcf" path="res://ui/inventory_slot.tscn" id="4_0txiy"]
 
@@ -12,7 +12,7 @@ anchors_preset = 0
 offset_right = 453.0
 offset_bottom = 184.0
 theme = ExtResource("1_waptp")
-script = ExtResource("2_7ix1e")
+script = ExtResource("2_v0dcd")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1

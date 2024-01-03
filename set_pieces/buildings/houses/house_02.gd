@@ -8,13 +8,14 @@ extends Area2D
 ## A Node2D that must be added to hold the characters in the building
 @export var occupants: Node2D
 @export var door_locked: bool = false
-@export var lock_color: String
+@export var lock_color: Keycard
 
 var door_open: bool = false
 
 
 func _ready() -> void:
 	hide_occupants()
+
 
 func _on_door_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and door_locked:

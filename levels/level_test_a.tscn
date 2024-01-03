@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c3mkylkdhtc4e"]
+[gd_scene load_steps=28 format=3 uid="uid://c3mkylkdhtc4e"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_7qhx8"]
 [ext_resource type="Texture2D" uid="uid://dlymds1mxs36t" path="res://assets/background/lvl-A_ground_textures.png" id="2_hupca"]
@@ -13,10 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://b75ima0605ntm" path="res://allies/child.tscn" id="8_lkep6"]
 [ext_resource type="PackedScene" uid="uid://bbpukyyyvrxn5" path="res://set_pieces/obstacles/boulders_h.tscn" id="8_w7dtb"]
 [ext_resource type="PackedScene" uid="uid://drsxc4y4iell8" path="res://set_pieces/buildings/houses/house_02.tscn" id="8_yo8lt"]
+[ext_resource type="Resource" uid="uid://ciff73pn16450" path="res://collectibles/keys/key_red.tres" id="9_d7ar1"]
 [ext_resource type="PackedScene" uid="uid://henmrnwuesl5" path="res://set_pieces/obstacles/boulders_v.tscn" id="9_r5obu"]
-[ext_resource type="PackedScene" uid="uid://dpx6bh7huxq4v" path="res://collectibles/keys/keycard_red.tscn" id="11_gb52y"]
+[ext_resource type="PackedScene" uid="uid://clkuxg2lsv8uy" path="res://collectibles/oil_barrel.tscn" id="11_chxcq"]
+[ext_resource type="PackedScene" uid="uid://dpx6bh7huxq4v" path="res://collectibles/keys/keycard.tscn" id="11_gb52y"]
 [ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="12_hu4jq"]
 [ext_resource type="PackedScene" uid="uid://iwp2j1y6mc1u" path="res://weapons/landmine.tscn" id="12_nyxdv"]
+[ext_resource type="Resource" uid="uid://rmc8f4bcqv0j" path="res://collectibles/keys/key_blue.tres" id="13_ytxab"]
 [ext_resource type="PackedScene" uid="uid://dvegaq0esyjct" path="res://characters/saddam.tscn" id="14_42eps"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oeqm3"]
@@ -307,7 +310,7 @@ position = Vector2(-220, -859)
 position = Vector2(-1412, -1092)
 occupants = NodePath("Occupants")
 door_locked = true
-lock_color = "red"
+lock_color = ExtResource("9_d7ar1")
 
 [node name="Occupants" type="Node2D" parent="Background/House02" index="9"]
 
@@ -317,11 +320,19 @@ position = Vector2(-492, -308)
 [node name="George" parent="." index="3"]
 position = Vector2(-1820, -719)
 
-[node name="Rifle" parent="Collectibles/Guns" index="0" instance=ExtResource("4_e6ayp")]
-position = Vector2(-132, 12)
+[node name="oil_barrel" parent="Collectibles/Oil_Barrels" index="0" instance=ExtResource("11_chxcq")]
+position = Vector2(-2052, -708)
 
-[node name="Keycard_Red" parent="Collectibles" index="2" instance=ExtResource("11_gb52y")]
-position = Vector2(-1688, -695)
+[node name="Rifle" parent="Collectibles/Guns" index="0" instance=ExtResource("4_e6ayp")]
+position = Vector2(-1599, -696)
+
+[node name="Keycard_red" parent="Collectibles/Keys" index="0" instance=ExtResource("11_gb52y")]
+position = Vector2(-1826, -503)
+key = ExtResource("9_d7ar1")
+
+[node name="Keycard_blue" parent="Collectibles/Keys" index="1" instance=ExtResource("11_gb52y")]
+position = Vector2(-1695, -505)
+key = ExtResource("13_ytxab")
 
 [node name="TileMap" type="TileMap" parent="Obstacles" index="0"]
 format = 2

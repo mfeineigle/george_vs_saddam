@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Keycard" load_steps=3 format=3 uid="uid://ciff73pn16450"]
+
+[ext_resource type="Script" path="res://collectibles/keys/key_resource.gd" id="1_afr6b"]
+[ext_resource type="Texture2D" uid="uid://dmd2ccco7nuye" path="res://assets/collectibles/keycards_red_25pct.png" id="2_nqet5"]
+
+[resource]
+script = ExtResource("1_afr6b")
+texture = ExtResource("2_nqet5")
+color = "red"

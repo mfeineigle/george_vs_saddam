@@ -1,19 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpx6bh7huxq4v"]
+[gd_scene load_steps=3 format=3 uid="uid://dpx6bh7huxq4v"]
 
-[ext_resource type="Texture2D" uid="uid://dmd2ccco7nuye" path="res://assets/collectibles/keycards_red_25pct.png" id="1_kmg2o"]
 [ext_resource type="Script" path="res://collectibles/keys/keycard.gd" id="1_selbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nfii"]
 size = Vector2(72, 46)
 
-[node name="Keycard_Red" type="Area2D"]
+[node name="Keycard" type="Area2D"]
 collision_layer = 16
 script = ExtResource("1_selbe")
-card_color = "red"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_kmg2o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0nfii")
