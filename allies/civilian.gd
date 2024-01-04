@@ -8,6 +8,7 @@ class_name Civilian extends CharacterBody2D
 var blood_scene: PackedScene = preload("res://enemies/blood.tscn")
 var run_away: bool = false
 var direction: Vector2
+var is_dead: bool = false
 
 
 func _ready() -> void:
@@ -31,7 +32,7 @@ func _on_avoidance_area_body_entered(body: Node2D) -> void:
 		run_away = true
 
 func _on_avoidance_area_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not is_dead:
 		$Timers/KeepRunningTimer.start()
 
 func _on_keep_running_timer_timeout() -> void:
@@ -49,6 +50,7 @@ func hit(dmg) -> void:
 		die()
 
 func die() -> void:
+	is_dead = true
 	Globals.civilian_kills += 1
 	var blood = blood_scene.instantiate()
 	get_parent().add_child(blood)
