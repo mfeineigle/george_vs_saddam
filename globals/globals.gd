@@ -52,6 +52,8 @@ func reset() -> void:
 	time = 0
 	hp = 55
 	oil = 0
+	WeaponsManager.weapons = []
+	KeyManager.keys = []
 	soldier_kills = 0
 	tank_kills = 0
 	flag_captures = 0
