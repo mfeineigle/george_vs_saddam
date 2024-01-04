@@ -317,9 +317,6 @@ lock_color = ExtResource("9_d7ar1")
 [node name="Child" parent="Background/House02/Occupants" index="0" instance=ExtResource("8_lkep6")]
 position = Vector2(-492, -308)
 
-[node name="George" parent="." index="3"]
-position = Vector2(-1820, -719)
-
 [node name="oil_barrel" parent="Collectibles/Oil_Barrels" index="0" instance=ExtResource("11_chxcq")]
 position = Vector2(-2052, -708)
 
@@ -409,3 +406,6 @@ position = Vector2(428, -290)
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_wfxqw")
 metadata/_edit_lock_ = true
+
+[node name="George" parent="." index="10"]
+position = Vector2(-1820, -719)

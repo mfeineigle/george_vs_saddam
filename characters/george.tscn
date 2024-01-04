@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://characters/george.gd" id="1_rmo37"]
 [ext_resource type="Script" path="res://characters/Camera2D.gd" id="3_0vf3l"]
+[ext_resource type="Texture2D" uid="uid://cmf73ppg0v182" path="res://assets/characters/george_sm.png" id="3_5b26l"]
 [ext_resource type="PackedScene" uid="uid://dt6eoqj2mxfx" path="res://components/health_component.tscn" id="4_fnmib"]
 [ext_resource type="Texture2D" uid="uid://d4hi408enp7gl" path="res://assets/weapons/ar15_muzzle_flash.png" id="5_5quw0"]
-[ext_resource type="Texture2D" uid="uid://ckn1kkhxiisd" path="res://assets/characters/george.png" id="5_4032p"]
 [ext_resource type="AudioStream" uid="uid://chjhluko34axn" path="res://assets/audio/weapons/rifle_load.mp3" id="6_1jpi3"]
 [ext_resource type="Texture2D" uid="uid://v40khrhhlsbp" path="res://assets/weapons/ar-15.png" id="6_vd5mg"]
 [ext_resource type="Texture2D" uid="uid://f0txkl5224x2" path="res://assets/weapons/rocket_muzzle_flash.png" id="7_4kuio"]
@@ -72,8 +72,7 @@ max_hp = 55
 
 [node name="GeorgeSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
-scale = Vector2(0.13, 0.13)
-texture = ExtResource("5_4032p")
+texture = ExtResource("3_5b26l")
 
 [node name="Guns" type="Node2D" parent="."]
 position = Vector2(0, 30)
