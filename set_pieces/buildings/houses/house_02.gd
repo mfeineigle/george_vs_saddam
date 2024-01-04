@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 
 @onready var roof_animation_player: AnimationPlayer = $RoofAnimationPlayer
 @onready var door_animation_player: AnimationPlayer = $DoorAnimationPlayer
@@ -17,7 +17,7 @@ func _ready() -> void:
 	hide_occupants()
 
 
-func _on_door_body_entered(body: Node2D) -> void:
+func _on_open_door_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and door_locked:
 		if lock_color in KeyManager.keys:
 			door_locked = false
@@ -32,17 +32,19 @@ func _on_door_body_entered(body: Node2D) -> void:
 			door_opening.play()
 
 
-func _on_door_body_exited(body: Node2D) -> void:
+func _on_open_door_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player") and not door_locked:
 		roof_animation_player.play_backwards("fade_out")
 		hide_occupants()
 
 
 func show_occupants() -> void:
-	for i in occupants.get_children():
-		i.visible = true
+	if occupants:
+		for i in occupants.get_children():
+			i.visible = true
 
 
 func hide_occupants() -> void:
-	for i in occupants.get_children():
-		i.visible = false
+	if occupants:
+		for i in occupants.get_children():
+			i.visible = false
