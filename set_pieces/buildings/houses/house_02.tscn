@@ -102,11 +102,16 @@ _data = {
 "open_door": SubResource("Animation_qmoj7")
 }
 
-[node name="House02" type="Area2D"]
+[node name="House02" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 7
 script = ExtResource("1_eja66")
 
 [node name="Floor" type="Sprite2D" parent="."]
 texture = ExtResource("2_kj7w1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-583, -436, -42, -432, -48, 239, -425, 240, -423, 157, -109, 163, -106, -41, -65, -45, -59, -420, -572, -418, -570, -35, -569, -19, -487, -23, -487, 1, -590, -2)
 
 [node name="Door" type="Sprite2D" parent="."]
 position = Vector2(-418, 161)
@@ -128,16 +133,11 @@ rotation = -1.91986
 shape = SubResource("RectangleShape2D_tkpx7")
 
 [node name="OpenDoorArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OpenDoorArea"]
 polygon = PackedVector2Array(-430, 158, -484, 3, -497, -11, -577, -15, -574, -424, -51, -423, -59, 218, -415, 225, -416, 162)
-
-[node name="Walls" type="StaticBody2D" parent="."]
-collision_layer = 8
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(-583, -436, -42, -432, -48, 239, -425, 240, -423, 157, -109, 163, -106, -41, -65, -45, -59, -420, -572, -418, -570, -35, -569, -19, -487, -23, -487, 1, -590, -2)
 
 [node name="Roof" type="Node2D" parent="."]
 
@@ -173,5 +173,5 @@ stream = ExtResource("5_wa1ac")
 stream = ExtResource("6_rabvs")
 volume_db = -5.0
 
-[connection signal="body_entered" from="OpenDoorArea" to="." method="_on_door_body_entered"]
-[connection signal="body_exited" from="OpenDoorArea" to="." method="_on_door_body_exited"]
+[connection signal="body_entered" from="OpenDoorArea" to="." method="_on_open_door_area_body_entered"]
+[connection signal="body_exited" from="OpenDoorArea" to="." method="_on_open_door_area_body_exited"]
