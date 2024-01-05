@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 @onready var roof_animation_player: AnimationPlayer = $RoofAnimationPlayer
 @onready var door_animation_player: AnimationPlayer = $DoorAnimationPlayer

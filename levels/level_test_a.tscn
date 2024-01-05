@@ -325,6 +325,7 @@ position = Vector2(-389.999, 425.001)
 position = Vector2(-1268, -1014)
 rotation = -3.26377
 is_door_locked = true
+lock_color = ExtResource("9_d7ar1")
 
 [node name="oil_barrel" parent="Collectibles/Oil_Barrels" index="0" instance=ExtResource("11_chxcq")]
 position = Vector2(-2052, -708)

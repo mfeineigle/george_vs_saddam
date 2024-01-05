@@ -1,6 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://mwbpwwl1iwkh"]
 
-[ext_resource type="PackedScene" uid="uid://cxlpakvf6x0ds" path="res://set_pieces/buildings/building.tscn" id="1_0fbuw"]
+[ext_resource type="PackedScene" uid="uid://ryghra6h1hmp" path="res://set_pieces/buildings/building.tscn" id="1_0fbuw"]
+
+[sub_resource type="Animation" id="Animation_y4sos"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
 
 [sub_resource type="Animation" id="Animation_ucwbb"]
 resource_name = "open_door"
@@ -16,21 +31,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [3.14159, 1.41372]
-}
-
-[sub_resource type="Animation" id="Animation_y4sos"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Door:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.14159]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hy60r"]
