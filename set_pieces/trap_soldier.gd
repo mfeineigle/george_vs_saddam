@@ -30,8 +30,14 @@ func _on_body_entered(body: Node2D) -> void:
 			unit.set_physics_process(true)
 			unit.visible = true
 			unit.process_mode = Node.PROCESS_MODE_INHERIT
+			call_deferred("reparent_unit", unit)
+	queue_free()
 
 
-func _on_all_units_dead_timer_timeout() -> void:
-	if len(units.get_children()) <= 0:
-		queue_free()
+func reparent_unit(unit) -> void:
+	unit.reparent(Globals.current_level.get_node("Enemies/Soldiers"))
+
+
+#func _on_all_units_dead_timer_timeout() -> void:
+	#if len(units.get_children()) <= 0:
+		#queue_free()
