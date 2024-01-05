@@ -12,14 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://budsnlgga1e1s" path="res://set_pieces/flag_pole.tscn" id="7_3e2ed"]
 [ext_resource type="PackedScene" uid="uid://b75ima0605ntm" path="res://allies/child.tscn" id="8_lkep6"]
 [ext_resource type="PackedScene" uid="uid://bbpukyyyvrxn5" path="res://set_pieces/obstacles/boulders_h.tscn" id="8_w7dtb"]
-[ext_resource type="PackedScene" uid="uid://drsxc4y4iell8" path="res://set_pieces/buildings/houses/house_02.tscn" id="8_yo8lt"]
 [ext_resource type="Resource" uid="uid://ciff73pn16450" path="res://collectibles/keys/key_red.tres" id="9_d7ar1"]
 [ext_resource type="PackedScene" uid="uid://henmrnwuesl5" path="res://set_pieces/obstacles/boulders_v.tscn" id="9_r5obu"]
 [ext_resource type="PackedScene" uid="uid://clkuxg2lsv8uy" path="res://collectibles/oil_barrel.tscn" id="11_chxcq"]
 [ext_resource type="PackedScene" uid="uid://dpx6bh7huxq4v" path="res://collectibles/keys/keycard.tscn" id="11_gb52y"]
-[ext_resource type="PackedScene" uid="uid://c5nlkfoln6qhr" path="res://set_pieces/buildings/building.tscn" id="11_sdduf"]
+[ext_resource type="PackedScene" uid="uid://mwbpwwl1iwkh" path="res://set_pieces/buildings/second_building.tscn" id="12_ens30"]
 [ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="12_hu4jq"]
 [ext_resource type="PackedScene" uid="uid://iwp2j1y6mc1u" path="res://weapons/landmine.tscn" id="12_nyxdv"]
+[ext_resource type="PackedScene" uid="uid://8hbgdo3q0lfn" path="res://set_pieces/buildings/test_building.tscn" id="13_oujyj"]
 [ext_resource type="Resource" uid="uid://rmc8f4bcqv0j" path="res://collectibles/keys/key_blue.tres" id="13_ytxab"]
 [ext_resource type="PackedScene" uid="uid://dvegaq0esyjct" path="res://characters/saddam.tscn" id="14_42eps"]
 
@@ -307,31 +307,24 @@ shape = SubResource("RectangleShape2D_oo1ot")
 [node name="FlagPole" parent="Background/Bunker/ExitLevelArea" index="1" instance=ExtResource("7_3e2ed")]
 position = Vector2(-220, -859)
 
-[node name="Building" parent="Background" index="2" node_paths=PackedStringArray("occupants") instance=ExtResource("11_sdduf")]
-position = Vector2(-1824, -21)
-rotation = -3.14159
+[node name="TestBuilding" parent="Background" index="3" node_paths=PackedStringArray("occupants") instance=ExtResource("13_oujyj")]
+position = Vector2(-1355, 150)
+rotation = 3.14159
 occupants = NodePath("Occupants")
-door_locked = true
-lock_color = ExtResource("13_ytxab")
 
-[node name="Occupants" type="Node2D" parent="Background/Building" index="8"]
+[node name="Occupants" type="Node2D" parent="Background/TestBuilding" index="8"]
+position = Vector2(701, -289)
 
-[node name="Child" parent="Background/Building/Occupants" index="0" instance=ExtResource("8_lkep6")]
-position = Vector2(224, 72)
+[node name="Child" parent="Background/TestBuilding/Occupants" index="0" instance=ExtResource("8_lkep6")]
+position = Vector2(259.001, 430.999)
 
-[node name="Child2" parent="Background/Building/Occupants" index="1" instance=ExtResource("8_lkep6")]
-position = Vector2(-168, -146)
+[node name="Child2" parent="Background/TestBuilding/Occupants" index="1" instance=ExtResource("8_lkep6")]
+position = Vector2(-389.999, 425.001)
 
-[node name="House02" parent="Background" index="3" node_paths=PackedStringArray("occupants") instance=ExtResource("8_yo8lt")]
-position = Vector2(-1412, -1092)
-occupants = NodePath("Occupants")
-door_locked = true
-lock_color = ExtResource("9_d7ar1")
-
-[node name="Occupants" type="Node2D" parent="Background/House02" index="9"]
-
-[node name="Child" parent="Background/House02/Occupants" index="0" instance=ExtResource("8_lkep6")]
-position = Vector2(-492, -308)
+[node name="SecondBuilding" parent="Background" index="4" instance=ExtResource("12_ens30")]
+position = Vector2(-1268, -1014)
+rotation = -3.26377
+is_door_locked = true
 
 [node name="oil_barrel" parent="Collectibles/Oil_Barrels" index="0" instance=ExtResource("11_chxcq")]
 position = Vector2(-2052, -708)

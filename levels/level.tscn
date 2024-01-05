@@ -34,6 +34,8 @@ rotation = 0.00702382
 
 [node name="Blood" type="Node2D" parent="Background"]
 
+[node name="Buildings" type="Node2D" parent="Background"]
+
 [node name="Collectibles" type="Node2D" parent="."]
 script = ExtResource("3_dawd3")
 

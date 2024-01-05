@@ -1,37 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5nlkfoln6qhr"]
+[gd_scene load_steps=10 format=3 uid="uid://cxlpakvf6x0ds"]
 
-[ext_resource type="Script" path="res://set_pieces/buildings/houses/house_02.gd" id="1_x4ci4"]
-[ext_resource type="Texture2D" uid="uid://c5wjmvqlg3st2" path="res://assets/buildings/houses/simple/house_simple_01_floor.png" id="2_geavi"]
+[ext_resource type="Script" path="res://set_pieces/buildings/building.gd" id="1_x4ci4"]
+[ext_resource type="TileSet" uid="uid://dea3jks67supq" path="res://set_pieces/buildings/building_tileset.tres" id="2_vm6uf"]
 [ext_resource type="Texture2D" uid="uid://wnhe8xsaxi68" path="res://assets/buildings/houses/02/door_02.png" id="3_ghauu"]
-[ext_resource type="Texture2D" uid="uid://dpfqxvydfc8p5" path="res://assets/buildings/houses/simple/house_simple_01_roof.png" id="4_gvc4j"]
 [ext_resource type="AudioStream" uid="uid://clwfvxc0ejlgl" path="res://assets/audio/locked_door_rattle.mp3" id="5_r3vb0"]
 [ext_resource type="AudioStream" uid="uid://cbl873alcy3kc" path="res://assets/audio/door_opening.mp3" id="6_777tq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7ntj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iip26"]
 size = Vector2(188.112, 23.4958)
-
-[sub_resource type="Animation" id="Animation_1kmo8"]
-resource_name = "fade_out"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Roof:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_x4d4t"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Roof:self_modulate")
+tracks/0/path = NodePath("RoofTileMap:layer_0/modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,96 +24,63 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_1kmo8"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RoofTileMap:layer_0/modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b3ge4"]
 _data = {
 "RESET": SubResource("Animation_x4d4t"),
 "fade_out": SubResource("Animation_1kmo8")
 }
 
-[sub_resource type="Animation" id="Animation_t22af"]
-resource_name = "open_door"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Door:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -1.93906]
-}
-
-[sub_resource type="Animation" id="Animation_m274k"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Door:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fovf5"]
-_data = {
-"RESET": SubResource("Animation_m274k"),
-"open_door": SubResource("Animation_t22af")
-}
-
-[node name="Building" type="StaticBody2D"]
+[node name="BaseBuilding" type="Node2D"]
 script = ExtResource("1_x4ci4")
 
-[node name="Floor" type="Sprite2D" parent="."]
-texture = ExtResource("2_geavi")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, -13)
-polygon = PackedVector2Array(-233, 221, -321, 221, -317, -2, -91, -1, -91, -45, -317, -47, -313, -225, 326, -226, 331, 219, -63, 219, -63, 249, 350, 249, 350, -250, -350, -250, -350, 251, -233, 250)
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_vm6uf")
+format = 2
+layer_0/name = "floor"
+layer_1/name = "walls"
+layer_1/tile_data = PackedInt32Array()
+layer_2/modulate = Color(1, 1, 1, 0)
+layer_2/tile_data = PackedInt32Array()
 
 [node name="Door" type="Sprite2D" parent="."]
-position = Vector2(-237, 225)
-scale = Vector2(1.7, 1.7)
+scale = Vector2(1.9, 1.9)
 texture = ExtResource("3_ghauu")
 centered = false
 
 [node name="DoorArea" type="StaticBody2D" parent="Door"]
-position = Vector2(2.83039, 241.22)
-rotation = 1.92161
 scale = Vector2(0.555556, 0.555556)
 collision_layer = 8
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/DoorArea"]
 visible = false
-position = Vector2(-427.95, 61.2643)
-rotation = -1.91986
-shape = SubResource("RectangleShape2D_c7ntj")
+position = Vector2(93.7894, 11.3684)
+shape = SubResource("RectangleShape2D_iip26")
 
-[node name="Roof" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("4_gvc4j")
-
-[node name="OpenDoorArea" type="Area2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OpenDoorArea"]
-visible = false
-polygon = PackedVector2Array(-240, 276, -246, 233, -332, 231, -328, -242, 339, -239, 338, 233, -47, 230, -53, 276)
+[node name="RoofTileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_vm6uf")
+format = 2
+layer_0/name = "roof"
 
 [node name="RoofAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_b3ge4")
-}
-
-[node name="DoorAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_fovf5")
 }
 
 [node name="LockedDoorRattle" type="AudioStreamPlayer" parent="."]
@@ -139,6 +89,11 @@ stream = ExtResource("5_r3vb0")
 [node name="DoorOpening" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_777tq")
 volume_db = -5.0
+
+[node name="OpenDoorArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OpenDoorArea"]
 
 [connection signal="body_entered" from="OpenDoorArea" to="." method="_on_open_door_area_body_entered"]
 [connection signal="body_exited" from="OpenDoorArea" to="." method="_on_open_door_area_body_exited"]
