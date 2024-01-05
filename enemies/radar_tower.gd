@@ -29,7 +29,7 @@ func check_radar(delta) -> void:
 					radar_retrigger_delay = true
 					$RetriggerDelayTimer.start()
 					$PingAudio.play()
-					Globals.radar_towers_triggered += 1
+					Globals.radar_triggers += 1
 					GameEvents.spawn_tu_22.emit()
 
 func _on_detection_area_body_entered(body):
