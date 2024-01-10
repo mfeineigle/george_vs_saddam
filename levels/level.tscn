@@ -17,6 +17,11 @@ point_count = 7
 [node name="Level" type="Node2D"]
 metadata/Level = ""
 metadata/level_number = ""
+metadata/TimeGoals = {
+1: 0,
+2: 0,
+3: 0
+}
 
 [node name="UI" parent="." instance=ExtResource("1_8rndx")]
 

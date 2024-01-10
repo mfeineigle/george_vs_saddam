@@ -285,6 +285,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="LevelTestA" instance=ExtResource("1_7qhx8")]
 metadata/Level = "res://levels/level_test_a.tscn"
+metadata/level_number = "a"
 
 [node name="TileMap" type="TileMap" parent="Background" index="0"]
 tile_set = SubResource("TileSet_meg1e")
@@ -401,10 +402,10 @@ position = Vector2(-1421, -721)
 units = NodePath("Units")
 invisible_units = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapSoldier" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapSoldier" index="0"]
 shape = SubResource("CircleShape2D_cptec")
 
-[node name="Units" type="Node2D" parent="Traps/TrapSoldier" index="2"]
+[node name="Units" type="Node2D" parent="Traps/TrapSoldier" index="1"]
 
 [node name="Troop" parent="Traps/TrapSoldier/Units" index="0" instance=ExtResource("5_ly66f")]
 position = Vector2(-764, -104)

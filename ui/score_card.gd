@@ -1,5 +1,10 @@
 extends Control
 
+@onready var star_1: TextureRect = $HBoxContainer/star1
+@onready var star_2: TextureRect = $HBoxContainer/star2
+@onready var star_3: TextureRect = $HBoxContainer/star3
+@onready var clang: AudioStreamPlayer = $HBoxContainer/Clang
+
 @onready var time_taken_label: Label = $VBoxContainer/TimeTakenHbox/TimeTakenLabel
 @onready var oil_collected_label: Label = $VBoxContainer/OilCollectedHbox/OilCollectedLabel
 @onready var soldier_kills_label: Label = $VBoxContainer/SoldiersKillHbox/SoldierKillsLabel
@@ -21,6 +26,9 @@ var next_level: String = ""
 
 func _ready() -> void:
 	GameEvents.level_exited.connect(update_scorecard)
+	star_1.hide()
+	star_2.hide()
+	star_3.hide()
 
 
 func update_scorecard(_next_level: String = "") -> void:
@@ -42,6 +50,7 @@ func update_scorecard(_next_level: String = "") -> void:
 	dmg_healed_label.text = str(Globals.total_dollars_collected)
 	dmg_done_label.text = str(Globals.total_damage_done)
 	update_best_times(Globals.current_level.get_meta("level_number"))
+	await display_stars(Globals.current_level.get_meta("TimeGoals"))
 	Globals.reset()
 	get_tree().paused = true
 
@@ -60,6 +69,27 @@ func save_best_times(level, times):
 	var save_path: String = "res://ui/scores/"+level.to_lower()+"_best_times.save"
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_string(var_to_str(times))
+
+
+func display_stars(time_goals: Dictionary) -> void:
+	if Globals.secs < time_goals[1]:
+		var starTween1 = get_tree().create_tween()
+		starTween1.tween_property(star_1, "scale", Vector2(1,1), 0.3).from(Vector2(0,0))
+		star_1.show()
+		await starTween1.finished
+		clang.play()
+	if Globals.secs < time_goals[2]:
+		var starTween2 = get_tree().create_tween()
+		starTween2.tween_property(star_2, "scale", Vector2(1,1), 0.3).from(Vector2(0,0))
+		star_2.show()
+		await starTween2.finished
+		clang.play()
+	if Globals.secs < time_goals[3]:
+		var starTween3 = get_tree().create_tween()
+		starTween3.tween_property(star_3, "scale", Vector2(1,1), 0.3).from(Vector2(0,0))
+		star_3.show()
+		await starTween3.finished
+		clang.play()
 
 
 func _on_restart_button_pressed() -> void:
