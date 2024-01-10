@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c3mkylkdhtc4e"]
+[gd_scene load_steps=33 format=3 uid="uid://c3mkylkdhtc4e"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_7qhx8"]
 [ext_resource type="Texture2D" uid="uid://dlymds1mxs36t" path="res://assets/background/lvl-A_ground_textures.png" id="2_hupca"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://8hbgdo3q0lfn" path="res://set_pieces/buildings/test_building.tscn" id="13_oujyj"]
 [ext_resource type="Resource" uid="uid://rmc8f4bcqv0j" path="res://collectibles/keys/key_blue.tres" id="13_ytxab"]
 [ext_resource type="PackedScene" uid="uid://dvegaq0esyjct" path="res://characters/saddam.tscn" id="14_42eps"]
+[ext_resource type="PackedScene" uid="uid://br8ml1xibfwki" path="res://set_pieces/trap_soldier.tscn" id="18_ajsms"]
+[ext_resource type="PackedScene" uid="uid://0rkug7sqoehv" path="res://set_pieces/trap_soldier_hole.tscn" id="20_f7d48"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oeqm3"]
 texture = ExtResource("2_hupca")
@@ -269,6 +271,12 @@ sources/2 = SubResource("TileSetAtlasSource_wu2g0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo1ot"]
 size = Vector2(182, 80)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cptec"]
+radius = 206.087
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iiyx8"]
+size = Vector2(927, 124)
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wfxqw"]
 vertices = PackedVector2Array(2119, -2404, 2119, 1304, 277, -682, 111, -910, 211, -1120, 167, -1440, 117, -526, -4095, 1251, -253, -532, -407, -642, -4211, -2332, -377, -770, -241, -870, -185, -1470, -13, -1516)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(0, 4, 5), PackedInt32Array(6, 2, 1), PackedInt32Array(6, 1, 7, 8), PackedInt32Array(9, 8, 7, 10), PackedInt32Array(11, 9, 10), PackedInt32Array(12, 11, 10, 13), PackedInt32Array(13, 10, 0, 14), PackedInt32Array(14, 0, 5)])
@@ -308,7 +316,7 @@ shape = SubResource("RectangleShape2D_oo1ot")
 position = Vector2(-220, -859)
 
 [node name="TestBuilding" parent="Background" index="3" node_paths=PackedStringArray("occupants") instance=ExtResource("13_oujyj")]
-position = Vector2(-1355, 150)
+position = Vector2(-1303, 813)
 rotation = 3.14159
 occupants = NodePath("Occupants")
 
@@ -388,6 +396,37 @@ position = Vector2(1237, -816)
 [node name="Boulders_V2" parent="Obstacles/Boulders" index="11" instance=ExtResource("9_r5obu")]
 position = Vector2(1275, 235)
 
+[node name="TrapSoldier" parent="Traps" index="0" node_paths=PackedStringArray("units") instance=ExtResource("18_ajsms")]
+position = Vector2(-1421, -721)
+units = NodePath("Units")
+invisible_units = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapSoldier" index="1"]
+shape = SubResource("CircleShape2D_cptec")
+
+[node name="Units" type="Node2D" parent="Traps/TrapSoldier" index="2"]
+
+[node name="Troop" parent="Traps/TrapSoldier/Units" index="0" instance=ExtResource("5_ly66f")]
+position = Vector2(-764, -104)
+
+[node name="Troop2" parent="Traps/TrapSoldier/Units" index="1" instance=ExtResource("5_ly66f")]
+position = Vector2(317, -216)
+
+[node name="TrapSoldierHole" parent="Traps" index="1" node_paths=PackedStringArray("units") instance=ExtResource("20_f7d48")]
+position = Vector2(-1721, 25)
+units = NodePath("Units")
+invisible_units = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapSoldierHole" index="1"]
+position = Vector2(-353, 153)
+shape = SubResource("RectangleShape2D_iiyx8")
+debug_color = Color(0.121569, 0.580392, 0, 0.741176)
+
+[node name="Units" type="Node2D" parent="Traps/TrapSoldierHole" index="2"]
+
+[node name="Troop" parent="Traps/TrapSoldierHole/Units" index="0" instance=ExtResource("5_ly66f")]
+position = Vector2(-255, -53)
+
 [node name="Guard" parent="Enemies/Soldiers" index="0" instance=ExtResource("4_m634b")]
 position = Vector2(654, 227)
 
@@ -413,7 +452,6 @@ position = Vector2(476, 172)
 position = Vector2(428, -290)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="9"]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_wfxqw")
 metadata/_edit_lock_ = true
 
