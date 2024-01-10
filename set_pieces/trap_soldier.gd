@@ -36,8 +36,3 @@ func _on_body_entered(body: Node2D) -> void:
 
 func reparent_unit(unit) -> void:
 	unit.reparent(Globals.current_level.get_node("Enemies/Soldiers"))
-
-
-#func _on_all_units_dead_timer_timeout() -> void:
-	#if len(units.get_children()) <= 0:
-		#queue_free()

@@ -6,9 +6,4 @@
 collision_layer = 0
 script = ExtResource("1_sweot")
 
-[node name="AllUnitsDeadTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="AllUnitsDeadTimer" to="." method="_on_all_units_dead_timer_timeout"]
