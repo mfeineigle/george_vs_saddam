@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="Soundtrack" load_steps=7 format=3 uid="uid://v1gm132sj1sq"]
+[gd_resource type="Resource" script_class="Soundtrack" load_steps=6 format=3 uid="uid://v1gm132sj1sq"]
 
 [ext_resource type="Script" path="res://levels/soundtrack/music_dict.gd" id="1_1ky75"]
 [ext_resource type="AudioStream" uid="uid://c31r4aj5ipa7o" path="res://assets/audio/jet_flyover_for_tu-22.mp3" id="2_rgcdg"]
 [ext_resource type="AudioStream" uid="uid://bj8c7cbcs3ne" path="res://assets/audio/distantExplosions.mp3" id="3_b71nf"]
 [ext_resource type="AudioStream" uid="uid://2yrr5wepqtau" path="res://assets/audio/soldiers_leaving_transport.mp3" id="4_b8gk8"]
 [ext_resource type="AudioStream" uid="uid://b4wu1irit0jf5" path="res://assets/audio/helicopter_flying.mp3" id="5_7k3xa"]
-[ext_resource type="AudioStream" uid="uid://thslgihkm6yr" path="res://assets/audio/weapons/rocket_load.mp3" id="6_d5plh"]
 
 [resource]
 script = ExtResource("1_1ky75")
@@ -14,5 +13,5 @@ track = {
 "LevelTestA": ExtResource("3_b71nf"),
 "LevelTestB": ExtResource("5_7k3xa"),
 "PageTestA": ExtResource("4_b8gk8"),
-"StartMenu": ExtResource("6_d5plh")
+"StartMenu": null
 }
