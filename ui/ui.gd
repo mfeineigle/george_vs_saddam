@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 	Globals.mils = int(fmod(Globals.time, 1)*1000)
 	Globals.secs = int(fmod(Globals.time, 60))
 	Globals.mins = int(fmod(Globals.time, 60*60)/60)
+	$Label.text = str(Globals.secs)+":"+str(Globals.mils)
 
 
 func on_stats_changed() -> void:

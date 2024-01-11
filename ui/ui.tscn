@@ -117,3 +117,14 @@ visible = false
 
 [node name="ScoreCard" parent="." instance=ExtResource("13_nrmwa")]
 visible = false
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
+offset_right = 21.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("5_1i6yg")
+text = "timer"
