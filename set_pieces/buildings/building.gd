@@ -4,7 +4,7 @@ extends Node2D
 @onready var door_animation_player: AnimationPlayer = $DoorAnimationPlayer
 @onready var locked_door_rattle: AudioStreamPlayer = $LockedDoorRattle
 @onready var door_opening: AudioStreamPlayer = $DoorOpening
-@onready var door: Sprite2D = $Door
+#@onready var door: Sprite2D = $Door
 
 ## A Node2D that must be added to hold the characters in the building
 @export var occupants: Node2D
