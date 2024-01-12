@@ -5,8 +5,10 @@ extends StaticBody2D
 @onready var health_component: Node2D = $HealthComponent
 
 @export var hit_sounds: Array[AudioStreamMP3]
+@export var is_self_triggered: bool = true
 
 var can_fire: bool = true
+var is_player_near: bool = false
 
 
 func _ready():
@@ -26,6 +28,8 @@ func _on_scud_triggered(nearest_launch_point):
 
 func _on_fire_timer_timeout():
 	can_fire = true
+	if is_player_near == true and is_self_triggered:
+		GameEvents.scud_triggered.emit(self)
 
 
 func hit(dmg) -> void:
@@ -43,3 +47,13 @@ func die() -> void:
 	$DestructionSound.play()
 	animation_player.play("die")
 	animation_player_2.play("burn")
+
+
+func _on_self_trigger_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player") and is_self_triggered:
+		is_player_near = true
+		GameEvents.scud_triggered.emit(self)
+
+func _on_self_trigger_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		is_player_near = false

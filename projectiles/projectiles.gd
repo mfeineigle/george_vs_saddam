@@ -33,7 +33,7 @@ func _on_soldier_shot(dir, pos, weapon) -> void:
 func _on_scud_fired(pos):
 	var scud = scud_scene.instantiate()
 	scud.setup(pos)
-	add_child(scud)
+	call_deferred("add_child", scud)
 
 
 func _on_mi_24_shot(dir, pos, weapon) -> void:

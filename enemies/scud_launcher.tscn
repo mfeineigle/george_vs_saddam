@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bfjwx2vpr6rb1"]
+[gd_scene load_steps=25 format=3 uid="uid://bfjwx2vpr6rb1"]
 
 [ext_resource type="Script" path="res://enemies/scud_launcher.gd" id="1_434nm"]
 [ext_resource type="AudioStream" uid="uid://bp06uk3u0py7h" path="res://assets/audio/bullet_hit_car_01.mp3" id="2_l8oun"]
@@ -200,86 +200,6 @@ tracks/13/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_cvuph"]
-resource_name = "fire_scud"
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("missile:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.5708, 0.0]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [],
-"times": PackedFloat32Array()
-}
-tracks/1/use_blend = true
-
-[sub_resource type="Animation" id="Animation_jcpvv"]
-resource_name = "hit"
-length = 0.15
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("base:material:shader_parameter/flash_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("base:material:shader_parameter/flash_modifier")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.5, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("missile:material:shader_parameter/flash_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("missile:material:shader_parameter/flash_modifier")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.5, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_s5nyt"]
 resource_name = "burn"
 length = 6.0
@@ -456,6 +376,86 @@ tracks/9/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_cvuph"]
+resource_name = "fire_scud"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("missile:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 0.0]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_jcpvv"]
+resource_name = "hit"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("base:material:shader_parameter/flash_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("base:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("missile:material:shader_parameter/flash_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("missile:material:shader_parameter/flash_modifier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ubaon"]
 _data = {
 "RESET": SubResource("Animation_coali"),
@@ -466,34 +466,33 @@ _data = {
 }
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4vl73"]
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 20.0
-particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
-gravity = Vector3(100, 0, 0)
 initial_velocity_min = 30.0
 initial_velocity_max = 40.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(100, 0, 0)
 linear_accel_min = 50.0
 linear_accel_max = 50.0
 scale_min = 4.0
 scale_max = 6.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_22avm"]
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 20.0
-particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
-gravity = Vector3(-100, 0, 0)
 initial_velocity_min = -40.0
 initial_velocity_max = -40.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(-100, 0, 0)
 linear_accel_min = 50.0
 linear_accel_max = 50.0
 scale_min = 4.0
 scale_max = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ehk55"]
+radius = 588.275
 
 [node name="scud_launcher" type="StaticBody2D" groups=["scudLaunchers"]]
 collision_layer = 2
@@ -613,4 +612,12 @@ one_shot = true
 stream = ExtResource("10_kmi6h")
 volume_db = 6.0
 
+[node name="SelfTriggerArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelfTriggerArea"]
+shape = SubResource("CircleShape2D_ehk55")
+debug_color = Color(0.976471, 0, 0.4, 0.419608)
+
 [connection signal="timeout" from="CanFireTimer" to="." method="_on_fire_timer_timeout"]
+[connection signal="body_entered" from="SelfTriggerArea" to="." method="_on_self_trigger_area_body_entered"]
+[connection signal="body_exited" from="SelfTriggerArea" to="." method="_on_self_trigger_area_body_exited"]
