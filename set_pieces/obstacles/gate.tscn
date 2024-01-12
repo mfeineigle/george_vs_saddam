@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://dj5rxv2d58cyc"]
+
+[ext_resource type="Script" path="res://set_pieces/obstacles/gate.gd" id="1_k77v4"]
+[ext_resource type="Texture2D" uid="uid://wnhe8xsaxi68" path="res://assets/buildings/houses/02/door_02.png" id="1_kkboq"]
+[ext_resource type="AudioStream" uid="uid://clwfvxc0ejlgl" path="res://assets/audio/locked_door_rattle.mp3" id="3_o4kl6"]
+[ext_resource type="AudioStream" uid="uid://cbl873alcy3kc" path="res://assets/audio/door_opening.mp3" id="4_jmm8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfg4p"]
+size = Vector2(178.75, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo8ro"]
+size = Vector2(230, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxso8"]
+size = Vector2(188.112, 23.4958)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kygbp"]
+radius = 19.0
+height = 214.0
+
+[node name="Gate" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_k77v4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-90, 12)
+shape = SubResource("RectangleShape2D_cfg4p")
+
+[node name="ColorRect" type="ColorRect" parent="CollisionShape2D"]
+offset_left = -90.0
+offset_top = -17.0
+offset_right = 90.0
+offset_bottom = 16.0
+color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(313, 12)
+shape = SubResource("RectangleShape2D_vo8ro")
+
+[node name="ColorRect2" type="ColorRect" parent="CollisionShape2D2"]
+offset_left = -115.0
+offset_top = -16.0
+offset_right = 115.0
+offset_bottom = 16.0
+color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[node name="Door" type="Sprite2D" parent="."]
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("1_kkboq")
+centered = false
+
+[node name="DoorArea" type="StaticBody2D" parent="Door"]
+scale = Vector2(0.555556, 0.555556)
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/DoorArea"]
+position = Vector2(93.7894, 11.3684)
+shape = SubResource("RectangleShape2D_vxso8")
+
+[node name="DoorOpenArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorOpenArea"]
+position = Vector2(100, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kygbp")
+
+[node name="LockedDoorRattle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o4kl6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="DoorOpening" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jmm8t")
+
+[connection signal="body_entered" from="DoorOpenArea" to="." method="_on_door_open_area_body_entered"]
