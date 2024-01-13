@@ -325,6 +325,8 @@ position = Vector2(-220, -859)
 position = Vector2(-1303, 813)
 rotation = 3.14159
 occupants = NodePath("Occupants")
+is_door_locked = true
+key = ExtResource("9_d7ar1")
 
 [node name="Occupants" type="Node2D" parent="Background/TestBuilding" index="8"]
 position = Vector2(701, -289)
@@ -339,7 +341,7 @@ position = Vector2(-389.999, 425.001)
 position = Vector2(-1268, -1014)
 rotation = -3.26377
 is_door_locked = true
-lock_color = ExtResource("9_d7ar1")
+key = ExtResource("13_ytxab")
 
 [node name="oil_barrel" parent="Collectibles/Oil_Barrels" index="0" instance=ExtResource("11_chxcq")]
 position = Vector2(-2052, -708)

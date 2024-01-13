@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dj5rxv2d58cyc"]
 
 [ext_resource type="Script" path="res://set_pieces/obstacles/gate.gd" id="1_k77v4"]
-[ext_resource type="Texture2D" uid="uid://wnhe8xsaxi68" path="res://assets/buildings/houses/02/door_02.png" id="1_kkboq"]
+[ext_resource type="Texture2D" uid="uid://wnhe8xsaxi68" path="res://assets/buildings/doors/door_02.png" id="1_kkboq"]
 [ext_resource type="AudioStream" uid="uid://clwfvxc0ejlgl" path="res://assets/audio/locked_door_rattle.mp3" id="3_o4kl6"]
 [ext_resource type="AudioStream" uid="uid://cbl873alcy3kc" path="res://assets/audio/door_opening.mp3" id="4_jmm8t"]
 
@@ -58,6 +58,9 @@ collision_mask = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/DoorArea"]
 position = Vector2(93.7894, 11.3684)
 shape = SubResource("RectangleShape2D_vxso8")
+
+[node name="DoorStripes" type="Sprite2D" parent="Door"]
+centered = false
 
 [node name="DoorOpenArea" type="Area2D" parent="."]
 collision_layer = 0
