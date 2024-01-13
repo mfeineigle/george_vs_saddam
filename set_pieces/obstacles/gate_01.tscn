@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7xxufyg1led3"]
+[gd_scene load_steps=6 format=3 uid="uid://b7xxufyg1led3"]
 
 [ext_resource type="PackedScene" uid="uid://dj5rxv2d58cyc" path="res://set_pieces/obstacles/gate.tscn" id="1_y7xni"]
+[ext_resource type="Texture2D" uid="uid://cy3kj67na122n" path="res://assets/buildings/gates/gate_walls_02_sm.jpg" id="2_tgllp"]
 
 [sub_resource type="Animation" id="Animation_5m78e"]
 length = 0.001
@@ -41,12 +42,15 @@ _data = {
 
 [node name="Gate_01" instance=ExtResource("1_y7xni")]
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(-90, 13)
+[node name="Sprite1" parent="CollisionShape1" index="0"]
+position = Vector2(0.375, 0)
+scale = Vector2(0.601852, 0.191617)
+texture = ExtResource("2_tgllp")
 
-[node name="ColorRect" parent="CollisionShape2D" index="0"]
-offset_top = -16.0
-offset_bottom = 17.0
+[node name="Sprite2" parent="CollisionShape2" index="0"]
+position = Vector2(7.62939e-06, 2.38419e-06)
+scale = Vector2(0.767677, 0.191617)
+texture = ExtResource("2_tgllp")
 
 [node name="DoorAnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
