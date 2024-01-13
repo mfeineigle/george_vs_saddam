@@ -5,14 +5,14 @@
 [ext_resource type="AudioStream" uid="uid://clwfvxc0ejlgl" path="res://assets/audio/locked_door_rattle.mp3" id="3_o4kl6"]
 [ext_resource type="AudioStream" uid="uid://cbl873alcy3kc" path="res://assets/audio/door_opening.mp3" id="4_jmm8t"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxso8"]
+size = Vector2(188.112, 23.4958)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cfg4p"]
 size = Vector2(178.75, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vo8ro"]
 size = Vector2(230, 33)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxso8"]
-size = Vector2(188.112, 23.4958)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kygbp"]
 radius = 19.0
@@ -22,20 +22,6 @@ height = 214.0
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_k77v4")
-
-[node name="CollisionShape1" type="CollisionShape2D" parent="."]
-position = Vector2(-90, 12)
-shape = SubResource("RectangleShape2D_cfg4p")
-
-[node name="Sprite1" type="Sprite2D" parent="CollisionShape1"]
-position = Vector2(-55, 1)
-scale = Vector2(1, 0.25)
-
-[node name="CollisionShape2" type="CollisionShape2D" parent="."]
-position = Vector2(313, 12)
-shape = SubResource("RectangleShape2D_vo8ro")
-
-[node name="Sprite2" type="Sprite2D" parent="CollisionShape2"]
 
 [node name="Door" type="Sprite2D" parent="."]
 scale = Vector2(1.9, 1.9)
@@ -53,6 +39,25 @@ shape = SubResource("RectangleShape2D_vxso8")
 
 [node name="DoorStripes" type="Sprite2D" parent="Door"]
 centered = false
+
+[node name="WallCollision1" type="CollisionShape2D" parent="."]
+position = Vector2(-90, 12)
+shape = SubResource("RectangleShape2D_cfg4p")
+
+[node name="WallSprite1" type="Sprite2D" parent="WallCollision1"]
+position = Vector2(-55, 1)
+scale = Vector2(1, 0.25)
+
+[node name="BarbedWireSprite1" type="Sprite2D" parent="WallCollision1"]
+
+[node name="WallCollision2" type="CollisionShape2D" parent="."]
+position = Vector2(313, 12)
+shape = SubResource("RectangleShape2D_vo8ro")
+
+[node name="WallSprite2" type="Sprite2D" parent="WallCollision2"]
+
+[node name="BarbedWireSprite2" type="Sprite2D" parent="WallCollision2"]
+position = Vector2(-403, 0)
 
 [node name="DoorOpenArea" type="Area2D" parent="."]
 collision_layer = 0

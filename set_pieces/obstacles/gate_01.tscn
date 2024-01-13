@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7xxufyg1led3"]
+[gd_scene load_steps=7 format=3 uid="uid://b7xxufyg1led3"]
 
 [ext_resource type="PackedScene" uid="uid://dj5rxv2d58cyc" path="res://set_pieces/obstacles/gate.tscn" id="1_y7xni"]
 [ext_resource type="Texture2D" uid="uid://cy3kj67na122n" path="res://assets/buildings/gates/gate_walls_02_sm.jpg" id="2_tgllp"]
+[ext_resource type="Texture2D" uid="uid://bc7wqvj1rqr6s" path="res://assets/buildings/gates/barbed_wire_01.png" id="3_idj0m"]
 
 [sub_resource type="Animation" id="Animation_5m78e"]
 length = 0.001
@@ -42,17 +43,27 @@ _data = {
 
 [node name="Gate_01" instance=ExtResource("1_y7xni")]
 
-[node name="Sprite1" parent="CollisionShape1" index="0"]
-position = Vector2(0.375, 0)
-scale = Vector2(0.601852, 0.191617)
+[node name="WallSprite1" parent="WallCollision1" index="0"]
+position = Vector2(3.45707e-06, -5.96046e-07)
+scale = Vector2(0.606061, 0.203593)
 texture = ExtResource("2_tgllp")
 
-[node name="Sprite2" parent="CollisionShape2" index="0"]
-position = Vector2(7.62939e-06, 2.38419e-06)
-scale = Vector2(0.767677, 0.191617)
+[node name="BarbedWireSprite1" parent="WallCollision1" index="1"]
+position = Vector2(3.5, -2)
+scale = Vector2(0.616071, 0.305556)
+texture = ExtResource("3_idj0m")
+
+[node name="WallSprite2" parent="WallCollision2" index="0"]
+position = Vector2(2.0206e-05, -8.34465e-07)
+scale = Vector2(0.774411, 0.203593)
 texture = ExtResource("2_tgllp")
 
-[node name="DoorAnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+[node name="BarbedWireSprite2" parent="WallCollision2" index="1"]
+position = Vector2(4, -2.5)
+scale = Vector2(0.773809, 0.340278)
+texture = ExtResource("3_idj0m")
+
+[node name="DoorAnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_u6yaq")
 }
