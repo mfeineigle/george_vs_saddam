@@ -22,6 +22,7 @@ metadata/TimeGoals = {
 2: 0,
 3: 0
 }
+metadata/TotalSecrets = 0
 
 [node name="UI" parent="." instance=ExtResource("1_8rndx")]
 
@@ -49,6 +50,8 @@ script = ExtResource("3_dawd3")
 [node name="Guns" type="Node2D" parent="Collectibles"]
 
 [node name="Keys" type="Node2D" parent="Collectibles"]
+
+[node name="Secret_Areas" type="Node2D" parent="Collectibles"]
 
 [node name="Obstacles" type="Node2D" parent="."]
 

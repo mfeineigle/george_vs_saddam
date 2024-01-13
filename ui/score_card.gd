@@ -17,6 +17,7 @@ extends Control
 @onready var radar_tower_kills_label: Label = $VBoxContainer/RadarTowerKillsHbox/RadarTowerKillsLabel
 @onready var radar_tower_triggers_label: Label = $VBoxContainer/RadarTowerTriggersHbox/RadarTowerTriggersLabel
 @onready var flags_captured_label: Label = $VBoxContainer/FlagsCapturedHbox/FlagsCapturedLabel
+@onready var secrets_found_label: Label = $VBoxContainer/SecretsFoundHbox/SecretsFoundLabel
 @onready var dmg_taken_label: Label = $VBoxContainer/DamageTakenHbox/DmgTakenLabel
 @onready var dmg_healed_label: Label = $VBoxContainer/DamageHealedHbox/DmgHealedLabel
 @onready var dmg_done_label: Label = $VBoxContainer/DamageDoneHbox/DmgDoneLabel
@@ -26,6 +27,7 @@ var next_level: String = ""
 
 func _ready() -> void:
 	GameEvents.level_exited.connect(update_scorecard)
+	GameEvents.secret_found.connect(_on_secret_found)
 	star_1.hide()
 	star_2.hide()
 	star_3.hide()
@@ -46,6 +48,8 @@ func update_scorecard(_next_level: String = "") -> void:
 	radar_tower_kills_label.text = str(Globals.radar_kills)
 	radar_tower_triggers_label.text = str(Globals.radar_triggers)
 	flags_captured_label.text = str(Globals.flag_captures)
+	var total_secrets: int = Globals.current_level.get_meta("TotalSecrets")
+	secrets_found_label.text = str(Globals.secrets_found)+"/"+str(total_secrets)
 	dmg_taken_label.text = str(Globals.total_damage_taken)
 	dmg_healed_label.text = str(Globals.total_dollars_collected)
 	dmg_done_label.text = str(Globals.total_damage_done)
@@ -91,6 +95,8 @@ func display_stars(time_goals: Dictionary) -> void:
 		await starTween3.finished
 		clang.play()
 
+func _on_secret_found() -> void:
+	Globals.secrets_found += 1
 
 func _on_restart_button_pressed() -> void:
 	get_tree().paused = false

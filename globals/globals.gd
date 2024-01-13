@@ -24,6 +24,7 @@ var scud_launcher_kills: int = 0
 var scud_launcher_triggers: int = 0
 var civilian_kills: int = 0
 var flag_captures: int = 0
+var secrets_found: int = 0
 
 # Player
 var player_pos: Vector2
@@ -57,5 +58,6 @@ func reset() -> void:
 	soldier_kills = 0
 	tank_kills = 0
 	flag_captures = 0
+	secrets_found = 0
 	total_damage_done = 0
 	total_damage_taken = 0

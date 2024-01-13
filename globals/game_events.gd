@@ -16,6 +16,7 @@ signal air_drop_updated()
 signal weapon_picked_up(weapon)
 signal pallet_of_dollars_dropped(position, direction)
 signal key_picked_up(key)
+signal secret_found()
 
 # projectiles
 signal scud_triggered(nearest_launch_point)
