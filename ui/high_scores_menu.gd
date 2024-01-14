@@ -2,11 +2,11 @@ extends Control
 
 @onready var level_option_button: OptionButton = $VBoxContainer/LevelOptionButton
 
-@onready var best_time_label_01: Label = $VBoxContainer/FirstHBox/TimeHBox1/BestTimeLabel01
-@onready var best_time_label_02: Label = $VBoxContainer/SecondHBox/TimeHBox2/BestTimeLabel02
-@onready var best_time_label_03: Label = $VBoxContainer/ThirdHbox/TimeHBox3/BestTimeLabel03
-@onready var best_time_label_04: Label = $VBoxContainer/FourthHbox/TimeHBox4/BestTimeLabel04
-@onready var best_time_label_05: Label = $VBoxContainer/FifthHbox/TimeHBox5/BestTimeLabel05
+@onready var best_time_label_01: Label = $VBoxContainer/FirstHBox/BestTimeLabel01
+@onready var best_time_label_02: Label = $VBoxContainer/SecondHBox/BestTimeLabel02
+@onready var best_time_label_03: Label = $VBoxContainer/ThirdHbox/BestTimeLabel03
+@onready var best_time_label_04: Label = $VBoxContainer/FourthHbox/BestTimeLabel04
+@onready var best_time_label_05: Label = $VBoxContainer/FifthHbox/BestTimeLabel05
 
 @onready var stars_1: HBoxContainer = $VBoxContainer/FirstHBox/Stars1
 @onready var stars_2: HBoxContainer = $VBoxContainer/SecondHBox/Stars2
@@ -15,6 +15,12 @@ extends Control
 @onready var stars_5: HBoxContainer = $VBoxContainer/FifthHbox/Stars5
 @onready var all_stars: Array = [stars_1, stars_2, stars_3, stars_4, stars_5]
 
+@onready var secrets_1: HBoxContainer = $VBoxContainer/FirstHBox/Secrets1
+@onready var secrets_2: HBoxContainer = $VBoxContainer/SecondHBox/Secrets2
+@onready var secrets_3: HBoxContainer = $VBoxContainer/ThirdHbox/Secrets3
+@onready var secrets_4: HBoxContainer = $VBoxContainer/FourthHbox/Secrets4
+@onready var secrets_5: HBoxContainer = $VBoxContainer/FifthHbox/Secrets5
+@onready var all_secrets: Array = [secrets_1, secrets_2, secrets_3, secrets_4, secrets_5]
 
 func _ready() -> void:
 	level_option_button.add_item("A")
@@ -26,10 +32,12 @@ func _ready() -> void:
 func _on_level_option_button_item_selected(index: int) -> void:
 	var selected_level: String = level_option_button.get_item_text(index).to_lower()
 	var times: Array = Utils.read_best_times(selected_level)
+	var secrets: Dictionary = Utils.read_secrets(selected_level)
 	var level = load("res://levels/"+"level_test_"+selected_level+".tscn").instantiate()
 	var time_goals: Dictionary = level.get_meta("TimeGoals")
 	update_stars(times, time_goals)
 	update_high_scores(times)
+	update_secrets(secrets)
 
 func update_stars(times: Array, time_goals: Dictionary) -> void:
 	for i in range(times.size()):
@@ -41,6 +49,19 @@ func update_stars(times: Array, time_goals: Dictionary) -> void:
 			all_stars[i].get_child(1).show()
 		if times[i] < time_goals[3]:
 			all_stars[i].get_child(2).show()
+
+
+func update_secrets(secrets: Dictionary) -> void:
+	for i in range(5):
+		for secret in all_secrets[i].get_children():
+			secret.hide()
+		if secrets.size() > 0:
+			all_secrets[i].get_child(0).show()
+		if secrets.size() > 1:
+			all_secrets[i].get_child(1).show()
+		if secrets.size() > 2:
+			all_secrets[i].get_child(2).show()
+
 
 func update_high_scores(times) -> void:
 	best_time_label_01.text = convert_time_to_displayable(times[0])
