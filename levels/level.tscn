@@ -22,7 +22,6 @@ metadata/TimeGoals = {
 2: 0,
 3: 0
 }
-metadata/TotalSecrets = 0
 
 [node name="UI" parent="." instance=ExtResource("1_8rndx")]
 

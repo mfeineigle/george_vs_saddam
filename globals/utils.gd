@@ -35,3 +35,13 @@ func read_best_times(level: String) -> Array:
 		if times:
 			return str_to_var(times)
 	return [3599, 3599, 3599, 3599, 3599]
+
+
+func read_secrets(level) -> Dictionary:
+	var save_path: String = "res://ui/scores/"+level.to_lower()+"_secrets.save"
+	if FileAccess.file_exists(save_path):
+		var file = FileAccess.open(save_path, FileAccess.READ)
+		file = file.get_as_text()
+		return JSON.parse_string(file)
+	else:
+		return {}

@@ -17,7 +17,10 @@ extends Control
 @onready var radar_tower_kills_label: Label = $VBoxContainer/RadarTowerKillsHbox/RadarTowerKillsLabel
 @onready var radar_tower_triggers_label: Label = $VBoxContainer/RadarTowerTriggersHbox/RadarTowerTriggersLabel
 @onready var flags_captured_label: Label = $VBoxContainer/FlagsCapturedHbox/FlagsCapturedLabel
-@onready var secrets_found_label: Label = $VBoxContainer/SecretsFoundHbox/SecretsFoundLabel
+@onready var secrets_found_this_run_label: Label = $VBoxContainer/SecretsFoundThisRunHbox/SecretsFoundThisRunLabel
+@onready var secrets_found_all_runs_label: Label = $VBoxContainer/SecretsFoundAllRunsHbox/SecretsFoundAllRunsLabel
+
+
 @onready var dmg_taken_label: Label = $VBoxContainer/DamageTakenHbox/DmgTakenLabel
 @onready var dmg_healed_label: Label = $VBoxContainer/DamageHealedHbox/DmgHealedLabel
 @onready var dmg_done_label: Label = $VBoxContainer/DamageDoneHbox/DmgDoneLabel
@@ -48,8 +51,10 @@ func update_scorecard(_next_level: String = "") -> void:
 	radar_tower_kills_label.text = str(Globals.radar_kills)
 	radar_tower_triggers_label.text = str(Globals.radar_triggers)
 	flags_captured_label.text = str(Globals.flag_captures)
-	var total_secrets: int = Globals.current_level.get_meta("TotalSecrets")
-	secrets_found_label.text = str(Globals.secrets_found)+"/"+str(total_secrets)
+	var total_secrets :int  = Globals.current_level.get_node("Collectibles/Secret_Areas").get_children().size()
+	var test = Utils.read_secrets(Globals.current_level.get_meta("level_number")).size()
+	secrets_found_all_runs_label.text = str(test)+"/"+str(total_secrets)
+	secrets_found_this_run_label.text = str(Globals.secrets_found)+"/"+str(total_secrets)
 	dmg_taken_label.text = str(Globals.total_damage_taken)
 	dmg_healed_label.text = str(Globals.total_dollars_collected)
 	dmg_done_label.text = str(Globals.total_damage_done)
@@ -95,8 +100,20 @@ func display_stars(time_goals: Dictionary) -> void:
 		await starTween3.finished
 		clang.play()
 
-func _on_secret_found() -> void:
+func _on_secret_found(id) -> void:
 	Globals.secrets_found += 1
+	_save_secrets(id)
+
+
+func _save_secrets(id) -> void:
+	var level = Globals.current_level.get_meta("level_number")
+	var save_path: String = "res://ui/scores/"+level.to_lower()+"_secrets.save"
+	var current_secrets: Dictionary = Utils.read_secrets(level)
+	if id not in current_secrets.keys():
+		current_secrets[id] = true
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_string(JSON.stringify(current_secrets))
+
 
 func _on_restart_button_pressed() -> void:
 	get_tree().paused = false

@@ -222,15 +222,28 @@ layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
 
-[node name="SecretsFoundHbox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="SecretsFoundThisRunHbox" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="SecretsLabel" type="Label" parent="VBoxContainer/SecretsFoundHbox"]
+[node name="SecretsThisRunLabel" type="Label" parent="VBoxContainer/SecretsFoundThisRunHbox"]
 layout_mode = 2
 size_flags_horizontal = 2
-text = "Secrets Found:"
+text = "Secrets Found This Run:"
 
-[node name="SecretsFoundLabel" type="Label" parent="VBoxContainer/SecretsFoundHbox"]
+[node name="SecretsFoundThisRunLabel" type="Label" parent="VBoxContainer/SecretsFoundThisRunHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+
+[node name="SecretsFoundAllRunsHbox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SecretsAllRunsLabel" type="Label" parent="VBoxContainer/SecretsFoundAllRunsHbox"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Secrets Found All Runs:"
+
+[node name="SecretsFoundAllRunsLabel" type="Label" parent="VBoxContainer/SecretsFoundAllRunsHbox"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "0"
