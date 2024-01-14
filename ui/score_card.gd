@@ -101,7 +101,7 @@ func display_stars(time_goals: Dictionary) -> void:
 		clang.play()
 
 func _on_secret_found(id) -> void:
-	Globals.secrets_found += 1
+	Globals.secrets_found_this_run += 1
 	_save_secrets(id)
 
 
