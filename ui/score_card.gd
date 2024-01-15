@@ -34,6 +34,7 @@ func _ready() -> void:
 	star_1.hide()
 	star_2.hide()
 	star_3.hide()
+	print(get_tree().get_nodes_in_group("secrets"))
 
 
 func update_scorecard(_next_level: String = "") -> void:
@@ -51,10 +52,10 @@ func update_scorecard(_next_level: String = "") -> void:
 	radar_tower_kills_label.text = str(Globals.radar_kills)
 	radar_tower_triggers_label.text = str(Globals.radar_triggers)
 	flags_captured_label.text = str(Globals.flag_captures)
-	var total_secrets :int  = Globals.current_level.get_node("Collectibles/Secret_Areas").get_children().size()
+	var total_secrets :int  = get_tree().get_nodes_in_group("secrets").size()
 	var test = Utils.read_secrets(Globals.current_level.get_meta("level_number")).size()
 	secrets_found_all_runs_label.text = str(test)+"/"+str(total_secrets)
-	secrets_found_this_run_label.text = str(Globals.secrets_found)+"/"+str(total_secrets)
+	secrets_found_this_run_label.text = str(Globals.secrets_found_this_run)+"/"+str(total_secrets)
 	dmg_taken_label.text = str(Globals.total_damage_taken)
 	dmg_healed_label.text = str(Globals.total_dollars_collected)
 	dmg_done_label.text = str(Globals.total_damage_done)

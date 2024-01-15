@@ -11,4 +11,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not is_found:
 		is_found = true
 		secret_found.play()
+		$GPUParticles2D.emitting = false
 		GameEvents.secret_found.emit(id)

@@ -272,12 +272,12 @@ sources/2 = SubResource("TileSetAtlasSource_wu2g0")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oo1ot"]
 size = Vector2(182, 80)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ud3fi"]
+radius = 74.2428
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyk3"]
 radius = 32.0
 height = 192.275
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ud3fi"]
-radius = 74.2428
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cptec"]
 radius = 206.087
@@ -345,6 +345,13 @@ position = Vector2(259.001, 430.999)
 [node name="Child2" parent="Background/TestBuilding/Occupants" index="1" instance=ExtResource("8_lkep6")]
 position = Vector2(-389.999, 425.001)
 
+[node name="SecretArea2" parent="Background/TestBuilding/Occupants" index="2" instance=ExtResource("16_18a3i")]
+position = Vector2(-554.001, 667)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/TestBuilding/Occupants/SecretArea2" index="2"]
+shape = SubResource("CircleShape2D_ud3fi")
+
 [node name="SecondBuilding" parent="Background" index="4" instance=ExtResource("12_ens30")]
 position = Vector2(-1268, -1014)
 rotation = -3.26377
@@ -373,13 +380,6 @@ id = "a_0"
 position = Vector2(18, -24)
 rotation = -1.69297
 shape = SubResource("CapsuleShape2D_3vyk3")
-
-[node name="SecretArea2" parent="Collectibles/Secret_Areas" index="1" instance=ExtResource("16_18a3i")]
-id = "a_1"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectibles/Secret_Areas/SecretArea2" index="0"]
-position = Vector2(-1466, -1534)
-shape = SubResource("CircleShape2D_ud3fi")
 
 [node name="TileMap" type="TileMap" parent="Obstacles" index="0"]
 format = 2
