@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctg67vixoe7hk"]
+[gd_scene load_steps=8 format=3 uid="uid://ctg67vixoe7hk"]
 
 [ext_resource type="Script" path="res://ui/high_scores_menu.gd" id="1_rt28x"]
 [ext_resource type="Theme" uid="uid://bv467htpxf00q" path="res://ui/ui.tres" id="2_jj3uy"]
 [ext_resource type="Texture2D" uid="uid://djdi1p360dkf4" path="res://assets/ui/star_25pct.png" id="3_tj8xe"]
 [ext_resource type="Texture2D" uid="uid://ctaejfaot1hi2" path="res://assets/ui/magnifying_glass_blue_80px.png" id="4_1n33v"]
+[ext_resource type="Texture2D" uid="uid://dmj4qrsbi5hyc" path="res://assets/ui/redacted.png" id="5_ejyrr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cemw8"]
 
@@ -387,6 +388,37 @@ expand_mode = 2
 layout_mode = 2
 texture = ExtResource("4_1n33v")
 expand_mode = 2
+
+[node name="SecretMessages" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SecretLabel" type="Label" parent="VBoxContainer/SecretMessages"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_jj3uy")
+
+[node name="RedactedTextureRect" type="TextureRect" parent="VBoxContainer/SecretMessages"]
+layout_mode = 2
+texture = ExtResource("5_ejyrr")
+
+[node name="SecretLabel2" type="Label" parent="VBoxContainer/SecretMessages"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_jj3uy")
+
+[node name="RedactedTextureRect2" type="TextureRect" parent="VBoxContainer/SecretMessages"]
+layout_mode = 2
+texture = ExtResource("5_ejyrr")
+
+[node name="SecretLabel3" type="Label" parent="VBoxContainer/SecretMessages"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_jj3uy")
+text = "qqq"
+
+[node name="RedactedTextureRect3" type="TextureRect" parent="VBoxContainer/SecretMessages"]
+layout_mode = 2
+texture = ExtResource("5_ejyrr")
 
 [node name="ResetButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(300, 0)

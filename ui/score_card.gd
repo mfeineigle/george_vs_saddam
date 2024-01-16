@@ -101,17 +101,17 @@ func display_stars(time_goals: Dictionary) -> void:
 		await starTween3.finished
 		clang.play()
 
-func _on_secret_found(id) -> void:
+func _on_secret_found(id, message) -> void:
 	Globals.secrets_found_this_run += 1
-	_save_secrets(id)
+	_save_secrets(id, message)
 
 
-func _save_secrets(id) -> void:
+func _save_secrets(id, message) -> void:
 	var level = Globals.current_level.get_meta("level_number")
 	var save_path: String = "res://ui/scores/"+level.to_lower()+"_secrets.save"
 	var current_secrets: Dictionary = Utils.read_secrets(level)
 	if id not in current_secrets.keys():
-		current_secrets[id] = true
+		current_secrets[id] = {"found":true, "msg":message}
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(current_secrets))
 

@@ -299,6 +299,7 @@ metadata/TimeGoals = {
 2: 15,
 3: 20
 }
+metadata/TotalSecrets = 2
 
 [node name="TileMap" type="TileMap" parent="Background" index="0"]
 tile_set = SubResource("TileSet_meg1e")
@@ -348,6 +349,8 @@ position = Vector2(-389.999, 425.001)
 [node name="SecretArea2" parent="Background/TestBuilding/Occupants" index="2" instance=ExtResource("16_18a3i")]
 position = Vector2(-554.001, 667)
 rotation = -3.14159
+message = "WMDs aren't here..."
+id = "a_1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/TestBuilding/Occupants/SecretArea2" index="2"]
 shape = SubResource("CircleShape2D_ud3fi")
@@ -374,6 +377,7 @@ key = ExtResource("13_ytxab")
 
 [node name="SecretArea" parent="Collectibles/Secret_Areas" index="0" instance=ExtResource("16_18a3i")]
 position = Vector2(-1767, -1509)
+message = "Oil for Euros you say?"
 id = "a_0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collectibles/Secret_Areas/SecretArea" index="0"]

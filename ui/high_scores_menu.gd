@@ -22,6 +22,17 @@ extends Control
 @onready var secrets_5: HBoxContainer = $VBoxContainer/FifthHbox/Secrets5
 @onready var all_secrets: Array = [secrets_1, secrets_2, secrets_3, secrets_4, secrets_5]
 
+@onready var secret_label: Label = $VBoxContainer/SecretMessages/SecretLabel
+@onready var secret_label_2: Label = $VBoxContainer/SecretMessages/SecretLabel2
+@onready var secret_label_3: Label = $VBoxContainer/SecretMessages/SecretLabel3
+@onready var all_secret_labels: Array = [secret_label, secret_label_2, secret_label_3]
+
+@onready var redacted_texture_rect: TextureRect = $VBoxContainer/SecretMessages/RedactedTextureRect
+@onready var redacted_texture_rect_2: TextureRect = $VBoxContainer/SecretMessages/RedactedTextureRect2
+@onready var redacted_texture_rect_3: TextureRect = $VBoxContainer/SecretMessages/RedactedTextureRect3
+@onready var all_redacted_textures: Array = [redacted_texture_rect, redacted_texture_rect_2, redacted_texture_rect_3]
+
+
 func _ready() -> void:
 	level_option_button.add_item("A")
 	level_option_button.add_item("B")
@@ -35,9 +46,12 @@ func _on_level_option_button_item_selected(index: int) -> void:
 	var secrets: Dictionary = Utils.read_secrets(selected_level)
 	var level = load("res://levels/"+"level_test_"+selected_level+".tscn").instantiate()
 	var time_goals: Dictionary = level.get_meta("TimeGoals")
+	var total_secrets: int = level.get_meta("TotalSecrets")
 	update_stars(times, time_goals)
 	update_high_scores(times)
 	update_secrets(secrets)
+	update_redacted(secrets, total_secrets)
+
 
 func update_stars(times: Array, time_goals: Dictionary) -> void:
 	for i in range(times.size()):
@@ -75,6 +89,20 @@ func convert_time_to_displayable(time) -> String:
 	var secs = int(fmod(time, 60))
 	var mins = int(fmod(time, 60*60)/60)
 	return str("%02d:%02d.%03d" % [mins, secs, mils])
+
+
+func update_redacted(secrets: Dictionary, total_secrets: int) -> void:
+	for i in all_redacted_textures:
+		i.hide()
+	for i in all_secret_labels:
+		i.hide()
+	for i in range(total_secrets):
+		if i < secrets.size():
+			if secrets.keys()[i]:
+				all_secret_labels[i].show()
+				all_secret_labels[i].text = secrets.values()[i]["msg"]
+		else:
+			all_redacted_textures[i].show()
 
 
 func _on_reset_button_pressed() -> void:
