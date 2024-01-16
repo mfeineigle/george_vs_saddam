@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cqlxqinehrbcr" path="res://assets/background/flag_usa_sm.png" id="3_8eyrh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mxjn5"]
+resource_local_to_scene = true
 shader = ExtResource("1_vb1ui")
 shader_parameter/speed = 2.0
 shader_parameter/frequency_y = 2.0

@@ -391,6 +391,9 @@ key = ExtResource("9_d7ar1")
 position = Vector2(-1695, -505)
 key = ExtResource("13_ytxab")
 
+[node name="FlagPole" parent="Collectibles" index="4" instance=ExtResource("7_3e2ed")]
+position = Vector2(23, -411)
+
 [node name="TileMap" type="TileMap" parent="Obstacles" index="0"]
 format = 2
 
