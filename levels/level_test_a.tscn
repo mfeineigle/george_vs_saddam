@@ -330,36 +330,52 @@ shape = SubResource("RectangleShape2D_oo1ot")
 [node name="FlagPole" parent="Background/Bunker/ExitLevelArea" index="1" instance=ExtResource("7_3e2ed")]
 position = Vector2(-220, -859)
 
-[node name="TestBuilding" parent="Background" index="3" node_paths=PackedStringArray("occupants") instance=ExtResource("13_oujyj")]
+[node name="TestBuilding" parent="Background/Buildings" index="0" node_paths=PackedStringArray("occupants") instance=ExtResource("13_oujyj")]
 position = Vector2(-1303, 813)
 rotation = 3.14159
 occupants = NodePath("Occupants")
 is_door_locked = true
 key = ExtResource("9_d7ar1")
 
-[node name="Occupants" type="Node2D" parent="Background/TestBuilding" index="8"]
+[node name="Occupants" type="Node2D" parent="Background/Buildings/TestBuilding" index="8"]
 position = Vector2(701, -289)
 
-[node name="Child" parent="Background/TestBuilding/Occupants" index="0" instance=ExtResource("8_lkep6")]
+[node name="Child" parent="Background/Buildings/TestBuilding/Occupants" index="0" instance=ExtResource("8_lkep6")]
 position = Vector2(259.001, 430.999)
 
-[node name="Child2" parent="Background/TestBuilding/Occupants" index="1" instance=ExtResource("8_lkep6")]
+[node name="Child2" parent="Background/Buildings/TestBuilding/Occupants" index="1" instance=ExtResource("8_lkep6")]
 position = Vector2(-389.999, 425.001)
 
-[node name="SecretArea2" parent="Background/TestBuilding/Occupants" index="2" instance=ExtResource("16_18a3i")]
+[node name="SecretArea2" parent="Background/Buildings/TestBuilding/Occupants" index="2" instance=ExtResource("16_18a3i")]
 position = Vector2(-554.001, 667)
 rotation = -3.14159
 message = "WMDs aren't here..."
 id = "a_1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/TestBuilding/Occupants/SecretArea2" index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Buildings/TestBuilding/Occupants/SecretArea2" index="2"]
 shape = SubResource("CircleShape2D_ud3fi")
 
-[node name="SecondBuilding" parent="Background" index="4" instance=ExtResource("12_ens30")]
+[node name="SecondBuilding" parent="Background/Buildings" index="1" node_paths=PackedStringArray("occupants") instance=ExtResource("12_ens30")]
 position = Vector2(-1268, -1014)
-rotation = -3.26377
+rotation = 3.01942
+scale = Vector2(1, 1)
+occupants = NodePath("Occupants")
 is_door_locked = true
 key = ExtResource("13_ytxab")
+
+[node name="Occupants" type="Node2D" parent="Background/Buildings/SecondBuilding" index="8"]
+
+[node name="SecretArea" parent="Background/Buildings/SecondBuilding/Occupants" index="0" instance=ExtResource("16_18a3i")]
+position = Vector2(434.953, 552.125)
+rotation = -3.01942
+scale = Vector2(1, 1)
+message = "Oil for Euros you say?"
+id = "a_0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Buildings/SecondBuilding/Occupants/SecretArea" index="0"]
+position = Vector2(18, -24)
+rotation = -1.69297
+shape = SubResource("CapsuleShape2D_3vyk3")
 
 [node name="oil_barrel" parent="Collectibles/Oil_Barrels" index="0" instance=ExtResource("11_chxcq")]
 position = Vector2(-2052, -708)
@@ -374,16 +390,6 @@ key = ExtResource("9_d7ar1")
 [node name="Keycard_blue" parent="Collectibles/Keys" index="1" instance=ExtResource("11_gb52y")]
 position = Vector2(-1695, -505)
 key = ExtResource("13_ytxab")
-
-[node name="SecretArea" parent="Collectibles/Secret_Areas" index="0" instance=ExtResource("16_18a3i")]
-position = Vector2(-1767, -1509)
-message = "Oil for Euros you say?"
-id = "a_0"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectibles/Secret_Areas/SecretArea" index="0"]
-position = Vector2(18, -24)
-rotation = -1.69297
-shape = SubResource("CapsuleShape2D_3vyk3")
 
 [node name="TileMap" type="TileMap" parent="Obstacles" index="0"]
 format = 2
