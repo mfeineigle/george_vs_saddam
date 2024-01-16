@@ -11,6 +11,7 @@ extends Control
 @onready var progress_bar: ProgressBar = $Background/SkipFrame/ProgressBar
 
 var idx: int = 0
+var can_advance: bool = false
 
 
 func _ready() -> void:
@@ -19,10 +20,13 @@ func _ready() -> void:
 		frame.modulate.a = 0
 	if idx < frames.size():
 		goto_next_frame() # auto show the first frame
+	$CanAdvanceTimer.start()
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_pressed("menu_select") or Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("menu_select") or Input.is_action_pressed("shoot") and can_advance:
+		can_advance = false
+		$CanAdvanceTimer.start()
 		if idx < frames.size():
 			goto_next_frame()
 		elif next_page:
@@ -61,3 +65,7 @@ func _on_skip_timer_timeout() -> void:
 			GameEvents.level_changed.emit(next_cutscene)
 		else:
 			GameEvents.level_changed.emit(next_level)
+
+
+func _on_can_advance_timer_timeout() -> void:
+	can_advance = true
