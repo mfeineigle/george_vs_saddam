@@ -17,6 +17,8 @@ func _ready():
 
 
 func _on_scud_triggered(nearest_launch_point):
+	#random delay to un-sync multiple launchers
+	await get_tree().create_timer(randf()/4.0).timeout
 	if not health_component.destroyed and self == nearest_launch_point and can_fire:
 		$ExhaustExplosion.emitting = true
 		$ExhaustExplosion2.emitting = true
