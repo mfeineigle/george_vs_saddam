@@ -1,3 +1,4 @@
+class_name ReloadDepot
 extends StaticBody2D
 
 @onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
