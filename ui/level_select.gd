@@ -21,6 +21,8 @@ func _ready() -> void:
 			$CanvasGroup/VBoxContainer/Lvl_B_Button.grab_focus()
 		"res://levels/level_test_c.tscn":
 			$CanvasGroup/VBoxContainer/Lvl_C_Button.grab_focus()
+		"res://levels/level_test_d.tscn":
+			$CanvasGroup/VBoxContainer/Lvl_D_Button.grab_focus()
 
 
 func _on_lvl_01_button_pressed() -> void:
@@ -47,7 +49,11 @@ func _on_lvl_c_button_pressed() -> void:
 	GameEvents.level_changed.emit("res://levels/level_test_c.tscn")
 
 
+func _on_lvl_d_button_pressed() -> void:
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_var("res://levels/level_test_d.tscn")
+	GameEvents.level_changed.emit("res://levels/level_test_d.tscn")
+
+
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
-
-

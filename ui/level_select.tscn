@@ -54,6 +54,12 @@ size_flags_horizontal = 4
 theme = ExtResource("1_db7hg")
 text = "Level C"
 
+[node name="Lvl_D_Button" type="Button" parent="CanvasGroup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_db7hg")
+text = "Level D"
+
 [node name="Quit_Button" type="Button" parent="CanvasGroup/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -65,4 +71,5 @@ text = "Quit
 [connection signal="pressed" from="CanvasGroup/VBoxContainer/Lvl_A_Button" to="." method="_on_lvl_a_button_pressed"]
 [connection signal="pressed" from="CanvasGroup/VBoxContainer/Lvl_B_Button" to="." method="_on_lvl_b_button_pressed"]
 [connection signal="pressed" from="CanvasGroup/VBoxContainer/Lvl_C_Button" to="." method="_on_lvl_c_button_pressed"]
+[connection signal="pressed" from="CanvasGroup/VBoxContainer/Lvl_D_Button" to="." method="_on_lvl_d_button_pressed"]
 [connection signal="pressed" from="CanvasGroup/VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]
