@@ -26,3 +26,5 @@ func _on_body_entered(body: Node2D) -> void:
 		triggered = true
 		animation_player.play("cave_in")
 		audio_stream_player.play()
+		for boulder in boulders.get_children():
+			boulder.process_mode = Node.PROCESS_MODE_INHERIT
