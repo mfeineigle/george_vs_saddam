@@ -2,7 +2,8 @@ class_name Soldier extends CharacterBody2D
 
 @export var speed: int = 250
 @export var pursue: bool = true
-var in_pursue_range: bool = true
+@export var is_sentinel: bool = false
+var in_pursue_range: bool = false
 @export var hit_sounds: Array[AudioStreamMP3]
 var get_new_nav: bool = true
 var in_shotgun_range: bool = false
@@ -48,7 +49,7 @@ func _physics_process(_delta):
 	direction = (Globals.player_pos - position).normalized()
 	set_spirte_direction()
 	shoot()
-	if can_pursue():
+	if can_pursue() and not is_sentinel:
 		move_and_slide()
 
 
