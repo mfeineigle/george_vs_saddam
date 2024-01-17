@@ -1,7 +1,5 @@
 extends StaticBody2D
 
-# When instantiating, must add an AnimationPlayer called DoorAnimationPlayer
-
 @onready var door_animation_player: AnimationPlayer = $DoorAnimationPlayer
 @onready var locked_door_rattle: AudioStreamPlayer = $LockedDoorRattle
 @onready var door_opening: AudioStreamPlayer = $DoorOpening
