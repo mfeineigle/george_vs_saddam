@@ -16,7 +16,8 @@ var door_open: bool = false
 
 func _ready() -> void:
 	hide_occupants()
-	door_stripes.texture = key.stripes
+	if key:
+		door_stripes.texture = key.stripes
 
 
 func _on_open_door_area_body_entered(body: Node2D) -> void:
