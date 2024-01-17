@@ -358,7 +358,6 @@ shape = SubResource("CircleShape2D_ud3fi")
 [node name="SecondBuilding" parent="Background/Buildings" index="1" node_paths=PackedStringArray("occupants") instance=ExtResource("12_ens30")]
 position = Vector2(-1268, -1014)
 rotation = 3.01942
-scale = Vector2(1, 1)
 occupants = NodePath("Occupants")
 is_door_locked = true
 key = ExtResource("13_ytxab")
@@ -368,7 +367,6 @@ key = ExtResource("13_ytxab")
 [node name="SecretArea" parent="Background/Buildings/SecondBuilding/Occupants" index="0" instance=ExtResource("16_18a3i")]
 position = Vector2(434.953, 552.125)
 rotation = -3.01942
-scale = Vector2(1, 1)
 message = "Oil for Euros you say?"
 id = "a_0"
 

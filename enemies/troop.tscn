@@ -28,5 +28,5 @@ material = SubResource("ShaderMaterial_2xltu")
 [node name="Sprite2D2" parent="Sprites" index="1"]
 material = SubResource("ShaderMaterial_x33yu")
 
-[node name="BulletSpawnPoint" parent="." index="9"]
+[node name="BulletSpawnPoint" parent="." index="10"]
 position = Vector2(70, 40)

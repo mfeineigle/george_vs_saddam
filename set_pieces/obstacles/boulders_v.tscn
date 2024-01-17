@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b101kpwc26x2f" path="res://assets/background/boulder_04.png" id="4_g8osc"]
 
 [node name="Boulders_V" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 31
 
 [node name="Medium3" type="Sprite2D" parent="."]
 position = Vector2(118.5, 1042.5)
