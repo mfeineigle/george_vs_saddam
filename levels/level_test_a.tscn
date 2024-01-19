@@ -376,23 +376,6 @@ position = Vector2(18, -24)
 rotation = -1.69297
 shape = SubResource("CapsuleShape2D_3vyk3")
 
-[node name="oil_barrel" parent="Collectibles/Oil_Barrels" index="0" instance=ExtResource("11_chxcq")]
-position = Vector2(-2052, -708)
-
-[node name="Rifle" parent="Collectibles/Guns" index="0" instance=ExtResource("4_e6ayp")]
-position = Vector2(-1599, -696)
-
-[node name="Keycard_red" parent="Collectibles/Keys" index="0" instance=ExtResource("11_gb52y")]
-position = Vector2(-1826, -503)
-key = ExtResource("9_d7ar1")
-
-[node name="Keycard_blue" parent="Collectibles/Keys" index="1" instance=ExtResource("11_gb52y")]
-position = Vector2(-1695, -505)
-key = ExtResource("13_ytxab")
-
-[node name="FlagPole" parent="Collectibles" index="4" instance=ExtResource("7_3e2ed")]
-position = Vector2(23, -411)
-
 [node name="TileMap" type="TileMap" parent="Obstacles" index="0"]
 format = 2
 
@@ -440,8 +423,25 @@ position = Vector2(1237, -816)
 [node name="Boulders_V2" parent="Obstacles/Boulders" index="11" instance=ExtResource("9_r5obu")]
 position = Vector2(1275, 235)
 
+[node name="oil_barrel" parent="Collectibles/Oil_Barrels" index="0" instance=ExtResource("11_chxcq")]
+position = Vector2(-2052, -708)
+
+[node name="Rifle" parent="Collectibles/Guns" index="0" instance=ExtResource("4_e6ayp")]
+position = Vector2(-1599, -696)
+
+[node name="Keycard_red" parent="Collectibles/Keys" index="0" instance=ExtResource("11_gb52y")]
+position = Vector2(-1885, 139)
+key = ExtResource("9_d7ar1")
+
+[node name="Keycard_blue" parent="Collectibles/Keys" index="1" instance=ExtResource("11_gb52y")]
+position = Vector2(-1695, -505)
+key = ExtResource("13_ytxab")
+
+[node name="FlagPole" parent="Collectibles" index="4" instance=ExtResource("7_3e2ed")]
+position = Vector2(23, -411)
+
 [node name="TrapSoldier" parent="Traps" index="0" node_paths=PackedStringArray("units") instance=ExtResource("18_ajsms")]
-position = Vector2(-1421, -721)
+position = Vector2(871, 1095)
 units = NodePath("Units")
 invisible_units = true
 
@@ -457,7 +457,7 @@ position = Vector2(-764, -104)
 position = Vector2(317, -216)
 
 [node name="TrapSoldierHole" parent="Traps" index="1" node_paths=PackedStringArray("units") instance=ExtResource("20_f7d48")]
-position = Vector2(-1721, 25)
+position = Vector2(-3, 619)
 units = NodePath("Units")
 invisible_units = true
 
@@ -484,10 +484,10 @@ position = Vector2(-778, -704)
 position = Vector2(-1282, -490)
 
 [node name="scud_launcher3" parent="Enemies/ScudLauchers" index="2" instance=ExtResource("12_hu4jq")]
-position = Vector2(-1168, -210)
+position = Vector2(-679, -1233)
 
 [node name="RadarTower" parent="Enemies/Aircraft" index="1" instance=ExtResource("24_k2wqr")]
-position = Vector2(-1658, -544)
+position = Vector2(-294, 130)
 
 [node name="Saddam" parent="Enemies" index="4" instance=ExtResource("14_42eps")]
 position = Vector2(-974, -476)
@@ -503,4 +503,4 @@ navigation_polygon = SubResource("NavigationPolygon_wfxqw")
 metadata/_edit_lock_ = true
 
 [node name="George" parent="." index="10"]
-position = Vector2(-1820, -719)
+position = Vector2(-2040, 61)

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cudinxtvsqt76"]
+
+[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_bpd8c"]
+[ext_resource type="Texture2D" uid="uid://bfy013u8w1psp" path="res://assets/cut_scenes/page_test_d/01_ai_george_hw_bush_portraits_008.png" id="2_h4bbn"]
+[ext_resource type="Texture2D" uid="uid://de5nw3t5secva" path="res://assets/cut_scenes/page_test_d/02_ai_saddam_portraits_003.png" id="3_wahsv"]
+[ext_resource type="Texture2D" uid="uid://bnfrf8piu7xue" path="res://assets/cut_scenes/page_test_d/03_ai_george_hw_bush_portraits_009.png" id="4_4bo6j"]
+
+[node name="PageTestD1" node_paths=PackedStringArray("frames") instance=ExtResource("1_bpd8c")]
+frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
+next_page = "res://levels/cut_scenes/page_test_d_2.tscn"
+next_level = "res://ui/start_menu.tscn"
+
+[node name="SkipFrame" parent="Background" index="0"]
+visible = true
+offset_left = 262.0
+offset_top = -270.0
+offset_right = 911.0
+offset_bottom = 86.0
+
+[node name="Frame01" type="TextureRect" parent="Frames" index="0"]
+offset_left = 67.0
+offset_top = 36.0
+offset_right = 696.0
+offset_bottom = 743.0
+texture = ExtResource("2_h4bbn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Frame02" type="TextureRect" parent="Frames" index="1"]
+offset_left = 604.0
+offset_top = 250.0
+offset_right = 1253.0
+offset_bottom = 1018.0
+texture = ExtResource("3_wahsv")
+stretch_mode = 4
+
+[node name="Frame03" type="TextureRect" parent="Frames" index="2"]
+offset_left = 1211.0
+offset_top = 66.0
+offset_right = 1860.0
+offset_bottom = 834.0
+texture = ExtResource("4_4bo6j")
+stretch_mode = 4

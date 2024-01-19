@@ -36,7 +36,7 @@ metadata/_edit_group_ = true
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPointsPath2D" groups=["spawn_points"]]
 unique_name_in_owner = true
 position = Vector2(-2050.01, 1542.11)
-rotation = 0.0018143
+rotation = 0.00181421
 
 [node name="Background" type="Node2D" parent="."]
 

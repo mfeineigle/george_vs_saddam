@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5qtq6virfhgx"]
+
+[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_jpo4y"]
+[ext_resource type="Texture2D" uid="uid://cf1ealp8hvxrc" path="res://assets/cut_scenes/page_test_d/04_ai_saddam_portraits_005.png" id="2_iaoki"]
+[ext_resource type="Texture2D" uid="uid://c1o73cpnh2ueu" path="res://assets/cut_scenes/page_test_d/06_oil_barrel_55eb207af018fbb8f8ace74d.jpg" id="3_t5umt"]
+[ext_resource type="Texture2D" uid="uid://dd5512b24b7q4" path="res://assets/cut_scenes/page_test_d/05_ai_george_hw_bush_telescope_001.png" id="4_887mj"]
+
+[node name="PageTestD2" node_paths=PackedStringArray("frames") instance=ExtResource("1_jpo4y")]
+frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
+next_level = "res://ui/start_menu.tscn"
+
+[node name="SkipFrame" parent="Background" index="0"]
+visible = true
+offset_left = 276.0
+offset_top = -230.0
+offset_right = 925.0
+offset_bottom = 126.0
+
+[node name="Frame03" type="TextureRect" parent="Frames" index="0"]
+offset_left = 546.0
+offset_top = 692.0
+offset_right = 1195.0
+offset_bottom = 1048.0
+texture = ExtResource("3_t5umt")
+stretch_mode = 4
+
+[node name="Frame01" type="TextureRect" parent="Frames" index="1"]
+offset_left = 19.0
+offset_top = 15.0
+offset_right = 668.0
+offset_bottom = 783.0
+texture = ExtResource("2_iaoki")
+stretch_mode = 4
+
+[node name="Frame02" type="TextureRect" parent="Frames" index="2"]
+offset_left = 1138.0
+offset_top = 313.0
+offset_right = 1906.0
+offset_bottom = 825.0
+texture = ExtResource("4_887mj")
+stretch_mode = 4
