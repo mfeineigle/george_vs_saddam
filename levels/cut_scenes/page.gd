@@ -15,6 +15,7 @@ var can_advance: bool = false
 
 
 func _ready() -> void:
+	skip_frame.visible = false
 	for frame in $Frames.get_children():
 		frame.visible = false
 		frame.modulate.a = 0
