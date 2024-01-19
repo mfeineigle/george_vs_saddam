@@ -194,7 +194,7 @@ func die() -> void:
 
 func dash() -> void:
 	if dashCount < maxDashCount:
-		george_sprite.texture = load("res://assets/characters/george_dash.png")
+		george_sprite.texture = load("res://assets/characters/george_dash_sm.png")
 		dashCount += 1
 		dashing = true
 		$Timers/CanDashTimer.start(dashDelay)
@@ -204,7 +204,7 @@ func _on_can_dash_timer_timeout():
 	dashCount = 0
 
 func _on_dashing_timer_timeout():
-	george_sprite.texture = load("res://assets/characters/george.png")
+	george_sprite.texture = load("res://assets/characters/george_sm.png")
 	dashing = false
 
 
