@@ -42,11 +42,13 @@ func _on_open_door_area_body_exited(body: Node2D) -> void:
 
 
 func show_occupants() -> void:
+	var tween = get_tree().create_tween().set_parallel()
 	if occupants:
 		for i in occupants.get_children():
-			i.visible = true
+			tween.tween_property(i, "modulate:a", 1, 0.5)
 
 func hide_occupants() -> void:
+	var tween = get_tree().create_tween().set_parallel()
 	if occupants:
 		for i in occupants.get_children():
-			i.visible = false
+			tween.tween_property(i, "modulate:a", 0, 0.5)
