@@ -10,9 +10,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_gsa30"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2036, 1334, 0, 0, 0, 0, 1808, 1361, 0, 0, 0, 0, 1770, -392, 0, 0, 0, 0, 1770, -1048, 0, 0, 0, 0, -2074, -1093, 0, 0, 0, 0, -2037, 1312, 0, 0, 0, 0, -2036, 1334)
+"points": PackedVector2Array(0, 0, 0, 0, -2050.01, 1542.11, 0, 0, 0, 0, 5055, 1555, 0, 0, 0, 0, 4990.48, -1048.9, 0, 0, 0, 0, -2085.41, -1098.22, 0, 0, 0, 0, -2050.01, 1542.11)
 }
-point_count = 7
+point_count = 5
 
 [node name="Level" type="Node2D"]
 metadata/Level = ""
@@ -27,20 +27,24 @@ metadata/TotalSecrets = 0
 [node name="UI" parent="." instance=ExtResource("1_8rndx")]
 
 [node name="SpawnPointsPath2D" type="Path2D" parent="."]
+position = Vector2(-840, -210)
+scale = Vector2(0.564876, 0.912387)
 curve = SubResource("Curve2D_gsa30")
 script = ExtResource("2_6shx1")
 metadata/_edit_group_ = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPointsPath2D" groups=["spawn_points"]]
 unique_name_in_owner = true
-position = Vector2(-2036, 1334)
-rotation = 0.00702382
+position = Vector2(-2050.01, 1542.11)
+rotation = 0.0018143
 
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Blood" type="Node2D" parent="Background"]
 
 [node name="Buildings" type="Node2D" parent="Background"]
+
+[node name="Obstacles" type="Node2D" parent="."]
 
 [node name="Collectibles" type="Node2D" parent="."]
 script = ExtResource("3_dawd3")
@@ -53,7 +57,7 @@ script = ExtResource("3_dawd3")
 
 [node name="Secret_Areas" type="Node2D" parent="Collectibles"]
 
-[node name="Obstacles" type="Node2D" parent="."]
+[node name="Flags" type="Node2D" parent="Collectibles"]
 
 [node name="Projectiles" type="Node2D" parent="."]
 script = ExtResource("4_rie51")

@@ -37,6 +37,7 @@ func _ready() -> void:
 	level_option_button.add_item("A")
 	level_option_button.add_item("B")
 	level_option_button.add_item("C")
+	level_option_button.add_item("D")
 	_on_level_option_button_item_selected(0)
 
 

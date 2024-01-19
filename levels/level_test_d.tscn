@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cdge8svrn1yij"]
+[gd_scene load_steps=52 format=3 uid="uid://cdge8svrn1yij"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_qlj12"]
 [ext_resource type="TileSet" uid="uid://c0rffprpwew2g" path="res://levels/desert_tilemap.tres" id="2_8dasc"]
@@ -9,20 +9,26 @@
 [ext_resource type="PackedScene" uid="uid://budsnlgga1e1s" path="res://set_pieces/flag_pole.tscn" id="5_6idsw"]
 [ext_resource type="PackedScene" uid="uid://8hbgdo3q0lfn" path="res://set_pieces/buildings/test_building.tscn" id="6_3208m"]
 [ext_resource type="PackedScene" uid="uid://dpx6bh7huxq4v" path="res://collectibles/keys/keycard.tscn" id="7_jygq4"]
+[ext_resource type="PackedScene" uid="uid://clkuxg2lsv8uy" path="res://collectibles/oil_barrel.tscn" id="7_q8q6m"]
+[ext_resource type="PackedScene" uid="uid://mwbpwwl1iwkh" path="res://set_pieces/buildings/second_building.tscn" id="7_ub6ya"]
 [ext_resource type="Resource" uid="uid://rmc8f4bcqv0j" path="res://collectibles/keys/key_blue.tres" id="8_05nms"]
 [ext_resource type="PackedScene" uid="uid://br8ml1xibfwki" path="res://set_pieces/trap_soldier.tscn" id="8_h8vvi"]
 [ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="9_p2a3b"]
 [ext_resource type="PackedScene" uid="uid://cgasb1bkua85m" path="res://set_pieces/trap_cave_in.tscn" id="10_2tjoh"]
 [ext_resource type="PackedScene" uid="uid://bfjwx2vpr6rb1" path="res://enemies/scud_launcher.tscn" id="10_jcpol"]
+[ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="11_2es60"]
 [ext_resource type="AudioStream" uid="uid://cbhaxy7ircv7a" path="res://assets/audio/cave_in.mp3" id="11_30av5"]
+[ext_resource type="PackedScene" uid="uid://dthssebrgbpkk" path="res://collectibles/secret_areas/secret_area.tscn" id="11_kppqu"]
 [ext_resource type="PackedScene" uid="uid://c7i0qbpunp5ei" path="res://enemies/radar_tower.tscn" id="11_u1n0s"]
 [ext_resource type="PackedScene" uid="uid://smp2a286kurq" path="res://set_pieces/obstacles/boulder_xl.tscn" id="12_71u1t"]
 [ext_resource type="PackedScene" uid="uid://b7xxufyg1led3" path="res://set_pieces/obstacles/gate_01.tscn" id="12_euwvr"]
 [ext_resource type="Resource" uid="uid://ciff73pn16450" path="res://collectibles/keys/key_red.tres" id="12_gobk0"]
 [ext_resource type="PackedScene" uid="uid://ltkj653puy0p" path="res://set_pieces/obstacles/boulder_large.tscn" id="13_d76pt"]
 [ext_resource type="PackedScene" uid="uid://dfkp3i3hvb404" path="res://set_pieces/obstacles/boulder_medium.tscn" id="14_c1jll"]
+[ext_resource type="PackedScene" uid="uid://ce4bn0fm1tehb" path="res://set_pieces/obstacles/boulder_small.tscn" id="14_wl1ho"]
 [ext_resource type="PackedScene" uid="uid://dl65sivnf31rf" path="res://enemies/guard.tscn" id="16_5sok1"]
 [ext_resource type="PackedScene" uid="uid://ys4jxc7uls5v" path="res://set_pieces/trap_paratrooper.tscn" id="16_ddj0y"]
+[ext_resource type="PackedScene" uid="uid://wdeypjhrfm8r" path="res://set_pieces/flag_point.tscn" id="18_goao2"]
 [ext_resource type="Script" path="res://levels/path.gd" id="18_kiorq"]
 [ext_resource type="PackedScene" uid="uid://cvtqhhqpi1d6j" path="res://enemies/tank.tscn" id="19_parny"]
 [ext_resource type="PackedScene" uid="uid://ns8jjlyi884e" path="res://enemies/soldier_transport.tscn" id="21_cqrw7"]
@@ -31,111 +37,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sx5wv"]
 size = Vector2(182, 80)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ymbma"]
+radius = 131.095
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_opnou"]
+radius = 187.171
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bck44"]
 height = 414.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ycig"]
 height = 872.0
-
-[sub_resource type="Animation" id="Animation_8bfsd"]
-resource_name = "cave_in"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Boulders/BoulderXL:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [-1.8675, -1.1589, 0.129154, 0.644027]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Boulders/BoulderXL:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-989, 749), Vector2(-836, 806), Vector2(-622, 888), Vector2(-460, 1018)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Boulders/BoulderLarge:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-903, 817), Vector2(-507, 886), Vector2(-213, 973), Vector2(-15, 1160)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Boulders/BoulderLarge:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [-3.15905, -1.9984, -1.13446, -0.296706]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Boulders/BoulderMedium:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-895, 966), Vector2(-797, 1018), Vector2(-722, 1058), Vector2(-639, 1112)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Boulders/BoulderMedium:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [-3.1573, -2.31954, -1.61094, -0.966912]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Boulders/BoulderMedium2:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-823, 893), Vector2(-677, 941), Vector2(-517, 1022), Vector2(-271, 1154)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Boulders/BoulderMedium2:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [-2.51153, -1.80293, -1.09432, 0.193732]
-}
 
 [sub_resource type="Animation" id="Animation_27tr7"]
 resource_name = "RESET"
@@ -237,6 +149,106 @@ tracks/7/keys = {
 "values": [-2.51153]
 }
 
+[sub_resource type="Animation" id="Animation_8bfsd"]
+resource_name = "cave_in"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boulders/BoulderXL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-1.8675, -1.1589, 0.129154, 0.644027]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boulders/BoulderXL:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-989, 749), Vector2(-836, 806), Vector2(-622, 888), Vector2(-460, 1018)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boulders/BoulderLarge:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-903, 817), Vector2(-507, 886), Vector2(-213, 973), Vector2(-15, 1160)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boulders/BoulderLarge:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-3.15905, -1.9984, -1.13446, -0.296706]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boulders/BoulderMedium:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-895, 966), Vector2(-797, 1018), Vector2(-722, 1058), Vector2(-639, 1112)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boulders/BoulderMedium:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-3.1573, -2.31954, -1.61094, -0.966912]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Boulders/BoulderMedium2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-823, 893), Vector2(-677, 941), Vector2(-517, 1022), Vector2(-271, 1154)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Boulders/BoulderMedium2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-2.51153, -1.80293, -1.09432, 0.193732]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m6pj1"]
 _data = {
 "RESET": SubResource("Animation_27tr7"),
@@ -246,6 +258,362 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03r68"]
 height = 682.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nbr12"]
+radius = 106.0
+height = 630.0
+
+[sub_resource type="Animation" id="Animation_l54id"]
+resource_name = "cave_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boulders/BoulderXL:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(316, -382), Vector2(-88, 28)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boulders/BoulderXL:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.253073, -2.45393]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boulders/BoulderXL2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(702, -288), Vector2(1020, 100)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boulders/BoulderXL2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.200713, 2.74017]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boulders/BoulderLarge:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(328, -312), Vector2(336, 144)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boulders/BoulderLarge:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.54287, -3.01418]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Boulders/BoulderLarge2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(498, -344), Vector2(738, 152)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Boulders/BoulderLarge2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.226893, -3.19046]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Boulders/BoulderSmall:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(314, -268), Vector2(168, 166)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Boulders/BoulderSmall:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -3.41561]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Boulders/BoulderSmall2:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(488, -224), Vector2(1108, -106)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Boulders/BoulderSmall2:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.57785]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Boulders/BoulderMedium:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(600, -200), Vector2(494, 172)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Boulders/BoulderMedium:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.35103]
+}
+
+[sub_resource type="Animation" id="Animation_q05j6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boulders/BoulderXL:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(316, -382)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Boulders/BoulderXL:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.253073]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boulders/BoulderXL2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(702, -288)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Boulders/BoulderXL2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.200713]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boulders/BoulderLarge:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(328, -312)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boulders/BoulderLarge:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0785398]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Boulders/BoulderLarge2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(498, -344)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Boulders/BoulderLarge2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.226893]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Boulders/BoulderSmall:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(314, -268)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Boulders/BoulderSmall:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Boulders/BoulderSmall2:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(488, -224)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Boulders/BoulderSmall2:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Boulders/BoulderMedium:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(600, -200)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Boulders/BoulderMedium:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_exf3r"]
+_data = {
+"RESET": SubResource("Animation_q05j6"),
+"cave_in": SubResource("Animation_l54id")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8y5u"]
+radius = 395.046
+
 [sub_resource type="Curve2D" id="Curve2D_x8rva"]
 _data = {
 "points": PackedVector2Array(-363, -321, 363, 321, 932, 1532, -177, 210, 177, -210, 2068, 1546, 174, 201, -174, -201, 1563, 1093, 270, -276, -270, 276, 913, 709, 0, 0, 0, 0, 932, 1532)
@@ -254,9 +622,15 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_egvr8"]
 _data = {
-"points": PackedVector2Array(560, -653, -560, 653, 2840, 369, 0, 0, 0, 0, 2840, 1569, -421.912, 281.275, 421.912, -281.275, 3840, 1649, -626, -814, 626, 814, 4345, 85, 331.5, 66, -331.5, -66, 3731, 547, 289, -282, -289, 282, 2840, 369)
+"points": PackedVector2Array(560, -653, -560, 653, 2840, 369, -56, -82.5, 56, 82.5, 3270, 1391, -421.912, 281.275, 421.912, -281.275, 3840, 1649, -626, -814, 626, 814, 4345, 85, 331.5, 66, -331.5, -66, 3731, 547, 289, -282, -289, 282, 2840, 369)
 }
 point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_gdg1h"]
+_data = {
+"points": PackedVector2Array(20.1667, -82.5, -20.1667, 82.5, 6364, 2769, -135.667, -15.6667, 135.667, 15.6667, 6644, 2876, -167, -16.6667, 167, 16.6667, 7409, 2991, -157.667, -32, 157.667, 32, 7998, 3000, -53.1667, -7, 53.1667, 7, 8476, 3077, -89.3333, -5.16667, 89.3333, 5.16667, 8760, 3118, 40, 82, -40, -82, 8956, 3043, 156, 13, -156, -13, 8319, 2996, 47, 64, -47, -64, 8025, 2898, -12, 54, 12, -54, 8118, 2121, 73, -94, -73, 94, 8004, 2109, 0, -61.5, 0, 61.5, 7965, 2568, 52, -77, -52, 77, 7884, 2841, 112, -16, -112, 16, 7655, 2938, 128.667, 15.6667, -128.667, -15.6667, 7078, 2895, 69.3333, 29.3333, -69.3333, -29.3333, 6600, 2799, 96, 43.1667, -96, -43.1667, 6491, 2744, 1.46154, -6.38462, -1.46154, 6.38462, 6364, 2769)
+}
+point_count = 18
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jekwq"]
 vertices = PackedVector2Array(268, -438, -275, -437, -411, -675, 23, -738, 920, 322, 311, -419, 9330, -452, 9277, 3324, -582, 2018, -829, 2114, -808, -415, -288, -416, -113, -108, 378, 2715, 170, 2772, 165, 2361, 817, 1673, 0, 2418, -30, 2184, 126, 1679, -839, 3265, -832, 2466, -33, 2482, -23, 2957, -282, 2257, -112, -108, 102, 475, 489, 2767, 672, 2770, 738, 2948, 513, 3039, -851, 2445, -916, 2445, -939, 2179, -850, 2143)
@@ -298,16 +672,56 @@ shape = SubResource("RectangleShape2D_sx5wv")
 [node name="FlagPole" parent="Background/Bunker/ExitLevelArea" index="1" instance=ExtResource("5_6idsw")]
 position = Vector2(-220, -859)
 
-[node name="TestBuilding" parent="Background/Buildings" index="0" instance=ExtResource("6_3208m")]
+[node name="TestBuilding" parent="Background/Buildings" index="0" node_paths=PackedStringArray("occupants") instance=ExtResource("6_3208m")]
 position = Vector2(756, 452)
 rotation = 1.5708
+occupants = NodePath("Occupants")
 
-[node name="BlueKeycard" parent="Collectibles/Keys" index="0" instance=ExtResource("7_jygq4")]
-position = Vector2(506, 171)
-key = ExtResource("8_05nms")
+[node name="Occupants" type="Node2D" parent="Background/Buildings/TestBuilding" index="8"]
 
-[node name="RedKeycard" parent="Collectibles/Keys" index="1" instance=ExtResource("7_jygq4")]
-position = Vector2(1161, -207)
+[node name="TestBuilding2" parent="Background/Buildings" index="1" node_paths=PackedStringArray("occupants") instance=ExtResource("6_3208m")]
+position = Vector2(4794, 1799)
+rotation = -1.69297
+occupants = NodePath("Occupants")
+
+[node name="Occupants" type="Node2D" parent="Background/Buildings/TestBuilding2" index="8"]
+
+[node name="oil_barrel" parent="Background/Buildings/TestBuilding2/Occupants" index="0" instance=ExtResource("7_q8q6m")]
+position = Vector2(141.901, 116.159)
+rotation = 1.72788
+
+[node name="TestBuilding3" parent="Background/Buildings" index="2" node_paths=PackedStringArray("occupants") instance=ExtResource("6_3208m")]
+position = Vector2(6117, -448)
+rotation = -6.28319
+occupants = NodePath("Occupants")
+
+[node name="Occupants" type="Node2D" parent="Background/Buildings/TestBuilding3" index="8"]
+
+[node name="oil_barrel" parent="Background/Buildings/TestBuilding3/Occupants" index="0" instance=ExtResource("7_q8q6m")]
+position = Vector2(141.901, 116.159)
+
+[node name="SecondBuilding" parent="Background/Buildings" index="3" node_paths=PackedStringArray("occupants") instance=ExtResource("7_ub6ya")]
+position = Vector2(3348, 2950)
+rotation = -0.907571
+occupants = NodePath("Occupants")
+
+[node name="Occupants" type="Node2D" parent="Background/Buildings/SecondBuilding" index="8"]
+
+[node name="RedKeycard" parent="Background/Buildings/SecondBuilding/Occupants" index="0" instance=ExtResource("7_jygq4")]
+position = Vector2(294.952, 440.868)
+rotation = 0.907571
+key = ExtResource("12_gobk0")
+
+[node name="SecondBuilding2" parent="Background/Buildings" index="4" node_paths=PackedStringArray("occupants") instance=ExtResource("7_ub6ya")]
+position = Vector2(5877, 127)
+rotation = -2.97753
+occupants = NodePath("../SecondBuilding/Occupants")
+
+[node name="Occupants" type="Node2D" parent="Background/Buildings/SecondBuilding2" index="8"]
+
+[node name="RedKeycard" parent="Background/Buildings/SecondBuilding2/Occupants" index="0" instance=ExtResource("7_jygq4")]
+position = Vector2(294.952, 440.868)
+rotation = 0.907571
 key = ExtResource("12_gobk0")
 
 [node name="ExteriorLevelWalls" type="Node2D" parent="Obstacles" index="0"]
@@ -387,6 +801,73 @@ rotation = -2.02458
 is_door_locked = true
 key = ExtResource("12_gobk0")
 
+[node name="CenterWalls" type="Node2D" parent="Obstacles" index="3"]
+
+[node name="Boulders_H" parent="Obstacles/CenterWalls" index="0" instance=ExtResource("3_4yrxa")]
+position = Vector2(3049, 1888)
+rotation = -2.26369
+
+[node name="Boulders_H3" parent="Obstacles/CenterWalls" index="1" instance=ExtResource("3_4yrxa")]
+position = Vector2(6298, 1807)
+rotation = -4.64607
+scale = Vector2(0.7, 0.7)
+
+[node name="Boulders_H4" parent="Obstacles/CenterWalls" index="2" instance=ExtResource("3_4yrxa")]
+position = Vector2(4160, 1899)
+rotation = -0.120428
+
+[node name="Boulders_H5" parent="Obstacles/CenterWalls" index="3" instance=ExtResource("3_4yrxa")]
+position = Vector2(5814, 3010)
+rotation = -2.74017
+
+[node name="Boulders_H2" parent="Obstacles/CenterWalls" index="4" instance=ExtResource("3_4yrxa")]
+position = Vector2(1019, 332)
+scale = Vector2(0.6, 0.6)
+
+[node name="BoulderSmall" parent="Obstacles/CenterWalls" index="5" instance=ExtResource("14_wl1ho")]
+position = Vector2(2100, 478)
+rotation = -1.33518
+
+[node name="UpperRightInteriorWalls" type="Node2D" parent="Obstacles" index="4"]
+
+[node name="Boulders_V" parent="Obstacles/UpperRightInteriorWalls" index="0" instance=ExtResource("4_ygs55")]
+position = Vector2(8404, -63.9999)
+rotation = -4.00553
+
+[node name="Boulders_V2" parent="Obstacles/UpperRightInteriorWalls" index="1" instance=ExtResource("4_ygs55")]
+position = Vector2(8620, 1130)
+rotation = -3.29169
+
+[node name="Rifle" parent="Collectibles/Guns" index="0" instance=ExtResource("11_2es60")]
+position = Vector2(-673, -101)
+
+[node name="BlueKeycard" parent="Collectibles/Keys" index="0" instance=ExtResource("7_jygq4")]
+position = Vector2(506, 171)
+key = ExtResource("8_05nms")
+
+[node name="SecretArea" parent="Collectibles/Secret_Areas" index="0" instance=ExtResource("11_kppqu")]
+position = Vector2(4120, 3200)
+message = "D's nuts."
+id = "d_0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectibles/Secret_Areas/SecretArea" index="2"]
+shape = SubResource("CircleShape2D_ymbma")
+
+[node name="SecretArea2" parent="Collectibles/Secret_Areas" index="1" instance=ExtResource("11_kppqu")]
+position = Vector2(8238, -444)
+message = "blah"
+id = "d_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectibles/Secret_Areas/SecretArea2" index="2"]
+position = Vector2(7, -11)
+shape = SubResource("CircleShape2D_opnou")
+
+[node name="FlagPoint" parent="Collectibles/Flags" index="0" instance=ExtResource("18_goao2")]
+position = Vector2(904, 476)
+
+[node name="FlagPoint2" parent="Collectibles/Flags" index="1" instance=ExtResource("18_goao2")]
+position = Vector2(7406, -126)
+
 [node name="TrapSoldier" parent="Traps" index="0" node_paths=PackedStringArray("units") instance=ExtResource("8_h8vvi")]
 position = Vector2(709, 3035)
 units = NodePath("Units")
@@ -459,6 +940,62 @@ position = Vector2(167, 49)
 rotation = 1.27235
 shape = SubResource("CapsuleShape2D_03r68")
 
+[node name="TrapCaveIn2" parent="Traps" index="3" node_paths=PackedStringArray("boulders", "animation_player") instance=ExtResource("10_2tjoh")]
+position = Vector2(1470, -434)
+boulders = NodePath("Boulders")
+cave_in_sound_effect = ExtResource("11_30av5")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapCaveIn2" index="1"]
+position = Vector2(396, -70)
+rotation = 1.80816
+shape = SubResource("CapsuleShape2D_nbr12")
+
+[node name="Boulders" type="Node2D" parent="Traps/TrapCaveIn2" index="2"]
+
+[node name="BoulderXL" parent="Traps/TrapCaveIn2/Boulders" index="0" instance=ExtResource("12_71u1t")]
+position = Vector2(316, -382)
+rotation = 0.253073
+
+[node name="BoulderXL2" parent="Traps/TrapCaveIn2/Boulders" index="1" instance=ExtResource("12_71u1t")]
+position = Vector2(702, -288)
+rotation = 0.200713
+
+[node name="BoulderLarge" parent="Traps/TrapCaveIn2/Boulders" index="2" instance=ExtResource("13_d76pt")]
+position = Vector2(328, -312)
+rotation = 0.0785398
+
+[node name="BoulderLarge2" parent="Traps/TrapCaveIn2/Boulders" index="3" instance=ExtResource("13_d76pt")]
+position = Vector2(498, -344)
+rotation = -0.226893
+
+[node name="BoulderSmall" parent="Traps/TrapCaveIn2/Boulders" index="4" instance=ExtResource("14_wl1ho")]
+position = Vector2(314, -268)
+
+[node name="BoulderSmall2" parent="Traps/TrapCaveIn2/Boulders" index="5" instance=ExtResource("14_wl1ho")]
+position = Vector2(488, -224)
+
+[node name="BoulderMedium" parent="Traps/TrapCaveIn2/Boulders" index="6" instance=ExtResource("14_c1jll")]
+position = Vector2(600, -200)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Traps/TrapCaveIn2" index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_exf3r")
+}
+
+[node name="TrapParatrooper2" parent="Traps" index="4" instance=ExtResource("16_ddj0y")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapParatrooper2" index="0"]
+position = Vector2(3515, 1349)
+shape = SubResource("CircleShape2D_b8y5u")
+
+[node name="TrapParatrooper3" parent="Traps" index="5" instance=ExtResource("16_ddj0y")]
+position = Vector2(-528, -441)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapParatrooper3" index="0"]
+position = Vector2(3515, 1349)
+shape = SubResource("CircleShape2D_b8y5u")
+
 [node name="Troop" parent="Enemies/Soldiers" index="0" instance=ExtResource("9_p2a3b")]
 position = Vector2(7145, 1534)
 pursue = false
@@ -468,7 +1005,7 @@ position = Vector2(5365, 1195)
 pursue = false
 
 [node name="Troop3" parent="Enemies/Soldiers" index="2" instance=ExtResource("9_p2a3b")]
-position = Vector2(6128, 1746)
+position = Vector2(6383, 1872)
 pursue = false
 
 [node name="Troop4" parent="Enemies/Soldiers" index="3" instance=ExtResource("9_p2a3b")]
@@ -508,8 +1045,9 @@ curve = SubResource("Curve2D_x8rva")
 metadata/_edit_group_ = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Ground_Vehicles/TankPath2D" index="0" node_paths=PackedStringArray("follower")]
-position = Vector2(932, 1532)
-rotation = 0.724072
+position = Vector2(1201.45, 662.459)
+rotation = -2.56561
+progress = 2564.77
 script = ExtResource("18_kiorq")
 follower = NodePath("Tank")
 
@@ -519,9 +1057,9 @@ follower = NodePath("Tank")
 curve = SubResource("Curve2D_egvr8")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Ground_Vehicles/TroopTransportPath2D2" index="0" node_paths=PackedStringArray("follower", "reload_depot")]
-position = Vector2(4019.26, 941.609)
-rotation = -1.55373
-progress = 3135.4
+position = Vector2(4218.5, 642.638)
+rotation = -3.03194
+progress = 5159.08
 script = ExtResource("18_kiorq")
 speed = 0.1
 follower = NodePath("SoldierTransport")
@@ -530,14 +1068,28 @@ pick_up_lower = 0.45
 pick_up_upper = 0.46
 
 [node name="SoldierTransport" parent="Enemies/Ground_Vehicles/TroopTransportPath2D2/PathFollow2D" index="0" instance=ExtResource("21_cqrw7")]
-max_soldier_capacity = 1
+max_soldier_capacity = 3
 can_spawn_troops = true
 
 [node name="ReloadDepot" parent="Enemies/Ground_Vehicles/TroopTransportPath2D2" index="1" node_paths=PackedStringArray("follower", "path") instance=ExtResource("22_ipmrx")]
 position = Vector2(4019, 958)
 rotation = -1.5708
+total_soldiers = 6
 follower = NodePath("../PathFollow2D/SoldierTransport")
 path = NodePath("../PathFollow2D")
+
+[node name="Tank2Path2D" type="Path2D" parent="Enemies/Ground_Vehicles" index="2"]
+curve = SubResource("Curve2D_gdg1h")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Ground_Vehicles/Tank2Path2D" index="0" node_paths=PackedStringArray("follower")]
+position = Vector2(8116.19, 3021.89)
+rotation = 0.170771
+progress = 1811.72
+script = ExtResource("18_kiorq")
+speed = 0.05
+follower = NodePath("Tank")
+
+[node name="Tank" parent="Enemies/Ground_Vehicles/Tank2Path2D/PathFollow2D" index="0" instance=ExtResource("19_parny")]
 
 [node name="RadarTower" parent="Enemies/Aircraft" index="1" instance=ExtResource("11_u1n0s")]
 position = Vector2(287, -12)
@@ -545,9 +1097,19 @@ position = Vector2(287, -12)
 [node name="RadarTower2" parent="Enemies/Aircraft" index="2" instance=ExtResource("11_u1n0s")]
 position = Vector2(-132, 3492)
 
+[node name="RadarTower3" parent="Enemies/Aircraft" index="3" instance=ExtResource("11_u1n0s")]
+position = Vector2(1864, 555)
+
+[node name="RadarTower4" parent="Enemies/Aircraft" index="4" instance=ExtResource("11_u1n0s")]
+position = Vector2(2950, 1803)
+
+[node name="RadarTower5" parent="Enemies/Aircraft" index="5" instance=ExtResource("11_u1n0s")]
+position = Vector2(4394, 2148)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="9"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_jekwq")
 metadata/_edit_lock_ = true
 
 [node name="George" parent="." index="10"]
-position = Vector2(1307, -75)
+position = Vector2(-604, -283)

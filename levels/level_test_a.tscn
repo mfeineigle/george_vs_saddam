@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c3mkylkdhtc4e"]
+[gd_scene load_steps=37 format=3 uid="uid://c3mkylkdhtc4e"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_7qhx8"]
 [ext_resource type="Texture2D" uid="uid://dlymds1mxs36t" path="res://assets/background/lvl-A_ground_textures.png" id="2_hupca"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dthssebrgbpkk" path="res://collectibles/secret_areas/secret_area.tscn" id="16_18a3i"]
 [ext_resource type="PackedScene" uid="uid://br8ml1xibfwki" path="res://set_pieces/trap_soldier.tscn" id="18_ajsms"]
 [ext_resource type="PackedScene" uid="uid://0rkug7sqoehv" path="res://set_pieces/trap_soldier_hole.tscn" id="20_f7d48"]
+[ext_resource type="PackedScene" uid="uid://c7i0qbpunp5ei" path="res://enemies/radar_tower.tscn" id="24_k2wqr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oeqm3"]
 texture = ExtResource("2_hupca")
@@ -484,6 +485,9 @@ position = Vector2(-1282, -490)
 
 [node name="scud_launcher3" parent="Enemies/ScudLauchers" index="2" instance=ExtResource("12_hu4jq")]
 position = Vector2(-1168, -210)
+
+[node name="RadarTower" parent="Enemies/Aircraft" index="1" instance=ExtResource("24_k2wqr")]
+position = Vector2(-1658, -544)
 
 [node name="Saddam" parent="Enemies" index="4" instance=ExtResource("14_42eps")]
 position = Vector2(-974, -476)
