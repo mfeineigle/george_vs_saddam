@@ -8,7 +8,7 @@ extends Control
 
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var skip_frame: TextureRect = $Background/SkipFrame
-@onready var progress_bar: ProgressBar = $Background/SkipFrame/ProgressBar
+@onready var texture_progress_bar: TextureProgressBar = $Background/SkipFrame/TextureProgressBar
 
 var idx: int = 0
 var can_advance: bool = false
@@ -56,12 +56,12 @@ func goto_next_page() -> void:
 
 func _on_skip_timer_timeout() -> void:
 	if Input.is_action_pressed("menu_select") or Input.is_action_pressed("shoot"):
-		progress_bar.value += 5  #Button is pressed, increase the progress
-		if progress_bar.value >= 20:
+		texture_progress_bar.value += 5 #Button is pressed, increase the progress
+		if texture_progress_bar.value >= 20:
 			skip_frame.visible = true
 	else:  
-		progress_bar.value = 0  #The button wasn't down during this tick, reset progress
-	if progress_bar.value >= 100:
+		texture_progress_bar.value = 0  #The button wasn't down during this tick, reset progress
+	if texture_progress_bar.value >= 100:
 		if Globals.story_mode and next_cutscene:
 			GameEvents.level_changed.emit(next_cutscene)
 		else:

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj837d30n5gep"]
+[gd_scene load_steps=7 format=3 uid="uid://bj837d30n5gep"]
 
 [ext_resource type="Texture2D" uid="uid://bi6daoyk5djpr" path="res://assets/cut_scenes/cutscene_background.png" id="1_p5208"]
 [ext_resource type="Script" path="res://levels/cut_scenes/page.gd" id="1_y80vr"]
-[ext_resource type="Texture2D" uid="uid://bqffpkliyf6km" path="res://assets/cut_scenes/skip_frame.png" id="3_i6k4x"]
+[ext_resource type="Texture2D" uid="uid://bv2wd4ggrwvk6" path="res://assets/cut_scenes/hold_to_skip_words.png" id="3_cabag"]
+[ext_resource type="Texture2D" uid="uid://c41tox51xhk0q" path="res://assets/cut_scenes/hold_to_skip_XboxSeriesX_A.png" id="4_0f2cc"]
 [ext_resource type="AudioStream" uid="uid://dx2xvb03ymrw0" path="res://assets/audio/paper_turn.wav" id="4_rj2sd"]
+[ext_resource type="Texture2D" uid="uid://b0lw6nkegvyyr" path="res://assets/cut_scenes/hold_to_skip_circle_progress.png" id="5_hwhhi"]
 
 [node name="Page" type="Control"]
 layout_mode = 3
@@ -17,30 +19,37 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_p5208")
 
-[node name="SkipFrame" type="TextureRect" parent="Background"]
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -324.5
-offset_top = -356.0
-offset_right = 324.5
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("3_i6k4x")
-
-[node name="ProgressBar" type="ProgressBar" parent="Background/SkipFrame"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -13.5
-offset_bottom = 13.5
-grow_horizontal = 2
-grow_vertical = 2
+anchor_bottom = 1.0
+offset_left = -433.0
+offset_top = -82.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SkipFrame" type="TextureRect" parent="Background/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_cabag")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Background/MarginContainer/SkipFrame"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = -11.0
+offset_right = 223.0
+offset_bottom = 89.0
+value = 100.0
+fill_mode = 4
+texture_under = ExtResource("4_0f2cc")
+texture_progress = ExtResource("5_hwhhi")
+texture_progress_offset = Vector2(7, 8)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

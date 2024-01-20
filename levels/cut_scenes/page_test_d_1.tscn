@@ -10,12 +10,9 @@ frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Fram
 next_page = "res://levels/cut_scenes/page_test_d_2.tscn"
 next_level = "res://ui/start_menu.tscn"
 
-[node name="SkipFrame" parent="Background" index="0"]
-visible = true
-offset_left = 262.0
-offset_top = -270.0
-offset_right = 911.0
-offset_bottom = 86.0
+[node name="MarginContainer" parent="Background" index="0"]
+offset_left = -443.0
+offset_top = -92.0
 
 [node name="Frame01" type="TextureRect" parent="Frames" index="0"]
 offset_left = 67.0

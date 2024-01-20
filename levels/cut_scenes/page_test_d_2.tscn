@@ -9,13 +9,6 @@
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
 next_level = "res://ui/start_menu.tscn"
 
-[node name="SkipFrame" parent="Background" index="0"]
-visible = true
-offset_left = 276.0
-offset_top = -230.0
-offset_right = 925.0
-offset_bottom = 126.0
-
 [node name="Frame03" type="TextureRect" parent="Frames" index="0"]
 offset_left = 546.0
 offset_top = 692.0
