@@ -7,7 +7,7 @@ extends Area2D
 # add units under the "Units" folder
 
 @onready var hole_collision: CollisionShape2D = $Hole/CollisionShape2D
-@onready var hole_sprite: Sprite2D = $Hole/HoleSprite
+@onready var hole_sprite: Sprite2D = $Hole/Sprite2D
 
 ## Holds the units the ambush controls
 @export var units: Node2D

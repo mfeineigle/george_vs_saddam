@@ -1,25 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://0rkug7sqoehv"]
+[gd_scene load_steps=2 format=3 uid="uid://0rkug7sqoehv"]
 
 [ext_resource type="Script" path="res://set_pieces/trap_soldier_hole.gd" id="1_3q3bd"]
-[ext_resource type="Texture2D" uid="uid://dcpfuy8c5jki" path="res://assets/obstacles/foxhole_temp.png" id="2_ioct0"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_600ku"]
-radius = 102.0
-height = 756.0
 
 [node name="TrapSoldierHole" type="Area2D"]
-script = ExtResource("1_3q3bd")
-
-[node name="Hole" type="StaticBody2D" parent="."]
 collision_layer = 8
-
-[node name="HoleSprite" type="Sprite2D" parent="Hole"]
-scale = Vector2(1.875, 2.045)
-texture = ExtResource("2_ioct0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hole"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_600ku")
-disabled = true
+script = ExtResource("1_3q3bd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

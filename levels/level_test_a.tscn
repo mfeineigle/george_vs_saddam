@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c3mkylkdhtc4e"]
+[gd_scene load_steps=39 format=3 uid="uid://c3mkylkdhtc4e"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_7qhx8"]
 [ext_resource type="Texture2D" uid="uid://dlymds1mxs36t" path="res://assets/background/lvl-A_ground_textures.png" id="2_hupca"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dthssebrgbpkk" path="res://collectibles/secret_areas/secret_area.tscn" id="16_18a3i"]
 [ext_resource type="PackedScene" uid="uid://br8ml1xibfwki" path="res://set_pieces/trap_soldier.tscn" id="18_ajsms"]
 [ext_resource type="PackedScene" uid="uid://0rkug7sqoehv" path="res://set_pieces/trap_soldier_hole.tscn" id="20_f7d48"]
+[ext_resource type="Texture2D" uid="uid://dcpfuy8c5jki" path="res://assets/obstacles/foxhole_temp.png" id="22_cultk"]
 [ext_resource type="PackedScene" uid="uid://c7i0qbpunp5ei" path="res://enemies/radar_tower.tscn" id="24_k2wqr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oeqm3"]
@@ -286,6 +287,10 @@ radius = 206.087
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iiyx8"]
 size = Vector2(927, 124)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hacb7"]
+radius = 53.0
+height = 414.0
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wfxqw"]
 vertices = PackedVector2Array(2119, -2404, 2119, 1304, 277, -682, 111, -910, 211, -1120, 167, -1440, 117, -526, -4095, 1251, -253, -532, -407, -642, -4211, -2332, -377, -770, -241, -870, -185, -1470, -13, -1516)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(0, 4, 5), PackedInt32Array(6, 2, 1), PackedInt32Array(6, 1, 7, 8), PackedInt32Array(9, 8, 7, 10), PackedInt32Array(11, 9, 10), PackedInt32Array(12, 11, 10, 13), PackedInt32Array(13, 10, 0, 14), PackedInt32Array(14, 0, 5)])
@@ -457,19 +462,30 @@ position = Vector2(-764, -104)
 position = Vector2(317, -216)
 
 [node name="TrapSoldierHole" parent="Traps" index="1" node_paths=PackedStringArray("units") instance=ExtResource("20_f7d48")]
-position = Vector2(-3, 619)
+position = Vector2(-495, 691)
 units = NodePath("Units")
 invisible_units = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapSoldierHole" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapSoldierHole" index="0"]
 position = Vector2(-353, 153)
 shape = SubResource("RectangleShape2D_iiyx8")
 debug_color = Color(0.121569, 0.580392, 0, 0.741176)
 
-[node name="Units" type="Node2D" parent="Traps/TrapSoldierHole" index="2"]
+[node name="Units" type="Node2D" parent="Traps/TrapSoldierHole" index="1"]
 
 [node name="Troop" parent="Traps/TrapSoldierHole/Units" index="0" instance=ExtResource("5_ly66f")]
 position = Vector2(-255, -53)
+
+[node name="Hole" type="StaticBody2D" parent="Traps/TrapSoldierHole" index="2"]
+collision_layer = 8
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Traps/TrapSoldierHole/Hole" index="0"]
+texture = ExtResource("22_cultk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapSoldierHole/Hole" index="1"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hacb7")
 
 [node name="Guard" parent="Enemies/Soldiers" index="0" instance=ExtResource("4_m634b")]
 position = Vector2(654, 227)
