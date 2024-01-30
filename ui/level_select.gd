@@ -55,5 +55,11 @@ func _on_lvl_d_button_pressed() -> void:
 	GameEvents.level_changed.emit("res://levels/level_test_d.tscn")
 
 
+func _on_lvl_z_button_pressed() -> void:
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	file.store_var("res://levels/level_test_z.tscn")
+	GameEvents.level_changed.emit("res://levels/level_test_z.tscn")
+
+
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
