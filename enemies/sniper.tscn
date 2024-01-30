@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://djf62yfhoa0fb"]
+
+[ext_resource type="PackedScene" uid="uid://lj8agpd1vbr7" path="res://enemies/soldier.tscn" id="1_ion3p"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_oa7ug"]
+[ext_resource type="Script" path="res://enemies/sniper.gd" id="2_r3j0w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojpah"]
+resource_local_to_scene = true
+shader = ExtResource("2_oa7ug")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cshs8"]
+resource_local_to_scene = true
+shader = ExtResource("2_oa7ug")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bthp3"]
+radius = 466.0
+height = 1740.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yi2fk"]
+radius = 544.0
+height = 1918.0
+
+[node name="Sniper" instance=ExtResource("1_ion3p")]
+script = ExtResource("2_r3j0w")
+speed = 125
+hit_sounds = Array[AudioStreamMP3]([])
+
+[node name="Sprite2D" parent="Sprites" index="0"]
+material = SubResource("ShaderMaterial_ojpah")
+
+[node name="Sprite2D2" parent="Sprites" index="1"]
+material = SubResource("ShaderMaterial_cshs8")
+
+[node name="RemoteTransform2DInner" type="RemoteTransform2D" parent="." index="13"]
+remote_path = NodePath("../RunAwayAreaInner")
+update_rotation = false
+
+[node name="RunAwayAreaInner" type="Area2D" parent="." index="14"]
+top_level = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RunAwayAreaInner" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bthp3")
+debug_color = Color(0.6, 0.545098, 0, 0.419608)
+
+[node name="RemoteTransform2DOuter" type="RemoteTransform2D" parent="." index="15"]
+remote_path = NodePath("../RunAwayAreaOuter")
+update_rotation = false
+
+[node name="RunAwayAreaOuter" type="Area2D" parent="." index="16"]
+top_level = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RunAwayAreaOuter" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_yi2fk")
+debug_color = Color(0.0313726, 0.647059, 0.215686, 0.419608)
+
+[connection signal="body_entered" from="RunAwayAreaInner" to="." method="_on_run_away_area_inner_body_entered"]
+[connection signal="body_exited" from="RunAwayAreaOuter" to="." method="_on_run_away_area_outer_body_exited"]
