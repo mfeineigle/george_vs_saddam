@@ -47,19 +47,18 @@ visible = false
 [node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
 visible = false
 
-[node name="AvoidanceArea" type="Area2D" parent="."]
+[node name="RunAwayAreaInner" type="Area2D" parent="."]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AvoidanceArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RunAwayAreaInner"]
+
+[node name="RunAwayAreaOuter" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RunAwayAreaOuter"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-[node name="Timers" type="Node2D" parent="."]
-
-[node name="KeepRunningTimer" type="Timer" parent="Timers"]
-wait_time = 0.25
-one_shot = true
-
-[connection signal="body_entered" from="AvoidanceArea" to="." method="_on_avoidance_area_body_entered"]
-[connection signal="body_exited" from="AvoidanceArea" to="." method="_on_avoidance_area_body_exited"]
-[connection signal="timeout" from="Timers/KeepRunningTimer" to="." method="_on_keep_running_timer_timeout"]
+[connection signal="body_entered" from="RunAwayAreaInner" to="." method="_on_avoidance_area_body_entered"]
+[connection signal="body_entered" from="RunAwayAreaInner" to="." method="_on_run_away_area_inner_body_entered"]
+[connection signal="body_exited" from="RunAwayAreaOuter" to="." method="_on_run_away_area_outer_body_exited"]
