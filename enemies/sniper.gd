@@ -5,9 +5,7 @@ var is_running_away: bool = false
 
 func _ready() -> void:
 	weapon = $Weapons/Rifle
-	print(weapon.bullet_scene)
 	weapon.bullet_scene = preload("res://projectiles/sniper_bullet.tscn")
-	print(weapon.bullet_scene)
 	super._ready()
 
 
