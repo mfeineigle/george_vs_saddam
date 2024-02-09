@@ -5,10 +5,9 @@ extends Control
 @export var next_level: String = ""
 @export var next_cutscene: String = ""
 
-
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
-@onready var skip_frame: TextureRect = $Background/SkipFrame
-@onready var texture_progress_bar: TextureProgressBar = $Background/SkipFrame/TextureProgressBar
+@onready var skip_frame: TextureRect = %SkipFrame
+@onready var texture_progress_bar: TextureProgressBar = %TextureProgressBar
 
 var idx: int = 0
 var can_advance: bool = false
