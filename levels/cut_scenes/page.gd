@@ -32,6 +32,8 @@ func _input(_event: InputEvent) -> void:
 		elif next_page:
 			goto_next_page()
 		elif Globals.story_mode and next_cutscene:
+			audio_stream_player_2d.play()
+			await audio_stream_player_2d.finished
 			GameEvents.level_changed.emit(next_cutscene)
 		else:
 			GameEvents.level_changed.emit(next_level)
