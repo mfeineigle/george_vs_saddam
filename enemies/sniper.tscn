@@ -27,7 +27,6 @@ height = 1918.0
 [node name="Sniper" instance=ExtResource("1_ion3p")]
 script = ExtResource("2_r3j0w")
 speed = 125
-hit_sounds = Array[AudioStreamMP3]([])
 
 [node name="Sprite2D" parent="Sprites" index="0"]
 material = SubResource("ShaderMaterial_ojpah")
