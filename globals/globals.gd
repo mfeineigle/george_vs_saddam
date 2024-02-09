@@ -11,6 +11,7 @@ var mins: int
 # Modes
 var invincible: bool = false
 var story_mode: bool = false
+var no_story_mode: bool = false
 
 # Score
 var soldier_kills: int = 0

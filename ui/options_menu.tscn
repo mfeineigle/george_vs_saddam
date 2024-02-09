@@ -34,7 +34,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_8oj5j")
 
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer/InvincibleHBox"]
+[node name="InvincibleCheckButton" type="CheckButton" parent="VBoxContainer/InvincibleHBox"]
 layout_mode = 2
 
 [node name="InvincibleButton" type="Button" parent="VBoxContainer/InvincibleHBox"]
@@ -43,6 +43,22 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_8oj5j")
 text = "Invincible"
+
+[node name="NoStoryMode" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_8oj5j")
+
+[node name="NoStoryCheckButton" type="CheckButton" parent="VBoxContainer/NoStoryMode"]
+layout_mode = 2
+
+[node name="NoStoryButton" type="Button" parent="VBoxContainer/NoStoryMode"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_8oj5j")
+text = "No Story"
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
@@ -58,7 +74,10 @@ size_flags_horizontal = 4
 theme = ExtResource("1_8oj5j")
 text = "Quit"
 
+[connection signal="pressed" from="VBoxContainer/InvincibleHBox/InvincibleCheckButton" to="." method="_on_invincible_check_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/InvincibleHBox/InvincibleButton" to="." method="_on_invincible_button_pressed"]
-[connection signal="toggled" from="VBoxContainer/InvincibleHBox/InvincibleButton" to="." method="_on_invincible_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/NoStoryMode/NoStoryCheckButton" to="." method="_on_no_story_check_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/NoStoryMode/NoStoryButton" to="." method="_on_no_story_button_pressed"]
+[connection signal="toggled" from="VBoxContainer/NoStoryMode/NoStoryButton" to="." method="_on_no_story_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -664,7 +664,8 @@ polygon = PackedVector2Array(-198, -654, -347, -746, -212, -845, -164, -1390, -9
 
 [node name="ExitLevelArea" parent="Background/Bunker" index="2" node_paths=PackedStringArray("flag_pole") instance=ExtResource("4_v6j70")]
 flag_pole = NodePath("FlagPole")
-next_level = "res://levels/cut_scenes/page_test_d_1.tscn"
+next_cut_scene = "res://levels/cut_scenes/page_test_d_1.tscn"
+next_level = "res://ui/start_menu.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Bunker/ExitLevelArea" index="0"]
 position = Vector2(-80, -770)

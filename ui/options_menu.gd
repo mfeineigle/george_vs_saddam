@@ -1,10 +1,12 @@
 extends Control
 
-@onready var check_button: CheckButton = $VBoxContainer/InvincibleHBox/CheckButton
+@onready var invincible_check_button: CheckButton = $VBoxContainer/InvincibleHBox/InvincibleCheckButton
+@onready var no_story_check_button: CheckButton = $VBoxContainer/NoStoryMode/NoStoryCheckButton
 
 
 func _ready() -> void:
-	check_button.button_pressed = Globals.invincible
+	invincible_check_button.button_pressed = Globals.invincible
+	no_story_check_button.button_pressed = Globals.no_story_mode
 	if not OS.is_debug_build():
 		$VBoxContainer/InvincibleHBox.hide()
 
@@ -22,6 +24,16 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_invincible_button_pressed() -> void:
-	check_button.button_pressed = not check_button.button_pressed
-	Globals.invincible = check_button.button_pressed
-	print(Globals.invincible)
+	invincible_check_button.button_pressed = not invincible_check_button.button_pressed
+	Globals.invincible = invincible_check_button.button_pressed
+
+func _on_invincible_check_button_pressed() -> void:
+	Globals.invincible = invincible_check_button.button_pressed
+
+
+func _on_no_story_button_pressed() -> void:
+	no_story_check_button.button_pressed = not no_story_check_button.button_pressed
+	Globals.no_story_mode = no_story_check_button.button_pressed
+
+func _on_no_story_check_button_pressed() -> void:
+	Globals.no_story_mode = no_story_check_button.button_pressed
