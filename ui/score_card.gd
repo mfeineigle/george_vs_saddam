@@ -25,6 +25,8 @@ extends Control
 @onready var dmg_healed_label: Label = $VBoxContainer/DamageHealedHbox/DmgHealedLabel
 @onready var dmg_done_label: Label = $VBoxContainer/DamageDoneHbox/DmgDoneLabel
 
+@onready var continue_button: Button = $VBoxContainer/ContinueButton
+
 var next_level: String = ""
 
 
@@ -63,6 +65,7 @@ func update_scorecard(_next_level: String = "") -> void:
 	await display_stars(Globals.current_level.get_meta("TimeGoals"))
 	Globals.reset()
 	get_tree().paused = true
+	continue_button.grab_focus()
 
 
 func update_best_times(level: String) -> void:
