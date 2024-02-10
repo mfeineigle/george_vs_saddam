@@ -86,5 +86,7 @@ script = ExtResource("4_q3t78")
 
 [node name="George" parent="." instance=ExtResource("5_wtym8")]
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+
 [connection signal="timeout" from="Enemies/Aircraft/tu_22Timer" to="Enemies" method="_on_tu_22_timer_timeout"]
 [connection signal="timeout" from="Allies/AirDropTimer" to="Allies" method="_on_air_drop_timer_timeout"]

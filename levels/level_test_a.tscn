@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c3mkylkdhtc4e"]
+[gd_scene load_steps=40 format=3 uid="uid://c3mkylkdhtc4e"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_7qhx8"]
 [ext_resource type="Texture2D" uid="uid://dlymds1mxs36t" path="res://assets/background/lvl-A_ground_textures.png" id="2_hupca"]
@@ -297,6 +297,12 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(-4095, 1251, 2119, 1304, 2119, -2404, -4211, -2332), PackedVector2Array(-377, -770, -241, -870, -185, -1470, -13, -1516, 167, -1440, 211, -1120, 111, -910, 277, -682, 117, -526, -253, -532, -407, -642)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mh2a1"]
+vertices = PackedVector2Array(1323, 2092, 1330, 2622, 526, 2625, 511, 1963)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(517, 2636, 501, 1952, 1333, 2084, 1341, 2632)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="LevelTestA" instance=ExtResource("1_7qhx8")]
 metadata/Level = "res://levels/level_test_a.tscn"
 metadata/level_number = "a"
@@ -515,9 +521,12 @@ position = Vector2(476, 172)
 [node name="Mine2" parent="Enemies" index="6" instance=ExtResource("12_nyxdv")]
 position = Vector2(428, -290)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="9"]
+[node name="NavigationRegion2D2" type="NavigationRegion2D" parent="." index="9"]
 navigation_polygon = SubResource("NavigationPolygon_wfxqw")
 metadata/_edit_lock_ = true
 
 [node name="George" parent="." index="10"]
 position = Vector2(-2040, 61)
+
+[node name="NavigationRegion2D" parent="." index="11"]
+navigation_polygon = SubResource("NavigationPolygon_mh2a1")
