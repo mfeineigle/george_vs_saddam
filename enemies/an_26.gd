@@ -29,7 +29,8 @@ func _process(_delta: float) -> void:
 
 
 func _on_spawn_soldier_timer_timeout() -> void:
-	var spawnPoint = $SoldierSpawnPoint.global_position
+	var map = get_world_2d().navigation_map
+	var spawnPoint = Utils.get_point_on_map(map, $SoldierSpawnPoint.global_position)
 	if can_spawn and (spawned_soldiers < max_spawned_soldiers):
 		spawned_soldiers += 1
 		play_paratrooper_animation(spawnPoint, rotation, direction)

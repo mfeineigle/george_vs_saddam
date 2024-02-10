@@ -45,3 +45,15 @@ func read_secrets(level) -> Dictionary:
 		return JSON.parse_string(file)
 	else:
 		return {}
+
+# Prevent things from spawning outside of the NavMesh (like on boulders and houses)
+func get_point_on_map(map, target_point: Vector2, min_dist_from_edge: float = 5.0) -> Vector2:
+	var closest_point := NavigationServer2D.map_get_closest_point(map, target_point)
+	var delta := closest_point - target_point
+	var is_on_map = delta.is_zero_approx()
+	if not is_on_map and min_dist_from_edge > 0:
+		# Wasn't on the map, so push in from edge. If you have thin sections on
+		# your navmesh, this could push it back off the navmesh!
+		delta = delta.normalized()
+		closest_point += delta * min_dist_from_edge
+	return closest_point

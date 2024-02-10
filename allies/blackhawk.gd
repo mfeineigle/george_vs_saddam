@@ -23,7 +23,9 @@ func _process(_delta):
 	move_and_slide()
 	if is_target_reached() and can_drop_dollars:
 		can_drop_dollars = false
-		GameEvents.pallet_of_dollars_dropped.emit(position, direction)
+		var map = get_world_2d().navigation_map
+		var spawnPoint = Utils.get_point_on_map(map, position, 50.0)
+		GameEvents.pallet_of_dollars_dropped.emit(spawnPoint, direction)
 	
 	
 func is_target_reached() -> bool:
@@ -31,4 +33,3 @@ func is_target_reached() -> bool:
 		target_reached = true
 		return true
 	return false
-	
