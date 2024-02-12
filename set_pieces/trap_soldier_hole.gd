@@ -28,6 +28,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not is_triggered:
 		is_triggered = true
+		Globals.trap_triggers += 1
 		hole_collision.set_deferred("disabled", false)
 		hole_sprite.visible = true
 		for unit in units.get_children():

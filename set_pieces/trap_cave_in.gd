@@ -24,6 +24,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not triggered:
 		triggered = true
+		Globals.trap_triggers += 1
 		animation_player.play("cave_in")
 		audio_stream_player.play()
 		for boulder in boulders.get_children():

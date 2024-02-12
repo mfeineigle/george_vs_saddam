@@ -26,6 +26,7 @@ var scud_launcher_triggers: int = 0
 var civilian_kills: int = 0
 var flag_captures: int = 0
 var secrets_found_this_run: int = 0
+var trap_triggers: int = 0
 
 # Player
 var player_pos: Vector2
