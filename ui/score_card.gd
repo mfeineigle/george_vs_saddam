@@ -1,31 +1,39 @@
 extends Control
 
-@onready var star_1: TextureRect = $HBoxContainer/star1
-@onready var star_2: TextureRect = $HBoxContainer/star2
-@onready var star_3: TextureRect = $HBoxContainer/star3
-@onready var clang: AudioStreamPlayer = $HBoxContainer/Clang
+# STARS
+@onready var star_1: TextureRect = %star1
+@onready var star_2: TextureRect = %star2
+@onready var star_3: TextureRect = %star3
+@onready var clang: AudioStreamPlayer = %Clang
 
-@onready var time_taken_label: Label = $VBoxContainer/TimeTakenHbox/TimeTakenLabel
-@onready var oil_collected_label: Label = $VBoxContainer/OilCollectedHbox/OilCollectedLabel
-@onready var soldier_kills_label: Label = $VBoxContainer/SoldiersKillHbox/SoldierKillsLabel
-@onready var tank_kills_label: Label = $VBoxContainer/TankKillsHbox/TankKillsLabel
-@onready var jeep_kills_label: Label = $VBoxContainer/JeepKillsHbox/JeepKillsLabel
-@onready var transport_kills_label: Label = $VBoxContainer/TransportKillsHbox/TransportKillsLabel
-@onready var depot_kills_label: Label = $VBoxContainer/DepotKillsHbox/DepotKillsLabel
-@onready var scud_launcher_kills_label: Label = $VBoxContainer/ScudLauncherKillsHbox/ScudLauncherKillsLabel
-@onready var scud_launcher_triggers_label: Label = $VBoxContainer/ScudLauncherTriggersHbox/ScudLauncherTriggersLabel
-@onready var radar_tower_kills_label: Label = $VBoxContainer/RadarTowerKillsHbox/RadarTowerKillsLabel
-@onready var radar_tower_triggers_label: Label = $VBoxContainer/RadarTowerTriggersHbox/RadarTowerTriggersLabel
-@onready var flags_captured_label: Label = $VBoxContainer/FlagsCapturedHbox/FlagsCapturedLabel
-@onready var secrets_found_this_run_label: Label = $VBoxContainer/SecretsFoundThisRunHbox/SecretsFoundThisRunLabel
-@onready var secrets_found_all_runs_label: Label = $VBoxContainer/SecretsFoundAllRunsHbox/SecretsFoundAllRunsLabel
+# LEFT COLUMN
+@onready var time_taken_label: Label = %TimeTakenLabel
+###
+@onready var oil_collected_label: Label = %OilCollectedLabel
+@onready var flags_captured_label: Label = %FlagsCapturedLabel
+@onready var secrets_found_this_run_label: Label = %SecretsFoundThisRunLabel
+@onready var secrets_found_all_runs_label: Label = %SecretsFoundAllRunsLabel
+###
+@onready var scud_launcher_triggers_label: Label = %ScudLauncherTriggersLabel
+@onready var radar_tower_triggers_label: Label = %RadarTowerTriggersLabel
+@onready var trap_triggers_label: Label = %TrapTriggersLabel
 
+# RIGHT COLUMN
+@onready var dmg_done_label: Label = %DmgDoneLabel
+@onready var dmg_taken_label: Label = %DmgTakenLabel
+@onready var dmg_healed_label: Label = %DmgHealedLabel
+###
+@onready var soldier_kills_label: Label = %SoldierKillsLabel
+@onready var tank_kills_label: Label = %TankKillsLabel
+@onready var jeep_kills_label: Label = %JeepKillsLabel
+@onready var transport_kills_label: Label = %TransportKillsLabel
+@onready var depot_kills_label: Label = %DepotKillsLabel
+@onready var scud_launcher_kills_label: Label = %ScudLauncherKillsLabel
+@onready var radar_tower_kills_label: Label = %RadarTowerKillsLabel
 
-@onready var dmg_taken_label: Label = $VBoxContainer/DamageTakenHbox/DmgTakenLabel
-@onready var dmg_healed_label: Label = $VBoxContainer/DamageHealedHbox/DmgHealedLabel
-@onready var dmg_done_label: Label = $VBoxContainer/DamageDoneHbox/DmgDoneLabel
+# BUTTONS
+@onready var continue_button: Button = %ContinueButton
 
-@onready var continue_button: Button = $VBoxContainer/ContinueButton
 
 var next_level: String = ""
 
@@ -42,28 +50,35 @@ func _ready() -> void:
 func update_scorecard(_next_level: String = "") -> void:
 	next_level = _next_level
 	visible = true
+	
+	# LEFT COLUMN
 	time_taken_label.text = str("%02d:%02d.%03d" % [Globals.mins, Globals.secs, Globals.mils])
+	###
 	oil_collected_label.text = str(Globals.oil)
+	flags_captured_label.text = str(Globals.flag_captures)
+	var total_secrets :int  = get_tree().get_nodes_in_group("secrets").size()
+	var test = Utils.read_secrets(Globals.current_level.get_meta("level_number")).size()
+	secrets_found_all_runs_label.text = str(test)+"/"+str(total_secrets)
+	secrets_found_this_run_label.text = str(Globals.secrets_found_this_run)+"/"+str(total_secrets)
+	###
+	scud_launcher_triggers_label.text = str(Globals.scud_launcher_triggers)
+	radar_tower_triggers_label.text = str(Globals.radar_triggers)
+	trap_triggers_label.text = str(Globals.trap_triggers)
+	# RIGHT COLUMN
+	dmg_done_label.text = str(Globals.total_damage_done)
+	dmg_taken_label.text = str(Globals.total_damage_taken)
+	dmg_healed_label.text = str(Globals.total_dollars_collected)
+	###
 	soldier_kills_label.text = str(Globals.soldier_kills)
 	tank_kills_label.text = str(Globals.tank_kills)
 	jeep_kills_label.text = str(Globals.jeep_kills)
 	transport_kills_label.text = str(Globals.transport_kills)
 	depot_kills_label.text = str(Globals.depot_kills)
 	scud_launcher_kills_label.text = str(Globals.scud_launcher_kills)
-	scud_launcher_triggers_label.text = str(Globals.scud_launcher_triggers)
 	radar_tower_kills_label.text = str(Globals.radar_kills)
-	radar_tower_triggers_label.text = str(Globals.radar_triggers)
-	flags_captured_label.text = str(Globals.flag_captures)
-	var total_secrets :int  = get_tree().get_nodes_in_group("secrets").size()
-	var test = Utils.read_secrets(Globals.current_level.get_meta("level_number")).size()
-	secrets_found_all_runs_label.text = str(test)+"/"+str(total_secrets)
-	secrets_found_this_run_label.text = str(Globals.secrets_found_this_run)+"/"+str(total_secrets)
-	dmg_taken_label.text = str(Globals.total_damage_taken)
-	dmg_healed_label.text = str(Globals.total_dollars_collected)
-	dmg_done_label.text = str(Globals.total_damage_done)
+	
 	update_best_times(Globals.current_level.get_meta("level_number"))
 	await display_stars(Globals.current_level.get_meta("TimeGoals"))
-	Globals.reset()
 	get_tree().paused = true
 	continue_button.grab_focus()
 
@@ -129,6 +144,7 @@ func _on_restart_button_pressed() -> void:
 func _on_continue_button_pressed() -> void:
 	get_tree().paused = false
 	visible = false
+	Globals.reset()
 	if next_level:
 		GameEvents.level_changed.emit(next_level)
 	else:
