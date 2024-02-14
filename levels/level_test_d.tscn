@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cdge8svrn1yij"]
+[gd_scene load_steps=54 format=3 uid="uid://cdge8svrn1yij"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_qlj12"]
 [ext_resource type="TileSet" uid="uid://c0rffprpwew2g" path="res://levels/desert_tilemap.tres" id="2_8dasc"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://cvtqhhqpi1d6j" path="res://enemies/tank.tscn" id="19_parny"]
 [ext_resource type="PackedScene" uid="uid://ns8jjlyi884e" path="res://enemies/soldier_transport.tscn" id="21_cqrw7"]
 [ext_resource type="PackedScene" uid="uid://cdanvnnood0tq" path="res://set_pieces/reload_depot.tscn" id="22_ipmrx"]
+[ext_resource type="PackedScene" uid="uid://djf62yfhoa0fb" path="res://enemies/sniper.tscn" id="28_xck1s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sx5wv"]
 size = Vector2(182, 80)
@@ -1008,7 +1009,7 @@ position = Vector2(7145, 1534)
 pursue = false
 
 [node name="Troop5" parent="Enemies/Soldiers" index="1" instance=ExtResource("9_p2a3b")]
-position = Vector2(2949, -238)
+position = Vector2(4299, -148)
 
 [node name="Troop2" parent="Enemies/Soldiers" index="2" instance=ExtResource("9_p2a3b")]
 position = Vector2(5365, 1195)
@@ -1033,6 +1034,9 @@ pursue = false
 [node name="Guard3" parent="Enemies/Soldiers" index="7" instance=ExtResource("16_5sok1")]
 position = Vector2(1182, 2174)
 pursue = false
+
+[node name="Sniper" parent="Enemies/Soldiers" index="8" instance=ExtResource("28_xck1s")]
+position = Vector2(2967, 168)
 
 [node name="scud_launcher" parent="Enemies/ScudLauchers" index="0" instance=ExtResource("10_jcpol")]
 position = Vector2(496, 84)
