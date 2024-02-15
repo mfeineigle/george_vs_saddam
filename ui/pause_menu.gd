@@ -3,7 +3,7 @@ extends Control
 @onready var quit_button: Button = $Buttons/VBoxContainer/QuitButton
 
 var paused: bool = false
-var save_path = "res://levels/last_level.save"
+var save_path = "user://data/levels/last_level.save"
 
 
 func _ready() -> void:

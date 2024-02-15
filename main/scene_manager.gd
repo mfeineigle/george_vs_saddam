@@ -6,6 +6,7 @@ extends Node2D
 
 
 func _ready() -> void:
+	Utils.initial_user_folder_setup()
 	GameEvents.level_changed.connect(goto_scene)
 	#var init_scene= ResourceLoader.load("res://ui/level_select.tscn")
 	var init_scene= ResourceLoader.load("res://ui/start_menu.tscn")

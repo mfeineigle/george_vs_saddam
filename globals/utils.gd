@@ -28,7 +28,7 @@ func get_spawn_point() -> Vector2:
 
 func read_best_times(level: String) -> Array:
 	level = level.to_lower()
-	var save_path: String = "res://ui/scores/"+level+"_best_times.save"
+	var save_path: String = "user://data/scores/"+level+"_best_times.save"
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		var times = file.get_as_text()
@@ -38,7 +38,7 @@ func read_best_times(level: String) -> Array:
 
 
 func read_secrets(level) -> Dictionary:
-	var save_path: String = "res://ui/scores/"+level.to_lower()+"_secrets.save"
+	var save_path: String = "user://data/scores/"+level.to_lower()+"_secrets.save"
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		file = file.get_as_text()
@@ -57,3 +57,10 @@ func get_point_on_map(map, target_point: Vector2, min_dist_from_edge: float = 5.
 		delta = delta.normalized()
 		closest_point += delta * min_dist_from_edge
 	return closest_point
+
+
+# Create the user folders if they don't exist
+func initial_user_folder_setup() -> void:
+	if not DirAccess.dir_exists_absolute("user://data"):
+		DirAccess.make_dir_recursive_absolute("user://data/levels")
+		DirAccess.make_dir_recursive_absolute("user://data/scores")

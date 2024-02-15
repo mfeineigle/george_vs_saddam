@@ -109,7 +109,7 @@ func update_redacted(secrets: Dictionary, total_secrets: int) -> void:
 func _on_reset_button_pressed() -> void:
 	var level_idx: int = level_option_button.get_selected_id()
 	var level: String = level_option_button.get_item_text(level_idx).to_lower()
-	var save_path: String = "res://ui/scores/"+level+"_best_times.save"
+	var save_path: String = "user://data/scores/"+level+"_best_times.save"
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	# 3599 seconds = 59:59.000
 	file.store_string(var_to_str([3599, 3599, 3599, 3599, 3599]))

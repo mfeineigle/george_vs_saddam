@@ -94,7 +94,7 @@ func add_new_best_time(old_times, new_time):
 	return old_times.slice(0,5)
 
 func save_best_times(level, times):
-	var save_path: String = "res://ui/scores/"+level.to_lower()+"_best_times.save"
+	var save_path: String = "user://data/scores/"+level.to_lower()+"_best_times.save"
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_string(var_to_str(times))
 
@@ -126,7 +126,7 @@ func _on_secret_found(id, message) -> void:
 
 func _save_secrets(id, message) -> void:
 	var level = Globals.current_level.get_meta("level_number")
-	var save_path: String = "res://ui/scores/"+level.to_lower()+"_secrets.save"
+	var save_path: String = "user://data/scores/"+level.to_lower()+"_secrets.save"
 	var current_secrets: Dictionary = Utils.read_secrets(level)
 	if id not in current_secrets.keys():
 		current_secrets[id] = {"found":true, "msg":message}

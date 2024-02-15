@@ -37,7 +37,7 @@ func _on_start_button_pressed() -> void:
 
 
 func _on_continue_button_pressed() -> void:
-	var save_path = "res://levels/last_level.save"
+	var save_path = "user://data/levels/last_level.save"
 	var last_level = "res://levels/level_test_a.tscn"
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ)

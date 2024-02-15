@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var save_path = "res://levels/last_level.save"
+var save_path = "user://data/levels/last_level.save"
 var last_level: String
 
 
@@ -27,37 +27,37 @@ func _ready() -> void:
 
 func _on_lvl_01_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var("res://levels/level_01.tscn")
+	file.store_var("user://data/levels/level_01.tscn")
 	GameEvents.level_changed.emit("res://levels/level_01.tscn")
 
 
 func _on_lvl_a_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var("res://levels/level_test_a.tscn")
+	file.store_var("user://data/levels/level_test_a.tscn")
 	GameEvents.level_changed.emit("res://levels/level_test_a.tscn")
 
 
 func _on_lvl_b_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var("res://levels/level_test_b.tscn")
+	file.store_var("user://data/levels/level_test_b.tscn")
 	GameEvents.level_changed.emit("res://levels/level_test_b.tscn")
 
 
 func _on_lvl_c_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var("res://levels/level_test_c.tscn")
+	file.store_var("user://data/levels/level_test_c.tscn")
 	GameEvents.level_changed.emit("res://levels/level_test_c.tscn")
 
 
 func _on_lvl_d_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var("res://levels/level_test_d.tscn")
+	file.store_var("user://data/levels/level_test_d.tscn")
 	GameEvents.level_changed.emit("res://levels/level_test_d.tscn")
 
 
 func _on_lvl_z_button_pressed() -> void:
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
-	file.store_var("res://levels/level_test_z.tscn")
+	file.store_var("user://data/levels/level_test_z.tscn")
 	GameEvents.level_changed.emit("res://levels/level_test_z.tscn")
 
 
