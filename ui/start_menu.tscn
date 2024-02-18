@@ -106,7 +106,7 @@ _data = {
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_qwvnd")
-first_cutscene = "res://levels/cut_scenes/page_test_a.tscn"
+first_cutscene = "res://levels/cut_scenes/mission_01/page_a_01.tscn"
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
