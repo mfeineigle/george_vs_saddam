@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsuns8bauoled"]
+
+[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_t2p3n"]
+[ext_resource type="Texture2D" uid="uid://b1nj4q7tmh01k" path="res://assets/cut_scenes/mission_02_cut/11_nayirah_01.jpg" id="2_o1qnn"]
+[ext_resource type="Texture2D" uid="uid://bjqw7amyvvqr2" path="res://assets/cut_scenes/mission_02_cut/12_nayirah_02.jpg" id="3_immmi"]
+[ext_resource type="Texture2D" uid="uid://dbv323xh7j20w" path="res://assets/cut_scenes/mission_02_cut/13_nayirah_03.jpg" id="4_c7j4c"]
+[ext_resource type="Texture2D" uid="uid://btnllprmq6jxe" path="res://assets/cut_scenes/mission_02_cut/14_saddam_holding_baby.png" id="5_fytmk"]
+[ext_resource type="Texture2D" uid="uid://b16mw330wd48c" path="res://assets/cut_scenes/mission_02_cut/15_George-HW-Bush_pointing.jpg" id="6_p1de8"]
+
+[node name="Page_B_01" node_paths=PackedStringArray("frames") instance=ExtResource("1_t2p3n")]
+frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03"), NodePath("Frames/Frame04"), NodePath("Frames/Frame05")]
+next_level = "res://levels/level_test_c.tscn"
+next_cutscene = "res://levels/cut_scenes/mission_03/page_c_01.tscn"
+
+[node name="Frame01" type="TextureRect" parent="Frames" index="0"]
+offset_left = 22.0
+offset_top = 11.0
+offset_right = 671.0
+offset_bottom = 367.0
+texture = ExtResource("2_o1qnn")
+
+[node name="Frame02" type="TextureRect" parent="Frames" index="1"]
+offset_left = 15.0
+offset_top = 358.0
+offset_right = 664.0
+offset_bottom = 714.0
+texture = ExtResource("3_immmi")
+
+[node name="Frame03" type="TextureRect" parent="Frames" index="2"]
+offset_left = 10.0
+offset_top = 706.0
+offset_right = 659.0
+offset_bottom = 1062.0
+texture = ExtResource("4_c7j4c")
+
+[node name="Frame04" type="TextureRect" parent="Frames" index="3"]
+offset_left = 1247.0
+offset_top = 26.0
+offset_right = 1896.0
+offset_bottom = 538.0
+texture = ExtResource("5_fytmk")
+
+[node name="Frame05" type="TextureRect" parent="Frames" index="4"]
+offset_left = 691.0
+offset_top = 450.0
+offset_right = 1936.0
+offset_bottom = 1280.0
+scale = Vector2(0.675114, 0.727966)
+texture = ExtResource("6_p1de8")

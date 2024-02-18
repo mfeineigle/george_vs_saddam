@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://co5soujgjs3hx"]
+
+[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_nydma"]
+[ext_resource type="Texture2D" uid="uid://dhq3gbq0fmqrm" path="res://assets/cut_scenes/mission_03_cut/21_ai_saddam_comic_007.png" id="2_7l30w"]
+[ext_resource type="Texture2D" uid="uid://dhtiukefi36jv" path="res://assets/cut_scenes/mission_03_cut/20_ai_george_holding_oil.jpg" id="2_bhinn"]
+[ext_resource type="Texture2D" uid="uid://nauttgma0byt" path="res://assets/cut_scenes/mission_03_cut/22_Bush_troops.jpg" id="3_ubcmy"]
+
+[node name="Page_C_02" node_paths=PackedStringArray("frames") instance=ExtResource("1_nydma")]
+frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
+next_level = "res://levels/level_test_d.tscn"
+next_cutscene = "res://levels/cut_scenes/mission_04/page_d_01.tscn"
+
+[node name="Frame01" type="TextureRect" parent="Frames" index="0"]
+offset_left = 14.0
+offset_top = 18.0
+offset_right = 987.0
+offset_bottom = 663.0
+scale = Vector2(0.939681, 0.939681)
+texture = ExtResource("2_bhinn")
+stretch_mode = 4
+
+[node name="Frame02" type="TextureRect" parent="Frames" index="1"]
+offset_left = 1094.0
+offset_top = 20.0
+offset_right = 3014.0
+offset_bottom = 1266.0
+scale = Vector2(0.418909, 0.418909)
+texture = ExtResource("2_7l30w")
+
+[node name="Frame03" type="TextureRect" parent="Frames" index="2"]
+offset_left = 634.0
+offset_top = 556.0
+offset_right = 2682.0
+offset_bottom = 1971.0
+scale = Vector2(0.362245, 0.362245)
+texture = ExtResource("3_ubcmy")

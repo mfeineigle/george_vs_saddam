@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://djrdjbk37l2r0"]
+
+[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_bdfmt"]
+[ext_resource type="Texture2D" uid="uid://ch5w18dy2grnw" path="res://assets/cut_scenes/mission_01_cut/04_pre_war_iraq_1_cirlce.png" id="2_u4dun"]
+[ext_resource type="Texture2D" uid="uid://cvj7q5h43rs56" path="res://assets/cut_scenes/mission_01_cut/05_pre_war_iraq_2_circle.png" id="3_gpig6"]
+[ext_resource type="Texture2D" uid="uid://b3j5gl4ey2v38" path="res://assets/cut_scenes/mission_01_cut/06_kuwait_map_circle.png" id="4_7rwfw"]
+
+[node name="Page_A_02" node_paths=PackedStringArray("frames") instance=ExtResource("1_bdfmt")]
+frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
+next_page = "res://levels/cut_scenes/mission_01/page_a_03.tscn"
+next_level = "res://levels/level_test_b.tscn"
+next_cutscene = "res://levels/cut_scenes/mission_02/page_b_01.tscn"
+
+[node name="Frame01" type="TextureRect" parent="Frames" index="0"]
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 732.0
+offset_bottom = 633.0
+texture = ExtResource("2_u4dun")
+flip_h = true
+
+[node name="Frame02" type="TextureRect" parent="Frames" index="1"]
+offset_left = 547.0
+offset_top = 207.0
+offset_right = 1507.0
+offset_bottom = 1077.0
+texture = ExtResource("3_gpig6")
+
+[node name="Frame03" type="TextureRect" parent="Frames" index="2"]
+offset_left = 1190.0
+offset_right = 1940.0
+offset_bottom = 659.0
+texture = ExtResource("4_7rwfw")

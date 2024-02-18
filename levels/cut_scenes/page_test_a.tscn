@@ -1,31 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgixm048bev0e"]
+[gd_scene load_steps=7 format=3 uid="uid://cgixm048bev0e"]
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_dbolm"]
-[ext_resource type="Texture2D" uid="uid://c4ntlnb66h5oa" path="res://assets/cut_scenes/frame_a.png" id="2_ywnt8"]
+[ext_resource type="Texture2D" uid="uid://b1nj4q7tmh01k" path="res://assets/cut_scenes/mission_02_cut/11_nayirah_01.jpg" id="2_x86h7"]
+[ext_resource type="Texture2D" uid="uid://bjqw7amyvvqr2" path="res://assets/cut_scenes/mission_02_cut/12_nayirah_02.jpg" id="3_5w1gs"]
+[ext_resource type="Texture2D" uid="uid://dbv323xh7j20w" path="res://assets/cut_scenes/mission_02_cut/13_nayirah_03.jpg" id="4_gxtig"]
+[ext_resource type="Texture2D" uid="uid://btnllprmq6jxe" path="res://assets/cut_scenes/mission_02_cut/14_saddam_holding_baby.png" id="5_w2w5j"]
+[ext_resource type="Texture2D" uid="uid://b16mw330wd48c" path="res://assets/cut_scenes/mission_02_cut/15_George-HW-Bush_pointing.jpg" id="6_qanpn"]
 
-[node name="PageTestA" node_paths=PackedStringArray("frames") instance=ExtResource("1_dbolm")]
-frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
-next_page = "res://levels/cut_scenes/page_test_a_2.tscn"
-next_level = "res://levels/level_test_b.tscn"
-next_cutscene = "res://levels/cut_scenes/page_test_b.tscn"
+[node name="Page_B_01" node_paths=PackedStringArray("frames") instance=ExtResource("1_dbolm")]
+frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03"), NodePath("Frames/Frame04"), NodePath("Frames/Frame05")]
+next_level = "res://levels/level_test_c.tscn"
 
 [node name="Frame01" type="TextureRect" parent="Frames" index="0"]
-offset_left = 45.0
-offset_top = 87.0
-offset_right = 694.0
-offset_bottom = 443.0
-texture = ExtResource("2_ywnt8")
+offset_left = 22.0
+offset_top = 11.0
+offset_right = 671.0
+offset_bottom = 367.0
+texture = ExtResource("2_x86h7")
 
 [node name="Frame02" type="TextureRect" parent="Frames" index="1"]
-offset_left = 535.0
-offset_top = 196.0
-offset_right = 1184.0
-offset_bottom = 552.0
-texture = ExtResource("2_ywnt8")
+offset_left = 15.0
+offset_top = 358.0
+offset_right = 664.0
+offset_bottom = 714.0
+texture = ExtResource("3_5w1gs")
 
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
-offset_left = 1083.0
-offset_top = 77.0
-offset_right = 1732.0
-offset_bottom = 433.0
-texture = ExtResource("2_ywnt8")
+offset_left = 10.0
+offset_top = 706.0
+offset_right = 659.0
+offset_bottom = 1062.0
+texture = ExtResource("4_gxtig")
+
+[node name="Frame04" type="TextureRect" parent="Frames" index="3"]
+offset_left = 1247.0
+offset_top = 26.0
+offset_right = 1896.0
+offset_bottom = 538.0
+texture = ExtResource("5_w2w5j")
+
+[node name="Frame05" type="TextureRect" parent="Frames" index="4"]
+offset_left = 691.0
+offset_top = 450.0
+offset_right = 1936.0
+offset_bottom = 1280.0
+scale = Vector2(0.675114, 0.727966)
+texture = ExtResource("6_qanpn")

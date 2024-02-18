@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://drngp61r210id"]
+
+[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_rjkuq"]
+[ext_resource type="Texture2D" uid="uid://deaxi3hk07a1h" path="res://assets/cut_scenes/mission_03_cut/19_post_war_iraq_1.jpg" id="2_js8ch"]
+[ext_resource type="Texture2D" uid="uid://boc31mgvy61cp" path="res://assets/cut_scenes/mission_03_cut/16_kuwait_oil-well-fire-burning.jpg" id="3_avayj"]
+[ext_resource type="Texture2D" uid="uid://ldhbgysm5iou" path="res://assets/cut_scenes/mission_03_cut/18_oil_ground_Oil-fires.jpg" id="4_l26gn"]
+[ext_resource type="Texture2D" uid="uid://d0wd5kidnc2ah" path="res://assets/cut_scenes/mission_03_cut/17_burning_oil_field_and_camels.jpg" id="5_roejv"]
+
+[node name="Page_C_01" node_paths=PackedStringArray("frames") instance=ExtResource("1_rjkuq")]
+frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03"), NodePath("Frames/Frame04")]
+next_page = "res://levels/cut_scenes/mission_03/page_c_02.tscn"
+next_level = "res://levels/level_test_d.tscn"
+next_cutscene = "res://levels/cut_scenes/mission_04/page_d_01.tscn"
+
+[node name="Frame04" type="TextureRect" parent="Frames" index="0"]
+offset_left = 952.0
+offset_top = 440.0
+offset_right = 2952.0
+offset_bottom = 1767.0
+scale = Vector2(0.485369, 0.485369)
+texture = ExtResource("2_js8ch")
+
+[node name="Frame01" type="TextureRect" parent="Frames" index="1"]
+offset_right = 973.0
+offset_bottom = 645.0
+scale = Vector2(0.939681, 0.939681)
+texture = ExtResource("3_avayj")
+
+[node name="Frame03" type="TextureRect" parent="Frames" index="2"]
+offset_top = 608.0
+offset_right = 1152.0
+offset_bottom = 1248.0
+scale = Vector2(0.735668, 0.735668)
+texture = ExtResource("4_l26gn")
+
+[node name="Frame02" type="TextureRect" parent="Frames" index="3"]
+offset_left = 1120.0
+offset_right = 3040.0
+offset_bottom = 1246.0
+scale = Vector2(0.418909, 0.418909)
+texture = ExtResource("5_roejv")
