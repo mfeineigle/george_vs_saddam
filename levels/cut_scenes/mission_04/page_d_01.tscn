@@ -1,18 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckad7b255y04m"]
+[gd_scene load_steps=5 format=3 uid="uid://ckad7b255y04m"]
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_t7opr"]
+[ext_resource type="Texture2D" uid="uid://dh80wesag7s7p" path="res://assets/cut_scenes/mission_04_cut/23_interview_more_children_hiroshima.jpg" id="2_ao8n3"]
 [ext_resource type="Texture2D" uid="uid://b1u1bpsrmd3k8" path="res://assets/cut_scenes/mission_04_cut/24_worth_it.jpg" id="2_ui0xk"]
+[ext_resource type="Texture2D" uid="uid://cmhi02n32m1go" path="res://assets/cut_scenes/mission_04_cut/25_george_to_george_whisper.png" id="4_b6fgb"]
 
 [node name="Page_D_01" node_paths=PackedStringArray("frames") instance=ExtResource("1_t7opr")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
+next_page = "res://levels/cut_scenes/mission_04/page_d_02.tscn"
 next_level = "res://ui/start_menu.tscn"
 
 [node name="Frame01" type="TextureRect" parent="Frames" index="0"]
-offset_left = 14.0
-offset_top = 18.0
-offset_right = 987.0
-offset_bottom = 663.0
+offset_left = 47.0
+offset_top = 30.0
+offset_right = 1020.0
+offset_bottom = 675.0
 scale = Vector2(0.939681, 0.939681)
+texture = ExtResource("2_ao8n3")
 stretch_mode = 4
 
 [node name="Frame02" type="TextureRect" parent="Frames" index="1"]
@@ -24,8 +28,10 @@ scale = Vector2(0.418909, 0.418909)
 texture = ExtResource("2_ui0xk")
 
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
-offset_left = 634.0
-offset_top = 556.0
-offset_right = 2682.0
-offset_bottom = 1971.0
+offset_left = 662.0
+offset_top = 566.0
+offset_right = 2710.0
+offset_bottom = 1981.0
 scale = Vector2(0.362245, 0.362245)
+texture = ExtResource("4_b6fgb")
+flip_h = true

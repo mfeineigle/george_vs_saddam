@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dajkmv156l4af"]
+
+[ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_uq0q0"]
+[ext_resource type="Texture2D" uid="uid://1f8okkixwwdi" path="res://assets/cut_scenes/mission_04_cut/26_george_jr_terminator.png" id="2_s1w15"]
+
+[node name="Page_D_02" node_paths=PackedStringArray("frames") instance=ExtResource("1_uq0q0")]
+frames = [NodePath("Frames/Frame01")]
+next_level = "res://ui/start_menu.tscn"
+
+[node name="Frame01" type="TextureRect" parent="Frames" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 383.0
+offset_top = 38.9999
+offset_right = 1983.0
+offset_bottom = 1239.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.837007, 0.837007)
+texture = ExtResource("2_s1w15")
+stretch_mode = 4
