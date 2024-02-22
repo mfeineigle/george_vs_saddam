@@ -211,8 +211,15 @@ offset = Vector2(-200, -120)
 [node name="BulletSpawnPoint" type="Marker2D" parent="Turret" index="0"]
 position = Vector2(376.825, 2.9295)
 
-[node name="CanShootTimer" type="Timer" parent="." index="3"]
+[node name="Timers" type="Node" parent="." index="3"]
+
+[node name="CanShootTimer" type="Timer" parent="Timers" index="0"]
+unique_name_in_owner = true
 wait_time = 2.0
+one_shot = true
+
+[node name="ShootDelayTimer" type="Timer" parent="Timers" index="1"]
+unique_name_in_owner = true
 one_shot = true
 
 [node name="ShootArea" type="Area2D" parent="." index="4"]
@@ -288,6 +295,6 @@ stream = ExtResource("10_whdg3")
 stream = ExtResource("13_heyyj")
 volume_db = 7.0
 
-[connection signal="timeout" from="CanShootTimer" to="." method="_on_can_shoot_timer_timeout"]
+[connection signal="timeout" from="Timers/CanShootTimer" to="." method="_on_can_shoot_timer_timeout"]
 [connection signal="body_entered" from="ShootArea" to="." method="_on_shoot_area_body_entered"]
 [connection signal="body_exited" from="ShootArea" to="." method="_on_shoot_area_body_exited"]

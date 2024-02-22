@@ -2,6 +2,8 @@ extends GroundVehicle
 
 @onready var health_component: Node2D = $HealthComponent
 @onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
+@onready var can_shoot_timer: Timer = %CanShootTimer
+@onready var shoot_delay_timer: Timer = %ShootDelayTimer
 var shell_scene: PackedScene = preload("res://projectiles/tank_shell.tscn")
 
 @export var hit_sounds: Array[AudioStreamMP3]
@@ -21,12 +23,19 @@ func _process(_delta) -> void:
 
 func shoot() -> void:
 	if can_shoot and in_range and check_los() and not health_component.destroyed:
-		var shell = shell_scene.instantiate()
-		shell.setup(direction, $Turret/BulletSpawnPoint.global_position)
-		GameEvents.tank_shot.emit(shell)
 		can_shoot = false
-		$CanShootTimer.start()
-		$FiringSound.play()
+		can_shoot_timer.start()
+		print("delay")
+		shoot_delay_timer.start()
+		await shoot_delay_timer.timeout
+		if in_range and check_los() and not health_component.destroyed:
+			print("fire")
+			var shell = shell_scene.instantiate()
+			shell.setup(direction, $Turret/BulletSpawnPoint.global_position)
+			GameEvents.tank_shot.emit(shell)
+			$FiringSound.play()
+		else:
+			print("out of sight/range")
 
 func _on_can_shoot_timer_timeout() -> void:
 	can_shoot = true
