@@ -25,26 +25,13 @@ func shoot() -> void:
 	if can_shoot and in_range and check_los() and not health_component.destroyed:
 		can_shoot = false
 		can_shoot_timer.start()
-<<<<<<< HEAD
-		print("delay")
 		shoot_delay_timer.start()
 		await shoot_delay_timer.timeout
 		if in_range and check_los() and not health_component.destroyed:
-			print("fire")
-=======
-		shoot_delay_timer.start()
-		await shoot_delay_timer.timeout
-		if in_range and check_los() and not health_component.destroyed:
->>>>>>> 96a451b (add delay timer to tank shoot)
 			var shell = shell_scene.instantiate()
 			shell.setup(direction, $Turret/BulletSpawnPoint.global_position)
 			GameEvents.tank_shot.emit(shell)
 			$FiringSound.play()
-<<<<<<< HEAD
-		else:
-			print("out of sight/range")
-=======
->>>>>>> 96a451b (add delay timer to tank shoot)
 
 func _on_can_shoot_timer_timeout() -> void:
 	can_shoot = true
