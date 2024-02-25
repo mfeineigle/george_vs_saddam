@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://djrdjbk37l2r0"]
+[gd_scene load_steps=9 format=3 uid="uid://djrdjbk37l2r0"]
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_bdfmt"]
 [ext_resource type="Texture2D" uid="uid://ch5w18dy2grnw" path="res://assets/cut_scenes/mission_01_cut/04_pre_war_iraq_1_cirlce.png" id="2_u4dun"]
 [ext_resource type="Texture2D" uid="uid://cvj7q5h43rs56" path="res://assets/cut_scenes/mission_01_cut/05_pre_war_iraq_2_circle.png" id="3_gpig6"]
+[ext_resource type="Texture2D" uid="uid://cdnw3anxf6ecq" path="res://assets/cut_scenes/text_bubbles/text_bubble_square_01.png" id="3_r1ak6"]
 [ext_resource type="Texture2D" uid="uid://b3j5gl4ey2v38" path="res://assets/cut_scenes/mission_01_cut/06_kuwait_map_circle.png" id="4_7rwfw"]
+[ext_resource type="Theme" uid="uid://b23d3ipl6c6lr" path="res://ui/comic_text.tres" id="4_k6imc"]
+[ext_resource type="Texture2D" uid="uid://dawoahlw882cv" path="res://assets/cut_scenes/text_bubbles/text_bubble_square_02.png" id="6_8xog0"]
+[ext_resource type="Texture2D" uid="uid://yletnnka8kiw" path="res://assets/cut_scenes/text_bubbles/text_bubble_standard_01.png" id="8_heqj6"]
 
 [node name="Page_A_02" node_paths=PackedStringArray("frames") instance=ExtResource("1_bdfmt")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
@@ -19,6 +23,30 @@ offset_bottom = 633.0
 texture = ExtResource("2_u4dun")
 flip_h = true
 
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame01" index="0"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 599.0
+offset_right = 1255.0
+offset_bottom = 1450.0
+scale = Vector2(0.322318, 0.322318)
+texture = ExtResource("3_r1ak6")
+flip_v = true
+
+[node name="Label" type="Label" parent="Frames/Frame01/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 155.126
+offset_top = 235.792
+offset_right = 1505.13
+offset_bottom = 760.792
+theme = ExtResource("4_k6imc")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "And what 
+do we have here?
+A peaceful society.
+That won't do."
+
 [node name="Frame02" type="TextureRect" parent="Frames" index="1"]
 offset_left = 547.0
 offset_top = 207.0
@@ -26,8 +54,50 @@ offset_right = 1507.0
 offset_bottom = 1077.0
 texture = ExtResource("3_gpig6")
 
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame02" index="0"]
+offset_left = -33.0
+offset_top = 491.0
+offset_right = 259.0
+offset_bottom = 748.0
+scale = Vector2(1.24795, 1.24795)
+texture = ExtResource("6_8xog0")
+flip_h = true
+
+[node name="Label" type="Label" parent="Frames/Frame02/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 47.2774
+offset_top = 31.2512
+offset_right = 2086.28
+offset_bottom = 652.251
+theme = ExtResource("4_k6imc")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "The progress of 
+plastic bags.
+Conservative dress.
+No, this won't do."
+
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
 offset_left = 1190.0
 offset_right = 1940.0
 offset_bottom = 659.0
 texture = ExtResource("4_7rwfw")
+
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame03" index="0"]
+offset_left = 417.0
+offset_top = 622.0
+offset_right = 1734.0
+offset_bottom = 1675.0
+scale = Vector2(0.19196, 0.19196)
+texture = ExtResource("8_heqj6")
+flip_v = true
+
+[node name="Label" type="Label" parent="Frames/Frame03/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 135.445
+offset_top = 510.523
+offset_right = 1217.44
+offset_bottom = 715.523
+theme = ExtResource("4_k6imc")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Good enough!"

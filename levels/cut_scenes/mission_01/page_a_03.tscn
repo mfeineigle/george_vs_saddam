@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://n4ssbq07py5i"]
+[gd_scene load_steps=10 format=3 uid="uid://n4ssbq07py5i"]
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_te15x"]
 [ext_resource type="Texture2D" uid="uid://dprhbvw712mnk" path="res://assets/cut_scenes/mission_01_cut/07_ai_george_hw_bush_portraits_008.png" id="2_kq1ki"]
+[ext_resource type="Texture2D" uid="uid://yletnnka8kiw" path="res://assets/cut_scenes/text_bubbles/text_bubble_standard_01.png" id="3_2twg3"]
 [ext_resource type="Texture2D" uid="uid://n6vom8cdk6g4" path="res://assets/cut_scenes/mission_01_cut/08_ai_saddam_portraits_003.png" id="3_cxfgv"]
 [ext_resource type="Texture2D" uid="uid://b0fco86qplj6y" path="res://assets/cut_scenes/mission_01_cut/09_ai_george_hw_bush_portraits_009.png" id="4_kh8kd"]
+[ext_resource type="Theme" uid="uid://b23d3ipl6c6lr" path="res://ui/comic_text.tres" id="4_xldyi"]
 [ext_resource type="Texture2D" uid="uid://7bleuywvh6s7" path="res://assets/cut_scenes/mission_01_cut/10_ai_saddam_portraits_005.png" id="5_hb3y3"]
+[ext_resource type="Texture2D" uid="uid://bdr2ernomge7j" path="res://assets/cut_scenes/text_bubbles/text_bubble_cloud_01.png" id="6_f26ui"]
+[ext_resource type="Texture2D" uid="uid://cmhs6akbihx2w" path="res://assets/cut_scenes/text_bubbles/text_bubble_round_02.png" id="7_8qssj"]
 
 [node name="Page_A_03" node_paths=PackedStringArray("frames") instance=ExtResource("1_te15x")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03"), NodePath("Frames/Frame04")]
@@ -19,6 +23,29 @@ offset_bottom = 797.0
 texture = ExtResource("2_kq1ki")
 stretch_mode = 4
 
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame01" index="0"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 604.0
+offset_right = 1292.0
+offset_bottom = 1657.0
+scale = Vector2(0.361762, 0.361762)
+texture = ExtResource("3_2twg3")
+flip_v = true
+
+[node name="Label" type="Label" parent="Frames/Frame01/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 135.448
+offset_top = 328.945
+offset_right = 1966.45
+offset_bottom = 913.945
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "Your treatment
+of Kuwait is
+unacceptable!"
+
 [node name="Frame02" type="TextureRect" parent="Frames" index="1"]
 offset_left = 507.0
 offset_top = 205.0
@@ -26,6 +53,46 @@ offset_right = 1467.0
 offset_bottom = 1075.0
 texture = ExtResource("3_cxfgv")
 stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame02" index="0"]
+offset_left = -66.0
+offset_top = -8.0
+offset_right = 1215.0
+offset_bottom = 940.0
+rotation = -0.271229
+scale = Vector2(0.227604, 0.227604)
+texture = ExtResource("6_f26ui")
+
+[node name="Label" type="Label" parent="Frames/Frame02/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 116.801
+offset_top = 301.539
+offset_right = 1230.8
+offset_bottom = 622.539
+rotation = -0.143805
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 225
+text = "Kuwait?!"
+
+[node name="TextureRect2" type="TextureRect" parent="Frames/Frame02" index="1"]
+offset_left = 330.0
+offset_top = -57.0
+offset_right = 599.0
+offset_bottom = 129.0
+texture = ExtResource("7_8qssj")
+
+[node name="Label" type="Label" parent="Frames/Frame02/TextureRect2" index="0"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 51.0
+offset_right = 252.0
+offset_bottom = 146.0
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "This is about
+Iraq's oil!"
 
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
 offset_left = 1097.0
@@ -36,6 +103,125 @@ scale = Vector2(1.36686, 1.61445)
 texture = ExtResource("4_kh8kd")
 stretch_mode = 4
 
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame03" index="0"]
+offset_left = 5.12123
+offset_top = -4.33584
+offset_right = 1322.12
+offset_bottom = 1048.66
+scale = Vector2(0.0762707, 0.0762707)
+texture = ExtResource("3_2twg3")
+
+[node name="Label" type="Label" parent="Frames/Frame03/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 220.621
+offset_top = 48.7269
+offset_right = 1087.62
+offset_bottom = 693.727
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 250
+text = "No it's
+not."
+
+[node name="TextureRect2" type="TextureRect" parent="Frames/Frame03" index="1"]
+visible = false
+offset_left = 254.598
+offset_top = 22.918
+offset_right = 1571.6
+offset_bottom = 1075.92
+scale = Vector2(0.0762707, 0.0762707)
+texture = ExtResource("6_f26ui")
+flip_h = true
+
+[node name="Label" type="Label" parent="Frames/Frame03" index="2"]
+layout_mode = 0
+offset_left = 252.403
+offset_top = 1.85822
+offset_right = 2053.4
+offset_bottom = 646.858
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 15
+text = "This is
+about...
+
+"
+
+[node name="Label2" type="Label" parent="Frames/Frame03" index="3"]
+layout_mode = 0
+offset_left = 242.892
+offset_top = 29.7315
+offset_right = 2493.89
+offset_bottom = 674.732
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -7
+theme_override_font_sizes/font_size = 13
+text = "rules based 
+order...
+
+"
+
+[node name="Label3" type="Label" parent="Frames/Frame03" index="4"]
+layout_mode = 0
+offset_left = 252.403
+offset_top = 45.836
+offset_right = 2802.4
+offset_bottom = 690.836
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -6
+theme_override_font_sizes/font_size = 11
+text = "        of 
+international 
+law.
+
+"
+
+[node name="Label4" type="Label" parent="Frames/Frame03" index="5"]
+layout_mode = 0
+offset_left = 245.819
+offset_top = 67.5153
+offset_right = 3190.82
+offset_bottom = 712.515
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 10
+text = "       Freedom 
+and democracy.
+"
+
+[node name="Label5" type="Label" parent="Frames/Frame03" index="6"]
+layout_mode = 0
+offset_left = 249.477
+offset_top = 86.7168
+offset_right = 3194.48
+offset_bottom = 731.717
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 10
+text = "Good versus
+evil.
+"
+
+[node name="Label6" type="Label" parent="Frames/Frame03" index="7"]
+layout_mode = 0
+offset_left = 248.745
+offset_top = 97.8661
+offset_right = 3193.75
+offset_bottom = 742.866
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 10
+text = "      Puppy
+dogs and
+ unicorns!
+"
+
 [node name="Frame04" type="TextureRect" parent="Frames" index="3"]
 offset_left = 1433.0
 offset_top = 537.0
@@ -44,3 +230,43 @@ offset_bottom = 893.0
 scale = Vector2(1.49015, 1.48941)
 texture = ExtResource("5_hb3y3")
 stretch_mode = 4
+
+[node name="Label" type="Label" parent="Frames/Frame04" index="0"]
+layout_mode = 0
+offset_left = 12.0793
+offset_top = 5.37125
+offset_right = 289.079
+offset_bottom = 32.3713
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 15
+text = "Do you even 
+        hear yourself?"
+
+[node name="Label2" type="Label" parent="Frames/Frame04" index="1"]
+layout_mode = 0
+offset_left = 193.94
+offset_top = 4.02844
+offset_right = 401.94
+offset_bottom = 91.0284
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 15
+text = "This is about
+protecting your
+petro-dollar."
+
+[node name="Label3" type="Label" parent="Frames/Frame04" index="2"]
+layout_mode = 0
+offset_left = 32.8826
+offset_top = 87.9543
+offset_right = 132.883
+offset_bottom = 131.954
+theme = ExtResource("4_xldyi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 20
+text = "War
+it is!"

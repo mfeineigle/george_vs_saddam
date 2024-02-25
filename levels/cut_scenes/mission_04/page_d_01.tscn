@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckad7b255y04m"]
+[gd_scene load_steps=10 format=3 uid="uid://ckad7b255y04m"]
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_t7opr"]
 [ext_resource type="Texture2D" uid="uid://dh80wesag7s7p" path="res://assets/cut_scenes/mission_04_cut/23_interview_more_children_hiroshima.jpg" id="2_ao8n3"]
 [ext_resource type="Texture2D" uid="uid://b1u1bpsrmd3k8" path="res://assets/cut_scenes/mission_04_cut/24_worth_it.jpg" id="2_ui0xk"]
+[ext_resource type="Texture2D" uid="uid://yletnnka8kiw" path="res://assets/cut_scenes/text_bubbles/text_bubble_standard_01.png" id="3_q4xux"]
 [ext_resource type="Texture2D" uid="uid://cmhi02n32m1go" path="res://assets/cut_scenes/mission_04_cut/25_george_to_george_whisper.png" id="4_b6fgb"]
+[ext_resource type="Theme" uid="uid://b23d3ipl6c6lr" path="res://ui/comic_text.tres" id="4_xj6ot"]
+[ext_resource type="Texture2D" uid="uid://cmhs6akbihx2w" path="res://assets/cut_scenes/text_bubbles/text_bubble_round_02.png" id="6_48dkc"]
+[ext_resource type="Texture2D" uid="uid://dawoahlw882cv" path="res://assets/cut_scenes/text_bubbles/text_bubble_square_02.png" id="7_kmsla"]
+[ext_resource type="Texture2D" uid="uid://bdr2ernomge7j" path="res://assets/cut_scenes/text_bubbles/text_bubble_cloud_01.png" id="9_7cuuu"]
 
 [node name="Page_D_01" node_paths=PackedStringArray("frames") instance=ExtResource("1_t7opr")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
@@ -19,6 +24,113 @@ scale = Vector2(0.939681, 0.939681)
 texture = ExtResource("2_ao8n3")
 stretch_mode = 4
 
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame01" index="0"]
+offset_left = 352.247
+offset_top = -28.7332
+offset_right = 1669.25
+offset_bottom = 1024.27
+scale = Vector2(0.21367, 0.21367)
+texture = ExtResource("9_7cuuu")
+flip_h = true
+
+[node name="Label" type="Label" parent="Frames/Frame01/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 184.28
+offset_top = 249.027
+offset_right = 1622.28
+offset_bottom = 870.027
+rotation = 0.115647
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 200
+text = "500,000."
+
+[node name="TextureRect2" type="TextureRect" parent="Frames/Frame01" index="1"]
+offset_left = -53.2095
+offset_top = 361.825
+offset_right = 1263.79
+offset_bottom = 1414.82
+scale = Vector2(0.707229, 0.707229)
+texture = ExtResource("3_q4xux")
+flip_v = true
+
+[node name="Label" type="Label" parent="Frames/Frame01/TextureRect2" index="0"]
+layout_mode = 0
+offset_left = 129.407
+offset_top = 343.079
+offset_right = 1567.41
+offset_bottom = 964.079
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 100
+text = "I mean that's more"
+
+[node name="Label2" type="Label" parent="Frames/Frame01/TextureRect2" index="1"]
+layout_mode = 0
+offset_left = 81.2556
+offset_top = 446.906
+offset_right = 1369.26
+offset_bottom = 1067.91
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 125
+text = "children
+"
+
+[node name="Label5" type="Label" parent="Frames/Frame01/TextureRect2" index="2"]
+layout_mode = 0
+offset_left = 565.78
+offset_top = 492.048
+offset_right = 1853.78
+offset_bottom = 1113.05
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 75
+text = "than
+"
+
+[node name="Label6" type="Label" parent="Frames/Frame01/TextureRect2" index="3"]
+layout_mode = 0
+offset_left = 743.338
+offset_top = 407.783
+offset_right = 2031.34
+offset_bottom = 1028.78
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 175
+text = "died
+"
+
+[node name="Label3" type="Label" parent="Frames/Frame01/TextureRect2" index="4"]
+layout_mode = 0
+offset_left = 105.331
+offset_top = 603.398
+offset_right = 1038.33
+offset_bottom = 1224.4
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 120
+text = "when when in
+"
+
+[node name="Label4" type="Label" parent="Frames/Frame01/TextureRect2" index="5"]
+layout_mode = 0
+offset_left = 282.89
+offset_top = 725.281
+offset_right = 1202.89
+offset_bottom = 1346.28
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 150
+text = "Hiroshima!"
+
 [node name="Frame02" type="TextureRect" parent="Frames" index="1"]
 offset_left = 1094.0
 offset_top = 20.0
@@ -26,6 +138,126 @@ offset_right = 3014.0
 offset_bottom = 1266.0
 scale = Vector2(0.418909, 0.418909)
 texture = ExtResource("2_ui0xk")
+
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame02" index="0"]
+offset_left = -592.014
+offset_top = 45.3559
+offset_right = 688.986
+offset_bottom = 993.356
+scale = Vector2(0.764991, 0.764991)
+texture = ExtResource("6_48dkc")
+flip_h = true
+
+[node name="Label" type="Label" parent="Frames/Frame02/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 255.881
+offset_top = 156.025
+offset_right = 1175.88
+offset_bottom = 777.025
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 150
+text = "I think this"
+
+[node name="Label2" type="Label" parent="Frames/Frame02/TextureRect" index="1"]
+layout_mode = 0
+offset_left = 109.217
+offset_top = 305.809
+offset_right = 1029.22
+offset_bottom = 926.809
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 150
+text = "is a very
+
+"
+
+[node name="Label3" type="Label" parent="Frames/Frame02/TextureRect" index="2"]
+layout_mode = 0
+offset_left = 202.832
+offset_top = 452.472
+offset_right = 1401.83
+offset_bottom = 1073.47
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 175
+text = "hard choice 
+
+"
+
+[node name="Label4" type="Label" parent="Frames/Frame02/TextureRect" index="3"]
+layout_mode = 0
+offset_left = 343.255
+offset_top = 630.341
+offset_right = 1263.25
+offset_bottom = 1251.34
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 150
+text = "but...
+"
+
+[node name="TextureRect2" type="TextureRect" parent="Frames/Frame02" index="1"]
+offset_left = 343.75
+offset_top = 942.926
+offset_right = 1624.75
+offset_bottom = 1890.93
+scale = Vector2(1.08115, 1.08115)
+texture = ExtResource("7_kmsla")
+flip_h = true
+flip_v = true
+
+[node name="Label" type="Label" parent="Frames/Frame02/TextureRect2" index="0"]
+layout_mode = 0
+offset_left = 130.271
+offset_top = 333.405
+offset_right = 1467.27
+offset_bottom = 954.405
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 100
+text = "the price,"
+
+[node name="Label2" type="Label" parent="Frames/Frame02/TextureRect2" index="1"]
+layout_mode = 0
+offset_left = 622.651
+offset_top = 357.693
+offset_right = 1959.65
+offset_bottom = 978.693
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 100
+text = "we think"
+
+[node name="Label3" type="Label" parent="Frames/Frame02/TextureRect2" index="2"]
+layout_mode = 0
+offset_left = 158.975
+offset_top = 437.181
+offset_right = 1078.97
+offset_bottom = 1058.18
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 150
+text = "the price is"
+
+[node name="Label4" type="Label" parent="Frames/Frame02/TextureRect2" index="3"]
+layout_mode = 0
+offset_left = 150.143
+offset_top = 560.828
+offset_right = 1070.14
+offset_bottom = 1181.83
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 200
+text = "worth it"
 
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
 offset_left = 662.0
@@ -35,3 +267,26 @@ offset_bottom = 1981.0
 scale = Vector2(0.362245, 0.362245)
 texture = ExtResource("4_b6fgb")
 flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame03" index="0"]
+offset_left = 518.986
+offset_top = -491.38
+offset_right = 1799.99
+offset_bottom = 456.62
+scale = Vector2(0.764991, 0.764991)
+texture = ExtResource("9_7cuuu")
+flip_h = true
+
+[node name="Label" type="Label" parent="Frames/Frame03/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 144.345
+offset_top = 238.169
+offset_right = 1064.34
+offset_bottom = 859.169
+theme = ExtResource("4_xj6ot")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 150
+text = "Don't worry
+     Dad...
+"

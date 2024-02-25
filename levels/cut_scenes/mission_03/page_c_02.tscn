@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://co5soujgjs3hx"]
+[gd_scene load_steps=8 format=3 uid="uid://co5soujgjs3hx"]
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_nydma"]
 [ext_resource type="Texture2D" uid="uid://dhq3gbq0fmqrm" path="res://assets/cut_scenes/mission_03_cut/21_ai_saddam_comic_007.png" id="2_7l30w"]
 [ext_resource type="Texture2D" uid="uid://dhtiukefi36jv" path="res://assets/cut_scenes/mission_03_cut/20_ai_george_holding_oil.jpg" id="2_bhinn"]
+[ext_resource type="Theme" uid="uid://b23d3ipl6c6lr" path="res://ui/comic_text.tres" id="3_g5j8s"]
 [ext_resource type="Texture2D" uid="uid://nauttgma0byt" path="res://assets/cut_scenes/mission_03_cut/22_Bush_troops.jpg" id="3_ubcmy"]
+[ext_resource type="Texture2D" uid="uid://cmhs6akbihx2w" path="res://assets/cut_scenes/text_bubbles/text_bubble_round_02.png" id="4_53mlm"]
+[ext_resource type="Texture2D" uid="uid://dawoahlw882cv" path="res://assets/cut_scenes/text_bubbles/text_bubble_square_02.png" id="6_t6pbw"]
 
 [node name="Page_C_02" node_paths=PackedStringArray("frames") instance=ExtResource("1_nydma")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
@@ -19,6 +22,95 @@ scale = Vector2(0.939681, 0.939681)
 texture = ExtResource("2_bhinn")
 stretch_mode = 4
 
+[node name="Label" type="Label" parent="Frames/Frame01" index="0"]
+offset_left = 106.419
+offset_top = -4.25676
+offset_right = 759.419
+offset_bottom = 616.743
+theme = ExtResource("3_g5j8s")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 25
+text = "The"
+
+[node name="Label2" type="Label" parent="Frames/Frame01" index="1"]
+offset_left = 144.73
+offset_top = -4.25676
+offset_right = 797.73
+offset_bottom = 616.743
+theme = ExtResource("3_g5j8s")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 40
+text = "oil"
+
+[node name="Label3" type="Label" parent="Frames/Frame01" index="2"]
+offset_left = 197.94
+offset_top = 19.1554
+offset_right = 850.94
+offset_bottom = 640.155
+theme = ExtResource("3_g5j8s")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 25
+text = "is..."
+
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame01" index="3"]
+offset_left = 452.0
+offset_top = 20.0
+offset_right = 721.0
+offset_bottom = 206.0
+texture = ExtResource("4_53mlm")
+
+[node name="Label" type="Label" parent="Frames/Frame01/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 49.2339
+offset_top = 28.9528
+offset_right = 702.234
+offset_bottom = 649.953
+theme = ExtResource("3_g5j8s")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 25
+text = "I mean... the
+"
+
+[node name="Label2" type="Label" parent="Frames/Frame01/TextureRect" index="1"]
+layout_mode = 0
+offset_left = 60.94
+offset_top = 40.6589
+offset_right = 713.94
+offset_bottom = 661.659
+theme = ExtResource("3_g5j8s")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 50
+text = "babies,"
+
+[node name="Label3" type="Label" parent="Frames/Frame01/TextureRect" index="2"]
+layout_mode = 0
+offset_left = 29.0143
+offset_top = 94.9326
+offset_right = 682.014
+offset_bottom = 715.933
+theme = ExtResource("3_g5j8s")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 15
+text = "definately not the oil,"
+
+[node name="Label4" type="Label" parent="Frames/Frame01/TextureRect" index="3"]
+layout_mode = 0
+offset_left = 59.8758
+offset_top = 103.446
+offset_right = 712.876
+offset_bottom = 724.446
+theme = ExtResource("3_g5j8s")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 35
+text = "are safe!"
+
 [node name="Frame02" type="TextureRect" parent="Frames" index="1"]
 offset_left = 1094.0
 offset_top = 20.0
@@ -27,6 +119,30 @@ offset_bottom = 1266.0
 scale = Vector2(0.418909, 0.418909)
 texture = ExtResource("2_7l30w")
 
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame02" index="0"]
+offset_left = 307.943
+offset_top = -54.9045
+offset_right = 599.943
+offset_bottom = 202.095
+scale = Vector2(1.75225, 1.75225)
+texture = ExtResource("6_t6pbw")
+flip_h = true
+
+[node name="Label" type="Label" parent="Frames/Frame02/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 35.4207
+offset_top = 35.4207
+offset_right = 688.421
+offset_bottom = 656.421
+theme = ExtResource("3_g5j8s")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 33
+text = "You haven't
+seen the last
+of me!
+"
+
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
 offset_left = 634.0
 offset_top = 556.0
@@ -34,3 +150,52 @@ offset_right = 2682.0
 offset_bottom = 1971.0
 scale = Vector2(0.362245, 0.362245)
 texture = ExtResource("3_ubcmy")
+
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame03" index="0"]
+offset_left = 720.507
+offset_top = -115.944
+offset_right = 1012.51
+offset_bottom = 141.056
+scale = Vector2(1.88137, 1.88137)
+texture = ExtResource("4_53mlm")
+flip_h = true
+
+[node name="Label" type="Label" parent="Frames/Frame03/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 66.0292
+offset_top = 64.5618
+offset_right = 719.029
+offset_bottom = 685.562
+theme = ExtResource("3_g5j8s")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 35
+text = "Mission
+
+"
+
+[node name="Label2" type="Label" parent="Frames/Frame03/TextureRect" index="1"]
+layout_mode = 0
+offset_left = 16.1405
+offset_top = 107.114
+offset_right = 669.141
+offset_bottom = 728.114
+theme = ExtResource("3_g5j8s")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 40
+text = "Accomplished!
+"
+
+[node name="Label3" type="Label" parent="Frames/Frame03/TextureRect" index="2"]
+layout_mode = 0
+offset_left = 77.7677
+offset_top = 184.882
+offset_right = 730.768
+offset_bottom = 805.882
+theme = ExtResource("3_g5j8s")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 20
+text = "(version 1.0)
+"

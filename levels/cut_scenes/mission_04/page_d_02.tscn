@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dajkmv156l4af"]
+[gd_scene load_steps=4 format=3 uid="uid://dajkmv156l4af"]
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_uq0q0"]
 [ext_resource type="Texture2D" uid="uid://1f8okkixwwdi" path="res://assets/cut_scenes/mission_04_cut/26_george_jr_terminator.png" id="2_s1w15"]
+[ext_resource type="Theme" uid="uid://b23d3ipl6c6lr" path="res://ui/comic_text.tres" id="3_yay1t"]
 
 [node name="Page_D_02" node_paths=PackedStringArray("frames") instance=ExtResource("1_uq0q0")]
 frames = [NodePath("Frames/Frame01")]
@@ -22,3 +23,42 @@ grow_vertical = 2
 scale = Vector2(0.837007, 0.837007)
 texture = ExtResource("2_s1w15")
 stretch_mode = 4
+
+[node name="Label" type="Label" parent="Frames/Frame01" index="0"]
+layout_mode = 0
+offset_left = -130.226
+offset_top = 28.6737
+offset_right = 1206.77
+offset_bottom = 649.674
+rotation = -0.0669363
+scale = Vector2(1.12536, 1.12536)
+theme = ExtResource("3_yay1t")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 200
+text = "I'll"
+
+[node name="Label2" type="Label" parent="Frames/Frame01" index="1"]
+layout_mode = 0
+offset_left = 102.747
+offset_top = 244.92
+offset_right = 1439.75
+offset_bottom = 865.92
+rotation = -0.0963882
+theme = ExtResource("3_yay1t")
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 250
+text = "be"
+
+[node name="Label3" type="Label" parent="Frames/Frame01" index="2"]
+layout_mode = 0
+offset_left = -292.71
+offset_top = 508.956
+offset_right = 655.29
+offset_bottom = 1129.96
+rotation = -0.0809808
+theme = ExtResource("3_yay1t")
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 350
+text = "back!"

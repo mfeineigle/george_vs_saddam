@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://drngp61r210id"]
+[gd_scene load_steps=7 format=3 uid="uid://drngp61r210id"]
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_rjkuq"]
 [ext_resource type="Texture2D" uid="uid://deaxi3hk07a1h" path="res://assets/cut_scenes/mission_03_cut/19_post_war_iraq_1.jpg" id="2_js8ch"]
 [ext_resource type="Texture2D" uid="uid://boc31mgvy61cp" path="res://assets/cut_scenes/mission_03_cut/16_kuwait_oil-well-fire-burning.jpg" id="3_avayj"]
+[ext_resource type="Theme" uid="uid://b23d3ipl6c6lr" path="res://ui/comic_text.tres" id="3_siw8d"]
 [ext_resource type="Texture2D" uid="uid://ldhbgysm5iou" path="res://assets/cut_scenes/mission_03_cut/18_oil_ground_Oil-fires.jpg" id="4_l26gn"]
 [ext_resource type="Texture2D" uid="uid://d0wd5kidnc2ah" path="res://assets/cut_scenes/mission_03_cut/17_burning_oil_field_and_camels.jpg" id="5_roejv"]
 
@@ -20,11 +21,40 @@ offset_bottom = 1767.0
 scale = Vector2(0.485369, 0.485369)
 texture = ExtResource("2_js8ch")
 
+[node name="Label" type="Label" parent="Frames/Frame04" index="0"]
+layout_mode = 0
+offset_left = 201.908
+offset_top = 135.979
+offset_right = 1933.91
+offset_bottom = 340.979
+theme = ExtResource("3_siw8d")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "and the people suffer."
+
 [node name="Frame01" type="TextureRect" parent="Frames" index="1"]
 offset_right = 973.0
 offset_bottom = 645.0
 scale = Vector2(0.939681, 0.939681)
 texture = ExtResource("3_avayj")
+
+[node name="Label" type="Label" parent="Frames/Frame01" index="0"]
+layout_mode = 0
+offset_left = 42.5676
+offset_top = 17.0271
+offset_right = 1049.57
+offset_bottom = 222.027
+theme = ExtResource("3_siw8d")
+text = "War    ues..."
+
+[node name="Label2" type="Label" parent="Frames/Frame01" index="1"]
+layout_mode = 0
+offset_left = 11.7061
+offset_top = 18.0912
+offset_right = 1018.71
+offset_bottom = 223.091
+theme = ExtResource("3_siw8d")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "     ens"
 
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
 offset_top = 608.0

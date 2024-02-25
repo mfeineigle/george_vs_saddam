@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuh7dkcrqcjpd"]
+[gd_scene load_steps=8 format=3 uid="uid://cuh7dkcrqcjpd"]
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_tdc67"]
 [ext_resource type="Texture2D" uid="uid://ckkrpgoxdi5dd" path="res://assets/cut_scenes/mission_01_cut/02_oil_rig_circle.png" id="2_a3prf"]
 [ext_resource type="Texture2D" uid="uid://jd3vokymsjvj" path="res://assets/cut_scenes/mission_01_cut/01_ai_george_hw_bush_telescope_001.png" id="3_egey1"]
 [ext_resource type="Texture2D" uid="uid://c3bcuw7abi77i" path="res://assets/cut_scenes/mission_01_cut/03_oil_barrel_spilled.png" id="4_bwxsx"]
+[ext_resource type="Texture2D" uid="uid://yletnnka8kiw" path="res://assets/cut_scenes/text_bubbles/text_bubble_standard_01.png" id="4_d1bfq"]
+[ext_resource type="Theme" uid="uid://b23d3ipl6c6lr" path="res://ui/comic_text.tres" id="5_bvkbx"]
+[ext_resource type="Texture2D" uid="uid://cnsictrxl5xu6" path="res://assets/cut_scenes/mission_01_cut/comic-oil-explosion-bubble.png" id="7_f3v5v"]
 
 [node name="Page_A_01" node_paths=PackedStringArray("frames") instance=ExtResource("1_tdc67")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03")]
@@ -11,20 +14,41 @@ next_page = "res://levels/cut_scenes/mission_01/page_a_02.tscn"
 next_level = "res://levels/level_test_b.tscn"
 next_cutscene = "res://levels/cut_scenes/mission_02/page_b_01.tscn"
 
-[node name="Frame02" type="TextureRect" parent="Frames" index="0"]
+[node name="Frame01" type="TextureRect" parent="Frames" index="0"]
+offset_left = 45.0
+offset_top = 87.0
+offset_right = 813.0
+offset_bottom = 599.0
+texture = ExtResource("3_egey1")
+flip_h = true
+
+[node name="Frame02" type="TextureRect" parent="Frames" index="1"]
 offset_left = 816.0
 offset_top = 163.0
 offset_right = 1776.0
 offset_bottom = 1033.0
 texture = ExtResource("2_a3prf")
 
-[node name="Frame01" type="TextureRect" parent="Frames" index="1"]
-offset_left = 45.0
-offset_top = 87.0
-offset_right = 694.0
-offset_bottom = 443.0
-texture = ExtResource("3_egey1")
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame02" index="0"]
+layout_mode = 0
+offset_left = -128.0
+offset_top = -137.0
+offset_right = 1189.0
+offset_bottom = 916.0
+scale = Vector2(0.186404, 0.186404)
+texture = ExtResource("4_d1bfq")
 flip_h = true
+
+[node name="Label" type="Label" parent="Frames/Frame02/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 165.385
+offset_top = 153.283
+offset_right = 1323.38
+offset_bottom = 566.283
+theme = ExtResource("5_bvkbx")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "What do we 
+have here..."
 
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
 offset_left = 201.0
@@ -32,3 +56,11 @@ offset_top = 723.0
 offset_right = 850.0
 offset_bottom = 1079.0
 texture = ExtResource("4_bwxsx")
+
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame03" index="0"]
+layout_mode = 0
+offset_left = -120.0
+offset_top = -76.0
+offset_right = 280.0
+offset_bottom = 188.0
+texture = ExtResource("7_f3v5v")

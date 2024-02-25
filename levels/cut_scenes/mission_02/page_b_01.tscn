@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsuns8bauoled"]
+[gd_scene load_steps=11 format=3 uid="uid://bsuns8bauoled"]
 
 [ext_resource type="PackedScene" uid="uid://bj837d30n5gep" path="res://levels/cut_scenes/page.tscn" id="1_t2p3n"]
 [ext_resource type="Texture2D" uid="uid://b1nj4q7tmh01k" path="res://assets/cut_scenes/mission_02_cut/11_nayirah_01.jpg" id="2_o1qnn"]
 [ext_resource type="Texture2D" uid="uid://bjqw7amyvvqr2" path="res://assets/cut_scenes/mission_02_cut/12_nayirah_02.jpg" id="3_immmi"]
+[ext_resource type="Texture2D" uid="uid://cmhs6akbihx2w" path="res://assets/cut_scenes/text_bubbles/text_bubble_round_02.png" id="3_rguxa"]
 [ext_resource type="Texture2D" uid="uid://dbv323xh7j20w" path="res://assets/cut_scenes/mission_02_cut/13_nayirah_03.jpg" id="4_c7j4c"]
+[ext_resource type="Theme" uid="uid://b23d3ipl6c6lr" path="res://ui/comic_text.tres" id="4_nr24g"]
 [ext_resource type="Texture2D" uid="uid://btnllprmq6jxe" path="res://assets/cut_scenes/mission_02_cut/14_saddam_holding_baby.png" id="5_fytmk"]
 [ext_resource type="Texture2D" uid="uid://b16mw330wd48c" path="res://assets/cut_scenes/mission_02_cut/15_George-HW-Bush_pointing.jpg" id="6_p1de8"]
+[ext_resource type="Texture2D" uid="uid://cdnw3anxf6ecq" path="res://assets/cut_scenes/text_bubbles/text_bubble_square_01.png" id="7_xhpjg"]
+[ext_resource type="Texture2D" uid="uid://bayev0ac1btuc" path="res://assets/cut_scenes/text_bubbles/thought_bubble_rounded_01.png" id="10_q773t"]
 
 [node name="Page_B_01" node_paths=PackedStringArray("frames") instance=ExtResource("1_t2p3n")]
 frames = [NodePath("Frames/Frame01"), NodePath("Frames/Frame02"), NodePath("Frames/Frame03"), NodePath("Frames/Frame04"), NodePath("Frames/Frame05")]
@@ -19,6 +23,39 @@ offset_right = 671.0
 offset_bottom = 367.0
 texture = ExtResource("2_o1qnn")
 
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame01" index="0"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 20.0
+offset_right = 721.0
+offset_bottom = 206.0
+texture = ExtResource("3_rguxa")
+
+[node name="Label" type="Label" parent="Frames/Frame01/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 40.0
+offset_right = 679.0
+offset_bottom = 661.0
+theme = ExtResource("4_nr24g")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 40
+text = "my name is
+"
+
+[node name="Label2" type="Label" parent="Frames/Frame01/TextureRect" index="1"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 75.0
+offset_right = 702.0
+offset_bottom = 696.0
+theme = ExtResource("4_nr24g")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 50
+text = "Nayirah"
+
 [node name="Frame02" type="TextureRect" parent="Frames" index="1"]
 offset_left = 15.0
 offset_top = 358.0
@@ -26,12 +63,99 @@ offset_right = 664.0
 offset_bottom = 714.0
 texture = ExtResource("3_immmi")
 
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame02" index="0"]
+offset_left = 452.0
+offset_top = 20.0
+offset_right = 721.0
+offset_bottom = 206.0
+texture = ExtResource("3_rguxa")
+
+[node name="Label" type="Label" parent="Frames/Frame02/TextureRect" index="0"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 30.0
+offset_right = 312.0
+offset_bottom = 235.0
+theme = ExtResource("4_nr24g")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -15
+theme_override_font_sizes/font_size = 25
+text = "They took
+ the"
+
+[node name="Label2" type="Label" parent="Frames/Frame02/TextureRect" index="1"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 53.0
+offset_right = 1119.0
+offset_bottom = 466.0
+theme = ExtResource("4_nr24g")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 35
+text = "   babies
+ out of
+incubators"
+
 [node name="Frame03" type="TextureRect" parent="Frames" index="2"]
 offset_left = 10.0
 offset_top = 706.0
 offset_right = 659.0
 offset_bottom = 1062.0
 texture = ExtResource("4_c7j4c")
+
+[node name="TextureRect" type="TextureRect" parent="Frames/Frame03" index="0"]
+offset_left = 362.0
+offset_top = -4.0
+offset_right = 1608.0
+offset_bottom = 847.0
+scale = Vector2(0.297061, 0.297061)
+texture = ExtResource("7_xhpjg")
+
+[node name="Label" type="Label" parent="Frames/Frame03/TextureRect" index="0"]
+offset_left = 104.356
+offset_top = 60.5937
+offset_right = 1096.36
+offset_bottom = 265.594
+theme = ExtResource("4_nr24g")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -15
+theme_override_font_sizes/font_size = 100
+text = "took the incubators,"
+
+[node name="Label2" type="Label" parent="Frames/Frame03/TextureRect" index="1"]
+offset_left = 168.316
+offset_top = 151.484
+offset_right = 1298.32
+offset_bottom = 564.484
+theme = ExtResource("4_nr24g")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 100
+text = "and left these
+children"
+
+[node name="Label3" type="Label" parent="Frames/Frame03/TextureRect" index="2"]
+offset_left = 575.64
+offset_top = 239.008
+offset_right = 1643.64
+offset_bottom = 652.008
+theme = ExtResource("4_nr24g")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 130
+text = "to die"
+
+[node name="Label4" type="Label" parent="Frames/Frame03/TextureRect" index="3"]
+offset_left = 175.048
+offset_top = 366.928
+offset_right = 1243.05
+offset_bottom = 779.928
+theme = ExtResource("4_nr24g")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
+theme_override_font_sizes/font_size = 100
+text = "on the cold floor."
 
 [node name="Frame04" type="TextureRect" parent="Frames" index="3"]
 offset_left = 1247.0
@@ -41,9 +165,31 @@ offset_bottom = 538.0
 texture = ExtResource("5_fytmk")
 
 [node name="Frame05" type="TextureRect" parent="Frames" index="4"]
-offset_left = 691.0
-offset_top = 450.0
-offset_right = 1936.0
-offset_bottom = 1280.0
+offset_left = 747.0
+offset_top = 460.0
+offset_right = 1992.0
+offset_bottom = 1290.0
 scale = Vector2(0.675114, 0.727966)
 texture = ExtResource("6_p1de8")
+
+[node name="TextureRect2" type="TextureRect" parent="Frames/Frame05" index="0"]
+offset_left = 1088.71
+offset_top = 159.348
+offset_right = 2405.71
+offset_bottom = 1212.35
+scale = Vector2(0.389181, 0.389181)
+texture = ExtResource("10_q773t")
+
+[node name="Label" type="Label" parent="Frames/Frame05/TextureRect2" index="0"]
+offset_left = 354.026
+offset_top = 87.8613
+offset_right = 1580.03
+offset_bottom = 558.861
+theme = ExtResource("4_nr24g")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -15
+theme_override_font_sizes/font_size = 100
+text = "what a bunch
+ of morons.
+Babies on the cold
+ floor! Hahaha!"
