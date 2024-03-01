@@ -42,6 +42,6 @@ func _update_nav_regions() -> void:
 	if nav_region_starting_rocks:
 		nav_region_starting_rocks.enabled = true
 		nav_region_starting_rocks.use_edge_connections = true
-	if nav_region_starting_rocks:
+	if nav_region_finished_rocks:
 		nav_region_finished_rocks.enabled = false
 		nav_region_finished_rocks.use_edge_connections = false
