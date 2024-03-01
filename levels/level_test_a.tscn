@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c3mkylkdhtc4e"]
+[gd_scene load_steps=41 format=3 uid="uid://c3mkylkdhtc4e"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_7qhx8"]
 [ext_resource type="Texture2D" uid="uid://dlymds1mxs36t" path="res://assets/background/lvl-A_ground_textures.png" id="2_hupca"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dvegaq0esyjct" path="res://characters/saddam.tscn" id="14_42eps"]
 [ext_resource type="PackedScene" uid="uid://dthssebrgbpkk" path="res://collectibles/secret_areas/secret_area.tscn" id="16_18a3i"]
 [ext_resource type="PackedScene" uid="uid://br8ml1xibfwki" path="res://set_pieces/trap_soldier.tscn" id="18_ajsms"]
+[ext_resource type="PackedScene" uid="uid://wdeypjhrfm8r" path="res://set_pieces/flag_point.tscn" id="19_obnpg"]
 [ext_resource type="PackedScene" uid="uid://0rkug7sqoehv" path="res://set_pieces/trap_soldier_hole.tscn" id="20_f7d48"]
 [ext_resource type="Texture2D" uid="uid://dcpfuy8c5jki" path="res://assets/obstacles/foxhole_temp.png" id="22_cultk"]
 [ext_resource type="PackedScene" uid="uid://c7i0qbpunp5ei" path="res://enemies/radar_tower.tscn" id="24_k2wqr"]
@@ -449,8 +450,8 @@ key = ExtResource("9_d7ar1")
 position = Vector2(-1695, -505)
 key = ExtResource("13_ytxab")
 
-[node name="FlagPole" parent="Collectibles" index="4" instance=ExtResource("7_3e2ed")]
-position = Vector2(23, -411)
+[node name="FlagPoint" parent="Collectibles/Flags" index="0" instance=ExtResource("19_obnpg")]
+position = Vector2(28, -408)
 
 [node name="TrapSoldier" parent="Traps" index="0" node_paths=PackedStringArray("units") instance=ExtResource("18_ajsms")]
 position = Vector2(871, 1095)
