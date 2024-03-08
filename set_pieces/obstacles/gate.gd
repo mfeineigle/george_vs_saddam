@@ -12,7 +12,8 @@ var door_open: bool = false
 
 
 func _ready() -> void:
-	door_stripes.texture = key.stripes
+	if key:
+		door_stripes.texture = key.stripes
 
 func _on_door_open_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and is_door_locked:
