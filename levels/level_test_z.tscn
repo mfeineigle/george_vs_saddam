@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://c0rffprpwew2g" path="res://levels/desert_tilemap.tres" id="2_npfdh"]
 [ext_resource type="PackedScene" uid="uid://henmrnwuesl5" path="res://set_pieces/obstacles/boulders_v.tscn" id="3_m534f"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="3_pejwt"]
-[ext_resource type="PackedScene" uid="uid://t50gsu7vlpnd" path="res://set_pieces/trap_helicopter.tscn" id="5_gpu0g"]
+[ext_resource type="PackedScene" uid="uid://t50gsu7vlpnd" path="res://set_pieces/traps/trap_helicopter.tscn" id="5_gpu0g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uhft"]
 radius = 222.506

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://0rkug7sqoehv"]
 
-[ext_resource type="Script" path="res://set_pieces/trap_soldier_hole.gd" id="1_3q3bd"]
+[ext_resource type="Script" path="res://set_pieces/traps/trap_soldier_hole.gd" id="1_3q3bd"]
 
 [node name="TrapSoldierHole" type="Area2D"]
 collision_layer = 8

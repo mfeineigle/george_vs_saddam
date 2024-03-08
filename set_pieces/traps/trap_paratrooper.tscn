@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ys4jxc7uls5v"]
 
-[ext_resource type="Script" path="res://set_pieces/trap_paratrooper.gd" id="1_axca8"]
+[ext_resource type="Script" path="res://set_pieces/traps/trap_paratrooper.gd" id="1_axca8"]
 
 [node name="TrapParatrooper" type="Area2D"]
 script = ExtResource("1_axca8")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://budsnlgga1e1s"]
 
 [ext_resource type="Shader" path="res://shaders/waving_flag.gdshader" id="1_vb1ui"]
-[ext_resource type="Script" path="res://set_pieces/flag_pole.gd" id="1_w2scs"]
+[ext_resource type="Script" path="res://set_pieces/flags/flag_pole.gd" id="1_w2scs"]
 [ext_resource type="Texture2D" uid="uid://ccqnm63e36sww" path="res://assets/background/flag_pole.png" id="1_x2qg4"]
 [ext_resource type="Texture2D" uid="uid://bd1qaapj2sm0k" path="res://assets/background/flag_iraq_sm.jpg" id="2_vavoj"]
 [ext_resource type="Texture2D" uid="uid://cqlxqinehrbcr" path="res://assets/background/flag_usa_sm.png" id="3_8eyrh"]

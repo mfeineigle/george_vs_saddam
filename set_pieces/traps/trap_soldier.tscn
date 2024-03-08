@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://br8ml1xibfwki"]
 
-[ext_resource type="Script" path="res://set_pieces/trap_soldier.gd" id="1_sweot"]
+[ext_resource type="Script" path="res://set_pieces/traps/trap_soldier.gd" id="1_sweot"]
 
 [node name="TrapSoldier" type="Area2D"]
 collision_layer = 0
