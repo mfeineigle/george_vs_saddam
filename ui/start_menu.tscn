@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d23hdovu4t8qb"]
+[gd_scene load_steps=13 format=3 uid="uid://d23hdovu4t8qb"]
 
 [ext_resource type="Script" path="res://ui/start_menu.gd" id="1_qwvnd"]
 [ext_resource type="Texture2D" uid="uid://bfpgg2sf74ylt" path="res://assets/ui/start_menu_background.png" id="2_ldxji"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c371j33ow8xwc" path="res://media/george_vs_saddam.png" id="5_n48cp"]
 [ext_resource type="PackedScene" uid="uid://ctg67vixoe7hk" path="res://ui/high_scores_menu.tscn" id="7_d76ma"]
 [ext_resource type="PackedScene" uid="uid://b3locbppi35js" path="res://ui/options_menu.tscn" id="7_ln055"]
+[ext_resource type="AudioStream" uid="uid://c7vwkwjp4qtm5" path="res://assets/audio/start_menu_slide_in.wav" id="9_dgbpo"]
 
 [sub_resource type="Animation" id="Animation_7hoes"]
 resource_name = "fade_title"
@@ -63,7 +64,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/StoryButton:self_modulate")
+tracks/4/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/HighScoresButton:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -75,7 +76,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/LevelSelectButton:self_modulate")
+tracks/5/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/StoryButton:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -87,7 +88,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/QuitButton:self_modulate")
+tracks/6/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/LevelSelectButton:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -96,9 +97,37 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/QuitButton:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1gejk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/HighScoresButton:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ydryi"]
 _data = {
+"RESET": SubResource("Animation_1gejk"),
 "fade_title": SubResource("Animation_7hoes")
 }
 
@@ -155,6 +184,7 @@ text = "Saddam
 "
 
 [node name="TitleTextureRect" type="TextureRect" parent="Background/VBoxContainer/TitleHBox"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("5_n48cp")
 
@@ -171,16 +201,19 @@ theme_override_constants/separation = 10
 alignment = 2
 
 [node name="StartButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+self_modulate = Color(1, 1, 1, 0.00662249)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Start"
 
 [node name="ContinueButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Continue"
 
 [node name="OptionsButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Options"
@@ -191,17 +224,20 @@ theme = ExtResource("5_m6lad")
 text = "High Scores"
 
 [node name="StoryButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Story"
 
 [node name="LevelSelectButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Level Select"
 
 [node name="QuitButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Quit"
@@ -218,6 +254,12 @@ layout_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_ydryi")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_dgbpo")
+volume_db = -5.0
+pitch_scale = 1.26
 
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/ContinueButton" to="." method="_on_continue_button_pressed"]
