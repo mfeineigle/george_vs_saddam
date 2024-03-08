@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://be3oh6jboeeh7"]
+
+[ext_resource type="PackedScene" uid="uid://dj5rxv2d58cyc" path="res://set_pieces/obstacles/gate.tscn" id="1_ab3rl"]
+
+[sub_resource type="Animation" id="Animation_2nmp1"]
+resource_name = "open_door"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_1j4k4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e0ng0"]
+_data = {
+"RESET": SubResource("Animation_1j4k4"),
+"open_door": SubResource("Animation_2nmp1")
+}
+
+[node name="Gate_Plain" instance=ExtResource("1_ab3rl")]
+
+[node name="DoorAnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_e0ng0")
+}
