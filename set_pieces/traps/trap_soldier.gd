@@ -32,7 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 			unit.visible = true
 			unit.process_mode = Node.PROCESS_MODE_INHERIT
 			call_deferred("reparent_unit", unit)
-	queue_free()
+		queue_free()
 
 
 func reparent_unit(unit) -> void:
