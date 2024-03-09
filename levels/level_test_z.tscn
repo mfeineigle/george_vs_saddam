@@ -1,18 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxq3hwbyve6br"]
+[gd_scene load_steps=14 format=3 uid="uid://cxq3hwbyve6br"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_j5uer"]
 [ext_resource type="TileSet" uid="uid://c0rffprpwew2g" path="res://levels/desert_tilemap.tres" id="2_npfdh"]
 [ext_resource type="PackedScene" uid="uid://henmrnwuesl5" path="res://set_pieces/obstacles/boulders_v.tscn" id="3_m534f"]
 [ext_resource type="PackedScene" uid="uid://bxh7ov567x8g7" path="res://weapons/rifle.tscn" id="3_pejwt"]
 [ext_resource type="PackedScene" uid="uid://t50gsu7vlpnd" path="res://set_pieces/traps/trap_helicopter.tscn" id="5_gpu0g"]
+[ext_resource type="PackedScene" uid="uid://0rkug7sqoehv" path="res://set_pieces/traps/trap_soldier_hole.tscn" id="6_5jcv7"]
+[ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="7_sqr1n"]
+[ext_resource type="Texture2D" uid="uid://dcpfuy8c5jki" path="res://assets/obstacles/foxhole_temp.png" id="8_6ffqv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uhft"]
 radius = 222.506
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnq5m"]
+size = Vector2(607, 253)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amr61"]
+size = Vector2(398, 98)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_bcyw0"]
+vertices = PackedVector2Array(237, 76, -237, 76, -228, -78, 229, -79)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-238, -88, 239, -90, 248, 87, -248, 86)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d5ypl"]
-vertices = PackedVector2Array(1138, 187, 1208, 25, 1346, -253, 2135, -1070, 2017, 1702, 1232, 351, 1298, 649, -371, 166, -347, -43, -210, -267, 93, -485, 61, 799, -282, 375, -241, 641, 1204, 795, -2086, 1563, 1227, -463, -2364, -1230, -346, -482, -1472, -522, -1482, 742, -393, 798)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 5, 4), PackedInt32Array(7, 8, 9, 10, 11, 12), PackedInt32Array(13, 12, 11), PackedInt32Array(14, 6, 4), PackedInt32Array(14, 4, 15, 11), PackedInt32Array(3, 2, 16), PackedInt32Array(17, 3, 16, 10), PackedInt32Array(10, 9, 18), PackedInt32Array(17, 10, 18, 19), PackedInt32Array(15, 17, 19, 20), PackedInt32Array(21, 13, 11), PackedInt32Array(21, 11, 15), PackedInt32Array(15, 20, 21)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(2027, 1713, 2146, -1080, -2376, -1241, -2096, 1573), PackedVector2Array(71, 789, 103, -475, 1221, -453, 1335, -253, 1199, 21, 1127, 189, 1223, 355, 1287, 647, 1199, 785), PackedVector2Array(-1472, 733, -1462, -512, -352, -472, -222, -267, -357, -47, -382, 168, -292, 378, -252, 638, -397, 788)])
+vertices = PackedVector2Array(-95, 931, 61, 799, 1204, 795, -96, 1072, 1138, 187, 1208, 25, 1346, -253, 2135, -1070, 2017, 1702, 1232, 351, 1298, 649, -210, -267, 93, -485, -348, -42, -2086, 1563, -480, 156, -349, -41, -360, 355, -284, 629, -392, 798, -538, 934, -1482, 742, 1227, -463, -2364, -1230, -346, -482, -1472, -522, -541, 1072)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8, 9), PackedInt32Array(10, 9, 8), PackedInt32Array(11, 12, 1, 13), PackedInt32Array(2, 10, 8), PackedInt32Array(2, 8, 14, 3), PackedInt32Array(15, 16, 13, 1, 17), PackedInt32Array(18, 17, 1, 0), PackedInt32Array(19, 18, 0), PackedInt32Array(19, 0, 20, 21), PackedInt32Array(7, 6, 22), PackedInt32Array(23, 7, 22, 12), PackedInt32Array(12, 11, 24), PackedInt32Array(23, 12, 24, 25), PackedInt32Array(14, 23, 25, 21), PackedInt32Array(26, 3, 14), PackedInt32Array(26, 14, 21, 20)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(2027, 1713, 2146, -1080, -2376, -1241, -2096, 1573), PackedVector2Array(71, 789, 103, -475, 1221, -453, 1335, -253, 1199, 21, 1127, 189, 1223, 355, 1287, 647, 1199, 785), PackedVector2Array(-1472, 733, -1462, -512, -352, -472, -222, -267, -357, -47, -493, 157, -369, 359, -295, 627, -397, 788), PackedVector2Array(-528, 944, -105, 941, -106, 1062, -531, 1062)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="LevelTestZ" instance=ExtResource("1_j5uer")]
@@ -59,6 +74,35 @@ position = Vector2(-96, -438)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapHelicopter" index="0"]
 shape = SubResource("CircleShape2D_7uhft")
 
+[node name="TrapSoldierHole" parent="Traps" index="1" node_paths=PackedStringArray("units") instance=ExtResource("6_5jcv7")]
+position = Vector2(-320, 1004)
+units = NodePath("Units")
+invisible_units = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapSoldierHole" index="0"]
+position = Vector2(2.5, 3.5)
+shape = SubResource("RectangleShape2D_dnq5m")
+
+[node name="Units" type="Node2D" parent="Traps/TrapSoldierHole" index="1"]
+
+[node name="Troop" parent="Traps/TrapSoldierHole/Units" index="0" instance=ExtResource("7_sqr1n")]
+
+[node name="Hole" type="StaticBody2D" parent="Traps/TrapSoldierHole" index="2"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Traps/TrapSoldierHole/Hole" index="0"]
+texture = ExtResource("8_6ffqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapSoldierHole/Hole" index="1"]
+shape = SubResource("RectangleShape2D_amr61")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Traps/TrapSoldierHole/Hole" index="2"]
+navigation_polygon = SubResource("NavigationPolygon_bcyw0")
+
+[node name="Troop" parent="Enemies/Soldiers" index="0" instance=ExtResource("7_sqr1n")]
+position = Vector2(-396, 1503)
+
+[node name="George" parent="." index="9"]
+position = Vector2(-280, 518)
+
 [node name="NavigationRegion2D" parent="." index="10"]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_d5ypl")
