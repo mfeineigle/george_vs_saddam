@@ -8,6 +8,7 @@ extends Area2D
 
 @onready var hole_collision: CollisionShape2D = $Hole/CollisionShape2D
 @onready var hole_sprite: Sprite2D = $Hole/Sprite2D
+@onready var hole_nav: NavigationRegion2D = $Hole/NavigationRegion2D
 
 ## Holds the units the ambush controls
 @export var units: Node2D
@@ -23,6 +24,7 @@ func _ready() -> void:
 			unit.visible = false
 			unit.process_mode = Node.PROCESS_MODE_DISABLED
 	hole_sprite.visible = false
+	hole_collision.disabled = true
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -31,6 +33,7 @@ func _on_body_entered(body: Node2D) -> void:
 		Globals.trap_triggers += 1
 		hole_collision.set_deferred("disabled", false)
 		hole_sprite.visible = true
+		hole_nav.enabled = false
 		for unit in units.get_children():
 			unit.set_process(true)
 			unit.set_physics_process(true)
