@@ -86,10 +86,10 @@ position = Vector2(126.154, -76.9231)
 texture = ExtResource("4_3qwlm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "spin_rotor_right"
 libraries = {
 "": SubResource("AnimationLibrary_dxdne")
 }
+autoplay = "spin_rotor_right"
 
 [node name="Helicopter_Flyover" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_f2kts")

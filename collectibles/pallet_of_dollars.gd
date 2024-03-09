@@ -7,7 +7,7 @@ var direction: Vector2
 
 
 func setup(pos, dir) -> void:
-	position.x = pos.x - 100
+	position.x = pos.x
 	position.y = pos.y
 	direction = dir
 
@@ -19,7 +19,7 @@ func _ready() -> void:
 	else:
 		$AnimationPlayer.play("falling_from_left")
 	var fall_down_tween = get_tree().create_tween() #move down
-	var target_pos = Vector2(position.x, position.y+250)
+	var target_pos = Vector2(position.x, position.y)
 	fall_down_tween.tween_property(self, "position", target_pos, 1.0)
 	await fall_down_tween.finished
 	$CollisionShape2D.disabled = false
