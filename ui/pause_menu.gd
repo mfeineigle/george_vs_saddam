@@ -1,6 +1,7 @@
 extends Control
 
 @onready var quit_button: Button = $Buttons/VBoxContainer/QuitButton
+@onready var options_menu: Control = $"../OptionsMenu"
 
 var paused: bool = false
 var save_path = "user://data/levels/last_level.save"
@@ -14,8 +15,14 @@ func _ready() -> void:
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
-		_on_paused()
+		if options_menu.visible:
+			_return_to_pause_menu()
+		else:
+			_on_paused()
 
+func _return_to_pause_menu() -> void:
+	options_menu.hide()
+	self.show()
 
 func _on_paused() -> void:
 	if not paused:
@@ -36,7 +43,7 @@ func _on_restart_level_pressed() -> void:
 
 
 func _on_options_button_pressed() -> void:
-	$"../OptionsMenu".show()
+	options_menu.show()
 	self.hide()
 
 
