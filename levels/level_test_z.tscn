@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxq3hwbyve6br"]
+[gd_scene load_steps=15 format=3 uid="uid://cxq3hwbyve6br"]
 
 [ext_resource type="PackedScene" uid="uid://xy4httvb2tkc" path="res://levels/level.tscn" id="1_j5uer"]
 [ext_resource type="TileSet" uid="uid://c0rffprpwew2g" path="res://levels/desert_tilemap.tres" id="2_npfdh"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0rkug7sqoehv" path="res://set_pieces/traps/trap_soldier_hole.tscn" id="6_5jcv7"]
 [ext_resource type="PackedScene" uid="uid://rundkiqaar1q" path="res://enemies/troop.tscn" id="7_sqr1n"]
 [ext_resource type="Texture2D" uid="uid://dcpfuy8c5jki" path="res://assets/obstacles/foxhole_temp.png" id="8_6ffqv"]
+[ext_resource type="PackedScene" uid="uid://djf62yfhoa0fb" path="res://enemies/sniper.tscn" id="9_i7yws"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7uhft"]
 radius = 222.506
@@ -100,6 +101,8 @@ navigation_polygon = SubResource("NavigationPolygon_bcyw0")
 
 [node name="Troop" parent="Enemies/Soldiers" index="0" instance=ExtResource("7_sqr1n")]
 position = Vector2(-396, 1503)
+
+[node name="Sniper" parent="Enemies/Soldiers" index="1" instance=ExtResource("9_i7yws")]
 
 [node name="George" parent="." index="9"]
 position = Vector2(-280, 518)
