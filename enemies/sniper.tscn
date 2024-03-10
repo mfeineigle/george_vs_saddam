@@ -30,6 +30,9 @@ height = 1918.0
 script = ExtResource("2_r3j0w")
 speed = 125
 
+[node name="NavigationAgent2D" parent="." index="2"]
+debug_enabled = false
+
 [node name="Sprite2D" parent="Sprites" index="0"]
 material = SubResource("ShaderMaterial_ojpah")
 texture = ExtResource("4_jxy51")
