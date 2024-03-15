@@ -43,8 +43,8 @@ func die() -> void:
 	is_dead = true
 	Globals.civilian_kills += 1
 	var blood = blood_scene.instantiate()
-	get_parent().add_child(blood)
-	#get_owner().get_node("Background/Blood").add_child(blood)
+	#get_parent().add_child(blood)
+	get_owner().get_node("Background/Blood").add_child(blood)
 	blood.setup(global_position)
 	queue_free()
 
