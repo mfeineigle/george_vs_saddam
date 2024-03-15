@@ -214,6 +214,7 @@ position = Vector2(5, 32)
 monitoring = false
 
 [node name="RifleShootArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RifleShootArea"]
@@ -221,6 +222,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_qvoqh")
 
 [node name="ShotgunShootArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShotgunShootArea"]
@@ -253,6 +255,7 @@ target_position = Vector2(0, 300)
 collision_mask = 2
 
 [node name="PursueArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PursueArea"]
 shape = SubResource("CircleShape2D_o3xp3")

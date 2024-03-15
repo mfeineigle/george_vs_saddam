@@ -27,9 +27,15 @@ position = Vector2(2, 0)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_8r4h3")
 
+[node name="RunAwayAreaInner" parent="." index="3"]
+visible = false
+
 [node name="CollisionShape2D" parent="RunAwayAreaInner" index="0"]
 shape = SubResource("CircleShape2D_gtnds")
 debug_color = Color(0, 0.647059, 0.254902, 0.419608)
+
+[node name="RunAwayAreaOuter" parent="." index="4"]
+visible = false
 
 [node name="CollisionShape2D" parent="RunAwayAreaOuter" index="0"]
 shape = SubResource("CircleShape2D_6l0jo")
