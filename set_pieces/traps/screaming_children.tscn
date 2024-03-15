@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqagahsetjn6h"]
+
+[ext_resource type="Script" path="res://set_pieces/traps/ScreamingChildren.gd" id="1_3vlvp"]
+[ext_resource type="AudioStream" uid="uid://b6hyoh3kw5s6x" path="res://assets/audio/screaming_children_5min.mp3" id="2_3w7j1"]
+
+[node name="ScreamingChildren" type="Area2D"]
+position = Vector2(-948, -800)
+script = ExtResource("1_3vlvp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3w7j1")
+
+[node name="DeadChildrenCheckTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="DeadChildrenCheckTimer" to="." method="_on_dead_children_check_timer_timeout"]
