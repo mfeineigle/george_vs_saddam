@@ -22,6 +22,9 @@ script = ExtResource("1_q87hb")
 [node name="NavigationAgent2D" parent="." index="2"]
 debug_enabled = false
 
+[node name="CollisionShape2D" parent="." index="5"]
+debug_color = Color(0.25098, 0.878431, 0.815686, 0.611765)
+
 [node name="Sprite2D" parent="Sprites" index="0"]
 material = SubResource("ShaderMaterial_2xltu")
 

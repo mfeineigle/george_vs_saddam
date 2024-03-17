@@ -33,6 +33,9 @@ debug_enabled = false
 wait_time = 2.0
 one_shot = true
 
+[node name="CollisionShape2D" parent="." index="5"]
+debug_color = Color(0, 1, 0.4, 0.419608)
+
 [node name="Sprite2D" parent="Sprites" index="0"]
 material = SubResource("ShaderMaterial_f73gm")
 
@@ -54,7 +57,7 @@ position = Vector2(68, 0)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_uagjb")
 
-[node name="BulletSpawnPoint" parent="." index="10"]
+[node name="BulletSpawnPoint" parent="." index="11"]
 position = Vector2(97, 27)
 
 [connection signal="timeout" from="Timers/StunTimer" to="." method="_on_stun_timer_timeout"]
