@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://wdeypjhrfm8r"]
+[gd_scene load_steps=5 format=3 uid="uid://wdeypjhrfm8r"]
 
 [ext_resource type="Script" path="res://set_pieces/flags/flag_point.gd" id="1_pg2rt"]
 [ext_resource type="PackedScene" uid="uid://budsnlgga1e1s" path="res://set_pieces/flags/flag_pole.tscn" id="1_xombv"]
+[ext_resource type="AudioStream" uid="uid://cn3l240thjtci" path="res://assets/audio/flag_pickup.mp3" id="3_bxpwy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qami3"]
 radius = 163.003
@@ -14,5 +15,8 @@ script = ExtResource("1_pg2rt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 154)
 shape = SubResource("CircleShape2D_qami3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bxpwy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
