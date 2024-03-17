@@ -36,7 +36,7 @@ func _spawn_an_26() -> void:
 
 func _spawn_mi_24() -> void:
 	var mi_24 = mi_24_scene.instantiate()
-	$Aircraft.add_child(mi_24)
+	$Aircraft.call_deferred("add_child", mi_24)
 
 
 func _spawn_tu_22() -> void:
