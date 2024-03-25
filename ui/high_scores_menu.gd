@@ -1,5 +1,7 @@
 extends Control
 
+@onready var start_menu: Control = $"../StartMenu"
+
 @onready var level_option_button: OptionButton = $VBoxContainer/LevelOptionButton
 
 @onready var best_time_label_01: Label = $VBoxContainer/FirstHBox/BestTimeLabel01
@@ -116,8 +118,5 @@ func _on_reset_button_pressed() -> void:
 
 
 func _on_resume_button_pressed() -> void:
-	if not Globals.current_level:
-		GameEvents.level_changed.emit("res://ui/start_menu.tscn")
-	else:
-		$"../PauseMenu".show()
-		self.hide()
+	start_menu.show()
+	self.hide()
