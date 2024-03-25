@@ -32,8 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://0rkug7sqoehv" path="res://set_pieces/traps/trap_soldier_hole.tscn" id="20_f7d48"]
 [ext_resource type="PackedScene" uid="uid://be3oh6jboeeh7" path="res://set_pieces/obstacles/gate_plain.tscn" id="20_ttpjx"]
 [ext_resource type="Resource" uid="uid://b71qk8n3ivn87" path="res://collectibles/keys/key_green.tres" id="21_vwxdb"]
-[ext_resource type="Texture2D" uid="uid://dcpfuy8c5jki" path="res://assets/obstacles/foxhole_temp.png" id="22_cultk"]
 [ext_resource type="PackedScene" uid="uid://c7i0qbpunp5ei" path="res://enemies/radar_tower.tscn" id="24_k2wqr"]
+[ext_resource type="Texture2D" uid="uid://dxe4k8hs6snuw" path="res://assets/background/foxhole.png" id="29_yq4fm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oeqm3"]
 texture = ExtResource("2_hupca")
@@ -370,12 +370,26 @@ key = ExtResource("9_d7ar1")
 position = Vector2(701, -289)
 
 [node name="Child" parent="Background/Buildings/TestBuilding/Occupants" index="0" instance=ExtResource("8_lkep6")]
-position = Vector2(259.001, 430.999)
+top_level = true
+position = Vector2(69.9994, 568.002)
+rotation = -3.14159
 
-[node name="Child2" parent="Background/Buildings/TestBuilding/Occupants" index="1" instance=ExtResource("8_lkep6")]
-position = Vector2(-389.999, 425.001)
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Background/Buildings/TestBuilding/Occupants" index="1"]
+top_level = true
+position = Vector2(-2074, 534)
+remote_path = NodePath("../Child")
 
-[node name="SecretArea2" parent="Background/Buildings/TestBuilding/Occupants" index="2" instance=ExtResource("16_18a3i")]
+[node name="Child2" parent="Background/Buildings/TestBuilding/Occupants" index="2" instance=ExtResource("8_lkep6")]
+top_level = true
+position = Vector2(-477, 462)
+rotation = -3.14159
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Background/Buildings/TestBuilding/Occupants" index="3"]
+top_level = true
+position = Vector2(-1527, 640)
+remote_path = NodePath("../Child2")
+
+[node name="SecretArea2" parent="Background/Buildings/TestBuilding/Occupants" index="4" instance=ExtResource("16_18a3i")]
 position = Vector2(-554.001, 667)
 rotation = -3.14159
 message = "WMDs aren't here..."
@@ -384,7 +398,7 @@ id = "a_1"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Buildings/TestBuilding/Occupants/SecretArea2" index="2"]
 shape = SubResource("CircleShape2D_ud3fi")
 
-[node name="Keycard_blue" parent="Background/Buildings/TestBuilding/Occupants" index="3" instance=ExtResource("11_gb52y")]
+[node name="Keycard_blue" parent="Background/Buildings/TestBuilding/Occupants" index="5" instance=ExtResource("11_gb52y")]
 position = Vector2(-200, 411.001)
 rotation = -3.14159
 key = ExtResource("13_ytxab")
@@ -572,7 +586,7 @@ collision_layer = 8
 collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Traps/TrapSoldierHole/Hole" index="0"]
-texture = ExtResource("22_cultk")
+texture = ExtResource("29_yq4fm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Traps/TrapSoldierHole/Hole" index="1"]
 rotation = 1.5708
@@ -624,10 +638,12 @@ position = Vector2(476, 172)
 position = Vector2(428, -290)
 
 [node name="Guard" parent="Enemies/Soldiers" index="0" instance=ExtResource("4_m634b")]
-position = Vector2(-407, 749)
+position = Vector2(43, 636)
+pursue = false
 
 [node name="Troop" parent="Enemies/Soldiers" index="1" instance=ExtResource("5_ly66f")]
 position = Vector2(603, -242)
+pursue = false
 
 [node name="Troop2" parent="Enemies/Soldiers" index="2" instance=ExtResource("5_ly66f")]
 position = Vector2(-1583, -1718)
@@ -655,7 +671,7 @@ navigation_polygon = SubResource("NavigationPolygon_wfxqw")
 metadata/_edit_lock_ = true
 
 [node name="George" parent="." index="10"]
-position = Vector2(822, -773)
+position = Vector2(-2179, -226)
 
 [node name="NavigationRegion2D" parent="." index="11"]
 navigation_polygon = SubResource("NavigationPolygon_mh2a1")
