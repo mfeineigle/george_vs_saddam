@@ -19,7 +19,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background/VBoxContainer/TitleHBox/TitleTextureRect:self_modulate")
+tracks/0/path = NodePath("Background/StartMenu/TitleHBox/TitleTextureRect:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +31,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/StartButton:self_modulate")
+tracks/1/path = NodePath("Background/StartMenu/ButtonMarginContainer/ButtonsVBox/StartButton:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -43,7 +43,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/ContinueButton:self_modulate")
+tracks/2/path = NodePath("Background/StartMenu/ButtonMarginContainer/ButtonsVBox/ContinueButton:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -55,7 +55,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/OptionsButton:self_modulate")
+tracks/3/path = NodePath("Background/StartMenu/ButtonMarginContainer/ButtonsVBox/OptionsButton:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -67,7 +67,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/HighScoresButton:self_modulate")
+tracks/4/path = NodePath("Background/StartMenu/ButtonMarginContainer/ButtonsVBox/HighScoresButton:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -79,7 +79,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/StoryButton:self_modulate")
+tracks/5/path = NodePath("Background/StartMenu/ButtonMarginContainer/ButtonsVBox/StoryButton:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -91,7 +91,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/LevelSelectButton:self_modulate")
+tracks/6/path = NodePath("Background/StartMenu/ButtonMarginContainer/ButtonsVBox/LevelSelectButton:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -103,7 +103,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Background/VBoxContainer/MarginContainer/ButtonsVBox/QuitButton:self_modulate")
+tracks/7/path = NodePath("Background/StartMenu/ButtonMarginContainer/ButtonsVBox/QuitButton:self_modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -131,7 +131,8 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("2_ldxji")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="StartMenu" type="VBoxContainer" parent="Background"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -139,13 +140,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TitleHBox" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="TitleHBox" type="HBoxContainer" parent="Background/StartMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/separation = 10
 
-[node name="GeorgeLabel" type="Label" parent="Background/VBoxContainer/TitleHBox"]
+[node name="GeorgeLabel" type="Label" parent="Background/StartMenu/TitleHBox"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 0
@@ -155,13 +156,13 @@ theme_override_font_sizes/font_size = 64
 text = "George
 "
 
-[node name="VsTextureRect" type="TextureRect" parent="Background/VBoxContainer/TitleHBox"]
+[node name="VsTextureRect" type="TextureRect" parent="Background/StartMenu/TitleHBox"]
 visible = false
 layout_mode = 2
 texture = ExtResource("3_fv6ix")
 stretch_mode = 3
 
-[node name="SaddamLabel" type="Label" parent="Background/VBoxContainer/TitleHBox"]
+[node name="SaddamLabel" type="Label" parent="Background/StartMenu/TitleHBox"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
@@ -171,71 +172,81 @@ theme_override_font_sizes/font_size = 64
 text = "Saddam
 "
 
-[node name="TitleTextureRect" type="TextureRect" parent="Background/VBoxContainer/TitleHBox"]
+[node name="TitleTextureRect" type="TextureRect" parent="Background/StartMenu/TitleHBox"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("5_n48cp")
 
-[node name="MarginContainer" type="MarginContainer" parent="Background/VBoxContainer"]
+[node name="ButtonMarginContainer" type="MarginContainer" parent="Background/StartMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_bottom = 10
 
-[node name="ButtonsVBox" type="VBoxContainer" parent="Background/VBoxContainer/MarginContainer"]
+[node name="ButtonsVBox" type="VBoxContainer" parent="Background/StartMenu/ButtonMarginContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="StartButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+[node name="StartButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0.00662249)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Start"
 
-[node name="ContinueButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+[node name="ContinueButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Continue"
 
-[node name="OptionsButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+[node name="OptionsButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Options"
 
-[node name="HighScoresButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+[node name="HighScoresButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "High Scores"
 
-[node name="StoryButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+[node name="StoryButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Story"
 
-[node name="LevelSelectButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+[node name="LevelSelectButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Level Select"
 
-[node name="QuitButton" type="Button" parent="Background/VBoxContainer/MarginContainer/ButtonsVBox"]
+[node name="QuitButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Quit"
 
 [node name="HighScoresMenu" parent="Background" instance=ExtResource("7_d76ma")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
 [node name="OptionsMenu" parent="Background" instance=ExtResource("7_ln055")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
@@ -250,10 +261,10 @@ stream = ExtResource("9_dgbpo")
 volume_db = -5.0
 pitch_scale = 1.26
 
-[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/HighScoresButton" to="." method="_on_high_scores_button_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/StoryButton" to="." method="_on_story_button_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/MarginContainer/ButtonsVBox/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Background/StartMenu/ButtonMarginContainer/ButtonsVBox/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Background/StartMenu/ButtonMarginContainer/ButtonsVBox/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Background/StartMenu/ButtonMarginContainer/ButtonsVBox/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Background/StartMenu/ButtonMarginContainer/ButtonsVBox/HighScoresButton" to="." method="_on_high_scores_button_pressed"]
+[connection signal="pressed" from="Background/StartMenu/ButtonMarginContainer/ButtonsVBox/StoryButton" to="." method="_on_story_button_pressed"]
+[connection signal="pressed" from="Background/StartMenu/ButtonMarginContainer/ButtonsVBox/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="Background/StartMenu/ButtonMarginContainer/ButtonsVBox/QuitButton" to="." method="_on_quit_button_pressed"]

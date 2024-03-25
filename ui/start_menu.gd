@@ -4,18 +4,19 @@ extends Control
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
-@onready var title: TextureRect = $Background/VBoxContainer/TitleHBox/TitleTextureRect
+@onready var title: TextureRect = %TitleTextureRect
 # Buttons
-@onready var start_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/StartButton
-@onready var continue_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/ContinueButton
-@onready var options_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/OptionsButton
-@onready var high_scores_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/HighScoresButton
-@onready var story_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/StoryButton
-@onready var level_select_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/LevelSelectButton
-@onready var quit_button: Button = $Background/VBoxContainer/MarginContainer/ButtonsVBox/QuitButton
+@onready var start_button: Button = %StartButton
+@onready var continue_button: Button = %ContinueButton
+@onready var options_button: Button = %OptionsButton
+@onready var high_scores_button: Button = %HighScoresButton
+@onready var story_button: Button = %StoryButton
+@onready var level_select_button: Button = %LevelSelectButton
+@onready var quit_button: Button = %QuitButton
 # Menus
-@onready var options_menu: Control = $Background/OptionsMenu
-@onready var high_scores_menu: Control = $Background/HighScoresMenu
+@onready var start_menu: VBoxContainer = %StartMenu
+@onready var high_scores_menu: Control = %HighScoresMenu
+@onready var options_menu: Control = %OptionsMenu
 
 
 func _ready() -> void:
@@ -36,6 +37,15 @@ func _ready() -> void:
 		level_select_button.hide()
 
 
+func _process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		if options_menu.visible:
+			options_menu.hide()
+		if high_scores_menu.visible:
+			high_scores_menu.hide()
+		start_menu.show()
+
+
 func _on_start_button_pressed() -> void:
 	GameEvents.level_changed.emit("res://levels/level_test_a.tscn")
 
@@ -51,12 +61,12 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_options_button_pressed() -> void:
-	$Background/VBoxContainer.hide()
+	start_menu.hide()
 	options_menu.show()
 
 
 func _on_high_scores_button_pressed() -> void:
-	$Background/VBoxContainer.hide()
+	start_menu.hide()
 	high_scores_menu.show()
 
 
