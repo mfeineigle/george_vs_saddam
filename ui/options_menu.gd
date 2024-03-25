@@ -2,21 +2,24 @@ extends Control
 
 @onready var invincible_check_button: CheckButton = $VBoxContainer/InvincibleHBox/InvincibleCheckButton
 @onready var no_story_check_button: CheckButton = $VBoxContainer/NoStoryMode/NoStoryCheckButton
+@onready var invincible_h_box: HBoxContainer = %InvincibleHBox
 @onready var pause_menu: Control = $"../PauseMenu"
+@onready var start_menu: Control = $"../StartMenu"
+
 
 func _ready() -> void:
 	invincible_check_button.button_pressed = Globals.invincible
 	no_story_check_button.button_pressed = Globals.no_story_mode
 	if not OS.is_debug_build():
-		$VBoxContainer/InvincibleHBox.hide()
+		invincible_h_box.hide()
 
 
 func _on_resume_button_pressed() -> void:
 	if not Globals.current_level:
-		GameEvents.level_changed.emit("res://ui/start_menu.tscn")
+		start_menu.show()
 	else:
-		pause_menu.show()
-		self.hide()
+		$"../PauseMenu".show()
+	self.hide()
 
 
 func _on_quit_button_pressed() -> void:
