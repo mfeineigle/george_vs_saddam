@@ -174,7 +174,6 @@ text = "Saddam
 
 [node name="TitleTextureRect" type="TextureRect" parent="Background/StartMenu/TitleHBox"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 texture = ExtResource("5_n48cp")
 
@@ -192,42 +191,36 @@ alignment = 2
 
 [node name="StartButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0.00662249)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Start"
 
 [node name="ContinueButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Continue"
 
 [node name="OptionsButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Options"
 
 [node name="HighScoresButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "High Scores"
 
 [node name="StoryButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Story"
 
 [node name="LevelSelectButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
@@ -235,7 +228,6 @@ text = "Level Select"
 
 [node name="QuitButton" type="Button" parent="Background/StartMenu/ButtonMarginContainer/ButtonsVBox"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("5_m6lad")
 text = "Quit"
